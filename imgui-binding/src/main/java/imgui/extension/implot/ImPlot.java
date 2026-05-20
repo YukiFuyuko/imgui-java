@@ -399,7 +399,8 @@ public final class ImPlot {
                                        @ArgValue(callValue = "LEN(values)") Void count,
                                        @OptArg double xscale,
                                        @OptArg double xstart,
-                                       @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                       @OptArg int flags,
+                                       @OptArg int offset);
 
     /**
      * Plots a standard 2D line plot.
@@ -410,7 +411,8 @@ public final class ImPlot {
                                         int count,
                                         @OptArg double xscale,
                                         @OptArg double xstart,
-                                        @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                        @OptArg int flags,
+                                        @OptArg int offset);
 
     // xs,ys
 
@@ -422,7 +424,7 @@ public final class ImPlot {
                                        @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void xs,
                                        @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys,
                                        @ArgValue(callValue = "LEN(xs)") Void count,
-                                       @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                       @OptArg int flags);
 
     /**
      * Plots a standard 2D line plot.
@@ -432,7 +434,8 @@ public final class ImPlot {
                                         @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void xs,
                                         @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys,
                                         int count,
-                                        @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                        @OptArg int flags,
+                                        @OptArg int offset);
 
     // values
 
@@ -445,7 +448,8 @@ public final class ImPlot {
                                           @ArgValue(callValue = "LEN(values)") Void count,
                                           @OptArg double xscale,
                                           @OptArg double xstart,
-                                          @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                          @OptArg int flags,
+                                          @OptArg int offset);
 
     /**
      * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
@@ -456,7 +460,8 @@ public final class ImPlot {
                                            int count,
                                            @OptArg double xscale,
                                            @OptArg double xstart,
-                                           @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                           @OptArg int flags,
+                                           @OptArg int offset);
 
     // xs,ys
 
@@ -468,7 +473,7 @@ public final class ImPlot {
                                           @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void xs,
                                           @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys,
                                           @ArgValue(callValue = "LEN(xs)") Void count,
-                                          @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                          @OptArg int flags);
 
     /**
      * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
@@ -478,7 +483,8 @@ public final class ImPlot {
                                            @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void xs,
                                            @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys,
                                            int count,
-                                           @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                           @OptArg int flags,
+                                           @OptArg int offset);
 
     // values
 
@@ -491,7 +497,8 @@ public final class ImPlot {
                                          @ArgValue(callValue = "LEN(values)") Void count,
                                          @OptArg double xscale,
                                          @OptArg double xstart,
-                                         @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                         @OptArg int flags,
+                                         @OptArg int offset);
 
     /**
      * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
@@ -502,7 +509,8 @@ public final class ImPlot {
                                           int count,
                                           @OptArg double xscale,
                                           @OptArg double xstart,
-                                          @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                          @OptArg int flags,
+                                          @OptArg int offset);
 
     // xs,ys
 
@@ -514,7 +522,7 @@ public final class ImPlot {
                                          @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void xs,
                                          @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys,
                                          @ArgValue(callValue = "LEN(xs)") Void count,
-                                         @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                         @OptArg int flags);
 
     /**
      * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
@@ -524,7 +532,8 @@ public final class ImPlot {
                                           @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void xs,
                                           @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys,
                                           int count,
-                                          @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                          @OptArg int flags,
+                                          @OptArg int offset);
 
     // values
 
@@ -538,7 +547,8 @@ public final class ImPlot {
                                          @OptArg double yRef,
                                          @OptArg double xscale,
                                          @OptArg double xstart,
-                                         @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                         @OptArg int flags,
+                                         @OptArg int offset);
 
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
@@ -550,7 +560,8 @@ public final class ImPlot {
                                           @OptArg double yRef,
                                           @OptArg double xscale,
                                           @OptArg double xstart,
-                                          @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                          @OptArg int flags,
+                                          @OptArg int offset);
 
     // xs,ys
 
@@ -563,7 +574,8 @@ public final class ImPlot {
                                          @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys,
                                          @ArgValue(callValue = "LEN(xs)") Void count,
                                          @OptArg double yRef,
-                                         @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                         @OptArg int flags,
+                                         @OptArg int offset);
 
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
@@ -574,7 +586,8 @@ public final class ImPlot {
                                           @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys,
                                           int count,
                                           @OptArg double yRef,
-                                          @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                          @OptArg int flags,
+                                          @OptArg int offset);
 
     // xs,ys1,ys2
 
@@ -587,7 +600,7 @@ public final class ImPlot {
                                          @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys1,
                                          @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys2,
                                          @ArgValue(callValue = "LEN(xs)") Void count,
-                                         @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                         @OptArg int flags);
 
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
@@ -598,66 +611,72 @@ public final class ImPlot {
                                           @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys1,
                                           @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys2,
                                           int count,
-                                          @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                          @OptArg int flags,
+                                          @OptArg int offset);
 
     // values
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
     @BindingMethod
     public static native void PlotBars(String labelId,
                                        @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void values,
                                        @ArgValue(callValue = "LEN(values)") Void count,
-                                       @OptArg double barSize,
-                                       @OptArg double shift,
-                                       @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                       @OptArg double barWidth,
+                                       @OptArg double xstart,
+                                       @OptArg int flags,
+                                       @OptArg int offset);
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
     @BindingMethod(callName = "PlotBars")
     public static native void PlotBarsV(String labelId,
                                         @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void values,
                                         int count,
-                                        @OptArg double barSize,
-                                        @OptArg double shift,
-                                        @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                        @OptArg double barWidth,
+                                        @OptArg double xstart,
+                                        @OptArg int flags,
+                                        @OptArg int offset);
 
     // xs,ys
 
     /**
-     * Plots a vertical bar graph. #bar_size is in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
     @BindingMethod
     public static native void PlotBars(String labelId,
                                        @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void xs,
                                        @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys,
                                        @ArgValue(callValue = "LEN(xs)") Void count,
-                                       @ArgValue(callValue = "0.67") Void barSize,
-                                       @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                       @ArgValue(callValue = "0.67") Void barWidth,
+                                       @OptArg int flags,
+                                       @OptArg int offset);
 
     /**
-     * Plots a vertical bar graph. #bar_size is in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
     @BindingMethod(callName = "PlotBars")
     public static native void PlotBarsV(String labelId,
                                         @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void xs,
                                         @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys,
                                         @ArgValue(callValue = "LEN(xs)") Void count,
-                                        double barSize,
-                                        @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                        double barWidth,
+                                        @OptArg int flags,
+                                        @OptArg int offset);
 
     /**
-     * Plots a vertical bar graph. #bar_size is in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
     @BindingMethod(callName = "PlotBars")
     public static native void PlotBarsV(String labelId,
                                         @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void xs,
                                         @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys,
                                         int count,
-                                        double barSize,
-                                        @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                        double barWidth,
+                                        @OptArg int flags,
+                                        @OptArg int offset);
 
     /**
      * Plots a group of vertical bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.
@@ -669,7 +688,7 @@ public final class ImPlot {
                                             int groupCount,
                                             @OptArg double groupSize,
                                             @OptArg double shift,
-                                            @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                            @OptArg int flags);
 
     /**
      * Plots a group of vertical bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.
@@ -681,7 +700,7 @@ public final class ImPlot {
                                              int groupCount,
                                              @OptArg double groupSize,
                                              @OptArg double shift,
-                                             @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                             @OptArg int flags);
 
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
@@ -692,7 +711,8 @@ public final class ImPlot {
                                             @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys,
                                             @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void err,
                                             @ArgValue(callValue = "LEN(xs)") Void count,
-                                            @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                            @OptArg int flags,
+                                            @OptArg int offset);
 
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
@@ -703,7 +723,8 @@ public final class ImPlot {
                                              @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys,
                                              @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void err,
                                              int count,
-                                             @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                             @OptArg int flags,
+                                             @OptArg int offset);
 
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
@@ -715,7 +736,8 @@ public final class ImPlot {
                                             @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void neg,
                                             @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void pos,
                                             @ArgValue(callValue = "LEN(xs)") Void count,
-                                            @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                            @OptArg int flags,
+                                            @OptArg int offset);
 
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
@@ -727,7 +749,8 @@ public final class ImPlot {
                                              @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void neg,
                                              @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void pos,
                                              int count,
-                                             @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                             @OptArg int flags,
+                                             @OptArg int offset);
 
     // values
 
@@ -738,10 +761,11 @@ public final class ImPlot {
     public static native void PlotStems(String labelId,
                                         @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void values,
                                         @ArgValue(callValue = "LEN(values)") Void count,
-                                        @OptArg double ref,
-                                        @OptArg double scale,
-                                        @OptArg double start,
-                                        @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                        @OptArg double yRef,
+                                        @OptArg double xscale,
+                                        @OptArg double xstart,
+                                        @OptArg int flags,
+                                        @OptArg int offset);
 
     /**
      * Plots vertical stems.
@@ -750,10 +774,11 @@ public final class ImPlot {
     public static native void PlotStemsV(String labelId,
                                          @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void values,
                                          int count,
-                                         @OptArg double ref,
+                                         @OptArg double yRef,
                                          @OptArg double scale,
                                          @OptArg double start,
-                                         @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                         @OptArg int flags,
+                                         @OptArg int offset);
 
     // xs,ys
 
@@ -766,7 +791,8 @@ public final class ImPlot {
                                         @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys,
                                         @ArgValue(callValue = "LEN(xs)") Void count,
                                         @OptArg double ref,
-                                        @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                        @OptArg int flags,
+                                        @OptArg int offset);
 
     /**
      * Plots vertical stems.
@@ -776,8 +802,9 @@ public final class ImPlot {
                                          @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void xs,
                                          @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys,
                                          int count,
-                                         @OptArg double ref,
-                                         @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                         @OptArg double yRef,
+                                         @OptArg int flags,
+                                         @OptArg int offset);
 
     /**
      * Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).
@@ -786,7 +813,8 @@ public final class ImPlot {
     public static native void PlotInfLines(String labelId,
                                            @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void values,
                                            @ArgValue(callValue = "LEN(values)") Void count,
-                                           @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                           @OptArg int flags,
+                                           @OptArg int offset);
 
     /**
      * Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).
@@ -795,7 +823,8 @@ public final class ImPlot {
     public static native void PlotInfLinesV(String labelId,
                                             @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void values,
                                             int count,
-                                            @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                            @OptArg int flags,
+                                            @OptArg int offset);
 
     /**
      * Plots a pie chart. If the sum of values{@code >}1 or normalize is true, each value will be normalized. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.
@@ -809,7 +838,7 @@ public final class ImPlot {
                                            double radius,
                                            @OptArg(callValue = "\"%.1f\"") String labelFmt,
                                            @OptArg double angle0,
-                                           @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                           @OptArg int flags);
 
     /**
      * Plots a pie chart. If the sum of values{@code >}1 or normalize is true, each value will be normalized. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.
@@ -823,7 +852,7 @@ public final class ImPlot {
                                             double radius,
                                             @OptArg(callValue = "\"%.1f\"") String labelFmt,
                                             @OptArg double angle0,
-                                            @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                            @OptArg int flags);
 
     /**
      * Plots a 2D heatmap chart. Values are expected to be in row-major order. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.
@@ -838,7 +867,7 @@ public final class ImPlot {
                                           @OptArg(callValue = "\"%.1f\"") String labelFmt,
                                           @OptArg ImPlotPoint boundsMin,
                                           @OptArg ImPlotPoint boundsMax,
-                                          @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                          @OptArg int flags);
 
     /**
      * Plots a horizontal histogram. #bins can be a positive integer or an ImPlotBin_ method. If #cumulative is true, each bin contains its count plus the counts of all previous bins.
@@ -852,7 +881,7 @@ public final class ImPlot {
                                               @OptArg(callValue = "ImPlotBin_Sturges") int bins,
                                               @OptArg double barScale,
                                               @OptArg(callValue = "ImPlotRange()") ImPlotRange range,
-                                              @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                              @OptArg int flags);
 
     /**
      * Plots a horizontal histogram. #bins can be a positive integer or an ImPlotBin_ method. If #cumulative is true, each bin contains its count plus the counts of all previous bins.
@@ -866,7 +895,7 @@ public final class ImPlot {
                                                @OptArg int bins,
                                                @OptArg double barScale,
                                                @OptArg(callValue = "ImPlotRange()") ImPlotRange range,
-                                               @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                               @OptArg int flags);
 
     /**
      * Plots two dimensional, bivariate histogram as a heatmap. #x_bins and #y_bins can be a positive integer or an ImPlotBin. If #density is true, the PDF is visualized.
@@ -881,7 +910,7 @@ public final class ImPlot {
                                                 @OptArg int xBins,
                                                 @OptArg int yBins,
                                                 @OptArg(callValue = "ImPlotRect()") ImPlotRect range,
-                                                @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                                @OptArg int flags);
 
     /**
      * Plots two dimensional, bivariate histogram as a heatmap. #x_bins and #y_bins can be a positive integer or an ImPlotBin. If #density is true, the PDF is visualized.
@@ -896,7 +925,7 @@ public final class ImPlot {
                                                  @OptArg int xBins,
                                                  @OptArg int yBins,
                                                  @OptArg(callValue = "ImPlotRect()") ImPlotRect range,
-                                                 @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                                 @OptArg int flags);
 
     /**
      * Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.
@@ -906,7 +935,8 @@ public final class ImPlot {
                                           @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void xs,
                                           @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys,
                                           @ArgValue(callValue = "LEN(xs)") Void count,
-                                          @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                          @OptArg int flags,
+                                          @OptArg int offset);
 
     /**
      * Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.
@@ -916,7 +946,8 @@ public final class ImPlot {
                                            @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void xs,
                                            @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys,
                                            int count,
-                                           @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                           @OptArg int flags,
+                                           @OptArg int offset);
 
     /**
      * Plots an axis-aligned image. #bounds_min/bounds_max are in plot coordinates (y-up) and #uv0/uv1 are in texture coordinates (y-down).
@@ -929,7 +960,7 @@ public final class ImPlot {
                                         @OptArg ImVec2 uv0,
                                         @OptArg ImVec2 uv1,
                                         @OptArg ImVec4 tintCol,
-                                        @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                        @OptArg int flags);
 
     /**
      * Plots a centered text label at point x,y with an optional pixel offset. Text color can be changed with ImPlot::PushStyleColor(ImPlotCol_InlayText, ...).
@@ -939,83 +970,13 @@ public final class ImPlot {
                                        double x,
                                        double y,
                                        @OptArg(callValue = "ImVec2(0,0)") ImVec2 pixOffset,
-                                       @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+                                       @OptArg int flags);
 
     /**
      * Plots a dummy item (i.e. adds a legend entry colored by ImPlotCol_Line)
      */
     @BindingMethod
-    public static native void PlotDummy(String labelID, @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
-
-    // values
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    @BindingMethod
-    public static native void PlotBubbles(String labelId,
-                                          @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void values,
-                                          @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void szs,
-                                          @ArgValue(callValue = "LEN(values)") Void count,
-                                          @OptArg double xscale,
-                                          @OptArg double xstart,
-                                          @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    @BindingMethod(callName = "PlotBubbles")
-    public static native void PlotBubblesV(String labelId,
-                                           @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void values,
-                                           @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void szs,
-                                           int count,
-                                           @OptArg double xscale,
-                                           @OptArg double xstart,
-                                           @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
-
-    // xs,ys,szs
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    @BindingMethod
-    public static native void PlotBubbles(String labelId,
-                                          @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void xs,
-                                          @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys,
-                                          @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void szs,
-                                          @ArgValue(callValue = "LEN(xs)") Void count,
-                                          @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    @BindingMethod(callName = "PlotBubbles")
-    public static native void PlotBubblesV(String labelId,
-                                           @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void xs,
-                                           @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys,
-                                           @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void szs,
-                                           int count,
-                                           @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
-
-    /**
-     * Plots a polygon (open, closed or loop) using the spec Flags (e.g. ImPlotPolygonFlags_Concave for concave shapes).
-     */
-    @BindingMethod
-    public static native void PlotPolygon(String labelId,
-                                          @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void xs,
-                                          @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys,
-                                          @ArgValue(callValue = "LEN(xs)") Void count,
-                                          @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
-
-    /**
-     * Plots a polygon (open, closed or loop) using the spec Flags (e.g. ImPlotPolygonFlags_Concave for concave shapes).
-     */
-    @BindingMethod(callName = "PlotPolygon")
-    public static native void PlotPolygonV(String labelId,
-                                           @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void xs,
-                                           @ArgVariant(type = {"short[]", "int[]", "long[]", "float[]", "double[]"}) Void ys,
-                                           int count,
-                                           @OptArg @ArgValue(callPrefix = "*") ImPlotSpec spec);
+    public static native void PlotDummy(String labelID, @OptArg int flags);
 
     /*JNI
         #undef LEN
@@ -1407,11 +1368,28 @@ public final class ImPlot {
     public static native void PopStyleVar(@OptArg int count);
 
     /**
-     * Returns the next automatic marker (in the order ImPlot cycles markers for auto-style items).
-     * Replaces SetNextMarkerStyle in v1.0; to style the next item, populate an ImPlotSpec instead (LineColor, FillColor, Marker, MarkerSize, LineWeight, MarkerLineColor, Size, ErrorBar style, etc.) and pass it to the Plot* call. The SetNextLineStyle/SetNextFillStyle/SetNextErrorBarStyle helpers were removed for the same reason.
+     * Set the line color and weight for the next item only.
      */
     @BindingMethod
-    public static native int NextMarker();
+    public static native void SetNextLineStyle(@OptArg(callValue = "IMPLOT_AUTO_COL") ImVec4 col, @OptArg float weight);
+
+    /**
+     * Set the fill color for the next item only.
+     */
+    @BindingMethod
+    public static native void SetNextFillStyle(@OptArg(callValue = "IMPLOT_AUTO_COL") ImVec4 col, @OptArg float alphaMod);
+
+    /**
+     * Set the marker style for the next item only.
+     */
+    @BindingMethod
+    public static native void SetNextMarkerStyle(@OptArg int marker, @OptArg float size, @OptArg ImVec4 fill, @OptArg(callValue = "IMPLOT_AUTO") float weight, @OptArg ImVec4 outline);
+
+    /**
+     * Set the error bar style for the next item only.
+     */
+    @BindingMethod
+    public static native void SetNextErrorBarStyle(@OptArg(callValue = "IMPLOT_AUTO_COL") ImVec4 col, @OptArg float size, @OptArg float weight);
 
     /**
      * Gets the last item primary color (i.e. its legend icon color)

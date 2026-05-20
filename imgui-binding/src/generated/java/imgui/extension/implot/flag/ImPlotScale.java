@@ -18,7 +18,7 @@ public final class ImPlotScale {
     public static final int Time = 1;
 
     /**
-     * base 10 logarithmic scale
+     * base 10 logartithmic scale
      */
     public static final int Log10 = 2;
 

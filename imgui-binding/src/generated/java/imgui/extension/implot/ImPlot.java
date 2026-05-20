@@ -953,8 +953,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D line plot.
      */
-    public static void plotLine(final String labelId, final short[] values, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotLine(labelId, values, xscale, xstart, spec.ptr);
+    public static void plotLine(final String labelId, final short[] values, final double xscale, final double xstart, final int flags) {
+        nPlotLine(labelId, values, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a standard 2D line plot.
+     */
+    public static void plotLine(final String labelId, final short[] values, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotLine(labelId, values, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotLine(String labelId, short[] values); /*MANUAL
@@ -981,10 +988,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotLine(String labelId, short[] values, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotLine(String labelId, short[] values, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotLine(labelId, &values[0], LEN(values), xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotLine(labelId, &values[0], LEN(values), xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotLine(String labelId, short[] values, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotLine(labelId, &values[0], LEN(values), xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -1013,8 +1028,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D line plot.
      */
-    public static void plotLine(final String labelId, final int[] values, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotLine(labelId, values, xscale, xstart, spec.ptr);
+    public static void plotLine(final String labelId, final int[] values, final double xscale, final double xstart, final int flags) {
+        nPlotLine(labelId, values, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a standard 2D line plot.
+     */
+    public static void plotLine(final String labelId, final int[] values, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotLine(labelId, values, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotLine(String labelId, int[] values); /*MANUAL
@@ -1041,10 +1063,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotLine(String labelId, int[] values, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotLine(String labelId, int[] values, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotLine(labelId, &values[0], LEN(values), xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotLine(labelId, &values[0], LEN(values), xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotLine(String labelId, int[] values, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotLine(labelId, &values[0], LEN(values), xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -1073,8 +1103,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D line plot.
      */
-    public static void plotLine(final String labelId, final long[] values, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotLine(labelId, values, xscale, xstart, spec.ptr);
+    public static void plotLine(final String labelId, final long[] values, final double xscale, final double xstart, final int flags) {
+        nPlotLine(labelId, values, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a standard 2D line plot.
+     */
+    public static void plotLine(final String labelId, final long[] values, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotLine(labelId, values, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotLine(String labelId, long[] values); /*MANUAL
@@ -1101,10 +1138,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotLine(String labelId, long[] values, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotLine(String labelId, long[] values, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotLine(labelId, &values[0], LEN(values), xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotLine(labelId, &values[0], LEN(values), xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotLine(String labelId, long[] values, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotLine(labelId, &values[0], LEN(values), xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -1133,8 +1178,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D line plot.
      */
-    public static void plotLine(final String labelId, final float[] values, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotLine(labelId, values, xscale, xstart, spec.ptr);
+    public static void plotLine(final String labelId, final float[] values, final double xscale, final double xstart, final int flags) {
+        nPlotLine(labelId, values, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a standard 2D line plot.
+     */
+    public static void plotLine(final String labelId, final float[] values, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotLine(labelId, values, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotLine(String labelId, float[] values); /*MANUAL
@@ -1161,10 +1213,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotLine(String labelId, float[] values, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotLine(String labelId, float[] values, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotLine(labelId, &values[0], LEN(values), xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotLine(labelId, &values[0], LEN(values), xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotLine(String labelId, float[] values, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotLine(labelId, &values[0], LEN(values), xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -1193,8 +1253,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D line plot.
      */
-    public static void plotLine(final String labelId, final double[] values, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotLine(labelId, values, xscale, xstart, spec.ptr);
+    public static void plotLine(final String labelId, final double[] values, final double xscale, final double xstart, final int flags) {
+        nPlotLine(labelId, values, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a standard 2D line plot.
+     */
+    public static void plotLine(final String labelId, final double[] values, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotLine(labelId, values, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotLine(String labelId, double[] values); /*MANUAL
@@ -1221,10 +1288,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotLine(String labelId, double[] values, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotLine(String labelId, double[] values, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotLine(labelId, &values[0], LEN(values), xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotLine(labelId, &values[0], LEN(values), xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotLine(String labelId, double[] values, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotLine(labelId, &values[0], LEN(values), xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -1253,8 +1328,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D line plot.
      */
-    public static void plotLineV(final String labelId, final short[] values, final int count, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotLineV(labelId, values, count, xscale, xstart, spec.ptr);
+    public static void plotLineV(final String labelId, final short[] values, final int count, final double xscale, final double xstart, final int flags) {
+        nPlotLineV(labelId, values, count, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a standard 2D line plot.
+     */
+    public static void plotLineV(final String labelId, final short[] values, final int count, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotLineV(labelId, values, count, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotLineV(String labelId, short[] values, int count); /*MANUAL
@@ -1281,10 +1363,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotLineV(String labelId, short[] values, int count, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotLineV(String labelId, short[] values, int count, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotLine(labelId, &values[0], count, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotLine(labelId, &values[0], count, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotLineV(String labelId, short[] values, int count, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotLine(labelId, &values[0], count, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -1313,8 +1403,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D line plot.
      */
-    public static void plotLineV(final String labelId, final int[] values, final int count, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotLineV(labelId, values, count, xscale, xstart, spec.ptr);
+    public static void plotLineV(final String labelId, final int[] values, final int count, final double xscale, final double xstart, final int flags) {
+        nPlotLineV(labelId, values, count, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a standard 2D line plot.
+     */
+    public static void plotLineV(final String labelId, final int[] values, final int count, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotLineV(labelId, values, count, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotLineV(String labelId, int[] values, int count); /*MANUAL
@@ -1341,10 +1438,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotLineV(String labelId, int[] values, int count, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotLineV(String labelId, int[] values, int count, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotLine(labelId, &values[0], count, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotLine(labelId, &values[0], count, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotLineV(String labelId, int[] values, int count, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotLine(labelId, &values[0], count, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -1373,8 +1478,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D line plot.
      */
-    public static void plotLineV(final String labelId, final long[] values, final int count, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotLineV(labelId, values, count, xscale, xstart, spec.ptr);
+    public static void plotLineV(final String labelId, final long[] values, final int count, final double xscale, final double xstart, final int flags) {
+        nPlotLineV(labelId, values, count, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a standard 2D line plot.
+     */
+    public static void plotLineV(final String labelId, final long[] values, final int count, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotLineV(labelId, values, count, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotLineV(String labelId, long[] values, int count); /*MANUAL
@@ -1401,10 +1513,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotLineV(String labelId, long[] values, int count, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotLineV(String labelId, long[] values, int count, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotLine(labelId, &values[0], count, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotLine(labelId, &values[0], count, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotLineV(String labelId, long[] values, int count, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotLine(labelId, &values[0], count, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -1433,8 +1553,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D line plot.
      */
-    public static void plotLineV(final String labelId, final float[] values, final int count, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotLineV(labelId, values, count, xscale, xstart, spec.ptr);
+    public static void plotLineV(final String labelId, final float[] values, final int count, final double xscale, final double xstart, final int flags) {
+        nPlotLineV(labelId, values, count, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a standard 2D line plot.
+     */
+    public static void plotLineV(final String labelId, final float[] values, final int count, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotLineV(labelId, values, count, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotLineV(String labelId, float[] values, int count); /*MANUAL
@@ -1461,10 +1588,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotLineV(String labelId, float[] values, int count, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotLineV(String labelId, float[] values, int count, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotLine(labelId, &values[0], count, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotLine(labelId, &values[0], count, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotLineV(String labelId, float[] values, int count, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotLine(labelId, &values[0], count, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -1493,8 +1628,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D line plot.
      */
-    public static void plotLineV(final String labelId, final double[] values, final int count, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotLineV(labelId, values, count, xscale, xstart, spec.ptr);
+    public static void plotLineV(final String labelId, final double[] values, final int count, final double xscale, final double xstart, final int flags) {
+        nPlotLineV(labelId, values, count, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a standard 2D line plot.
+     */
+    public static void plotLineV(final String labelId, final double[] values, final int count, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotLineV(labelId, values, count, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotLineV(String labelId, double[] values, int count); /*MANUAL
@@ -1521,10 +1663,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotLineV(String labelId, double[] values, int count, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotLineV(String labelId, double[] values, int count, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotLine(labelId, &values[0], count, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotLine(labelId, &values[0], count, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotLineV(String labelId, double[] values, int count, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotLine(labelId, &values[0], count, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -1541,8 +1691,8 @@ public final class ImPlot {
     /**
      * Plots a standard 2D line plot.
      */
-    public static void plotLine(final String labelId, final short[] xs, final short[] ys, final ImPlotSpec spec) {
-        nPlotLine(labelId, xs, ys, spec.ptr);
+    public static void plotLine(final String labelId, final short[] xs, final short[] ys, final int flags) {
+        nPlotLine(labelId, xs, ys, flags);
     }
 
     private static native void nPlotLine(String labelId, short[] xs, short[] ys); /*MANUAL
@@ -1555,11 +1705,11 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotLine(String labelId, short[] xs, short[] ys, long spec); /*MANUAL
+    private static native void nPlotLine(String labelId, short[] xs, short[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotLine(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotLine(labelId, &xs[0], &ys[0], LEN(xs), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -1575,8 +1725,8 @@ public final class ImPlot {
     /**
      * Plots a standard 2D line plot.
      */
-    public static void plotLine(final String labelId, final int[] xs, final int[] ys, final ImPlotSpec spec) {
-        nPlotLine(labelId, xs, ys, spec.ptr);
+    public static void plotLine(final String labelId, final int[] xs, final int[] ys, final int flags) {
+        nPlotLine(labelId, xs, ys, flags);
     }
 
     private static native void nPlotLine(String labelId, int[] xs, int[] ys); /*MANUAL
@@ -1589,11 +1739,11 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotLine(String labelId, int[] xs, int[] ys, long spec); /*MANUAL
+    private static native void nPlotLine(String labelId, int[] xs, int[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotLine(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotLine(labelId, &xs[0], &ys[0], LEN(xs), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -1609,8 +1759,8 @@ public final class ImPlot {
     /**
      * Plots a standard 2D line plot.
      */
-    public static void plotLine(final String labelId, final long[] xs, final long[] ys, final ImPlotSpec spec) {
-        nPlotLine(labelId, xs, ys, spec.ptr);
+    public static void plotLine(final String labelId, final long[] xs, final long[] ys, final int flags) {
+        nPlotLine(labelId, xs, ys, flags);
     }
 
     private static native void nPlotLine(String labelId, long[] xs, long[] ys); /*MANUAL
@@ -1623,11 +1773,11 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotLine(String labelId, long[] xs, long[] ys, long spec); /*MANUAL
+    private static native void nPlotLine(String labelId, long[] xs, long[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotLine(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotLine(labelId, &xs[0], &ys[0], LEN(xs), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -1643,8 +1793,8 @@ public final class ImPlot {
     /**
      * Plots a standard 2D line plot.
      */
-    public static void plotLine(final String labelId, final float[] xs, final float[] ys, final ImPlotSpec spec) {
-        nPlotLine(labelId, xs, ys, spec.ptr);
+    public static void plotLine(final String labelId, final float[] xs, final float[] ys, final int flags) {
+        nPlotLine(labelId, xs, ys, flags);
     }
 
     private static native void nPlotLine(String labelId, float[] xs, float[] ys); /*MANUAL
@@ -1657,11 +1807,11 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotLine(String labelId, float[] xs, float[] ys, long spec); /*MANUAL
+    private static native void nPlotLine(String labelId, float[] xs, float[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotLine(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotLine(labelId, &xs[0], &ys[0], LEN(xs), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -1677,8 +1827,8 @@ public final class ImPlot {
     /**
      * Plots a standard 2D line plot.
      */
-    public static void plotLine(final String labelId, final double[] xs, final double[] ys, final ImPlotSpec spec) {
-        nPlotLine(labelId, xs, ys, spec.ptr);
+    public static void plotLine(final String labelId, final double[] xs, final double[] ys, final int flags) {
+        nPlotLine(labelId, xs, ys, flags);
     }
 
     private static native void nPlotLine(String labelId, double[] xs, double[] ys); /*MANUAL
@@ -1691,11 +1841,11 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotLine(String labelId, double[] xs, double[] ys, long spec); /*MANUAL
+    private static native void nPlotLine(String labelId, double[] xs, double[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotLine(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotLine(labelId, &xs[0], &ys[0], LEN(xs), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -1711,8 +1861,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D line plot.
      */
-    public static void plotLineV(final String labelId, final short[] xs, final short[] ys, final int count, final ImPlotSpec spec) {
-        nPlotLineV(labelId, xs, ys, count, spec.ptr);
+    public static void plotLineV(final String labelId, final short[] xs, final short[] ys, final int count, final int flags) {
+        nPlotLineV(labelId, xs, ys, count, flags);
+    }
+
+    /**
+     * Plots a standard 2D line plot.
+     */
+    public static void plotLineV(final String labelId, final short[] xs, final short[] ys, final int count, final int flags, final int offset) {
+        nPlotLineV(labelId, xs, ys, count, flags, offset);
     }
 
     private static native void nPlotLineV(String labelId, short[] xs, short[] ys, int count); /*MANUAL
@@ -1725,11 +1882,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotLineV(String labelId, short[] xs, short[] ys, int count, long spec); /*MANUAL
+    private static native void nPlotLineV(String labelId, short[] xs, short[] ys, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotLine(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotLine(labelId, &xs[0], &ys[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotLineV(String labelId, short[] xs, short[] ys, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotLine(labelId, &xs[0], &ys[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -1745,8 +1912,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D line plot.
      */
-    public static void plotLineV(final String labelId, final int[] xs, final int[] ys, final int count, final ImPlotSpec spec) {
-        nPlotLineV(labelId, xs, ys, count, spec.ptr);
+    public static void plotLineV(final String labelId, final int[] xs, final int[] ys, final int count, final int flags) {
+        nPlotLineV(labelId, xs, ys, count, flags);
+    }
+
+    /**
+     * Plots a standard 2D line plot.
+     */
+    public static void plotLineV(final String labelId, final int[] xs, final int[] ys, final int count, final int flags, final int offset) {
+        nPlotLineV(labelId, xs, ys, count, flags, offset);
     }
 
     private static native void nPlotLineV(String labelId, int[] xs, int[] ys, int count); /*MANUAL
@@ -1759,11 +1933,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotLineV(String labelId, int[] xs, int[] ys, int count, long spec); /*MANUAL
+    private static native void nPlotLineV(String labelId, int[] xs, int[] ys, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotLine(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotLine(labelId, &xs[0], &ys[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotLineV(String labelId, int[] xs, int[] ys, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotLine(labelId, &xs[0], &ys[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -1779,8 +1963,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D line plot.
      */
-    public static void plotLineV(final String labelId, final long[] xs, final long[] ys, final int count, final ImPlotSpec spec) {
-        nPlotLineV(labelId, xs, ys, count, spec.ptr);
+    public static void plotLineV(final String labelId, final long[] xs, final long[] ys, final int count, final int flags) {
+        nPlotLineV(labelId, xs, ys, count, flags);
+    }
+
+    /**
+     * Plots a standard 2D line plot.
+     */
+    public static void plotLineV(final String labelId, final long[] xs, final long[] ys, final int count, final int flags, final int offset) {
+        nPlotLineV(labelId, xs, ys, count, flags, offset);
     }
 
     private static native void nPlotLineV(String labelId, long[] xs, long[] ys, int count); /*MANUAL
@@ -1793,11 +1984,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotLineV(String labelId, long[] xs, long[] ys, int count, long spec); /*MANUAL
+    private static native void nPlotLineV(String labelId, long[] xs, long[] ys, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotLine(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotLine(labelId, &xs[0], &ys[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotLineV(String labelId, long[] xs, long[] ys, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotLine(labelId, &xs[0], &ys[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -1813,8 +2014,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D line plot.
      */
-    public static void plotLineV(final String labelId, final float[] xs, final float[] ys, final int count, final ImPlotSpec spec) {
-        nPlotLineV(labelId, xs, ys, count, spec.ptr);
+    public static void plotLineV(final String labelId, final float[] xs, final float[] ys, final int count, final int flags) {
+        nPlotLineV(labelId, xs, ys, count, flags);
+    }
+
+    /**
+     * Plots a standard 2D line plot.
+     */
+    public static void plotLineV(final String labelId, final float[] xs, final float[] ys, final int count, final int flags, final int offset) {
+        nPlotLineV(labelId, xs, ys, count, flags, offset);
     }
 
     private static native void nPlotLineV(String labelId, float[] xs, float[] ys, int count); /*MANUAL
@@ -1827,11 +2035,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotLineV(String labelId, float[] xs, float[] ys, int count, long spec); /*MANUAL
+    private static native void nPlotLineV(String labelId, float[] xs, float[] ys, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotLine(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotLine(labelId, &xs[0], &ys[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotLineV(String labelId, float[] xs, float[] ys, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotLine(labelId, &xs[0], &ys[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -1847,8 +2065,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D line plot.
      */
-    public static void plotLineV(final String labelId, final double[] xs, final double[] ys, final int count, final ImPlotSpec spec) {
-        nPlotLineV(labelId, xs, ys, count, spec.ptr);
+    public static void plotLineV(final String labelId, final double[] xs, final double[] ys, final int count, final int flags) {
+        nPlotLineV(labelId, xs, ys, count, flags);
+    }
+
+    /**
+     * Plots a standard 2D line plot.
+     */
+    public static void plotLineV(final String labelId, final double[] xs, final double[] ys, final int count, final int flags, final int offset) {
+        nPlotLineV(labelId, xs, ys, count, flags, offset);
     }
 
     private static native void nPlotLineV(String labelId, double[] xs, double[] ys, int count); /*MANUAL
@@ -1861,11 +2086,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotLineV(String labelId, double[] xs, double[] ys, int count, long spec); /*MANUAL
+    private static native void nPlotLineV(String labelId, double[] xs, double[] ys, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotLine(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotLine(labelId, &xs[0], &ys[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotLineV(String labelId, double[] xs, double[] ys, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotLine(labelId, &xs[0], &ys[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -1897,8 +2132,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
      */
-    public static void plotScatter(final String labelId, final short[] values, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotScatter(labelId, values, xscale, xstart, spec.ptr);
+    public static void plotScatter(final String labelId, final short[] values, final double xscale, final double xstart, final int flags) {
+        nPlotScatter(labelId, values, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
+     */
+    public static void plotScatter(final String labelId, final short[] values, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotScatter(labelId, values, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotScatter(String labelId, short[] values); /*MANUAL
@@ -1925,10 +2167,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotScatter(String labelId, short[] values, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotScatter(String labelId, short[] values, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotScatter(labelId, &values[0], LEN(values), xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotScatter(labelId, &values[0], LEN(values), xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotScatter(String labelId, short[] values, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotScatter(labelId, &values[0], LEN(values), xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -1957,8 +2207,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
      */
-    public static void plotScatter(final String labelId, final int[] values, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotScatter(labelId, values, xscale, xstart, spec.ptr);
+    public static void plotScatter(final String labelId, final int[] values, final double xscale, final double xstart, final int flags) {
+        nPlotScatter(labelId, values, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
+     */
+    public static void plotScatter(final String labelId, final int[] values, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotScatter(labelId, values, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotScatter(String labelId, int[] values); /*MANUAL
@@ -1985,10 +2242,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotScatter(String labelId, int[] values, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotScatter(String labelId, int[] values, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotScatter(labelId, &values[0], LEN(values), xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotScatter(labelId, &values[0], LEN(values), xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotScatter(String labelId, int[] values, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotScatter(labelId, &values[0], LEN(values), xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -2017,8 +2282,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
      */
-    public static void plotScatter(final String labelId, final long[] values, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotScatter(labelId, values, xscale, xstart, spec.ptr);
+    public static void plotScatter(final String labelId, final long[] values, final double xscale, final double xstart, final int flags) {
+        nPlotScatter(labelId, values, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
+     */
+    public static void plotScatter(final String labelId, final long[] values, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotScatter(labelId, values, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotScatter(String labelId, long[] values); /*MANUAL
@@ -2045,10 +2317,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotScatter(String labelId, long[] values, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotScatter(String labelId, long[] values, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotScatter(labelId, &values[0], LEN(values), xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotScatter(labelId, &values[0], LEN(values), xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotScatter(String labelId, long[] values, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotScatter(labelId, &values[0], LEN(values), xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -2077,8 +2357,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
      */
-    public static void plotScatter(final String labelId, final float[] values, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotScatter(labelId, values, xscale, xstart, spec.ptr);
+    public static void plotScatter(final String labelId, final float[] values, final double xscale, final double xstart, final int flags) {
+        nPlotScatter(labelId, values, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
+     */
+    public static void plotScatter(final String labelId, final float[] values, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotScatter(labelId, values, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotScatter(String labelId, float[] values); /*MANUAL
@@ -2105,10 +2392,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotScatter(String labelId, float[] values, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotScatter(String labelId, float[] values, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotScatter(labelId, &values[0], LEN(values), xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotScatter(labelId, &values[0], LEN(values), xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotScatter(String labelId, float[] values, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotScatter(labelId, &values[0], LEN(values), xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -2137,8 +2432,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
      */
-    public static void plotScatter(final String labelId, final double[] values, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotScatter(labelId, values, xscale, xstart, spec.ptr);
+    public static void plotScatter(final String labelId, final double[] values, final double xscale, final double xstart, final int flags) {
+        nPlotScatter(labelId, values, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
+     */
+    public static void plotScatter(final String labelId, final double[] values, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotScatter(labelId, values, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotScatter(String labelId, double[] values); /*MANUAL
@@ -2165,10 +2467,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotScatter(String labelId, double[] values, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotScatter(String labelId, double[] values, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotScatter(labelId, &values[0], LEN(values), xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotScatter(labelId, &values[0], LEN(values), xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotScatter(String labelId, double[] values, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotScatter(labelId, &values[0], LEN(values), xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -2197,8 +2507,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
      */
-    public static void plotScatterV(final String labelId, final short[] values, final int count, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotScatterV(labelId, values, count, xscale, xstart, spec.ptr);
+    public static void plotScatterV(final String labelId, final short[] values, final int count, final double xscale, final double xstart, final int flags) {
+        nPlotScatterV(labelId, values, count, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
+     */
+    public static void plotScatterV(final String labelId, final short[] values, final int count, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotScatterV(labelId, values, count, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotScatterV(String labelId, short[] values, int count); /*MANUAL
@@ -2225,10 +2542,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotScatterV(String labelId, short[] values, int count, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotScatterV(String labelId, short[] values, int count, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotScatter(labelId, &values[0], count, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotScatter(labelId, &values[0], count, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotScatterV(String labelId, short[] values, int count, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotScatter(labelId, &values[0], count, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -2257,8 +2582,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
      */
-    public static void plotScatterV(final String labelId, final int[] values, final int count, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotScatterV(labelId, values, count, xscale, xstart, spec.ptr);
+    public static void plotScatterV(final String labelId, final int[] values, final int count, final double xscale, final double xstart, final int flags) {
+        nPlotScatterV(labelId, values, count, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
+     */
+    public static void plotScatterV(final String labelId, final int[] values, final int count, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotScatterV(labelId, values, count, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotScatterV(String labelId, int[] values, int count); /*MANUAL
@@ -2285,10 +2617,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotScatterV(String labelId, int[] values, int count, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotScatterV(String labelId, int[] values, int count, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotScatter(labelId, &values[0], count, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotScatter(labelId, &values[0], count, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotScatterV(String labelId, int[] values, int count, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotScatter(labelId, &values[0], count, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -2317,8 +2657,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
      */
-    public static void plotScatterV(final String labelId, final long[] values, final int count, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotScatterV(labelId, values, count, xscale, xstart, spec.ptr);
+    public static void plotScatterV(final String labelId, final long[] values, final int count, final double xscale, final double xstart, final int flags) {
+        nPlotScatterV(labelId, values, count, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
+     */
+    public static void plotScatterV(final String labelId, final long[] values, final int count, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotScatterV(labelId, values, count, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotScatterV(String labelId, long[] values, int count); /*MANUAL
@@ -2345,10 +2692,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotScatterV(String labelId, long[] values, int count, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotScatterV(String labelId, long[] values, int count, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotScatter(labelId, &values[0], count, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotScatter(labelId, &values[0], count, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotScatterV(String labelId, long[] values, int count, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotScatter(labelId, &values[0], count, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -2377,8 +2732,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
      */
-    public static void plotScatterV(final String labelId, final float[] values, final int count, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotScatterV(labelId, values, count, xscale, xstart, spec.ptr);
+    public static void plotScatterV(final String labelId, final float[] values, final int count, final double xscale, final double xstart, final int flags) {
+        nPlotScatterV(labelId, values, count, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
+     */
+    public static void plotScatterV(final String labelId, final float[] values, final int count, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotScatterV(labelId, values, count, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotScatterV(String labelId, float[] values, int count); /*MANUAL
@@ -2405,10 +2767,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotScatterV(String labelId, float[] values, int count, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotScatterV(String labelId, float[] values, int count, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotScatter(labelId, &values[0], count, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotScatter(labelId, &values[0], count, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotScatterV(String labelId, float[] values, int count, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotScatter(labelId, &values[0], count, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -2437,8 +2807,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
      */
-    public static void plotScatterV(final String labelId, final double[] values, final int count, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotScatterV(labelId, values, count, xscale, xstart, spec.ptr);
+    public static void plotScatterV(final String labelId, final double[] values, final int count, final double xscale, final double xstart, final int flags) {
+        nPlotScatterV(labelId, values, count, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
+     */
+    public static void plotScatterV(final String labelId, final double[] values, final int count, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotScatterV(labelId, values, count, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotScatterV(String labelId, double[] values, int count); /*MANUAL
@@ -2465,10 +2842,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotScatterV(String labelId, double[] values, int count, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotScatterV(String labelId, double[] values, int count, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotScatter(labelId, &values[0], count, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotScatter(labelId, &values[0], count, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotScatterV(String labelId, double[] values, int count, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotScatter(labelId, &values[0], count, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -2485,8 +2870,8 @@ public final class ImPlot {
     /**
      * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
      */
-    public static void plotScatter(final String labelId, final short[] xs, final short[] ys, final ImPlotSpec spec) {
-        nPlotScatter(labelId, xs, ys, spec.ptr);
+    public static void plotScatter(final String labelId, final short[] xs, final short[] ys, final int flags) {
+        nPlotScatter(labelId, xs, ys, flags);
     }
 
     private static native void nPlotScatter(String labelId, short[] xs, short[] ys); /*MANUAL
@@ -2499,11 +2884,11 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotScatter(String labelId, short[] xs, short[] ys, long spec); /*MANUAL
+    private static native void nPlotScatter(String labelId, short[] xs, short[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], LEN(xs), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -2519,8 +2904,8 @@ public final class ImPlot {
     /**
      * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
      */
-    public static void plotScatter(final String labelId, final int[] xs, final int[] ys, final ImPlotSpec spec) {
-        nPlotScatter(labelId, xs, ys, spec.ptr);
+    public static void plotScatter(final String labelId, final int[] xs, final int[] ys, final int flags) {
+        nPlotScatter(labelId, xs, ys, flags);
     }
 
     private static native void nPlotScatter(String labelId, int[] xs, int[] ys); /*MANUAL
@@ -2533,11 +2918,11 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotScatter(String labelId, int[] xs, int[] ys, long spec); /*MANUAL
+    private static native void nPlotScatter(String labelId, int[] xs, int[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], LEN(xs), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -2553,8 +2938,8 @@ public final class ImPlot {
     /**
      * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
      */
-    public static void plotScatter(final String labelId, final long[] xs, final long[] ys, final ImPlotSpec spec) {
-        nPlotScatter(labelId, xs, ys, spec.ptr);
+    public static void plotScatter(final String labelId, final long[] xs, final long[] ys, final int flags) {
+        nPlotScatter(labelId, xs, ys, flags);
     }
 
     private static native void nPlotScatter(String labelId, long[] xs, long[] ys); /*MANUAL
@@ -2567,11 +2952,11 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotScatter(String labelId, long[] xs, long[] ys, long spec); /*MANUAL
+    private static native void nPlotScatter(String labelId, long[] xs, long[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], LEN(xs), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -2587,8 +2972,8 @@ public final class ImPlot {
     /**
      * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
      */
-    public static void plotScatter(final String labelId, final float[] xs, final float[] ys, final ImPlotSpec spec) {
-        nPlotScatter(labelId, xs, ys, spec.ptr);
+    public static void plotScatter(final String labelId, final float[] xs, final float[] ys, final int flags) {
+        nPlotScatter(labelId, xs, ys, flags);
     }
 
     private static native void nPlotScatter(String labelId, float[] xs, float[] ys); /*MANUAL
@@ -2601,11 +2986,11 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotScatter(String labelId, float[] xs, float[] ys, long spec); /*MANUAL
+    private static native void nPlotScatter(String labelId, float[] xs, float[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], LEN(xs), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -2621,8 +3006,8 @@ public final class ImPlot {
     /**
      * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
      */
-    public static void plotScatter(final String labelId, final double[] xs, final double[] ys, final ImPlotSpec spec) {
-        nPlotScatter(labelId, xs, ys, spec.ptr);
+    public static void plotScatter(final String labelId, final double[] xs, final double[] ys, final int flags) {
+        nPlotScatter(labelId, xs, ys, flags);
     }
 
     private static native void nPlotScatter(String labelId, double[] xs, double[] ys); /*MANUAL
@@ -2635,11 +3020,11 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotScatter(String labelId, double[] xs, double[] ys, long spec); /*MANUAL
+    private static native void nPlotScatter(String labelId, double[] xs, double[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], LEN(xs), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -2655,8 +3040,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
      */
-    public static void plotScatterV(final String labelId, final short[] xs, final short[] ys, final int count, final ImPlotSpec spec) {
-        nPlotScatterV(labelId, xs, ys, count, spec.ptr);
+    public static void plotScatterV(final String labelId, final short[] xs, final short[] ys, final int count, final int flags) {
+        nPlotScatterV(labelId, xs, ys, count, flags);
+    }
+
+    /**
+     * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
+     */
+    public static void plotScatterV(final String labelId, final short[] xs, final short[] ys, final int count, final int flags, final int offset) {
+        nPlotScatterV(labelId, xs, ys, count, flags, offset);
     }
 
     private static native void nPlotScatterV(String labelId, short[] xs, short[] ys, int count); /*MANUAL
@@ -2669,11 +3061,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotScatterV(String labelId, short[] xs, short[] ys, int count, long spec); /*MANUAL
+    private static native void nPlotScatterV(String labelId, short[] xs, short[] ys, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotScatterV(String labelId, short[] xs, short[] ys, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -2689,8 +3091,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
      */
-    public static void plotScatterV(final String labelId, final int[] xs, final int[] ys, final int count, final ImPlotSpec spec) {
-        nPlotScatterV(labelId, xs, ys, count, spec.ptr);
+    public static void plotScatterV(final String labelId, final int[] xs, final int[] ys, final int count, final int flags) {
+        nPlotScatterV(labelId, xs, ys, count, flags);
+    }
+
+    /**
+     * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
+     */
+    public static void plotScatterV(final String labelId, final int[] xs, final int[] ys, final int count, final int flags, final int offset) {
+        nPlotScatterV(labelId, xs, ys, count, flags, offset);
     }
 
     private static native void nPlotScatterV(String labelId, int[] xs, int[] ys, int count); /*MANUAL
@@ -2703,11 +3112,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotScatterV(String labelId, int[] xs, int[] ys, int count, long spec); /*MANUAL
+    private static native void nPlotScatterV(String labelId, int[] xs, int[] ys, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotScatterV(String labelId, int[] xs, int[] ys, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -2723,8 +3142,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
      */
-    public static void plotScatterV(final String labelId, final long[] xs, final long[] ys, final int count, final ImPlotSpec spec) {
-        nPlotScatterV(labelId, xs, ys, count, spec.ptr);
+    public static void plotScatterV(final String labelId, final long[] xs, final long[] ys, final int count, final int flags) {
+        nPlotScatterV(labelId, xs, ys, count, flags);
+    }
+
+    /**
+     * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
+     */
+    public static void plotScatterV(final String labelId, final long[] xs, final long[] ys, final int count, final int flags, final int offset) {
+        nPlotScatterV(labelId, xs, ys, count, flags, offset);
     }
 
     private static native void nPlotScatterV(String labelId, long[] xs, long[] ys, int count); /*MANUAL
@@ -2737,11 +3163,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotScatterV(String labelId, long[] xs, long[] ys, int count, long spec); /*MANUAL
+    private static native void nPlotScatterV(String labelId, long[] xs, long[] ys, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotScatterV(String labelId, long[] xs, long[] ys, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -2757,8 +3193,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
      */
-    public static void plotScatterV(final String labelId, final float[] xs, final float[] ys, final int count, final ImPlotSpec spec) {
-        nPlotScatterV(labelId, xs, ys, count, spec.ptr);
+    public static void plotScatterV(final String labelId, final float[] xs, final float[] ys, final int count, final int flags) {
+        nPlotScatterV(labelId, xs, ys, count, flags);
+    }
+
+    /**
+     * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
+     */
+    public static void plotScatterV(final String labelId, final float[] xs, final float[] ys, final int count, final int flags, final int offset) {
+        nPlotScatterV(labelId, xs, ys, count, flags, offset);
     }
 
     private static native void nPlotScatterV(String labelId, float[] xs, float[] ys, int count); /*MANUAL
@@ -2771,11 +3214,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotScatterV(String labelId, float[] xs, float[] ys, int count, long spec); /*MANUAL
+    private static native void nPlotScatterV(String labelId, float[] xs, float[] ys, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotScatterV(String labelId, float[] xs, float[] ys, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -2791,8 +3244,15 @@ public final class ImPlot {
     /**
      * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
      */
-    public static void plotScatterV(final String labelId, final double[] xs, final double[] ys, final int count, final ImPlotSpec spec) {
-        nPlotScatterV(labelId, xs, ys, count, spec.ptr);
+    public static void plotScatterV(final String labelId, final double[] xs, final double[] ys, final int count, final int flags) {
+        nPlotScatterV(labelId, xs, ys, count, flags);
+    }
+
+    /**
+     * Plots a standard 2D scatter plot. Default marker is ImPlotMarker_Circle.
+     */
+    public static void plotScatterV(final String labelId, final double[] xs, final double[] ys, final int count, final int flags, final int offset) {
+        nPlotScatterV(labelId, xs, ys, count, flags, offset);
     }
 
     private static native void nPlotScatterV(String labelId, double[] xs, double[] ys, int count); /*MANUAL
@@ -2805,11 +3265,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotScatterV(String labelId, double[] xs, double[] ys, int count, long spec); /*MANUAL
+    private static native void nPlotScatterV(String labelId, double[] xs, double[] ys, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotScatterV(String labelId, double[] xs, double[] ys, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotScatter(labelId, &xs[0], &ys[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -2841,8 +3311,15 @@ public final class ImPlot {
     /**
      * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
      */
-    public static void plotStairs(final String labelId, final short[] values, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotStairs(labelId, values, xscale, xstart, spec.ptr);
+    public static void plotStairs(final String labelId, final short[] values, final double xscale, final double xstart, final int flags) {
+        nPlotStairs(labelId, values, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
+     */
+    public static void plotStairs(final String labelId, final short[] values, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotStairs(labelId, values, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotStairs(String labelId, short[] values); /*MANUAL
@@ -2869,10 +3346,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStairs(String labelId, short[] values, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotStairs(String labelId, short[] values, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStairs(labelId, &values[0], LEN(values), xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStairs(labelId, &values[0], LEN(values), xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotStairs(String labelId, short[] values, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotStairs(labelId, &values[0], LEN(values), xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -2901,8 +3386,15 @@ public final class ImPlot {
     /**
      * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
      */
-    public static void plotStairs(final String labelId, final int[] values, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotStairs(labelId, values, xscale, xstart, spec.ptr);
+    public static void plotStairs(final String labelId, final int[] values, final double xscale, final double xstart, final int flags) {
+        nPlotStairs(labelId, values, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
+     */
+    public static void plotStairs(final String labelId, final int[] values, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotStairs(labelId, values, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotStairs(String labelId, int[] values); /*MANUAL
@@ -2929,10 +3421,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStairs(String labelId, int[] values, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotStairs(String labelId, int[] values, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStairs(labelId, &values[0], LEN(values), xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStairs(labelId, &values[0], LEN(values), xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotStairs(String labelId, int[] values, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotStairs(labelId, &values[0], LEN(values), xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -2961,8 +3461,15 @@ public final class ImPlot {
     /**
      * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
      */
-    public static void plotStairs(final String labelId, final long[] values, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotStairs(labelId, values, xscale, xstart, spec.ptr);
+    public static void plotStairs(final String labelId, final long[] values, final double xscale, final double xstart, final int flags) {
+        nPlotStairs(labelId, values, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
+     */
+    public static void plotStairs(final String labelId, final long[] values, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotStairs(labelId, values, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotStairs(String labelId, long[] values); /*MANUAL
@@ -2989,10 +3496,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStairs(String labelId, long[] values, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotStairs(String labelId, long[] values, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStairs(labelId, &values[0], LEN(values), xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStairs(labelId, &values[0], LEN(values), xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotStairs(String labelId, long[] values, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotStairs(labelId, &values[0], LEN(values), xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -3021,8 +3536,15 @@ public final class ImPlot {
     /**
      * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
      */
-    public static void plotStairs(final String labelId, final float[] values, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotStairs(labelId, values, xscale, xstart, spec.ptr);
+    public static void plotStairs(final String labelId, final float[] values, final double xscale, final double xstart, final int flags) {
+        nPlotStairs(labelId, values, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
+     */
+    public static void plotStairs(final String labelId, final float[] values, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotStairs(labelId, values, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotStairs(String labelId, float[] values); /*MANUAL
@@ -3049,10 +3571,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStairs(String labelId, float[] values, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotStairs(String labelId, float[] values, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStairs(labelId, &values[0], LEN(values), xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStairs(labelId, &values[0], LEN(values), xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotStairs(String labelId, float[] values, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotStairs(labelId, &values[0], LEN(values), xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -3081,8 +3611,15 @@ public final class ImPlot {
     /**
      * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
      */
-    public static void plotStairs(final String labelId, final double[] values, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotStairs(labelId, values, xscale, xstart, spec.ptr);
+    public static void plotStairs(final String labelId, final double[] values, final double xscale, final double xstart, final int flags) {
+        nPlotStairs(labelId, values, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
+     */
+    public static void plotStairs(final String labelId, final double[] values, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotStairs(labelId, values, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotStairs(String labelId, double[] values); /*MANUAL
@@ -3109,10 +3646,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStairs(String labelId, double[] values, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotStairs(String labelId, double[] values, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStairs(labelId, &values[0], LEN(values), xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStairs(labelId, &values[0], LEN(values), xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotStairs(String labelId, double[] values, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotStairs(labelId, &values[0], LEN(values), xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -3141,8 +3686,15 @@ public final class ImPlot {
     /**
      * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
      */
-    public static void plotStairsV(final String labelId, final short[] values, final int count, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotStairsV(labelId, values, count, xscale, xstart, spec.ptr);
+    public static void plotStairsV(final String labelId, final short[] values, final int count, final double xscale, final double xstart, final int flags) {
+        nPlotStairsV(labelId, values, count, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
+     */
+    public static void plotStairsV(final String labelId, final short[] values, final int count, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotStairsV(labelId, values, count, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotStairsV(String labelId, short[] values, int count); /*MANUAL
@@ -3169,10 +3721,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStairsV(String labelId, short[] values, int count, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotStairsV(String labelId, short[] values, int count, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStairs(labelId, &values[0], count, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStairs(labelId, &values[0], count, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotStairsV(String labelId, short[] values, int count, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotStairs(labelId, &values[0], count, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -3201,8 +3761,15 @@ public final class ImPlot {
     /**
      * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
      */
-    public static void plotStairsV(final String labelId, final int[] values, final int count, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotStairsV(labelId, values, count, xscale, xstart, spec.ptr);
+    public static void plotStairsV(final String labelId, final int[] values, final int count, final double xscale, final double xstart, final int flags) {
+        nPlotStairsV(labelId, values, count, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
+     */
+    public static void plotStairsV(final String labelId, final int[] values, final int count, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotStairsV(labelId, values, count, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotStairsV(String labelId, int[] values, int count); /*MANUAL
@@ -3229,10 +3796,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStairsV(String labelId, int[] values, int count, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotStairsV(String labelId, int[] values, int count, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStairs(labelId, &values[0], count, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStairs(labelId, &values[0], count, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotStairsV(String labelId, int[] values, int count, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotStairs(labelId, &values[0], count, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -3261,8 +3836,15 @@ public final class ImPlot {
     /**
      * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
      */
-    public static void plotStairsV(final String labelId, final long[] values, final int count, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotStairsV(labelId, values, count, xscale, xstart, spec.ptr);
+    public static void plotStairsV(final String labelId, final long[] values, final int count, final double xscale, final double xstart, final int flags) {
+        nPlotStairsV(labelId, values, count, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
+     */
+    public static void plotStairsV(final String labelId, final long[] values, final int count, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotStairsV(labelId, values, count, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotStairsV(String labelId, long[] values, int count); /*MANUAL
@@ -3289,10 +3871,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStairsV(String labelId, long[] values, int count, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotStairsV(String labelId, long[] values, int count, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStairs(labelId, &values[0], count, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStairs(labelId, &values[0], count, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotStairsV(String labelId, long[] values, int count, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotStairs(labelId, &values[0], count, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -3321,8 +3911,15 @@ public final class ImPlot {
     /**
      * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
      */
-    public static void plotStairsV(final String labelId, final float[] values, final int count, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotStairsV(labelId, values, count, xscale, xstart, spec.ptr);
+    public static void plotStairsV(final String labelId, final float[] values, final int count, final double xscale, final double xstart, final int flags) {
+        nPlotStairsV(labelId, values, count, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
+     */
+    public static void plotStairsV(final String labelId, final float[] values, final int count, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotStairsV(labelId, values, count, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotStairsV(String labelId, float[] values, int count); /*MANUAL
@@ -3349,10 +3946,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStairsV(String labelId, float[] values, int count, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotStairsV(String labelId, float[] values, int count, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStairs(labelId, &values[0], count, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStairs(labelId, &values[0], count, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotStairsV(String labelId, float[] values, int count, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotStairs(labelId, &values[0], count, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -3381,8 +3986,15 @@ public final class ImPlot {
     /**
      * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
      */
-    public static void plotStairsV(final String labelId, final double[] values, final int count, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotStairsV(labelId, values, count, xscale, xstart, spec.ptr);
+    public static void plotStairsV(final String labelId, final double[] values, final int count, final double xscale, final double xstart, final int flags) {
+        nPlotStairsV(labelId, values, count, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
+     */
+    public static void plotStairsV(final String labelId, final double[] values, final int count, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotStairsV(labelId, values, count, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotStairsV(String labelId, double[] values, int count); /*MANUAL
@@ -3409,10 +4021,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStairsV(String labelId, double[] values, int count, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotStairsV(String labelId, double[] values, int count, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStairs(labelId, &values[0], count, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStairs(labelId, &values[0], count, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotStairsV(String labelId, double[] values, int count, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotStairs(labelId, &values[0], count, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -3429,8 +4049,8 @@ public final class ImPlot {
     /**
      * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
      */
-    public static void plotStairs(final String labelId, final short[] xs, final short[] ys, final ImPlotSpec spec) {
-        nPlotStairs(labelId, xs, ys, spec.ptr);
+    public static void plotStairs(final String labelId, final short[] xs, final short[] ys, final int flags) {
+        nPlotStairs(labelId, xs, ys, flags);
     }
 
     private static native void nPlotStairs(String labelId, short[] xs, short[] ys); /*MANUAL
@@ -3443,11 +4063,11 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStairs(String labelId, short[] xs, short[] ys, long spec); /*MANUAL
+    private static native void nPlotStairs(String labelId, short[] xs, short[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], LEN(xs), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -3463,8 +4083,8 @@ public final class ImPlot {
     /**
      * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
      */
-    public static void plotStairs(final String labelId, final int[] xs, final int[] ys, final ImPlotSpec spec) {
-        nPlotStairs(labelId, xs, ys, spec.ptr);
+    public static void plotStairs(final String labelId, final int[] xs, final int[] ys, final int flags) {
+        nPlotStairs(labelId, xs, ys, flags);
     }
 
     private static native void nPlotStairs(String labelId, int[] xs, int[] ys); /*MANUAL
@@ -3477,11 +4097,11 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStairs(String labelId, int[] xs, int[] ys, long spec); /*MANUAL
+    private static native void nPlotStairs(String labelId, int[] xs, int[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], LEN(xs), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -3497,8 +4117,8 @@ public final class ImPlot {
     /**
      * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
      */
-    public static void plotStairs(final String labelId, final long[] xs, final long[] ys, final ImPlotSpec spec) {
-        nPlotStairs(labelId, xs, ys, spec.ptr);
+    public static void plotStairs(final String labelId, final long[] xs, final long[] ys, final int flags) {
+        nPlotStairs(labelId, xs, ys, flags);
     }
 
     private static native void nPlotStairs(String labelId, long[] xs, long[] ys); /*MANUAL
@@ -3511,11 +4131,11 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStairs(String labelId, long[] xs, long[] ys, long spec); /*MANUAL
+    private static native void nPlotStairs(String labelId, long[] xs, long[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], LEN(xs), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -3531,8 +4151,8 @@ public final class ImPlot {
     /**
      * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
      */
-    public static void plotStairs(final String labelId, final float[] xs, final float[] ys, final ImPlotSpec spec) {
-        nPlotStairs(labelId, xs, ys, spec.ptr);
+    public static void plotStairs(final String labelId, final float[] xs, final float[] ys, final int flags) {
+        nPlotStairs(labelId, xs, ys, flags);
     }
 
     private static native void nPlotStairs(String labelId, float[] xs, float[] ys); /*MANUAL
@@ -3545,11 +4165,11 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStairs(String labelId, float[] xs, float[] ys, long spec); /*MANUAL
+    private static native void nPlotStairs(String labelId, float[] xs, float[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], LEN(xs), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -3565,8 +4185,8 @@ public final class ImPlot {
     /**
      * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
      */
-    public static void plotStairs(final String labelId, final double[] xs, final double[] ys, final ImPlotSpec spec) {
-        nPlotStairs(labelId, xs, ys, spec.ptr);
+    public static void plotStairs(final String labelId, final double[] xs, final double[] ys, final int flags) {
+        nPlotStairs(labelId, xs, ys, flags);
     }
 
     private static native void nPlotStairs(String labelId, double[] xs, double[] ys); /*MANUAL
@@ -3579,11 +4199,11 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStairs(String labelId, double[] xs, double[] ys, long spec); /*MANUAL
+    private static native void nPlotStairs(String labelId, double[] xs, double[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], LEN(xs), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -3599,8 +4219,15 @@ public final class ImPlot {
     /**
      * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
      */
-    public static void plotStairsV(final String labelId, final short[] xs, final short[] ys, final int count, final ImPlotSpec spec) {
-        nPlotStairsV(labelId, xs, ys, count, spec.ptr);
+    public static void plotStairsV(final String labelId, final short[] xs, final short[] ys, final int count, final int flags) {
+        nPlotStairsV(labelId, xs, ys, count, flags);
+    }
+
+    /**
+     * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
+     */
+    public static void plotStairsV(final String labelId, final short[] xs, final short[] ys, final int count, final int flags, final int offset) {
+        nPlotStairsV(labelId, xs, ys, count, flags, offset);
     }
 
     private static native void nPlotStairsV(String labelId, short[] xs, short[] ys, int count); /*MANUAL
@@ -3613,11 +4240,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStairsV(String labelId, short[] xs, short[] ys, int count, long spec); /*MANUAL
+    private static native void nPlotStairsV(String labelId, short[] xs, short[] ys, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotStairsV(String labelId, short[] xs, short[] ys, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -3633,8 +4270,15 @@ public final class ImPlot {
     /**
      * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
      */
-    public static void plotStairsV(final String labelId, final int[] xs, final int[] ys, final int count, final ImPlotSpec spec) {
-        nPlotStairsV(labelId, xs, ys, count, spec.ptr);
+    public static void plotStairsV(final String labelId, final int[] xs, final int[] ys, final int count, final int flags) {
+        nPlotStairsV(labelId, xs, ys, count, flags);
+    }
+
+    /**
+     * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
+     */
+    public static void plotStairsV(final String labelId, final int[] xs, final int[] ys, final int count, final int flags, final int offset) {
+        nPlotStairsV(labelId, xs, ys, count, flags, offset);
     }
 
     private static native void nPlotStairsV(String labelId, int[] xs, int[] ys, int count); /*MANUAL
@@ -3647,11 +4291,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStairsV(String labelId, int[] xs, int[] ys, int count, long spec); /*MANUAL
+    private static native void nPlotStairsV(String labelId, int[] xs, int[] ys, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotStairsV(String labelId, int[] xs, int[] ys, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -3667,8 +4321,15 @@ public final class ImPlot {
     /**
      * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
      */
-    public static void plotStairsV(final String labelId, final long[] xs, final long[] ys, final int count, final ImPlotSpec spec) {
-        nPlotStairsV(labelId, xs, ys, count, spec.ptr);
+    public static void plotStairsV(final String labelId, final long[] xs, final long[] ys, final int count, final int flags) {
+        nPlotStairsV(labelId, xs, ys, count, flags);
+    }
+
+    /**
+     * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
+     */
+    public static void plotStairsV(final String labelId, final long[] xs, final long[] ys, final int count, final int flags, final int offset) {
+        nPlotStairsV(labelId, xs, ys, count, flags, offset);
     }
 
     private static native void nPlotStairsV(String labelId, long[] xs, long[] ys, int count); /*MANUAL
@@ -3681,11 +4342,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStairsV(String labelId, long[] xs, long[] ys, int count, long spec); /*MANUAL
+    private static native void nPlotStairsV(String labelId, long[] xs, long[] ys, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotStairsV(String labelId, long[] xs, long[] ys, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -3701,8 +4372,15 @@ public final class ImPlot {
     /**
      * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
      */
-    public static void plotStairsV(final String labelId, final float[] xs, final float[] ys, final int count, final ImPlotSpec spec) {
-        nPlotStairsV(labelId, xs, ys, count, spec.ptr);
+    public static void plotStairsV(final String labelId, final float[] xs, final float[] ys, final int count, final int flags) {
+        nPlotStairsV(labelId, xs, ys, count, flags);
+    }
+
+    /**
+     * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
+     */
+    public static void plotStairsV(final String labelId, final float[] xs, final float[] ys, final int count, final int flags, final int offset) {
+        nPlotStairsV(labelId, xs, ys, count, flags, offset);
     }
 
     private static native void nPlotStairsV(String labelId, float[] xs, float[] ys, int count); /*MANUAL
@@ -3715,11 +4393,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStairsV(String labelId, float[] xs, float[] ys, int count, long spec); /*MANUAL
+    private static native void nPlotStairsV(String labelId, float[] xs, float[] ys, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotStairsV(String labelId, float[] xs, float[] ys, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -3735,8 +4423,15 @@ public final class ImPlot {
     /**
      * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
      */
-    public static void plotStairsV(final String labelId, final double[] xs, final double[] ys, final int count, final ImPlotSpec spec) {
-        nPlotStairsV(labelId, xs, ys, count, spec.ptr);
+    public static void plotStairsV(final String labelId, final double[] xs, final double[] ys, final int count, final int flags) {
+        nPlotStairsV(labelId, xs, ys, count, flags);
+    }
+
+    /**
+     * Plots a stairstep graph. The y value is continued constantly from every x position, i.e. the interval [x[i], x[i+1]) has the value y[i].
+     */
+    public static void plotStairsV(final String labelId, final double[] xs, final double[] ys, final int count, final int flags, final int offset) {
+        nPlotStairsV(labelId, xs, ys, count, flags, offset);
     }
 
     private static native void nPlotStairsV(String labelId, double[] xs, double[] ys, int count); /*MANUAL
@@ -3749,11 +4444,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStairsV(String labelId, double[] xs, double[] ys, int count, long spec); /*MANUAL
+    private static native void nPlotStairsV(String labelId, double[] xs, double[] ys, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotStairsV(String labelId, double[] xs, double[] ys, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotStairs(labelId, &xs[0], &ys[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -3792,8 +4497,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShaded(final String labelId, final short[] values, final double yRef, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotShaded(labelId, values, yRef, xscale, xstart, spec.ptr);
+    public static void plotShaded(final String labelId, final short[] values, final double yRef, final double xscale, final double xstart, final int flags) {
+        nPlotShaded(labelId, values, yRef, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShaded(final String labelId, final short[] values, final double yRef, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotShaded(labelId, values, yRef, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotShaded(String labelId, short[] values); /*MANUAL
@@ -3828,10 +4540,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotShaded(String labelId, short[] values, double yRef, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotShaded(String labelId, short[] values, double yRef, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &values[0], LEN(values), yRef, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &values[0], LEN(values), yRef, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotShaded(String labelId, short[] values, double yRef, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &values[0], LEN(values), yRef, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -3867,8 +4587,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShaded(final String labelId, final int[] values, final double yRef, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotShaded(labelId, values, yRef, xscale, xstart, spec.ptr);
+    public static void plotShaded(final String labelId, final int[] values, final double yRef, final double xscale, final double xstart, final int flags) {
+        nPlotShaded(labelId, values, yRef, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShaded(final String labelId, final int[] values, final double yRef, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotShaded(labelId, values, yRef, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotShaded(String labelId, int[] values); /*MANUAL
@@ -3903,10 +4630,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotShaded(String labelId, int[] values, double yRef, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotShaded(String labelId, int[] values, double yRef, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &values[0], LEN(values), yRef, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &values[0], LEN(values), yRef, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotShaded(String labelId, int[] values, double yRef, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &values[0], LEN(values), yRef, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -3942,8 +4677,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShaded(final String labelId, final long[] values, final double yRef, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotShaded(labelId, values, yRef, xscale, xstart, spec.ptr);
+    public static void plotShaded(final String labelId, final long[] values, final double yRef, final double xscale, final double xstart, final int flags) {
+        nPlotShaded(labelId, values, yRef, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShaded(final String labelId, final long[] values, final double yRef, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotShaded(labelId, values, yRef, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotShaded(String labelId, long[] values); /*MANUAL
@@ -3978,10 +4720,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotShaded(String labelId, long[] values, double yRef, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotShaded(String labelId, long[] values, double yRef, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &values[0], LEN(values), yRef, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &values[0], LEN(values), yRef, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotShaded(String labelId, long[] values, double yRef, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &values[0], LEN(values), yRef, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -4017,8 +4767,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShaded(final String labelId, final float[] values, final double yRef, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotShaded(labelId, values, yRef, xscale, xstart, spec.ptr);
+    public static void plotShaded(final String labelId, final float[] values, final double yRef, final double xscale, final double xstart, final int flags) {
+        nPlotShaded(labelId, values, yRef, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShaded(final String labelId, final float[] values, final double yRef, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotShaded(labelId, values, yRef, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotShaded(String labelId, float[] values); /*MANUAL
@@ -4053,10 +4810,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotShaded(String labelId, float[] values, double yRef, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotShaded(String labelId, float[] values, double yRef, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &values[0], LEN(values), yRef, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &values[0], LEN(values), yRef, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotShaded(String labelId, float[] values, double yRef, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &values[0], LEN(values), yRef, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -4092,8 +4857,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShaded(final String labelId, final double[] values, final double yRef, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotShaded(labelId, values, yRef, xscale, xstart, spec.ptr);
+    public static void plotShaded(final String labelId, final double[] values, final double yRef, final double xscale, final double xstart, final int flags) {
+        nPlotShaded(labelId, values, yRef, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShaded(final String labelId, final double[] values, final double yRef, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotShaded(labelId, values, yRef, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotShaded(String labelId, double[] values); /*MANUAL
@@ -4128,10 +4900,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotShaded(String labelId, double[] values, double yRef, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotShaded(String labelId, double[] values, double yRef, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &values[0], LEN(values), yRef, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &values[0], LEN(values), yRef, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotShaded(String labelId, double[] values, double yRef, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &values[0], LEN(values), yRef, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -4167,8 +4947,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShadedV(final String labelId, final short[] values, final int count, final double yRef, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotShadedV(labelId, values, count, yRef, xscale, xstart, spec.ptr);
+    public static void plotShadedV(final String labelId, final short[] values, final int count, final double yRef, final double xscale, final double xstart, final int flags) {
+        nPlotShadedV(labelId, values, count, yRef, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShadedV(final String labelId, final short[] values, final int count, final double yRef, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotShadedV(labelId, values, count, yRef, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotShadedV(String labelId, short[] values, int count); /*MANUAL
@@ -4203,10 +4990,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotShadedV(String labelId, short[] values, int count, double yRef, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotShadedV(String labelId, short[] values, int count, double yRef, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &values[0], count, yRef, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &values[0], count, yRef, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotShadedV(String labelId, short[] values, int count, double yRef, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &values[0], count, yRef, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -4242,8 +5037,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShadedV(final String labelId, final int[] values, final int count, final double yRef, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotShadedV(labelId, values, count, yRef, xscale, xstart, spec.ptr);
+    public static void plotShadedV(final String labelId, final int[] values, final int count, final double yRef, final double xscale, final double xstart, final int flags) {
+        nPlotShadedV(labelId, values, count, yRef, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShadedV(final String labelId, final int[] values, final int count, final double yRef, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotShadedV(labelId, values, count, yRef, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotShadedV(String labelId, int[] values, int count); /*MANUAL
@@ -4278,10 +5080,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotShadedV(String labelId, int[] values, int count, double yRef, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotShadedV(String labelId, int[] values, int count, double yRef, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &values[0], count, yRef, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &values[0], count, yRef, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotShadedV(String labelId, int[] values, int count, double yRef, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &values[0], count, yRef, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -4317,8 +5127,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShadedV(final String labelId, final long[] values, final int count, final double yRef, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotShadedV(labelId, values, count, yRef, xscale, xstart, spec.ptr);
+    public static void plotShadedV(final String labelId, final long[] values, final int count, final double yRef, final double xscale, final double xstart, final int flags) {
+        nPlotShadedV(labelId, values, count, yRef, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShadedV(final String labelId, final long[] values, final int count, final double yRef, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotShadedV(labelId, values, count, yRef, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotShadedV(String labelId, long[] values, int count); /*MANUAL
@@ -4353,10 +5170,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotShadedV(String labelId, long[] values, int count, double yRef, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotShadedV(String labelId, long[] values, int count, double yRef, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &values[0], count, yRef, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &values[0], count, yRef, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotShadedV(String labelId, long[] values, int count, double yRef, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &values[0], count, yRef, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -4392,8 +5217,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShadedV(final String labelId, final float[] values, final int count, final double yRef, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotShadedV(labelId, values, count, yRef, xscale, xstart, spec.ptr);
+    public static void plotShadedV(final String labelId, final float[] values, final int count, final double yRef, final double xscale, final double xstart, final int flags) {
+        nPlotShadedV(labelId, values, count, yRef, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShadedV(final String labelId, final float[] values, final int count, final double yRef, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotShadedV(labelId, values, count, yRef, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotShadedV(String labelId, float[] values, int count); /*MANUAL
@@ -4428,10 +5260,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotShadedV(String labelId, float[] values, int count, double yRef, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotShadedV(String labelId, float[] values, int count, double yRef, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &values[0], count, yRef, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &values[0], count, yRef, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotShadedV(String labelId, float[] values, int count, double yRef, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &values[0], count, yRef, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -4467,8 +5307,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShadedV(final String labelId, final double[] values, final int count, final double yRef, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotShadedV(labelId, values, count, yRef, xscale, xstart, spec.ptr);
+    public static void plotShadedV(final String labelId, final double[] values, final int count, final double yRef, final double xscale, final double xstart, final int flags) {
+        nPlotShadedV(labelId, values, count, yRef, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShadedV(final String labelId, final double[] values, final int count, final double yRef, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotShadedV(labelId, values, count, yRef, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotShadedV(String labelId, double[] values, int count); /*MANUAL
@@ -4503,10 +5350,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotShadedV(String labelId, double[] values, int count, double yRef, double xscale, double xstart, long spec); /*MANUAL
+    private static native void nPlotShadedV(String labelId, double[] values, int count, double yRef, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &values[0], count, yRef, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &values[0], count, yRef, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotShadedV(String labelId, double[] values, int count, double yRef, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &values[0], count, yRef, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -4530,8 +5385,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShaded(final String labelId, final short[] xs, final short[] ys, final double yRef, final ImPlotSpec spec) {
-        nPlotShaded(labelId, xs, ys, yRef, spec.ptr);
+    public static void plotShaded(final String labelId, final short[] xs, final short[] ys, final double yRef, final int flags) {
+        nPlotShaded(labelId, xs, ys, yRef, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShaded(final String labelId, final short[] xs, final short[] ys, final double yRef, final int flags, final int offset) {
+        nPlotShaded(labelId, xs, ys, yRef, flags, offset);
     }
 
     private static native void nPlotShaded(String labelId, short[] xs, short[] ys); /*MANUAL
@@ -4554,11 +5416,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotShaded(String labelId, short[] xs, short[] ys, double yRef, long spec); /*MANUAL
+    private static native void nPlotShaded(String labelId, short[] xs, short[] ys, double yRef, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], LEN(xs), yRef, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], LEN(xs), yRef, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotShaded(String labelId, short[] xs, short[] ys, double yRef, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], LEN(xs), yRef, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -4581,8 +5453,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShaded(final String labelId, final int[] xs, final int[] ys, final double yRef, final ImPlotSpec spec) {
-        nPlotShaded(labelId, xs, ys, yRef, spec.ptr);
+    public static void plotShaded(final String labelId, final int[] xs, final int[] ys, final double yRef, final int flags) {
+        nPlotShaded(labelId, xs, ys, yRef, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShaded(final String labelId, final int[] xs, final int[] ys, final double yRef, final int flags, final int offset) {
+        nPlotShaded(labelId, xs, ys, yRef, flags, offset);
     }
 
     private static native void nPlotShaded(String labelId, int[] xs, int[] ys); /*MANUAL
@@ -4605,11 +5484,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotShaded(String labelId, int[] xs, int[] ys, double yRef, long spec); /*MANUAL
+    private static native void nPlotShaded(String labelId, int[] xs, int[] ys, double yRef, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], LEN(xs), yRef, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], LEN(xs), yRef, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotShaded(String labelId, int[] xs, int[] ys, double yRef, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], LEN(xs), yRef, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -4632,8 +5521,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShaded(final String labelId, final long[] xs, final long[] ys, final double yRef, final ImPlotSpec spec) {
-        nPlotShaded(labelId, xs, ys, yRef, spec.ptr);
+    public static void plotShaded(final String labelId, final long[] xs, final long[] ys, final double yRef, final int flags) {
+        nPlotShaded(labelId, xs, ys, yRef, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShaded(final String labelId, final long[] xs, final long[] ys, final double yRef, final int flags, final int offset) {
+        nPlotShaded(labelId, xs, ys, yRef, flags, offset);
     }
 
     private static native void nPlotShaded(String labelId, long[] xs, long[] ys); /*MANUAL
@@ -4656,11 +5552,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotShaded(String labelId, long[] xs, long[] ys, double yRef, long spec); /*MANUAL
+    private static native void nPlotShaded(String labelId, long[] xs, long[] ys, double yRef, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], LEN(xs), yRef, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], LEN(xs), yRef, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotShaded(String labelId, long[] xs, long[] ys, double yRef, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], LEN(xs), yRef, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -4683,8 +5589,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShaded(final String labelId, final float[] xs, final float[] ys, final double yRef, final ImPlotSpec spec) {
-        nPlotShaded(labelId, xs, ys, yRef, spec.ptr);
+    public static void plotShaded(final String labelId, final float[] xs, final float[] ys, final double yRef, final int flags) {
+        nPlotShaded(labelId, xs, ys, yRef, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShaded(final String labelId, final float[] xs, final float[] ys, final double yRef, final int flags, final int offset) {
+        nPlotShaded(labelId, xs, ys, yRef, flags, offset);
     }
 
     private static native void nPlotShaded(String labelId, float[] xs, float[] ys); /*MANUAL
@@ -4707,11 +5620,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotShaded(String labelId, float[] xs, float[] ys, double yRef, long spec); /*MANUAL
+    private static native void nPlotShaded(String labelId, float[] xs, float[] ys, double yRef, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], LEN(xs), yRef, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], LEN(xs), yRef, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotShaded(String labelId, float[] xs, float[] ys, double yRef, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], LEN(xs), yRef, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -4734,8 +5657,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShaded(final String labelId, final double[] xs, final double[] ys, final double yRef, final ImPlotSpec spec) {
-        nPlotShaded(labelId, xs, ys, yRef, spec.ptr);
+    public static void plotShaded(final String labelId, final double[] xs, final double[] ys, final double yRef, final int flags) {
+        nPlotShaded(labelId, xs, ys, yRef, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShaded(final String labelId, final double[] xs, final double[] ys, final double yRef, final int flags, final int offset) {
+        nPlotShaded(labelId, xs, ys, yRef, flags, offset);
     }
 
     private static native void nPlotShaded(String labelId, double[] xs, double[] ys); /*MANUAL
@@ -4758,11 +5688,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotShaded(String labelId, double[] xs, double[] ys, double yRef, long spec); /*MANUAL
+    private static native void nPlotShaded(String labelId, double[] xs, double[] ys, double yRef, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], LEN(xs), yRef, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], LEN(xs), yRef, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotShaded(String labelId, double[] xs, double[] ys, double yRef, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], LEN(xs), yRef, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -4785,8 +5725,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShadedV(final String labelId, final short[] xs, final short[] ys, final int count, final double yRef, final ImPlotSpec spec) {
-        nPlotShadedV(labelId, xs, ys, count, yRef, spec.ptr);
+    public static void plotShadedV(final String labelId, final short[] xs, final short[] ys, final int count, final double yRef, final int flags) {
+        nPlotShadedV(labelId, xs, ys, count, yRef, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShadedV(final String labelId, final short[] xs, final short[] ys, final int count, final double yRef, final int flags, final int offset) {
+        nPlotShadedV(labelId, xs, ys, count, yRef, flags, offset);
     }
 
     private static native void nPlotShadedV(String labelId, short[] xs, short[] ys, int count); /*MANUAL
@@ -4809,11 +5756,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotShadedV(String labelId, short[] xs, short[] ys, int count, double yRef, long spec); /*MANUAL
+    private static native void nPlotShadedV(String labelId, short[] xs, short[] ys, int count, double yRef, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], count, yRef, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], count, yRef, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotShadedV(String labelId, short[] xs, short[] ys, int count, double yRef, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], count, yRef, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -4836,8 +5793,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShadedV(final String labelId, final int[] xs, final int[] ys, final int count, final double yRef, final ImPlotSpec spec) {
-        nPlotShadedV(labelId, xs, ys, count, yRef, spec.ptr);
+    public static void plotShadedV(final String labelId, final int[] xs, final int[] ys, final int count, final double yRef, final int flags) {
+        nPlotShadedV(labelId, xs, ys, count, yRef, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShadedV(final String labelId, final int[] xs, final int[] ys, final int count, final double yRef, final int flags, final int offset) {
+        nPlotShadedV(labelId, xs, ys, count, yRef, flags, offset);
     }
 
     private static native void nPlotShadedV(String labelId, int[] xs, int[] ys, int count); /*MANUAL
@@ -4860,11 +5824,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotShadedV(String labelId, int[] xs, int[] ys, int count, double yRef, long spec); /*MANUAL
+    private static native void nPlotShadedV(String labelId, int[] xs, int[] ys, int count, double yRef, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], count, yRef, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], count, yRef, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotShadedV(String labelId, int[] xs, int[] ys, int count, double yRef, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], count, yRef, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -4887,8 +5861,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShadedV(final String labelId, final long[] xs, final long[] ys, final int count, final double yRef, final ImPlotSpec spec) {
-        nPlotShadedV(labelId, xs, ys, count, yRef, spec.ptr);
+    public static void plotShadedV(final String labelId, final long[] xs, final long[] ys, final int count, final double yRef, final int flags) {
+        nPlotShadedV(labelId, xs, ys, count, yRef, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShadedV(final String labelId, final long[] xs, final long[] ys, final int count, final double yRef, final int flags, final int offset) {
+        nPlotShadedV(labelId, xs, ys, count, yRef, flags, offset);
     }
 
     private static native void nPlotShadedV(String labelId, long[] xs, long[] ys, int count); /*MANUAL
@@ -4911,11 +5892,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotShadedV(String labelId, long[] xs, long[] ys, int count, double yRef, long spec); /*MANUAL
+    private static native void nPlotShadedV(String labelId, long[] xs, long[] ys, int count, double yRef, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], count, yRef, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], count, yRef, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotShadedV(String labelId, long[] xs, long[] ys, int count, double yRef, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], count, yRef, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -4938,8 +5929,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShadedV(final String labelId, final float[] xs, final float[] ys, final int count, final double yRef, final ImPlotSpec spec) {
-        nPlotShadedV(labelId, xs, ys, count, yRef, spec.ptr);
+    public static void plotShadedV(final String labelId, final float[] xs, final float[] ys, final int count, final double yRef, final int flags) {
+        nPlotShadedV(labelId, xs, ys, count, yRef, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShadedV(final String labelId, final float[] xs, final float[] ys, final int count, final double yRef, final int flags, final int offset) {
+        nPlotShadedV(labelId, xs, ys, count, yRef, flags, offset);
     }
 
     private static native void nPlotShadedV(String labelId, float[] xs, float[] ys, int count); /*MANUAL
@@ -4962,11 +5960,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotShadedV(String labelId, float[] xs, float[] ys, int count, double yRef, long spec); /*MANUAL
+    private static native void nPlotShadedV(String labelId, float[] xs, float[] ys, int count, double yRef, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], count, yRef, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], count, yRef, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotShadedV(String labelId, float[] xs, float[] ys, int count, double yRef, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], count, yRef, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -4989,8 +5997,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShadedV(final String labelId, final double[] xs, final double[] ys, final int count, final double yRef, final ImPlotSpec spec) {
-        nPlotShadedV(labelId, xs, ys, count, yRef, spec.ptr);
+    public static void plotShadedV(final String labelId, final double[] xs, final double[] ys, final int count, final double yRef, final int flags) {
+        nPlotShadedV(labelId, xs, ys, count, yRef, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShadedV(final String labelId, final double[] xs, final double[] ys, final int count, final double yRef, final int flags, final int offset) {
+        nPlotShadedV(labelId, xs, ys, count, yRef, flags, offset);
     }
 
     private static native void nPlotShadedV(String labelId, double[] xs, double[] ys, int count); /*MANUAL
@@ -5013,11 +6028,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotShadedV(String labelId, double[] xs, double[] ys, int count, double yRef, long spec); /*MANUAL
+    private static native void nPlotShadedV(String labelId, double[] xs, double[] ys, int count, double yRef, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], count, yRef, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], count, yRef, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotShadedV(String labelId, double[] xs, double[] ys, int count, double yRef, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &xs[0], &ys[0], count, yRef, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -5035,8 +6060,8 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShaded(final String labelId, final short[] xs, final short[] ys1, final short[] ys2, final ImPlotSpec spec) {
-        nPlotShaded(labelId, xs, ys1, ys2, spec.ptr);
+    public static void plotShaded(final String labelId, final short[] xs, final short[] ys1, final short[] ys2, final int flags) {
+        nPlotShaded(labelId, xs, ys1, ys2, flags);
     }
 
     private static native void nPlotShaded(String labelId, short[] xs, short[] ys1, short[] ys2); /*MANUAL
@@ -5051,12 +6076,12 @@ public final class ImPlot {
         if (ys2 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys2, ys2, JNI_FALSE);
     */
 
-    private static native void nPlotShaded(String labelId, short[] xs, short[] ys1, short[] ys2, long spec); /*MANUAL
+    private static native void nPlotShaded(String labelId, short[] xs, short[] ys1, short[] ys2, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys1 = obj_ys1 == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys1, JNI_FALSE);
         auto ys2 = obj_ys2 == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys2, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], LEN(xs), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys1 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys1, ys1, JNI_FALSE);
@@ -5073,8 +6098,8 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShaded(final String labelId, final int[] xs, final int[] ys1, final int[] ys2, final ImPlotSpec spec) {
-        nPlotShaded(labelId, xs, ys1, ys2, spec.ptr);
+    public static void plotShaded(final String labelId, final int[] xs, final int[] ys1, final int[] ys2, final int flags) {
+        nPlotShaded(labelId, xs, ys1, ys2, flags);
     }
 
     private static native void nPlotShaded(String labelId, int[] xs, int[] ys1, int[] ys2); /*MANUAL
@@ -5089,12 +6114,12 @@ public final class ImPlot {
         if (ys2 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys2, ys2, JNI_FALSE);
     */
 
-    private static native void nPlotShaded(String labelId, int[] xs, int[] ys1, int[] ys2, long spec); /*MANUAL
+    private static native void nPlotShaded(String labelId, int[] xs, int[] ys1, int[] ys2, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys1 = obj_ys1 == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys1, JNI_FALSE);
         auto ys2 = obj_ys2 == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys2, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], LEN(xs), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys1 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys1, ys1, JNI_FALSE);
@@ -5111,8 +6136,8 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShaded(final String labelId, final long[] xs, final long[] ys1, final long[] ys2, final ImPlotSpec spec) {
-        nPlotShaded(labelId, xs, ys1, ys2, spec.ptr);
+    public static void plotShaded(final String labelId, final long[] xs, final long[] ys1, final long[] ys2, final int flags) {
+        nPlotShaded(labelId, xs, ys1, ys2, flags);
     }
 
     private static native void nPlotShaded(String labelId, long[] xs, long[] ys1, long[] ys2); /*MANUAL
@@ -5127,12 +6152,12 @@ public final class ImPlot {
         if (ys2 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys2, ys2, JNI_FALSE);
     */
 
-    private static native void nPlotShaded(String labelId, long[] xs, long[] ys1, long[] ys2, long spec); /*MANUAL
+    private static native void nPlotShaded(String labelId, long[] xs, long[] ys1, long[] ys2, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys1 = obj_ys1 == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys1, JNI_FALSE);
         auto ys2 = obj_ys2 == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys2, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], LEN(xs), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys1 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys1, ys1, JNI_FALSE);
@@ -5149,8 +6174,8 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShaded(final String labelId, final float[] xs, final float[] ys1, final float[] ys2, final ImPlotSpec spec) {
-        nPlotShaded(labelId, xs, ys1, ys2, spec.ptr);
+    public static void plotShaded(final String labelId, final float[] xs, final float[] ys1, final float[] ys2, final int flags) {
+        nPlotShaded(labelId, xs, ys1, ys2, flags);
     }
 
     private static native void nPlotShaded(String labelId, float[] xs, float[] ys1, float[] ys2); /*MANUAL
@@ -5165,12 +6190,12 @@ public final class ImPlot {
         if (ys2 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys2, ys2, JNI_FALSE);
     */
 
-    private static native void nPlotShaded(String labelId, float[] xs, float[] ys1, float[] ys2, long spec); /*MANUAL
+    private static native void nPlotShaded(String labelId, float[] xs, float[] ys1, float[] ys2, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys1 = obj_ys1 == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys1, JNI_FALSE);
         auto ys2 = obj_ys2 == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys2, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], LEN(xs), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys1 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys1, ys1, JNI_FALSE);
@@ -5187,8 +6212,8 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShaded(final String labelId, final double[] xs, final double[] ys1, final double[] ys2, final ImPlotSpec spec) {
-        nPlotShaded(labelId, xs, ys1, ys2, spec.ptr);
+    public static void plotShaded(final String labelId, final double[] xs, final double[] ys1, final double[] ys2, final int flags) {
+        nPlotShaded(labelId, xs, ys1, ys2, flags);
     }
 
     private static native void nPlotShaded(String labelId, double[] xs, double[] ys1, double[] ys2); /*MANUAL
@@ -5203,12 +6228,12 @@ public final class ImPlot {
         if (ys2 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys2, ys2, JNI_FALSE);
     */
 
-    private static native void nPlotShaded(String labelId, double[] xs, double[] ys1, double[] ys2, long spec); /*MANUAL
+    private static native void nPlotShaded(String labelId, double[] xs, double[] ys1, double[] ys2, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys1 = obj_ys1 == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys1, JNI_FALSE);
         auto ys2 = obj_ys2 == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys2, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], LEN(xs), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys1 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys1, ys1, JNI_FALSE);
@@ -5225,8 +6250,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShadedV(final String labelId, final short[] xs, final short[] ys1, final short[] ys2, final int count, final ImPlotSpec spec) {
-        nPlotShadedV(labelId, xs, ys1, ys2, count, spec.ptr);
+    public static void plotShadedV(final String labelId, final short[] xs, final short[] ys1, final short[] ys2, final int count, final int flags) {
+        nPlotShadedV(labelId, xs, ys1, ys2, count, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShadedV(final String labelId, final short[] xs, final short[] ys1, final short[] ys2, final int count, final int flags, final int offset) {
+        nPlotShadedV(labelId, xs, ys1, ys2, count, flags, offset);
     }
 
     private static native void nPlotShadedV(String labelId, short[] xs, short[] ys1, short[] ys2, int count); /*MANUAL
@@ -5241,12 +6273,24 @@ public final class ImPlot {
         if (ys2 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys2, ys2, JNI_FALSE);
     */
 
-    private static native void nPlotShadedV(String labelId, short[] xs, short[] ys1, short[] ys2, int count, long spec); /*MANUAL
+    private static native void nPlotShadedV(String labelId, short[] xs, short[] ys1, short[] ys2, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys1 = obj_ys1 == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys1, JNI_FALSE);
         auto ys2 = obj_ys2 == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys2, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys1 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys1, ys1, JNI_FALSE);
+        if (ys2 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys2, ys2, JNI_FALSE);
+    */
+
+    private static native void nPlotShadedV(String labelId, short[] xs, short[] ys1, short[] ys2, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys1 = obj_ys1 == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys1, JNI_FALSE);
+        auto ys2 = obj_ys2 == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys2, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys1 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys1, ys1, JNI_FALSE);
@@ -5263,8 +6307,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShadedV(final String labelId, final int[] xs, final int[] ys1, final int[] ys2, final int count, final ImPlotSpec spec) {
-        nPlotShadedV(labelId, xs, ys1, ys2, count, spec.ptr);
+    public static void plotShadedV(final String labelId, final int[] xs, final int[] ys1, final int[] ys2, final int count, final int flags) {
+        nPlotShadedV(labelId, xs, ys1, ys2, count, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShadedV(final String labelId, final int[] xs, final int[] ys1, final int[] ys2, final int count, final int flags, final int offset) {
+        nPlotShadedV(labelId, xs, ys1, ys2, count, flags, offset);
     }
 
     private static native void nPlotShadedV(String labelId, int[] xs, int[] ys1, int[] ys2, int count); /*MANUAL
@@ -5279,12 +6330,24 @@ public final class ImPlot {
         if (ys2 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys2, ys2, JNI_FALSE);
     */
 
-    private static native void nPlotShadedV(String labelId, int[] xs, int[] ys1, int[] ys2, int count, long spec); /*MANUAL
+    private static native void nPlotShadedV(String labelId, int[] xs, int[] ys1, int[] ys2, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys1 = obj_ys1 == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys1, JNI_FALSE);
         auto ys2 = obj_ys2 == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys2, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys1 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys1, ys1, JNI_FALSE);
+        if (ys2 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys2, ys2, JNI_FALSE);
+    */
+
+    private static native void nPlotShadedV(String labelId, int[] xs, int[] ys1, int[] ys2, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys1 = obj_ys1 == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys1, JNI_FALSE);
+        auto ys2 = obj_ys2 == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys2, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys1 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys1, ys1, JNI_FALSE);
@@ -5301,8 +6364,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShadedV(final String labelId, final long[] xs, final long[] ys1, final long[] ys2, final int count, final ImPlotSpec spec) {
-        nPlotShadedV(labelId, xs, ys1, ys2, count, spec.ptr);
+    public static void plotShadedV(final String labelId, final long[] xs, final long[] ys1, final long[] ys2, final int count, final int flags) {
+        nPlotShadedV(labelId, xs, ys1, ys2, count, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShadedV(final String labelId, final long[] xs, final long[] ys1, final long[] ys2, final int count, final int flags, final int offset) {
+        nPlotShadedV(labelId, xs, ys1, ys2, count, flags, offset);
     }
 
     private static native void nPlotShadedV(String labelId, long[] xs, long[] ys1, long[] ys2, int count); /*MANUAL
@@ -5317,12 +6387,24 @@ public final class ImPlot {
         if (ys2 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys2, ys2, JNI_FALSE);
     */
 
-    private static native void nPlotShadedV(String labelId, long[] xs, long[] ys1, long[] ys2, int count, long spec); /*MANUAL
+    private static native void nPlotShadedV(String labelId, long[] xs, long[] ys1, long[] ys2, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys1 = obj_ys1 == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys1, JNI_FALSE);
         auto ys2 = obj_ys2 == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys2, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys1 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys1, ys1, JNI_FALSE);
+        if (ys2 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys2, ys2, JNI_FALSE);
+    */
+
+    private static native void nPlotShadedV(String labelId, long[] xs, long[] ys1, long[] ys2, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys1 = obj_ys1 == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys1, JNI_FALSE);
+        auto ys2 = obj_ys2 == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys2, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys1 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys1, ys1, JNI_FALSE);
@@ -5339,8 +6421,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShadedV(final String labelId, final float[] xs, final float[] ys1, final float[] ys2, final int count, final ImPlotSpec spec) {
-        nPlotShadedV(labelId, xs, ys1, ys2, count, spec.ptr);
+    public static void plotShadedV(final String labelId, final float[] xs, final float[] ys1, final float[] ys2, final int count, final int flags) {
+        nPlotShadedV(labelId, xs, ys1, ys2, count, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShadedV(final String labelId, final float[] xs, final float[] ys1, final float[] ys2, final int count, final int flags, final int offset) {
+        nPlotShadedV(labelId, xs, ys1, ys2, count, flags, offset);
     }
 
     private static native void nPlotShadedV(String labelId, float[] xs, float[] ys1, float[] ys2, int count); /*MANUAL
@@ -5355,12 +6444,24 @@ public final class ImPlot {
         if (ys2 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys2, ys2, JNI_FALSE);
     */
 
-    private static native void nPlotShadedV(String labelId, float[] xs, float[] ys1, float[] ys2, int count, long spec); /*MANUAL
+    private static native void nPlotShadedV(String labelId, float[] xs, float[] ys1, float[] ys2, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys1 = obj_ys1 == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys1, JNI_FALSE);
         auto ys2 = obj_ys2 == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys2, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys1 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys1, ys1, JNI_FALSE);
+        if (ys2 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys2, ys2, JNI_FALSE);
+    */
+
+    private static native void nPlotShadedV(String labelId, float[] xs, float[] ys1, float[] ys2, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys1 = obj_ys1 == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys1, JNI_FALSE);
+        auto ys2 = obj_ys2 == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys2, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys1 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys1, ys1, JNI_FALSE);
@@ -5377,8 +6478,15 @@ public final class ImPlot {
     /**
      * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
      */
-    public static void plotShadedV(final String labelId, final double[] xs, final double[] ys1, final double[] ys2, final int count, final ImPlotSpec spec) {
-        nPlotShadedV(labelId, xs, ys1, ys2, count, spec.ptr);
+    public static void plotShadedV(final String labelId, final double[] xs, final double[] ys1, final double[] ys2, final int count, final int flags) {
+        nPlotShadedV(labelId, xs, ys1, ys2, count, flags);
+    }
+
+    /**
+     * Plots a shaded (filled) region between two lines, or a line and a horizontal reference. Set y_ref to +/-INFINITY for infinite fill extents.
+     */
+    public static void plotShadedV(final String labelId, final double[] xs, final double[] ys1, final double[] ys2, final int count, final int flags, final int offset) {
+        nPlotShadedV(labelId, xs, ys1, ys2, count, flags, offset);
     }
 
     private static native void nPlotShadedV(String labelId, double[] xs, double[] ys1, double[] ys2, int count); /*MANUAL
@@ -5393,12 +6501,24 @@ public final class ImPlot {
         if (ys2 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys2, ys2, JNI_FALSE);
     */
 
-    private static native void nPlotShadedV(String labelId, double[] xs, double[] ys1, double[] ys2, int count, long spec); /*MANUAL
+    private static native void nPlotShadedV(String labelId, double[] xs, double[] ys1, double[] ys2, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys1 = obj_ys1 == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys1, JNI_FALSE);
         auto ys2 = obj_ys2 == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys2, JNI_FALSE);
-        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys1 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys1, ys1, JNI_FALSE);
+        if (ys2 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys2, ys2, JNI_FALSE);
+    */
+
+    private static native void nPlotShadedV(String labelId, double[] xs, double[] ys1, double[] ys2, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys1 = obj_ys1 == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys1, JNI_FALSE);
+        auto ys2 = obj_ys2 == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys2, JNI_FALSE);
+        ImPlot::PlotShaded(labelId, &xs[0], &ys1[0], &ys2[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys1 != NULL) env->ReleasePrimitiveArrayCritical(obj_ys1, ys1, JNI_FALSE);
@@ -5408,31 +6528,38 @@ public final class ImPlot {
     // values
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
     public static void plotBars(final String labelId, final short[] values) {
         nPlotBars(labelId, values);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBars(final String labelId, final short[] values, final double barSize) {
-        nPlotBars(labelId, values, barSize);
+    public static void plotBars(final String labelId, final short[] values, final double barWidth) {
+        nPlotBars(labelId, values, barWidth);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBars(final String labelId, final short[] values, final double barSize, final double shift) {
-        nPlotBars(labelId, values, barSize, shift);
+    public static void plotBars(final String labelId, final short[] values, final double barWidth, final double xstart) {
+        nPlotBars(labelId, values, barWidth, xstart);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBars(final String labelId, final short[] values, final double barSize, final double shift, final ImPlotSpec spec) {
-        nPlotBars(labelId, values, barSize, shift, spec.ptr);
+    public static void plotBars(final String labelId, final short[] values, final double barWidth, final double xstart, final int flags) {
+        nPlotBars(labelId, values, barWidth, xstart, flags);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBars(final String labelId, final short[] values, final double barWidth, final double xstart, final int flags, final int offset) {
+        nPlotBars(labelId, values, barWidth, xstart, flags, offset);
     }
 
     private static native void nPlotBars(String labelId, short[] values); /*MANUAL
@@ -5443,56 +6570,71 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBars(String labelId, short[] values, double barSize); /*MANUAL
+    private static native void nPlotBars(String labelId, short[] values, double barWidth); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], LEN(values), barSize);
+        ImPlot::PlotBars(labelId, &values[0], LEN(values), barWidth);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBars(String labelId, short[] values, double barSize, double shift); /*MANUAL
+    private static native void nPlotBars(String labelId, short[] values, double barWidth, double xstart); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], LEN(values), barSize, shift);
+        ImPlot::PlotBars(labelId, &values[0], LEN(values), barWidth, xstart);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBars(String labelId, short[] values, double barSize, double shift, long spec); /*MANUAL
+    private static native void nPlotBars(String labelId, short[] values, double barWidth, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], LEN(values), barSize, shift, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBars(labelId, &values[0], LEN(values), barWidth, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotBars(String labelId, short[] values, double barWidth, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &values[0], LEN(values), barWidth, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
     public static void plotBars(final String labelId, final int[] values) {
         nPlotBars(labelId, values);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBars(final String labelId, final int[] values, final double barSize) {
-        nPlotBars(labelId, values, barSize);
+    public static void plotBars(final String labelId, final int[] values, final double barWidth) {
+        nPlotBars(labelId, values, barWidth);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBars(final String labelId, final int[] values, final double barSize, final double shift) {
-        nPlotBars(labelId, values, barSize, shift);
+    public static void plotBars(final String labelId, final int[] values, final double barWidth, final double xstart) {
+        nPlotBars(labelId, values, barWidth, xstart);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBars(final String labelId, final int[] values, final double barSize, final double shift, final ImPlotSpec spec) {
-        nPlotBars(labelId, values, barSize, shift, spec.ptr);
+    public static void plotBars(final String labelId, final int[] values, final double barWidth, final double xstart, final int flags) {
+        nPlotBars(labelId, values, barWidth, xstart, flags);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBars(final String labelId, final int[] values, final double barWidth, final double xstart, final int flags, final int offset) {
+        nPlotBars(labelId, values, barWidth, xstart, flags, offset);
     }
 
     private static native void nPlotBars(String labelId, int[] values); /*MANUAL
@@ -5503,56 +6645,71 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBars(String labelId, int[] values, double barSize); /*MANUAL
+    private static native void nPlotBars(String labelId, int[] values, double barWidth); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], LEN(values), barSize);
+        ImPlot::PlotBars(labelId, &values[0], LEN(values), barWidth);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBars(String labelId, int[] values, double barSize, double shift); /*MANUAL
+    private static native void nPlotBars(String labelId, int[] values, double barWidth, double xstart); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], LEN(values), barSize, shift);
+        ImPlot::PlotBars(labelId, &values[0], LEN(values), barWidth, xstart);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBars(String labelId, int[] values, double barSize, double shift, long spec); /*MANUAL
+    private static native void nPlotBars(String labelId, int[] values, double barWidth, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], LEN(values), barSize, shift, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBars(labelId, &values[0], LEN(values), barWidth, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotBars(String labelId, int[] values, double barWidth, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &values[0], LEN(values), barWidth, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
     public static void plotBars(final String labelId, final long[] values) {
         nPlotBars(labelId, values);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBars(final String labelId, final long[] values, final double barSize) {
-        nPlotBars(labelId, values, barSize);
+    public static void plotBars(final String labelId, final long[] values, final double barWidth) {
+        nPlotBars(labelId, values, barWidth);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBars(final String labelId, final long[] values, final double barSize, final double shift) {
-        nPlotBars(labelId, values, barSize, shift);
+    public static void plotBars(final String labelId, final long[] values, final double barWidth, final double xstart) {
+        nPlotBars(labelId, values, barWidth, xstart);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBars(final String labelId, final long[] values, final double barSize, final double shift, final ImPlotSpec spec) {
-        nPlotBars(labelId, values, barSize, shift, spec.ptr);
+    public static void plotBars(final String labelId, final long[] values, final double barWidth, final double xstart, final int flags) {
+        nPlotBars(labelId, values, barWidth, xstart, flags);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBars(final String labelId, final long[] values, final double barWidth, final double xstart, final int flags, final int offset) {
+        nPlotBars(labelId, values, barWidth, xstart, flags, offset);
     }
 
     private static native void nPlotBars(String labelId, long[] values); /*MANUAL
@@ -5563,56 +6720,71 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBars(String labelId, long[] values, double barSize); /*MANUAL
+    private static native void nPlotBars(String labelId, long[] values, double barWidth); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], LEN(values), barSize);
+        ImPlot::PlotBars(labelId, &values[0], LEN(values), barWidth);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBars(String labelId, long[] values, double barSize, double shift); /*MANUAL
+    private static native void nPlotBars(String labelId, long[] values, double barWidth, double xstart); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], LEN(values), barSize, shift);
+        ImPlot::PlotBars(labelId, &values[0], LEN(values), barWidth, xstart);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBars(String labelId, long[] values, double barSize, double shift, long spec); /*MANUAL
+    private static native void nPlotBars(String labelId, long[] values, double barWidth, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], LEN(values), barSize, shift, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBars(labelId, &values[0], LEN(values), barWidth, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotBars(String labelId, long[] values, double barWidth, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &values[0], LEN(values), barWidth, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
     public static void plotBars(final String labelId, final float[] values) {
         nPlotBars(labelId, values);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBars(final String labelId, final float[] values, final double barSize) {
-        nPlotBars(labelId, values, barSize);
+    public static void plotBars(final String labelId, final float[] values, final double barWidth) {
+        nPlotBars(labelId, values, barWidth);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBars(final String labelId, final float[] values, final double barSize, final double shift) {
-        nPlotBars(labelId, values, barSize, shift);
+    public static void plotBars(final String labelId, final float[] values, final double barWidth, final double xstart) {
+        nPlotBars(labelId, values, barWidth, xstart);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBars(final String labelId, final float[] values, final double barSize, final double shift, final ImPlotSpec spec) {
-        nPlotBars(labelId, values, barSize, shift, spec.ptr);
+    public static void plotBars(final String labelId, final float[] values, final double barWidth, final double xstart, final int flags) {
+        nPlotBars(labelId, values, barWidth, xstart, flags);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBars(final String labelId, final float[] values, final double barWidth, final double xstart, final int flags, final int offset) {
+        nPlotBars(labelId, values, barWidth, xstart, flags, offset);
     }
 
     private static native void nPlotBars(String labelId, float[] values); /*MANUAL
@@ -5623,56 +6795,71 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBars(String labelId, float[] values, double barSize); /*MANUAL
+    private static native void nPlotBars(String labelId, float[] values, double barWidth); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], LEN(values), barSize);
+        ImPlot::PlotBars(labelId, &values[0], LEN(values), barWidth);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBars(String labelId, float[] values, double barSize, double shift); /*MANUAL
+    private static native void nPlotBars(String labelId, float[] values, double barWidth, double xstart); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], LEN(values), barSize, shift);
+        ImPlot::PlotBars(labelId, &values[0], LEN(values), barWidth, xstart);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBars(String labelId, float[] values, double barSize, double shift, long spec); /*MANUAL
+    private static native void nPlotBars(String labelId, float[] values, double barWidth, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], LEN(values), barSize, shift, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBars(labelId, &values[0], LEN(values), barWidth, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotBars(String labelId, float[] values, double barWidth, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &values[0], LEN(values), barWidth, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
     public static void plotBars(final String labelId, final double[] values) {
         nPlotBars(labelId, values);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBars(final String labelId, final double[] values, final double barSize) {
-        nPlotBars(labelId, values, barSize);
+    public static void plotBars(final String labelId, final double[] values, final double barWidth) {
+        nPlotBars(labelId, values, barWidth);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBars(final String labelId, final double[] values, final double barSize, final double shift) {
-        nPlotBars(labelId, values, barSize, shift);
+    public static void plotBars(final String labelId, final double[] values, final double barWidth, final double xstart) {
+        nPlotBars(labelId, values, barWidth, xstart);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBars(final String labelId, final double[] values, final double barSize, final double shift, final ImPlotSpec spec) {
-        nPlotBars(labelId, values, barSize, shift, spec.ptr);
+    public static void plotBars(final String labelId, final double[] values, final double barWidth, final double xstart, final int flags) {
+        nPlotBars(labelId, values, barWidth, xstart, flags);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBars(final String labelId, final double[] values, final double barWidth, final double xstart, final int flags, final int offset) {
+        nPlotBars(labelId, values, barWidth, xstart, flags, offset);
     }
 
     private static native void nPlotBars(String labelId, double[] values); /*MANUAL
@@ -5683,56 +6870,71 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBars(String labelId, double[] values, double barSize); /*MANUAL
+    private static native void nPlotBars(String labelId, double[] values, double barWidth); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], LEN(values), barSize);
+        ImPlot::PlotBars(labelId, &values[0], LEN(values), barWidth);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBars(String labelId, double[] values, double barSize, double shift); /*MANUAL
+    private static native void nPlotBars(String labelId, double[] values, double barWidth, double xstart); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], LEN(values), barSize, shift);
+        ImPlot::PlotBars(labelId, &values[0], LEN(values), barWidth, xstart);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBars(String labelId, double[] values, double barSize, double shift, long spec); /*MANUAL
+    private static native void nPlotBars(String labelId, double[] values, double barWidth, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], LEN(values), barSize, shift, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBars(labelId, &values[0], LEN(values), barWidth, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotBars(String labelId, double[] values, double barWidth, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &values[0], LEN(values), barWidth, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
     public static void plotBarsV(final String labelId, final short[] values, final int count) {
         nPlotBarsV(labelId, values, count);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final short[] values, final int count, final double barSize) {
-        nPlotBarsV(labelId, values, count, barSize);
+    public static void plotBarsV(final String labelId, final short[] values, final int count, final double barWidth) {
+        nPlotBarsV(labelId, values, count, barWidth);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final short[] values, final int count, final double barSize, final double shift) {
-        nPlotBarsV(labelId, values, count, barSize, shift);
+    public static void plotBarsV(final String labelId, final short[] values, final int count, final double barWidth, final double xstart) {
+        nPlotBarsV(labelId, values, count, barWidth, xstart);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final short[] values, final int count, final double barSize, final double shift, final ImPlotSpec spec) {
-        nPlotBarsV(labelId, values, count, barSize, shift, spec.ptr);
+    public static void plotBarsV(final String labelId, final short[] values, final int count, final double barWidth, final double xstart, final int flags) {
+        nPlotBarsV(labelId, values, count, barWidth, xstart, flags);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final short[] values, final int count, final double barWidth, final double xstart, final int flags, final int offset) {
+        nPlotBarsV(labelId, values, count, barWidth, xstart, flags, offset);
     }
 
     private static native void nPlotBarsV(String labelId, short[] values, int count); /*MANUAL
@@ -5743,56 +6945,71 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarsV(String labelId, short[] values, int count, double barSize); /*MANUAL
+    private static native void nPlotBarsV(String labelId, short[] values, int count, double barWidth); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], count, barSize);
+        ImPlot::PlotBars(labelId, &values[0], count, barWidth);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarsV(String labelId, short[] values, int count, double barSize, double shift); /*MANUAL
+    private static native void nPlotBarsV(String labelId, short[] values, int count, double barWidth, double xstart); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], count, barSize, shift);
+        ImPlot::PlotBars(labelId, &values[0], count, barWidth, xstart);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarsV(String labelId, short[] values, int count, double barSize, double shift, long spec); /*MANUAL
+    private static native void nPlotBarsV(String labelId, short[] values, int count, double barWidth, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], count, barSize, shift, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBars(labelId, &values[0], count, barWidth, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotBarsV(String labelId, short[] values, int count, double barWidth, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &values[0], count, barWidth, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
     public static void plotBarsV(final String labelId, final int[] values, final int count) {
         nPlotBarsV(labelId, values, count);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final int[] values, final int count, final double barSize) {
-        nPlotBarsV(labelId, values, count, barSize);
+    public static void plotBarsV(final String labelId, final int[] values, final int count, final double barWidth) {
+        nPlotBarsV(labelId, values, count, barWidth);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final int[] values, final int count, final double barSize, final double shift) {
-        nPlotBarsV(labelId, values, count, barSize, shift);
+    public static void plotBarsV(final String labelId, final int[] values, final int count, final double barWidth, final double xstart) {
+        nPlotBarsV(labelId, values, count, barWidth, xstart);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final int[] values, final int count, final double barSize, final double shift, final ImPlotSpec spec) {
-        nPlotBarsV(labelId, values, count, barSize, shift, spec.ptr);
+    public static void plotBarsV(final String labelId, final int[] values, final int count, final double barWidth, final double xstart, final int flags) {
+        nPlotBarsV(labelId, values, count, barWidth, xstart, flags);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final int[] values, final int count, final double barWidth, final double xstart, final int flags, final int offset) {
+        nPlotBarsV(labelId, values, count, barWidth, xstart, flags, offset);
     }
 
     private static native void nPlotBarsV(String labelId, int[] values, int count); /*MANUAL
@@ -5803,56 +7020,71 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarsV(String labelId, int[] values, int count, double barSize); /*MANUAL
+    private static native void nPlotBarsV(String labelId, int[] values, int count, double barWidth); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], count, barSize);
+        ImPlot::PlotBars(labelId, &values[0], count, barWidth);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarsV(String labelId, int[] values, int count, double barSize, double shift); /*MANUAL
+    private static native void nPlotBarsV(String labelId, int[] values, int count, double barWidth, double xstart); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], count, barSize, shift);
+        ImPlot::PlotBars(labelId, &values[0], count, barWidth, xstart);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarsV(String labelId, int[] values, int count, double barSize, double shift, long spec); /*MANUAL
+    private static native void nPlotBarsV(String labelId, int[] values, int count, double barWidth, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], count, barSize, shift, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBars(labelId, &values[0], count, barWidth, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotBarsV(String labelId, int[] values, int count, double barWidth, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &values[0], count, barWidth, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
     public static void plotBarsV(final String labelId, final long[] values, final int count) {
         nPlotBarsV(labelId, values, count);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final long[] values, final int count, final double barSize) {
-        nPlotBarsV(labelId, values, count, barSize);
+    public static void plotBarsV(final String labelId, final long[] values, final int count, final double barWidth) {
+        nPlotBarsV(labelId, values, count, barWidth);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final long[] values, final int count, final double barSize, final double shift) {
-        nPlotBarsV(labelId, values, count, barSize, shift);
+    public static void plotBarsV(final String labelId, final long[] values, final int count, final double barWidth, final double xstart) {
+        nPlotBarsV(labelId, values, count, barWidth, xstart);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final long[] values, final int count, final double barSize, final double shift, final ImPlotSpec spec) {
-        nPlotBarsV(labelId, values, count, barSize, shift, spec.ptr);
+    public static void plotBarsV(final String labelId, final long[] values, final int count, final double barWidth, final double xstart, final int flags) {
+        nPlotBarsV(labelId, values, count, barWidth, xstart, flags);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final long[] values, final int count, final double barWidth, final double xstart, final int flags, final int offset) {
+        nPlotBarsV(labelId, values, count, barWidth, xstart, flags, offset);
     }
 
     private static native void nPlotBarsV(String labelId, long[] values, int count); /*MANUAL
@@ -5863,56 +7095,71 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarsV(String labelId, long[] values, int count, double barSize); /*MANUAL
+    private static native void nPlotBarsV(String labelId, long[] values, int count, double barWidth); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], count, barSize);
+        ImPlot::PlotBars(labelId, &values[0], count, barWidth);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarsV(String labelId, long[] values, int count, double barSize, double shift); /*MANUAL
+    private static native void nPlotBarsV(String labelId, long[] values, int count, double barWidth, double xstart); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], count, barSize, shift);
+        ImPlot::PlotBars(labelId, &values[0], count, barWidth, xstart);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarsV(String labelId, long[] values, int count, double barSize, double shift, long spec); /*MANUAL
+    private static native void nPlotBarsV(String labelId, long[] values, int count, double barWidth, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], count, barSize, shift, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBars(labelId, &values[0], count, barWidth, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotBarsV(String labelId, long[] values, int count, double barWidth, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &values[0], count, barWidth, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
     public static void plotBarsV(final String labelId, final float[] values, final int count) {
         nPlotBarsV(labelId, values, count);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final float[] values, final int count, final double barSize) {
-        nPlotBarsV(labelId, values, count, barSize);
+    public static void plotBarsV(final String labelId, final float[] values, final int count, final double barWidth) {
+        nPlotBarsV(labelId, values, count, barWidth);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final float[] values, final int count, final double barSize, final double shift) {
-        nPlotBarsV(labelId, values, count, barSize, shift);
+    public static void plotBarsV(final String labelId, final float[] values, final int count, final double barWidth, final double xstart) {
+        nPlotBarsV(labelId, values, count, barWidth, xstart);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final float[] values, final int count, final double barSize, final double shift, final ImPlotSpec spec) {
-        nPlotBarsV(labelId, values, count, barSize, shift, spec.ptr);
+    public static void plotBarsV(final String labelId, final float[] values, final int count, final double barWidth, final double xstart, final int flags) {
+        nPlotBarsV(labelId, values, count, barWidth, xstart, flags);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final float[] values, final int count, final double barWidth, final double xstart, final int flags, final int offset) {
+        nPlotBarsV(labelId, values, count, barWidth, xstart, flags, offset);
     }
 
     private static native void nPlotBarsV(String labelId, float[] values, int count); /*MANUAL
@@ -5923,56 +7170,71 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarsV(String labelId, float[] values, int count, double barSize); /*MANUAL
+    private static native void nPlotBarsV(String labelId, float[] values, int count, double barWidth); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], count, barSize);
+        ImPlot::PlotBars(labelId, &values[0], count, barWidth);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarsV(String labelId, float[] values, int count, double barSize, double shift); /*MANUAL
+    private static native void nPlotBarsV(String labelId, float[] values, int count, double barWidth, double xstart); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], count, barSize, shift);
+        ImPlot::PlotBars(labelId, &values[0], count, barWidth, xstart);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarsV(String labelId, float[] values, int count, double barSize, double shift, long spec); /*MANUAL
+    private static native void nPlotBarsV(String labelId, float[] values, int count, double barWidth, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], count, barSize, shift, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBars(labelId, &values[0], count, barWidth, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotBarsV(String labelId, float[] values, int count, double barWidth, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &values[0], count, barWidth, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
     public static void plotBarsV(final String labelId, final double[] values, final int count) {
         nPlotBarsV(labelId, values, count);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final double[] values, final int count, final double barSize) {
-        nPlotBarsV(labelId, values, count, barSize);
+    public static void plotBarsV(final String labelId, final double[] values, final int count, final double barWidth) {
+        nPlotBarsV(labelId, values, count, barWidth);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final double[] values, final int count, final double barSize, final double shift) {
-        nPlotBarsV(labelId, values, count, barSize, shift);
+    public static void plotBarsV(final String labelId, final double[] values, final int count, final double barWidth, final double xstart) {
+        nPlotBarsV(labelId, values, count, barWidth, xstart);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size and #shift are in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final double[] values, final int count, final double barSize, final double shift, final ImPlotSpec spec) {
-        nPlotBarsV(labelId, values, count, barSize, shift, spec.ptr);
+    public static void plotBarsV(final String labelId, final double[] values, final int count, final double barWidth, final double xstart, final int flags) {
+        nPlotBarsV(labelId, values, count, barWidth, xstart, flags);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final double[] values, final int count, final double barWidth, final double xstart, final int flags, final int offset) {
+        nPlotBarsV(labelId, values, count, barWidth, xstart, flags, offset);
     }
 
     private static native void nPlotBarsV(String labelId, double[] values, int count); /*MANUAL
@@ -5983,26 +7245,34 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarsV(String labelId, double[] values, int count, double barSize); /*MANUAL
+    private static native void nPlotBarsV(String labelId, double[] values, int count, double barWidth); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], count, barSize);
+        ImPlot::PlotBars(labelId, &values[0], count, barWidth);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarsV(String labelId, double[] values, int count, double barSize, double shift); /*MANUAL
+    private static native void nPlotBarsV(String labelId, double[] values, int count, double barWidth, double xstart); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], count, barSize, shift);
+        ImPlot::PlotBars(labelId, &values[0], count, barWidth, xstart);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarsV(String labelId, double[] values, int count, double barSize, double shift, long spec); /*MANUAL
+    private static native void nPlotBarsV(String labelId, double[] values, int count, double barWidth, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &values[0], count, barSize, shift, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBars(labelId, &values[0], count, barWidth, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotBarsV(String labelId, double[] values, int count, double barWidth, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &values[0], count, barWidth, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -6010,17 +7280,24 @@ public final class ImPlot {
     // xs,ys
 
     /**
-     * Plots a vertical bar graph. #bar_size is in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
     public static void plotBars(final String labelId, final short[] xs, final short[] ys) {
         nPlotBars(labelId, xs, ys);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size is in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBars(final String labelId, final short[] xs, final short[] ys, final ImPlotSpec spec) {
-        nPlotBars(labelId, xs, ys, spec.ptr);
+    public static void plotBars(final String labelId, final short[] xs, final short[] ys, final int flags) {
+        nPlotBars(labelId, xs, ys, flags);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBars(final String labelId, final short[] xs, final short[] ys, final int flags, final int offset) {
+        nPlotBars(labelId, xs, ys, flags, offset);
     }
 
     private static native void nPlotBars(String labelId, short[] xs, short[] ys); /*MANUAL
@@ -6033,28 +7310,45 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotBars(String labelId, short[] xs, short[] ys, long spec); /*MANUAL
+    private static native void nPlotBars(String labelId, short[] xs, short[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), 0.67, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), 0.67, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotBars(String labelId, short[] xs, short[] ys, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), 0.67, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
     /**
-     * Plots a vertical bar graph. #bar_size is in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
     public static void plotBars(final String labelId, final int[] xs, final int[] ys) {
         nPlotBars(labelId, xs, ys);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size is in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBars(final String labelId, final int[] xs, final int[] ys, final ImPlotSpec spec) {
-        nPlotBars(labelId, xs, ys, spec.ptr);
+    public static void plotBars(final String labelId, final int[] xs, final int[] ys, final int flags) {
+        nPlotBars(labelId, xs, ys, flags);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBars(final String labelId, final int[] xs, final int[] ys, final int flags, final int offset) {
+        nPlotBars(labelId, xs, ys, flags, offset);
     }
 
     private static native void nPlotBars(String labelId, int[] xs, int[] ys); /*MANUAL
@@ -6067,28 +7361,45 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotBars(String labelId, int[] xs, int[] ys, long spec); /*MANUAL
+    private static native void nPlotBars(String labelId, int[] xs, int[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), 0.67, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), 0.67, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotBars(String labelId, int[] xs, int[] ys, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), 0.67, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
     /**
-     * Plots a vertical bar graph. #bar_size is in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
     public static void plotBars(final String labelId, final long[] xs, final long[] ys) {
         nPlotBars(labelId, xs, ys);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size is in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBars(final String labelId, final long[] xs, final long[] ys, final ImPlotSpec spec) {
-        nPlotBars(labelId, xs, ys, spec.ptr);
+    public static void plotBars(final String labelId, final long[] xs, final long[] ys, final int flags) {
+        nPlotBars(labelId, xs, ys, flags);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBars(final String labelId, final long[] xs, final long[] ys, final int flags, final int offset) {
+        nPlotBars(labelId, xs, ys, flags, offset);
     }
 
     private static native void nPlotBars(String labelId, long[] xs, long[] ys); /*MANUAL
@@ -6101,28 +7412,45 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotBars(String labelId, long[] xs, long[] ys, long spec); /*MANUAL
+    private static native void nPlotBars(String labelId, long[] xs, long[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), 0.67, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), 0.67, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotBars(String labelId, long[] xs, long[] ys, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), 0.67, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
     /**
-     * Plots a vertical bar graph. #bar_size is in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
     public static void plotBars(final String labelId, final float[] xs, final float[] ys) {
         nPlotBars(labelId, xs, ys);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size is in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBars(final String labelId, final float[] xs, final float[] ys, final ImPlotSpec spec) {
-        nPlotBars(labelId, xs, ys, spec.ptr);
+    public static void plotBars(final String labelId, final float[] xs, final float[] ys, final int flags) {
+        nPlotBars(labelId, xs, ys, flags);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBars(final String labelId, final float[] xs, final float[] ys, final int flags, final int offset) {
+        nPlotBars(labelId, xs, ys, flags, offset);
     }
 
     private static native void nPlotBars(String labelId, float[] xs, float[] ys); /*MANUAL
@@ -6135,28 +7463,45 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotBars(String labelId, float[] xs, float[] ys, long spec); /*MANUAL
+    private static native void nPlotBars(String labelId, float[] xs, float[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), 0.67, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), 0.67, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotBars(String labelId, float[] xs, float[] ys, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), 0.67, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
     /**
-     * Plots a vertical bar graph. #bar_size is in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
     public static void plotBars(final String labelId, final double[] xs, final double[] ys) {
         nPlotBars(labelId, xs, ys);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size is in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBars(final String labelId, final double[] xs, final double[] ys, final ImPlotSpec spec) {
-        nPlotBars(labelId, xs, ys, spec.ptr);
+    public static void plotBars(final String labelId, final double[] xs, final double[] ys, final int flags) {
+        nPlotBars(labelId, xs, ys, flags);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBars(final String labelId, final double[] xs, final double[] ys, final int flags, final int offset) {
+        nPlotBars(labelId, xs, ys, flags, offset);
     }
 
     private static native void nPlotBars(String labelId, double[] xs, double[] ys); /*MANUAL
@@ -6169,351 +7514,531 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotBars(String labelId, double[] xs, double[] ys, long spec); /*MANUAL
+    private static native void nPlotBars(String labelId, double[] xs, double[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), 0.67, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), 0.67, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotBars(String labelId, double[] xs, double[] ys, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), 0.67, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
     /**
-     * Plots a vertical bar graph. #bar_size is in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final short[] xs, final short[] ys, final double barSize) {
-        nPlotBarsV(labelId, xs, ys, barSize);
+    public static void plotBarsV(final String labelId, final short[] xs, final short[] ys, final double barWidth) {
+        nPlotBarsV(labelId, xs, ys, barWidth);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size is in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final short[] xs, final short[] ys, final double barSize, final ImPlotSpec spec) {
-        nPlotBarsV(labelId, xs, ys, barSize, spec.ptr);
+    public static void plotBarsV(final String labelId, final short[] xs, final short[] ys, final double barWidth, final int flags) {
+        nPlotBarsV(labelId, xs, ys, barWidth, flags);
     }
 
-    private static native void nPlotBarsV(String labelId, short[] xs, short[] ys, double barSize); /*MANUAL
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final short[] xs, final short[] ys, final double barWidth, final int flags, final int offset) {
+        nPlotBarsV(labelId, xs, ys, barWidth, flags, offset);
+    }
+
+    private static native void nPlotBarsV(String labelId, short[] xs, short[] ys, double barWidth); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barSize);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barWidth);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotBarsV(String labelId, short[] xs, short[] ys, double barSize, long spec); /*MANUAL
+    private static native void nPlotBarsV(String labelId, short[] xs, short[] ys, double barWidth, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barSize, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barWidth, flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    /**
-     * Plots a vertical bar graph. #bar_size is in X units.
-     */
-    public static void plotBarsV(final String labelId, final int[] xs, final int[] ys, final double barSize) {
-        nPlotBarsV(labelId, xs, ys, barSize);
-    }
-
-    /**
-     * Plots a vertical bar graph. #bar_size is in X units.
-     */
-    public static void plotBarsV(final String labelId, final int[] xs, final int[] ys, final double barSize, final ImPlotSpec spec) {
-        nPlotBarsV(labelId, xs, ys, barSize, spec.ptr);
-    }
-
-    private static native void nPlotBarsV(String labelId, int[] xs, int[] ys, double barSize); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barSize);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    private static native void nPlotBarsV(String labelId, int[] xs, int[] ys, double barSize, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barSize, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    /**
-     * Plots a vertical bar graph. #bar_size is in X units.
-     */
-    public static void plotBarsV(final String labelId, final long[] xs, final long[] ys, final double barSize) {
-        nPlotBarsV(labelId, xs, ys, barSize);
-    }
-
-    /**
-     * Plots a vertical bar graph. #bar_size is in X units.
-     */
-    public static void plotBarsV(final String labelId, final long[] xs, final long[] ys, final double barSize, final ImPlotSpec spec) {
-        nPlotBarsV(labelId, xs, ys, barSize, spec.ptr);
-    }
-
-    private static native void nPlotBarsV(String labelId, long[] xs, long[] ys, double barSize); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barSize);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    private static native void nPlotBarsV(String labelId, long[] xs, long[] ys, double barSize, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barSize, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    /**
-     * Plots a vertical bar graph. #bar_size is in X units.
-     */
-    public static void plotBarsV(final String labelId, final float[] xs, final float[] ys, final double barSize) {
-        nPlotBarsV(labelId, xs, ys, barSize);
-    }
-
-    /**
-     * Plots a vertical bar graph. #bar_size is in X units.
-     */
-    public static void plotBarsV(final String labelId, final float[] xs, final float[] ys, final double barSize, final ImPlotSpec spec) {
-        nPlotBarsV(labelId, xs, ys, barSize, spec.ptr);
-    }
-
-    private static native void nPlotBarsV(String labelId, float[] xs, float[] ys, double barSize); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barSize);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    private static native void nPlotBarsV(String labelId, float[] xs, float[] ys, double barSize, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barSize, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    /**
-     * Plots a vertical bar graph. #bar_size is in X units.
-     */
-    public static void plotBarsV(final String labelId, final double[] xs, final double[] ys, final double barSize) {
-        nPlotBarsV(labelId, xs, ys, barSize);
-    }
-
-    /**
-     * Plots a vertical bar graph. #bar_size is in X units.
-     */
-    public static void plotBarsV(final String labelId, final double[] xs, final double[] ys, final double barSize, final ImPlotSpec spec) {
-        nPlotBarsV(labelId, xs, ys, barSize, spec.ptr);
-    }
-
-    private static native void nPlotBarsV(String labelId, double[] xs, double[] ys, double barSize); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barSize);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    private static native void nPlotBarsV(String labelId, double[] xs, double[] ys, double barSize, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barSize, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    /**
-     * Plots a vertical bar graph. #bar_size is in X units.
-     */
-    public static void plotBarsV(final String labelId, final short[] xs, final short[] ys, final int count, final double barSize) {
-        nPlotBarsV(labelId, xs, ys, count, barSize);
-    }
-
-    /**
-     * Plots a vertical bar graph. #bar_size is in X units.
-     */
-    public static void plotBarsV(final String labelId, final short[] xs, final short[] ys, final int count, final double barSize, final ImPlotSpec spec) {
-        nPlotBarsV(labelId, xs, ys, count, barSize, spec.ptr);
-    }
-
-    private static native void nPlotBarsV(String labelId, short[] xs, short[] ys, int count, double barSize); /*MANUAL
+    private static native void nPlotBarsV(String labelId, short[] xs, short[] ys, double barWidth, int flags, int offset); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barSize);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barWidth, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotBarsV(String labelId, short[] xs, short[] ys, int count, double barSize, long spec); /*MANUAL
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final int[] xs, final int[] ys, final double barWidth) {
+        nPlotBarsV(labelId, xs, ys, barWidth);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final int[] xs, final int[] ys, final double barWidth, final int flags) {
+        nPlotBarsV(labelId, xs, ys, barWidth, flags);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final int[] xs, final int[] ys, final double barWidth, final int flags, final int offset) {
+        nPlotBarsV(labelId, xs, ys, barWidth, flags, offset);
+    }
+
+    private static native void nPlotBarsV(String labelId, int[] xs, int[] ys, double barWidth); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barWidth);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotBarsV(String labelId, int[] xs, int[] ys, double barWidth, int flags); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barWidth, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotBarsV(String labelId, int[] xs, int[] ys, double barWidth, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barWidth, flags, offset);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final long[] xs, final long[] ys, final double barWidth) {
+        nPlotBarsV(labelId, xs, ys, barWidth);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final long[] xs, final long[] ys, final double barWidth, final int flags) {
+        nPlotBarsV(labelId, xs, ys, barWidth, flags);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final long[] xs, final long[] ys, final double barWidth, final int flags, final int offset) {
+        nPlotBarsV(labelId, xs, ys, barWidth, flags, offset);
+    }
+
+    private static native void nPlotBarsV(String labelId, long[] xs, long[] ys, double barWidth); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barWidth);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotBarsV(String labelId, long[] xs, long[] ys, double barWidth, int flags); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barWidth, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotBarsV(String labelId, long[] xs, long[] ys, double barWidth, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barWidth, flags, offset);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final float[] xs, final float[] ys, final double barWidth) {
+        nPlotBarsV(labelId, xs, ys, barWidth);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final float[] xs, final float[] ys, final double barWidth, final int flags) {
+        nPlotBarsV(labelId, xs, ys, barWidth, flags);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final float[] xs, final float[] ys, final double barWidth, final int flags, final int offset) {
+        nPlotBarsV(labelId, xs, ys, barWidth, flags, offset);
+    }
+
+    private static native void nPlotBarsV(String labelId, float[] xs, float[] ys, double barWidth); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barWidth);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotBarsV(String labelId, float[] xs, float[] ys, double barWidth, int flags); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barWidth, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotBarsV(String labelId, float[] xs, float[] ys, double barWidth, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barWidth, flags, offset);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final double[] xs, final double[] ys, final double barWidth) {
+        nPlotBarsV(labelId, xs, ys, barWidth);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final double[] xs, final double[] ys, final double barWidth, final int flags) {
+        nPlotBarsV(labelId, xs, ys, barWidth, flags);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final double[] xs, final double[] ys, final double barWidth, final int flags, final int offset) {
+        nPlotBarsV(labelId, xs, ys, barWidth, flags, offset);
+    }
+
+    private static native void nPlotBarsV(String labelId, double[] xs, double[] ys, double barWidth); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barWidth);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotBarsV(String labelId, double[] xs, double[] ys, double barWidth, int flags); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barWidth, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotBarsV(String labelId, double[] xs, double[] ys, double barWidth, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], LEN(xs), barWidth, flags, offset);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final short[] xs, final short[] ys, final int count, final double barWidth) {
+        nPlotBarsV(labelId, xs, ys, count, barWidth);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final short[] xs, final short[] ys, final int count, final double barWidth, final int flags) {
+        nPlotBarsV(labelId, xs, ys, count, barWidth, flags);
+    }
+
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final short[] xs, final short[] ys, final int count, final double barWidth, final int flags, final int offset) {
+        nPlotBarsV(labelId, xs, ys, count, barWidth, flags, offset);
+    }
+
+    private static native void nPlotBarsV(String labelId, short[] xs, short[] ys, int count, double barWidth); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barSize, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barWidth);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotBarsV(String labelId, short[] xs, short[] ys, int count, double barWidth, int flags); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barWidth, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotBarsV(String labelId, short[] xs, short[] ys, int count, double barWidth, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barWidth, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
     /**
-     * Plots a vertical bar graph. #bar_size is in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final int[] xs, final int[] ys, final int count, final double barSize) {
-        nPlotBarsV(labelId, xs, ys, count, barSize);
+    public static void plotBarsV(final String labelId, final int[] xs, final int[] ys, final int count, final double barWidth) {
+        nPlotBarsV(labelId, xs, ys, count, barWidth);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size is in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final int[] xs, final int[] ys, final int count, final double barSize, final ImPlotSpec spec) {
-        nPlotBarsV(labelId, xs, ys, count, barSize, spec.ptr);
+    public static void plotBarsV(final String labelId, final int[] xs, final int[] ys, final int count, final double barWidth, final int flags) {
+        nPlotBarsV(labelId, xs, ys, count, barWidth, flags);
     }
 
-    private static native void nPlotBarsV(String labelId, int[] xs, int[] ys, int count, double barSize); /*MANUAL
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final int[] xs, final int[] ys, final int count, final double barWidth, final int flags, final int offset) {
+        nPlotBarsV(labelId, xs, ys, count, barWidth, flags, offset);
+    }
+
+    private static native void nPlotBarsV(String labelId, int[] xs, int[] ys, int count, double barWidth); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barSize);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barWidth);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotBarsV(String labelId, int[] xs, int[] ys, int count, double barSize, long spec); /*MANUAL
+    private static native void nPlotBarsV(String labelId, int[] xs, int[] ys, int count, double barWidth, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barSize, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barWidth, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotBarsV(String labelId, int[] xs, int[] ys, int count, double barWidth, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barWidth, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
     /**
-     * Plots a vertical bar graph. #bar_size is in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final long[] xs, final long[] ys, final int count, final double barSize) {
-        nPlotBarsV(labelId, xs, ys, count, barSize);
+    public static void plotBarsV(final String labelId, final long[] xs, final long[] ys, final int count, final double barWidth) {
+        nPlotBarsV(labelId, xs, ys, count, barWidth);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size is in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final long[] xs, final long[] ys, final int count, final double barSize, final ImPlotSpec spec) {
-        nPlotBarsV(labelId, xs, ys, count, barSize, spec.ptr);
+    public static void plotBarsV(final String labelId, final long[] xs, final long[] ys, final int count, final double barWidth, final int flags) {
+        nPlotBarsV(labelId, xs, ys, count, barWidth, flags);
     }
 
-    private static native void nPlotBarsV(String labelId, long[] xs, long[] ys, int count, double barSize); /*MANUAL
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final long[] xs, final long[] ys, final int count, final double barWidth, final int flags, final int offset) {
+        nPlotBarsV(labelId, xs, ys, count, barWidth, flags, offset);
+    }
+
+    private static native void nPlotBarsV(String labelId, long[] xs, long[] ys, int count, double barWidth); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barSize);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barWidth);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotBarsV(String labelId, long[] xs, long[] ys, int count, double barSize, long spec); /*MANUAL
+    private static native void nPlotBarsV(String labelId, long[] xs, long[] ys, int count, double barWidth, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barSize, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barWidth, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotBarsV(String labelId, long[] xs, long[] ys, int count, double barWidth, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barWidth, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
     /**
-     * Plots a vertical bar graph. #bar_size is in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final float[] xs, final float[] ys, final int count, final double barSize) {
-        nPlotBarsV(labelId, xs, ys, count, barSize);
+    public static void plotBarsV(final String labelId, final float[] xs, final float[] ys, final int count, final double barWidth) {
+        nPlotBarsV(labelId, xs, ys, count, barWidth);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size is in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final float[] xs, final float[] ys, final int count, final double barSize, final ImPlotSpec spec) {
-        nPlotBarsV(labelId, xs, ys, count, barSize, spec.ptr);
+    public static void plotBarsV(final String labelId, final float[] xs, final float[] ys, final int count, final double barWidth, final int flags) {
+        nPlotBarsV(labelId, xs, ys, count, barWidth, flags);
     }
 
-    private static native void nPlotBarsV(String labelId, float[] xs, float[] ys, int count, double barSize); /*MANUAL
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final float[] xs, final float[] ys, final int count, final double barWidth, final int flags, final int offset) {
+        nPlotBarsV(labelId, xs, ys, count, barWidth, flags, offset);
+    }
+
+    private static native void nPlotBarsV(String labelId, float[] xs, float[] ys, int count, double barWidth); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barSize);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barWidth);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotBarsV(String labelId, float[] xs, float[] ys, int count, double barSize, long spec); /*MANUAL
+    private static native void nPlotBarsV(String labelId, float[] xs, float[] ys, int count, double barWidth, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barSize, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barWidth, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotBarsV(String labelId, float[] xs, float[] ys, int count, double barWidth, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barWidth, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
     /**
-     * Plots a vertical bar graph. #bar_size is in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final double[] xs, final double[] ys, final int count, final double barSize) {
-        nPlotBarsV(labelId, xs, ys, count, barSize);
+    public static void plotBarsV(final String labelId, final double[] xs, final double[] ys, final int count, final double barWidth) {
+        nPlotBarsV(labelId, xs, ys, count, barWidth);
     }
 
     /**
-     * Plots a vertical bar graph. #bar_size is in X units.
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
      */
-    public static void plotBarsV(final String labelId, final double[] xs, final double[] ys, final int count, final double barSize, final ImPlotSpec spec) {
-        nPlotBarsV(labelId, xs, ys, count, barSize, spec.ptr);
+    public static void plotBarsV(final String labelId, final double[] xs, final double[] ys, final int count, final double barWidth, final int flags) {
+        nPlotBarsV(labelId, xs, ys, count, barWidth, flags);
     }
 
-    private static native void nPlotBarsV(String labelId, double[] xs, double[] ys, int count, double barSize); /*MANUAL
+    /**
+     * Plots a vertical bar graph. #bar_width and #xstart are in X units.
+     */
+    public static void plotBarsV(final String labelId, final double[] xs, final double[] ys, final int count, final double barWidth, final int flags, final int offset) {
+        nPlotBarsV(labelId, xs, ys, count, barWidth, flags, offset);
+    }
+
+    private static native void nPlotBarsV(String labelId, double[] xs, double[] ys, int count, double barWidth); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barSize);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barWidth);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotBarsV(String labelId, double[] xs, double[] ys, int count, double barSize, long spec); /*MANUAL
+    private static native void nPlotBarsV(String labelId, double[] xs, double[] ys, int count, double barWidth, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barSize, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barWidth, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotBarsV(String labelId, double[] xs, double[] ys, int count, double barWidth, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotBars(labelId, &xs[0], &ys[0], count, barWidth, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -6543,8 +8068,8 @@ public final class ImPlot {
     /**
      * Plots a group of vertical bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.
      */
-    public static void plotBarGroups(final String[] labelIds, final short[] values, final int groupCount, final double groupSize, final double shift, final ImPlotSpec spec) {
-        nPlotBarGroups(labelIds, labelIds.length, values, groupCount, groupSize, shift, spec.ptr);
+    public static void plotBarGroups(final String[] labelIds, final short[] values, final int groupCount, final double groupSize, final double shift, final int flags) {
+        nPlotBarGroups(labelIds, labelIds.length, values, groupCount, groupSize, shift, flags);
     }
 
     private static native void nPlotBarGroups(String[] obj_labelIds, int labelIdsCount, short[] values, int groupCount); /*MANUAL
@@ -6595,7 +8120,7 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarGroups(String[] obj_labelIds, int labelIdsCount, short[] values, int groupCount, double groupSize, double shift, long spec); /*MANUAL
+    private static native void nPlotBarGroups(String[] obj_labelIds, int labelIdsCount, short[] values, int groupCount, double groupSize, double shift, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -6603,7 +8128,7 @@ public final class ImPlot {
             labelIds[i] = rawStr;
         };
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBarGroups(labelIds, &values[0], LEN(values), groupCount, groupSize, shift, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBarGroups(labelIds, &values[0], LEN(values), groupCount, groupSize, shift, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -6635,8 +8160,8 @@ public final class ImPlot {
     /**
      * Plots a group of vertical bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.
      */
-    public static void plotBarGroups(final String[] labelIds, final int[] values, final int groupCount, final double groupSize, final double shift, final ImPlotSpec spec) {
-        nPlotBarGroups(labelIds, labelIds.length, values, groupCount, groupSize, shift, spec.ptr);
+    public static void plotBarGroups(final String[] labelIds, final int[] values, final int groupCount, final double groupSize, final double shift, final int flags) {
+        nPlotBarGroups(labelIds, labelIds.length, values, groupCount, groupSize, shift, flags);
     }
 
     private static native void nPlotBarGroups(String[] obj_labelIds, int labelIdsCount, int[] values, int groupCount); /*MANUAL
@@ -6687,7 +8212,7 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarGroups(String[] obj_labelIds, int labelIdsCount, int[] values, int groupCount, double groupSize, double shift, long spec); /*MANUAL
+    private static native void nPlotBarGroups(String[] obj_labelIds, int labelIdsCount, int[] values, int groupCount, double groupSize, double shift, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -6695,7 +8220,7 @@ public final class ImPlot {
             labelIds[i] = rawStr;
         };
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBarGroups(labelIds, &values[0], LEN(values), groupCount, groupSize, shift, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBarGroups(labelIds, &values[0], LEN(values), groupCount, groupSize, shift, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -6727,8 +8252,8 @@ public final class ImPlot {
     /**
      * Plots a group of vertical bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.
      */
-    public static void plotBarGroups(final String[] labelIds, final long[] values, final int groupCount, final double groupSize, final double shift, final ImPlotSpec spec) {
-        nPlotBarGroups(labelIds, labelIds.length, values, groupCount, groupSize, shift, spec.ptr);
+    public static void plotBarGroups(final String[] labelIds, final long[] values, final int groupCount, final double groupSize, final double shift, final int flags) {
+        nPlotBarGroups(labelIds, labelIds.length, values, groupCount, groupSize, shift, flags);
     }
 
     private static native void nPlotBarGroups(String[] obj_labelIds, int labelIdsCount, long[] values, int groupCount); /*MANUAL
@@ -6779,7 +8304,7 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarGroups(String[] obj_labelIds, int labelIdsCount, long[] values, int groupCount, double groupSize, double shift, long spec); /*MANUAL
+    private static native void nPlotBarGroups(String[] obj_labelIds, int labelIdsCount, long[] values, int groupCount, double groupSize, double shift, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -6787,7 +8312,7 @@ public final class ImPlot {
             labelIds[i] = rawStr;
         };
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBarGroups(labelIds, &values[0], LEN(values), groupCount, groupSize, shift, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBarGroups(labelIds, &values[0], LEN(values), groupCount, groupSize, shift, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -6819,8 +8344,8 @@ public final class ImPlot {
     /**
      * Plots a group of vertical bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.
      */
-    public static void plotBarGroups(final String[] labelIds, final float[] values, final int groupCount, final double groupSize, final double shift, final ImPlotSpec spec) {
-        nPlotBarGroups(labelIds, labelIds.length, values, groupCount, groupSize, shift, spec.ptr);
+    public static void plotBarGroups(final String[] labelIds, final float[] values, final int groupCount, final double groupSize, final double shift, final int flags) {
+        nPlotBarGroups(labelIds, labelIds.length, values, groupCount, groupSize, shift, flags);
     }
 
     private static native void nPlotBarGroups(String[] obj_labelIds, int labelIdsCount, float[] values, int groupCount); /*MANUAL
@@ -6871,7 +8396,7 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarGroups(String[] obj_labelIds, int labelIdsCount, float[] values, int groupCount, double groupSize, double shift, long spec); /*MANUAL
+    private static native void nPlotBarGroups(String[] obj_labelIds, int labelIdsCount, float[] values, int groupCount, double groupSize, double shift, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -6879,7 +8404,7 @@ public final class ImPlot {
             labelIds[i] = rawStr;
         };
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBarGroups(labelIds, &values[0], LEN(values), groupCount, groupSize, shift, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBarGroups(labelIds, &values[0], LEN(values), groupCount, groupSize, shift, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -6911,8 +8436,8 @@ public final class ImPlot {
     /**
      * Plots a group of vertical bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.
      */
-    public static void plotBarGroups(final String[] labelIds, final double[] values, final int groupCount, final double groupSize, final double shift, final ImPlotSpec spec) {
-        nPlotBarGroups(labelIds, labelIds.length, values, groupCount, groupSize, shift, spec.ptr);
+    public static void plotBarGroups(final String[] labelIds, final double[] values, final int groupCount, final double groupSize, final double shift, final int flags) {
+        nPlotBarGroups(labelIds, labelIds.length, values, groupCount, groupSize, shift, flags);
     }
 
     private static native void nPlotBarGroups(String[] obj_labelIds, int labelIdsCount, double[] values, int groupCount); /*MANUAL
@@ -6963,7 +8488,7 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarGroups(String[] obj_labelIds, int labelIdsCount, double[] values, int groupCount, double groupSize, double shift, long spec); /*MANUAL
+    private static native void nPlotBarGroups(String[] obj_labelIds, int labelIdsCount, double[] values, int groupCount, double groupSize, double shift, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -6971,7 +8496,7 @@ public final class ImPlot {
             labelIds[i] = rawStr;
         };
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBarGroups(labelIds, &values[0], LEN(values), groupCount, groupSize, shift, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBarGroups(labelIds, &values[0], LEN(values), groupCount, groupSize, shift, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -7003,8 +8528,8 @@ public final class ImPlot {
     /**
      * Plots a group of vertical bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.
      */
-    public static void plotBarGroupsV(final String[] labelIds, final short[] values, final int itemCount, final int groupCount, final double groupSize, final double shift, final ImPlotSpec spec) {
-        nPlotBarGroupsV(labelIds, labelIds.length, values, itemCount, groupCount, groupSize, shift, spec.ptr);
+    public static void plotBarGroupsV(final String[] labelIds, final short[] values, final int itemCount, final int groupCount, final double groupSize, final double shift, final int flags) {
+        nPlotBarGroupsV(labelIds, labelIds.length, values, itemCount, groupCount, groupSize, shift, flags);
     }
 
     private static native void nPlotBarGroupsV(String[] obj_labelIds, int labelIdsCount, short[] values, int itemCount, int groupCount); /*MANUAL
@@ -7055,7 +8580,7 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarGroupsV(String[] obj_labelIds, int labelIdsCount, short[] values, int itemCount, int groupCount, double groupSize, double shift, long spec); /*MANUAL
+    private static native void nPlotBarGroupsV(String[] obj_labelIds, int labelIdsCount, short[] values, int itemCount, int groupCount, double groupSize, double shift, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -7063,7 +8588,7 @@ public final class ImPlot {
             labelIds[i] = rawStr;
         };
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBarGroups(labelIds, &values[0], itemCount, groupCount, groupSize, shift, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBarGroups(labelIds, &values[0], itemCount, groupCount, groupSize, shift, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -7095,8 +8620,8 @@ public final class ImPlot {
     /**
      * Plots a group of vertical bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.
      */
-    public static void plotBarGroupsV(final String[] labelIds, final int[] values, final int itemCount, final int groupCount, final double groupSize, final double shift, final ImPlotSpec spec) {
-        nPlotBarGroupsV(labelIds, labelIds.length, values, itemCount, groupCount, groupSize, shift, spec.ptr);
+    public static void plotBarGroupsV(final String[] labelIds, final int[] values, final int itemCount, final int groupCount, final double groupSize, final double shift, final int flags) {
+        nPlotBarGroupsV(labelIds, labelIds.length, values, itemCount, groupCount, groupSize, shift, flags);
     }
 
     private static native void nPlotBarGroupsV(String[] obj_labelIds, int labelIdsCount, int[] values, int itemCount, int groupCount); /*MANUAL
@@ -7147,7 +8672,7 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarGroupsV(String[] obj_labelIds, int labelIdsCount, int[] values, int itemCount, int groupCount, double groupSize, double shift, long spec); /*MANUAL
+    private static native void nPlotBarGroupsV(String[] obj_labelIds, int labelIdsCount, int[] values, int itemCount, int groupCount, double groupSize, double shift, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -7155,7 +8680,7 @@ public final class ImPlot {
             labelIds[i] = rawStr;
         };
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBarGroups(labelIds, &values[0], itemCount, groupCount, groupSize, shift, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBarGroups(labelIds, &values[0], itemCount, groupCount, groupSize, shift, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -7187,8 +8712,8 @@ public final class ImPlot {
     /**
      * Plots a group of vertical bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.
      */
-    public static void plotBarGroupsV(final String[] labelIds, final long[] values, final int itemCount, final int groupCount, final double groupSize, final double shift, final ImPlotSpec spec) {
-        nPlotBarGroupsV(labelIds, labelIds.length, values, itemCount, groupCount, groupSize, shift, spec.ptr);
+    public static void plotBarGroupsV(final String[] labelIds, final long[] values, final int itemCount, final int groupCount, final double groupSize, final double shift, final int flags) {
+        nPlotBarGroupsV(labelIds, labelIds.length, values, itemCount, groupCount, groupSize, shift, flags);
     }
 
     private static native void nPlotBarGroupsV(String[] obj_labelIds, int labelIdsCount, long[] values, int itemCount, int groupCount); /*MANUAL
@@ -7239,7 +8764,7 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarGroupsV(String[] obj_labelIds, int labelIdsCount, long[] values, int itemCount, int groupCount, double groupSize, double shift, long spec); /*MANUAL
+    private static native void nPlotBarGroupsV(String[] obj_labelIds, int labelIdsCount, long[] values, int itemCount, int groupCount, double groupSize, double shift, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -7247,7 +8772,7 @@ public final class ImPlot {
             labelIds[i] = rawStr;
         };
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBarGroups(labelIds, &values[0], itemCount, groupCount, groupSize, shift, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBarGroups(labelIds, &values[0], itemCount, groupCount, groupSize, shift, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -7279,8 +8804,8 @@ public final class ImPlot {
     /**
      * Plots a group of vertical bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.
      */
-    public static void plotBarGroupsV(final String[] labelIds, final float[] values, final int itemCount, final int groupCount, final double groupSize, final double shift, final ImPlotSpec spec) {
-        nPlotBarGroupsV(labelIds, labelIds.length, values, itemCount, groupCount, groupSize, shift, spec.ptr);
+    public static void plotBarGroupsV(final String[] labelIds, final float[] values, final int itemCount, final int groupCount, final double groupSize, final double shift, final int flags) {
+        nPlotBarGroupsV(labelIds, labelIds.length, values, itemCount, groupCount, groupSize, shift, flags);
     }
 
     private static native void nPlotBarGroupsV(String[] obj_labelIds, int labelIdsCount, float[] values, int itemCount, int groupCount); /*MANUAL
@@ -7331,7 +8856,7 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarGroupsV(String[] obj_labelIds, int labelIdsCount, float[] values, int itemCount, int groupCount, double groupSize, double shift, long spec); /*MANUAL
+    private static native void nPlotBarGroupsV(String[] obj_labelIds, int labelIdsCount, float[] values, int itemCount, int groupCount, double groupSize, double shift, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -7339,7 +8864,7 @@ public final class ImPlot {
             labelIds[i] = rawStr;
         };
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBarGroups(labelIds, &values[0], itemCount, groupCount, groupSize, shift, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBarGroups(labelIds, &values[0], itemCount, groupCount, groupSize, shift, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -7371,8 +8896,8 @@ public final class ImPlot {
     /**
      * Plots a group of vertical bars. #values is a row-major matrix with #item_count rows and #group_count cols. #label_ids should have #item_count elements.
      */
-    public static void plotBarGroupsV(final String[] labelIds, final double[] values, final int itemCount, final int groupCount, final double groupSize, final double shift, final ImPlotSpec spec) {
-        nPlotBarGroupsV(labelIds, labelIds.length, values, itemCount, groupCount, groupSize, shift, spec.ptr);
+    public static void plotBarGroupsV(final String[] labelIds, final double[] values, final int itemCount, final int groupCount, final double groupSize, final double shift, final int flags) {
+        nPlotBarGroupsV(labelIds, labelIds.length, values, itemCount, groupCount, groupSize, shift, flags);
     }
 
     private static native void nPlotBarGroupsV(String[] obj_labelIds, int labelIdsCount, double[] values, int itemCount, int groupCount); /*MANUAL
@@ -7423,7 +8948,7 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotBarGroupsV(String[] obj_labelIds, int labelIdsCount, double[] values, int itemCount, int groupCount, double groupSize, double shift, long spec); /*MANUAL
+    private static native void nPlotBarGroupsV(String[] obj_labelIds, int labelIdsCount, double[] values, int itemCount, int groupCount, double groupSize, double shift, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -7431,7 +8956,7 @@ public final class ImPlot {
             labelIds[i] = rawStr;
         };
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotBarGroups(labelIds, &values[0], itemCount, groupCount, groupSize, shift, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotBarGroups(labelIds, &values[0], itemCount, groupCount, groupSize, shift, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -7449,8 +8974,15 @@ public final class ImPlot {
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
      */
-    public static void plotErrorBars(final String labelId, final short[] xs, final short[] ys, final short[] err, final ImPlotSpec spec) {
-        nPlotErrorBars(labelId, xs, ys, err, spec.ptr);
+    public static void plotErrorBars(final String labelId, final short[] xs, final short[] ys, final short[] err, final int flags) {
+        nPlotErrorBars(labelId, xs, ys, err, flags);
+    }
+
+    /**
+     * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
+     */
+    public static void plotErrorBars(final String labelId, final short[] xs, final short[] ys, final short[] err, final int flags, final int offset) {
+        nPlotErrorBars(labelId, xs, ys, err, flags, offset);
     }
 
     private static native void nPlotErrorBars(String labelId, short[] xs, short[] ys, short[] err); /*MANUAL
@@ -7465,12 +8997,24 @@ public final class ImPlot {
         if (err != NULL) env->ReleasePrimitiveArrayCritical(obj_err, err, JNI_FALSE);
     */
 
-    private static native void nPlotErrorBars(String labelId, short[] xs, short[] ys, short[] err, long spec); /*MANUAL
+    private static native void nPlotErrorBars(String labelId, short[] xs, short[] ys, short[] err, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
         auto err = obj_err == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_err, JNI_FALSE);
-        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], LEN(xs), flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+        if (err != NULL) env->ReleasePrimitiveArrayCritical(obj_err, err, JNI_FALSE);
+    */
+
+    private static native void nPlotErrorBars(String labelId, short[] xs, short[] ys, short[] err, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        auto err = obj_err == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_err, JNI_FALSE);
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], LEN(xs), flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -7487,8 +9031,15 @@ public final class ImPlot {
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
      */
-    public static void plotErrorBars(final String labelId, final int[] xs, final int[] ys, final int[] err, final ImPlotSpec spec) {
-        nPlotErrorBars(labelId, xs, ys, err, spec.ptr);
+    public static void plotErrorBars(final String labelId, final int[] xs, final int[] ys, final int[] err, final int flags) {
+        nPlotErrorBars(labelId, xs, ys, err, flags);
+    }
+
+    /**
+     * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
+     */
+    public static void plotErrorBars(final String labelId, final int[] xs, final int[] ys, final int[] err, final int flags, final int offset) {
+        nPlotErrorBars(labelId, xs, ys, err, flags, offset);
     }
 
     private static native void nPlotErrorBars(String labelId, int[] xs, int[] ys, int[] err); /*MANUAL
@@ -7503,12 +9054,24 @@ public final class ImPlot {
         if (err != NULL) env->ReleasePrimitiveArrayCritical(obj_err, err, JNI_FALSE);
     */
 
-    private static native void nPlotErrorBars(String labelId, int[] xs, int[] ys, int[] err, long spec); /*MANUAL
+    private static native void nPlotErrorBars(String labelId, int[] xs, int[] ys, int[] err, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
         auto err = obj_err == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_err, JNI_FALSE);
-        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], LEN(xs), flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+        if (err != NULL) env->ReleasePrimitiveArrayCritical(obj_err, err, JNI_FALSE);
+    */
+
+    private static native void nPlotErrorBars(String labelId, int[] xs, int[] ys, int[] err, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        auto err = obj_err == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_err, JNI_FALSE);
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], LEN(xs), flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -7525,8 +9088,15 @@ public final class ImPlot {
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
      */
-    public static void plotErrorBars(final String labelId, final long[] xs, final long[] ys, final long[] err, final ImPlotSpec spec) {
-        nPlotErrorBars(labelId, xs, ys, err, spec.ptr);
+    public static void plotErrorBars(final String labelId, final long[] xs, final long[] ys, final long[] err, final int flags) {
+        nPlotErrorBars(labelId, xs, ys, err, flags);
+    }
+
+    /**
+     * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
+     */
+    public static void plotErrorBars(final String labelId, final long[] xs, final long[] ys, final long[] err, final int flags, final int offset) {
+        nPlotErrorBars(labelId, xs, ys, err, flags, offset);
     }
 
     private static native void nPlotErrorBars(String labelId, long[] xs, long[] ys, long[] err); /*MANUAL
@@ -7541,12 +9111,24 @@ public final class ImPlot {
         if (err != NULL) env->ReleasePrimitiveArrayCritical(obj_err, err, JNI_FALSE);
     */
 
-    private static native void nPlotErrorBars(String labelId, long[] xs, long[] ys, long[] err, long spec); /*MANUAL
+    private static native void nPlotErrorBars(String labelId, long[] xs, long[] ys, long[] err, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
         auto err = obj_err == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_err, JNI_FALSE);
-        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], LEN(xs), flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+        if (err != NULL) env->ReleasePrimitiveArrayCritical(obj_err, err, JNI_FALSE);
+    */
+
+    private static native void nPlotErrorBars(String labelId, long[] xs, long[] ys, long[] err, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        auto err = obj_err == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_err, JNI_FALSE);
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], LEN(xs), flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -7563,8 +9145,15 @@ public final class ImPlot {
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
      */
-    public static void plotErrorBars(final String labelId, final float[] xs, final float[] ys, final float[] err, final ImPlotSpec spec) {
-        nPlotErrorBars(labelId, xs, ys, err, spec.ptr);
+    public static void plotErrorBars(final String labelId, final float[] xs, final float[] ys, final float[] err, final int flags) {
+        nPlotErrorBars(labelId, xs, ys, err, flags);
+    }
+
+    /**
+     * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
+     */
+    public static void plotErrorBars(final String labelId, final float[] xs, final float[] ys, final float[] err, final int flags, final int offset) {
+        nPlotErrorBars(labelId, xs, ys, err, flags, offset);
     }
 
     private static native void nPlotErrorBars(String labelId, float[] xs, float[] ys, float[] err); /*MANUAL
@@ -7579,12 +9168,24 @@ public final class ImPlot {
         if (err != NULL) env->ReleasePrimitiveArrayCritical(obj_err, err, JNI_FALSE);
     */
 
-    private static native void nPlotErrorBars(String labelId, float[] xs, float[] ys, float[] err, long spec); /*MANUAL
+    private static native void nPlotErrorBars(String labelId, float[] xs, float[] ys, float[] err, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
         auto err = obj_err == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_err, JNI_FALSE);
-        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], LEN(xs), flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+        if (err != NULL) env->ReleasePrimitiveArrayCritical(obj_err, err, JNI_FALSE);
+    */
+
+    private static native void nPlotErrorBars(String labelId, float[] xs, float[] ys, float[] err, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        auto err = obj_err == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_err, JNI_FALSE);
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], LEN(xs), flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -7601,8 +9202,15 @@ public final class ImPlot {
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
      */
-    public static void plotErrorBars(final String labelId, final double[] xs, final double[] ys, final double[] err, final ImPlotSpec spec) {
-        nPlotErrorBars(labelId, xs, ys, err, spec.ptr);
+    public static void plotErrorBars(final String labelId, final double[] xs, final double[] ys, final double[] err, final int flags) {
+        nPlotErrorBars(labelId, xs, ys, err, flags);
+    }
+
+    /**
+     * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
+     */
+    public static void plotErrorBars(final String labelId, final double[] xs, final double[] ys, final double[] err, final int flags, final int offset) {
+        nPlotErrorBars(labelId, xs, ys, err, flags, offset);
     }
 
     private static native void nPlotErrorBars(String labelId, double[] xs, double[] ys, double[] err); /*MANUAL
@@ -7617,12 +9225,24 @@ public final class ImPlot {
         if (err != NULL) env->ReleasePrimitiveArrayCritical(obj_err, err, JNI_FALSE);
     */
 
-    private static native void nPlotErrorBars(String labelId, double[] xs, double[] ys, double[] err, long spec); /*MANUAL
+    private static native void nPlotErrorBars(String labelId, double[] xs, double[] ys, double[] err, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
         auto err = obj_err == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_err, JNI_FALSE);
-        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], LEN(xs), flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+        if (err != NULL) env->ReleasePrimitiveArrayCritical(obj_err, err, JNI_FALSE);
+    */
+
+    private static native void nPlotErrorBars(String labelId, double[] xs, double[] ys, double[] err, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        auto err = obj_err == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_err, JNI_FALSE);
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], LEN(xs), flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -7639,8 +9259,15 @@ public final class ImPlot {
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
      */
-    public static void plotErrorBarsV(final String labelId, final short[] xs, final short[] ys, final short[] err, final int count, final ImPlotSpec spec) {
-        nPlotErrorBarsV(labelId, xs, ys, err, count, spec.ptr);
+    public static void plotErrorBarsV(final String labelId, final short[] xs, final short[] ys, final short[] err, final int count, final int flags) {
+        nPlotErrorBarsV(labelId, xs, ys, err, count, flags);
+    }
+
+    /**
+     * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
+     */
+    public static void plotErrorBarsV(final String labelId, final short[] xs, final short[] ys, final short[] err, final int count, final int flags, final int offset) {
+        nPlotErrorBarsV(labelId, xs, ys, err, count, flags, offset);
     }
 
     private static native void nPlotErrorBarsV(String labelId, short[] xs, short[] ys, short[] err, int count); /*MANUAL
@@ -7655,12 +9282,24 @@ public final class ImPlot {
         if (err != NULL) env->ReleasePrimitiveArrayCritical(obj_err, err, JNI_FALSE);
     */
 
-    private static native void nPlotErrorBarsV(String labelId, short[] xs, short[] ys, short[] err, int count, long spec); /*MANUAL
+    private static native void nPlotErrorBarsV(String labelId, short[] xs, short[] ys, short[] err, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
         auto err = obj_err == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_err, JNI_FALSE);
-        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+        if (err != NULL) env->ReleasePrimitiveArrayCritical(obj_err, err, JNI_FALSE);
+    */
+
+    private static native void nPlotErrorBarsV(String labelId, short[] xs, short[] ys, short[] err, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        auto err = obj_err == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_err, JNI_FALSE);
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -7677,8 +9316,15 @@ public final class ImPlot {
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
      */
-    public static void plotErrorBarsV(final String labelId, final int[] xs, final int[] ys, final int[] err, final int count, final ImPlotSpec spec) {
-        nPlotErrorBarsV(labelId, xs, ys, err, count, spec.ptr);
+    public static void plotErrorBarsV(final String labelId, final int[] xs, final int[] ys, final int[] err, final int count, final int flags) {
+        nPlotErrorBarsV(labelId, xs, ys, err, count, flags);
+    }
+
+    /**
+     * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
+     */
+    public static void plotErrorBarsV(final String labelId, final int[] xs, final int[] ys, final int[] err, final int count, final int flags, final int offset) {
+        nPlotErrorBarsV(labelId, xs, ys, err, count, flags, offset);
     }
 
     private static native void nPlotErrorBarsV(String labelId, int[] xs, int[] ys, int[] err, int count); /*MANUAL
@@ -7693,12 +9339,24 @@ public final class ImPlot {
         if (err != NULL) env->ReleasePrimitiveArrayCritical(obj_err, err, JNI_FALSE);
     */
 
-    private static native void nPlotErrorBarsV(String labelId, int[] xs, int[] ys, int[] err, int count, long spec); /*MANUAL
+    private static native void nPlotErrorBarsV(String labelId, int[] xs, int[] ys, int[] err, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
         auto err = obj_err == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_err, JNI_FALSE);
-        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+        if (err != NULL) env->ReleasePrimitiveArrayCritical(obj_err, err, JNI_FALSE);
+    */
+
+    private static native void nPlotErrorBarsV(String labelId, int[] xs, int[] ys, int[] err, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        auto err = obj_err == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_err, JNI_FALSE);
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -7715,8 +9373,15 @@ public final class ImPlot {
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
      */
-    public static void plotErrorBarsV(final String labelId, final long[] xs, final long[] ys, final long[] err, final int count, final ImPlotSpec spec) {
-        nPlotErrorBarsV(labelId, xs, ys, err, count, spec.ptr);
+    public static void plotErrorBarsV(final String labelId, final long[] xs, final long[] ys, final long[] err, final int count, final int flags) {
+        nPlotErrorBarsV(labelId, xs, ys, err, count, flags);
+    }
+
+    /**
+     * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
+     */
+    public static void plotErrorBarsV(final String labelId, final long[] xs, final long[] ys, final long[] err, final int count, final int flags, final int offset) {
+        nPlotErrorBarsV(labelId, xs, ys, err, count, flags, offset);
     }
 
     private static native void nPlotErrorBarsV(String labelId, long[] xs, long[] ys, long[] err, int count); /*MANUAL
@@ -7731,12 +9396,24 @@ public final class ImPlot {
         if (err != NULL) env->ReleasePrimitiveArrayCritical(obj_err, err, JNI_FALSE);
     */
 
-    private static native void nPlotErrorBarsV(String labelId, long[] xs, long[] ys, long[] err, int count, long spec); /*MANUAL
+    private static native void nPlotErrorBarsV(String labelId, long[] xs, long[] ys, long[] err, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
         auto err = obj_err == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_err, JNI_FALSE);
-        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+        if (err != NULL) env->ReleasePrimitiveArrayCritical(obj_err, err, JNI_FALSE);
+    */
+
+    private static native void nPlotErrorBarsV(String labelId, long[] xs, long[] ys, long[] err, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        auto err = obj_err == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_err, JNI_FALSE);
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -7753,8 +9430,15 @@ public final class ImPlot {
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
      */
-    public static void plotErrorBarsV(final String labelId, final float[] xs, final float[] ys, final float[] err, final int count, final ImPlotSpec spec) {
-        nPlotErrorBarsV(labelId, xs, ys, err, count, spec.ptr);
+    public static void plotErrorBarsV(final String labelId, final float[] xs, final float[] ys, final float[] err, final int count, final int flags) {
+        nPlotErrorBarsV(labelId, xs, ys, err, count, flags);
+    }
+
+    /**
+     * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
+     */
+    public static void plotErrorBarsV(final String labelId, final float[] xs, final float[] ys, final float[] err, final int count, final int flags, final int offset) {
+        nPlotErrorBarsV(labelId, xs, ys, err, count, flags, offset);
     }
 
     private static native void nPlotErrorBarsV(String labelId, float[] xs, float[] ys, float[] err, int count); /*MANUAL
@@ -7769,12 +9453,24 @@ public final class ImPlot {
         if (err != NULL) env->ReleasePrimitiveArrayCritical(obj_err, err, JNI_FALSE);
     */
 
-    private static native void nPlotErrorBarsV(String labelId, float[] xs, float[] ys, float[] err, int count, long spec); /*MANUAL
+    private static native void nPlotErrorBarsV(String labelId, float[] xs, float[] ys, float[] err, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
         auto err = obj_err == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_err, JNI_FALSE);
-        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+        if (err != NULL) env->ReleasePrimitiveArrayCritical(obj_err, err, JNI_FALSE);
+    */
+
+    private static native void nPlotErrorBarsV(String labelId, float[] xs, float[] ys, float[] err, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        auto err = obj_err == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_err, JNI_FALSE);
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -7791,8 +9487,15 @@ public final class ImPlot {
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
      */
-    public static void plotErrorBarsV(final String labelId, final double[] xs, final double[] ys, final double[] err, final int count, final ImPlotSpec spec) {
-        nPlotErrorBarsV(labelId, xs, ys, err, count, spec.ptr);
+    public static void plotErrorBarsV(final String labelId, final double[] xs, final double[] ys, final double[] err, final int count, final int flags) {
+        nPlotErrorBarsV(labelId, xs, ys, err, count, flags);
+    }
+
+    /**
+     * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
+     */
+    public static void plotErrorBarsV(final String labelId, final double[] xs, final double[] ys, final double[] err, final int count, final int flags, final int offset) {
+        nPlotErrorBarsV(labelId, xs, ys, err, count, flags, offset);
     }
 
     private static native void nPlotErrorBarsV(String labelId, double[] xs, double[] ys, double[] err, int count); /*MANUAL
@@ -7807,12 +9510,24 @@ public final class ImPlot {
         if (err != NULL) env->ReleasePrimitiveArrayCritical(obj_err, err, JNI_FALSE);
     */
 
-    private static native void nPlotErrorBarsV(String labelId, double[] xs, double[] ys, double[] err, int count, long spec); /*MANUAL
+    private static native void nPlotErrorBarsV(String labelId, double[] xs, double[] ys, double[] err, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
         auto err = obj_err == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_err, JNI_FALSE);
-        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+        if (err != NULL) env->ReleasePrimitiveArrayCritical(obj_err, err, JNI_FALSE);
+    */
+
+    private static native void nPlotErrorBarsV(String labelId, double[] xs, double[] ys, double[] err, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        auto err = obj_err == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_err, JNI_FALSE);
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &err[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -7829,8 +9544,15 @@ public final class ImPlot {
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
      */
-    public static void plotErrorBars(final String labelId, final short[] xs, final short[] ys, final short[] neg, final short[] pos, final ImPlotSpec spec) {
-        nPlotErrorBars(labelId, xs, ys, neg, pos, spec.ptr);
+    public static void plotErrorBars(final String labelId, final short[] xs, final short[] ys, final short[] neg, final short[] pos, final int flags) {
+        nPlotErrorBars(labelId, xs, ys, neg, pos, flags);
+    }
+
+    /**
+     * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
+     */
+    public static void plotErrorBars(final String labelId, final short[] xs, final short[] ys, final short[] neg, final short[] pos, final int flags, final int offset) {
+        nPlotErrorBars(labelId, xs, ys, neg, pos, flags, offset);
     }
 
     private static native void nPlotErrorBars(String labelId, short[] xs, short[] ys, short[] neg, short[] pos); /*MANUAL
@@ -7847,13 +9569,27 @@ public final class ImPlot {
         if (pos != NULL) env->ReleasePrimitiveArrayCritical(obj_pos, pos, JNI_FALSE);
     */
 
-    private static native void nPlotErrorBars(String labelId, short[] xs, short[] ys, short[] neg, short[] pos, long spec); /*MANUAL
+    private static native void nPlotErrorBars(String labelId, short[] xs, short[] ys, short[] neg, short[] pos, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
         auto neg = obj_neg == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_neg, JNI_FALSE);
         auto pos = obj_pos == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_pos, JNI_FALSE);
-        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], LEN(xs), flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+        if (neg != NULL) env->ReleasePrimitiveArrayCritical(obj_neg, neg, JNI_FALSE);
+        if (pos != NULL) env->ReleasePrimitiveArrayCritical(obj_pos, pos, JNI_FALSE);
+    */
+
+    private static native void nPlotErrorBars(String labelId, short[] xs, short[] ys, short[] neg, short[] pos, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        auto neg = obj_neg == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_neg, JNI_FALSE);
+        auto pos = obj_pos == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_pos, JNI_FALSE);
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], LEN(xs), flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -7871,8 +9607,15 @@ public final class ImPlot {
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
      */
-    public static void plotErrorBars(final String labelId, final int[] xs, final int[] ys, final int[] neg, final int[] pos, final ImPlotSpec spec) {
-        nPlotErrorBars(labelId, xs, ys, neg, pos, spec.ptr);
+    public static void plotErrorBars(final String labelId, final int[] xs, final int[] ys, final int[] neg, final int[] pos, final int flags) {
+        nPlotErrorBars(labelId, xs, ys, neg, pos, flags);
+    }
+
+    /**
+     * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
+     */
+    public static void plotErrorBars(final String labelId, final int[] xs, final int[] ys, final int[] neg, final int[] pos, final int flags, final int offset) {
+        nPlotErrorBars(labelId, xs, ys, neg, pos, flags, offset);
     }
 
     private static native void nPlotErrorBars(String labelId, int[] xs, int[] ys, int[] neg, int[] pos); /*MANUAL
@@ -7889,13 +9632,27 @@ public final class ImPlot {
         if (pos != NULL) env->ReleasePrimitiveArrayCritical(obj_pos, pos, JNI_FALSE);
     */
 
-    private static native void nPlotErrorBars(String labelId, int[] xs, int[] ys, int[] neg, int[] pos, long spec); /*MANUAL
+    private static native void nPlotErrorBars(String labelId, int[] xs, int[] ys, int[] neg, int[] pos, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
         auto neg = obj_neg == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_neg, JNI_FALSE);
         auto pos = obj_pos == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_pos, JNI_FALSE);
-        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], LEN(xs), flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+        if (neg != NULL) env->ReleasePrimitiveArrayCritical(obj_neg, neg, JNI_FALSE);
+        if (pos != NULL) env->ReleasePrimitiveArrayCritical(obj_pos, pos, JNI_FALSE);
+    */
+
+    private static native void nPlotErrorBars(String labelId, int[] xs, int[] ys, int[] neg, int[] pos, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        auto neg = obj_neg == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_neg, JNI_FALSE);
+        auto pos = obj_pos == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_pos, JNI_FALSE);
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], LEN(xs), flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -7913,8 +9670,15 @@ public final class ImPlot {
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
      */
-    public static void plotErrorBars(final String labelId, final long[] xs, final long[] ys, final long[] neg, final long[] pos, final ImPlotSpec spec) {
-        nPlotErrorBars(labelId, xs, ys, neg, pos, spec.ptr);
+    public static void plotErrorBars(final String labelId, final long[] xs, final long[] ys, final long[] neg, final long[] pos, final int flags) {
+        nPlotErrorBars(labelId, xs, ys, neg, pos, flags);
+    }
+
+    /**
+     * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
+     */
+    public static void plotErrorBars(final String labelId, final long[] xs, final long[] ys, final long[] neg, final long[] pos, final int flags, final int offset) {
+        nPlotErrorBars(labelId, xs, ys, neg, pos, flags, offset);
     }
 
     private static native void nPlotErrorBars(String labelId, long[] xs, long[] ys, long[] neg, long[] pos); /*MANUAL
@@ -7931,13 +9695,27 @@ public final class ImPlot {
         if (pos != NULL) env->ReleasePrimitiveArrayCritical(obj_pos, pos, JNI_FALSE);
     */
 
-    private static native void nPlotErrorBars(String labelId, long[] xs, long[] ys, long[] neg, long[] pos, long spec); /*MANUAL
+    private static native void nPlotErrorBars(String labelId, long[] xs, long[] ys, long[] neg, long[] pos, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
         auto neg = obj_neg == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_neg, JNI_FALSE);
         auto pos = obj_pos == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_pos, JNI_FALSE);
-        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], LEN(xs), flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+        if (neg != NULL) env->ReleasePrimitiveArrayCritical(obj_neg, neg, JNI_FALSE);
+        if (pos != NULL) env->ReleasePrimitiveArrayCritical(obj_pos, pos, JNI_FALSE);
+    */
+
+    private static native void nPlotErrorBars(String labelId, long[] xs, long[] ys, long[] neg, long[] pos, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        auto neg = obj_neg == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_neg, JNI_FALSE);
+        auto pos = obj_pos == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_pos, JNI_FALSE);
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], LEN(xs), flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -7955,8 +9733,15 @@ public final class ImPlot {
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
      */
-    public static void plotErrorBars(final String labelId, final float[] xs, final float[] ys, final float[] neg, final float[] pos, final ImPlotSpec spec) {
-        nPlotErrorBars(labelId, xs, ys, neg, pos, spec.ptr);
+    public static void plotErrorBars(final String labelId, final float[] xs, final float[] ys, final float[] neg, final float[] pos, final int flags) {
+        nPlotErrorBars(labelId, xs, ys, neg, pos, flags);
+    }
+
+    /**
+     * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
+     */
+    public static void plotErrorBars(final String labelId, final float[] xs, final float[] ys, final float[] neg, final float[] pos, final int flags, final int offset) {
+        nPlotErrorBars(labelId, xs, ys, neg, pos, flags, offset);
     }
 
     private static native void nPlotErrorBars(String labelId, float[] xs, float[] ys, float[] neg, float[] pos); /*MANUAL
@@ -7973,13 +9758,27 @@ public final class ImPlot {
         if (pos != NULL) env->ReleasePrimitiveArrayCritical(obj_pos, pos, JNI_FALSE);
     */
 
-    private static native void nPlotErrorBars(String labelId, float[] xs, float[] ys, float[] neg, float[] pos, long spec); /*MANUAL
+    private static native void nPlotErrorBars(String labelId, float[] xs, float[] ys, float[] neg, float[] pos, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
         auto neg = obj_neg == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_neg, JNI_FALSE);
         auto pos = obj_pos == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_pos, JNI_FALSE);
-        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], LEN(xs), flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+        if (neg != NULL) env->ReleasePrimitiveArrayCritical(obj_neg, neg, JNI_FALSE);
+        if (pos != NULL) env->ReleasePrimitiveArrayCritical(obj_pos, pos, JNI_FALSE);
+    */
+
+    private static native void nPlotErrorBars(String labelId, float[] xs, float[] ys, float[] neg, float[] pos, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        auto neg = obj_neg == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_neg, JNI_FALSE);
+        auto pos = obj_pos == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_pos, JNI_FALSE);
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], LEN(xs), flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -7997,8 +9796,15 @@ public final class ImPlot {
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
      */
-    public static void plotErrorBars(final String labelId, final double[] xs, final double[] ys, final double[] neg, final double[] pos, final ImPlotSpec spec) {
-        nPlotErrorBars(labelId, xs, ys, neg, pos, spec.ptr);
+    public static void plotErrorBars(final String labelId, final double[] xs, final double[] ys, final double[] neg, final double[] pos, final int flags) {
+        nPlotErrorBars(labelId, xs, ys, neg, pos, flags);
+    }
+
+    /**
+     * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
+     */
+    public static void plotErrorBars(final String labelId, final double[] xs, final double[] ys, final double[] neg, final double[] pos, final int flags, final int offset) {
+        nPlotErrorBars(labelId, xs, ys, neg, pos, flags, offset);
     }
 
     private static native void nPlotErrorBars(String labelId, double[] xs, double[] ys, double[] neg, double[] pos); /*MANUAL
@@ -8015,13 +9821,27 @@ public final class ImPlot {
         if (pos != NULL) env->ReleasePrimitiveArrayCritical(obj_pos, pos, JNI_FALSE);
     */
 
-    private static native void nPlotErrorBars(String labelId, double[] xs, double[] ys, double[] neg, double[] pos, long spec); /*MANUAL
+    private static native void nPlotErrorBars(String labelId, double[] xs, double[] ys, double[] neg, double[] pos, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
         auto neg = obj_neg == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_neg, JNI_FALSE);
         auto pos = obj_pos == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_pos, JNI_FALSE);
-        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], LEN(xs), flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+        if (neg != NULL) env->ReleasePrimitiveArrayCritical(obj_neg, neg, JNI_FALSE);
+        if (pos != NULL) env->ReleasePrimitiveArrayCritical(obj_pos, pos, JNI_FALSE);
+    */
+
+    private static native void nPlotErrorBars(String labelId, double[] xs, double[] ys, double[] neg, double[] pos, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        auto neg = obj_neg == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_neg, JNI_FALSE);
+        auto pos = obj_pos == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_pos, JNI_FALSE);
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], LEN(xs), flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -8039,8 +9859,15 @@ public final class ImPlot {
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
      */
-    public static void plotErrorBarsV(final String labelId, final short[] xs, final short[] ys, final short[] neg, final short[] pos, final int count, final ImPlotSpec spec) {
-        nPlotErrorBarsV(labelId, xs, ys, neg, pos, count, spec.ptr);
+    public static void plotErrorBarsV(final String labelId, final short[] xs, final short[] ys, final short[] neg, final short[] pos, final int count, final int flags) {
+        nPlotErrorBarsV(labelId, xs, ys, neg, pos, count, flags);
+    }
+
+    /**
+     * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
+     */
+    public static void plotErrorBarsV(final String labelId, final short[] xs, final short[] ys, final short[] neg, final short[] pos, final int count, final int flags, final int offset) {
+        nPlotErrorBarsV(labelId, xs, ys, neg, pos, count, flags, offset);
     }
 
     private static native void nPlotErrorBarsV(String labelId, short[] xs, short[] ys, short[] neg, short[] pos, int count); /*MANUAL
@@ -8057,13 +9884,27 @@ public final class ImPlot {
         if (pos != NULL) env->ReleasePrimitiveArrayCritical(obj_pos, pos, JNI_FALSE);
     */
 
-    private static native void nPlotErrorBarsV(String labelId, short[] xs, short[] ys, short[] neg, short[] pos, int count, long spec); /*MANUAL
+    private static native void nPlotErrorBarsV(String labelId, short[] xs, short[] ys, short[] neg, short[] pos, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
         auto neg = obj_neg == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_neg, JNI_FALSE);
         auto pos = obj_pos == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_pos, JNI_FALSE);
-        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+        if (neg != NULL) env->ReleasePrimitiveArrayCritical(obj_neg, neg, JNI_FALSE);
+        if (pos != NULL) env->ReleasePrimitiveArrayCritical(obj_pos, pos, JNI_FALSE);
+    */
+
+    private static native void nPlotErrorBarsV(String labelId, short[] xs, short[] ys, short[] neg, short[] pos, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        auto neg = obj_neg == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_neg, JNI_FALSE);
+        auto pos = obj_pos == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_pos, JNI_FALSE);
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -8081,8 +9922,15 @@ public final class ImPlot {
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
      */
-    public static void plotErrorBarsV(final String labelId, final int[] xs, final int[] ys, final int[] neg, final int[] pos, final int count, final ImPlotSpec spec) {
-        nPlotErrorBarsV(labelId, xs, ys, neg, pos, count, spec.ptr);
+    public static void plotErrorBarsV(final String labelId, final int[] xs, final int[] ys, final int[] neg, final int[] pos, final int count, final int flags) {
+        nPlotErrorBarsV(labelId, xs, ys, neg, pos, count, flags);
+    }
+
+    /**
+     * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
+     */
+    public static void plotErrorBarsV(final String labelId, final int[] xs, final int[] ys, final int[] neg, final int[] pos, final int count, final int flags, final int offset) {
+        nPlotErrorBarsV(labelId, xs, ys, neg, pos, count, flags, offset);
     }
 
     private static native void nPlotErrorBarsV(String labelId, int[] xs, int[] ys, int[] neg, int[] pos, int count); /*MANUAL
@@ -8099,13 +9947,27 @@ public final class ImPlot {
         if (pos != NULL) env->ReleasePrimitiveArrayCritical(obj_pos, pos, JNI_FALSE);
     */
 
-    private static native void nPlotErrorBarsV(String labelId, int[] xs, int[] ys, int[] neg, int[] pos, int count, long spec); /*MANUAL
+    private static native void nPlotErrorBarsV(String labelId, int[] xs, int[] ys, int[] neg, int[] pos, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
         auto neg = obj_neg == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_neg, JNI_FALSE);
         auto pos = obj_pos == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_pos, JNI_FALSE);
-        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+        if (neg != NULL) env->ReleasePrimitiveArrayCritical(obj_neg, neg, JNI_FALSE);
+        if (pos != NULL) env->ReleasePrimitiveArrayCritical(obj_pos, pos, JNI_FALSE);
+    */
+
+    private static native void nPlotErrorBarsV(String labelId, int[] xs, int[] ys, int[] neg, int[] pos, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        auto neg = obj_neg == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_neg, JNI_FALSE);
+        auto pos = obj_pos == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_pos, JNI_FALSE);
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -8123,8 +9985,15 @@ public final class ImPlot {
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
      */
-    public static void plotErrorBarsV(final String labelId, final long[] xs, final long[] ys, final long[] neg, final long[] pos, final int count, final ImPlotSpec spec) {
-        nPlotErrorBarsV(labelId, xs, ys, neg, pos, count, spec.ptr);
+    public static void plotErrorBarsV(final String labelId, final long[] xs, final long[] ys, final long[] neg, final long[] pos, final int count, final int flags) {
+        nPlotErrorBarsV(labelId, xs, ys, neg, pos, count, flags);
+    }
+
+    /**
+     * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
+     */
+    public static void plotErrorBarsV(final String labelId, final long[] xs, final long[] ys, final long[] neg, final long[] pos, final int count, final int flags, final int offset) {
+        nPlotErrorBarsV(labelId, xs, ys, neg, pos, count, flags, offset);
     }
 
     private static native void nPlotErrorBarsV(String labelId, long[] xs, long[] ys, long[] neg, long[] pos, int count); /*MANUAL
@@ -8141,13 +10010,27 @@ public final class ImPlot {
         if (pos != NULL) env->ReleasePrimitiveArrayCritical(obj_pos, pos, JNI_FALSE);
     */
 
-    private static native void nPlotErrorBarsV(String labelId, long[] xs, long[] ys, long[] neg, long[] pos, int count, long spec); /*MANUAL
+    private static native void nPlotErrorBarsV(String labelId, long[] xs, long[] ys, long[] neg, long[] pos, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
         auto neg = obj_neg == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_neg, JNI_FALSE);
         auto pos = obj_pos == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_pos, JNI_FALSE);
-        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+        if (neg != NULL) env->ReleasePrimitiveArrayCritical(obj_neg, neg, JNI_FALSE);
+        if (pos != NULL) env->ReleasePrimitiveArrayCritical(obj_pos, pos, JNI_FALSE);
+    */
+
+    private static native void nPlotErrorBarsV(String labelId, long[] xs, long[] ys, long[] neg, long[] pos, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        auto neg = obj_neg == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_neg, JNI_FALSE);
+        auto pos = obj_pos == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_pos, JNI_FALSE);
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -8165,8 +10048,15 @@ public final class ImPlot {
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
      */
-    public static void plotErrorBarsV(final String labelId, final float[] xs, final float[] ys, final float[] neg, final float[] pos, final int count, final ImPlotSpec spec) {
-        nPlotErrorBarsV(labelId, xs, ys, neg, pos, count, spec.ptr);
+    public static void plotErrorBarsV(final String labelId, final float[] xs, final float[] ys, final float[] neg, final float[] pos, final int count, final int flags) {
+        nPlotErrorBarsV(labelId, xs, ys, neg, pos, count, flags);
+    }
+
+    /**
+     * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
+     */
+    public static void plotErrorBarsV(final String labelId, final float[] xs, final float[] ys, final float[] neg, final float[] pos, final int count, final int flags, final int offset) {
+        nPlotErrorBarsV(labelId, xs, ys, neg, pos, count, flags, offset);
     }
 
     private static native void nPlotErrorBarsV(String labelId, float[] xs, float[] ys, float[] neg, float[] pos, int count); /*MANUAL
@@ -8183,13 +10073,27 @@ public final class ImPlot {
         if (pos != NULL) env->ReleasePrimitiveArrayCritical(obj_pos, pos, JNI_FALSE);
     */
 
-    private static native void nPlotErrorBarsV(String labelId, float[] xs, float[] ys, float[] neg, float[] pos, int count, long spec); /*MANUAL
+    private static native void nPlotErrorBarsV(String labelId, float[] xs, float[] ys, float[] neg, float[] pos, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
         auto neg = obj_neg == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_neg, JNI_FALSE);
         auto pos = obj_pos == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_pos, JNI_FALSE);
-        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+        if (neg != NULL) env->ReleasePrimitiveArrayCritical(obj_neg, neg, JNI_FALSE);
+        if (pos != NULL) env->ReleasePrimitiveArrayCritical(obj_pos, pos, JNI_FALSE);
+    */
+
+    private static native void nPlotErrorBarsV(String labelId, float[] xs, float[] ys, float[] neg, float[] pos, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        auto neg = obj_neg == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_neg, JNI_FALSE);
+        auto pos = obj_pos == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_pos, JNI_FALSE);
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -8207,8 +10111,15 @@ public final class ImPlot {
     /**
      * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
      */
-    public static void plotErrorBarsV(final String labelId, final double[] xs, final double[] ys, final double[] neg, final double[] pos, final int count, final ImPlotSpec spec) {
-        nPlotErrorBarsV(labelId, xs, ys, neg, pos, count, spec.ptr);
+    public static void plotErrorBarsV(final String labelId, final double[] xs, final double[] ys, final double[] neg, final double[] pos, final int count, final int flags) {
+        nPlotErrorBarsV(labelId, xs, ys, neg, pos, count, flags);
+    }
+
+    /**
+     * Plots vertical error bar. The label_id should be the same as the label_id of the associated line or bar plot.
+     */
+    public static void plotErrorBarsV(final String labelId, final double[] xs, final double[] ys, final double[] neg, final double[] pos, final int count, final int flags, final int offset) {
+        nPlotErrorBarsV(labelId, xs, ys, neg, pos, count, flags, offset);
     }
 
     private static native void nPlotErrorBarsV(String labelId, double[] xs, double[] ys, double[] neg, double[] pos, int count); /*MANUAL
@@ -8225,13 +10136,27 @@ public final class ImPlot {
         if (pos != NULL) env->ReleasePrimitiveArrayCritical(obj_pos, pos, JNI_FALSE);
     */
 
-    private static native void nPlotErrorBarsV(String labelId, double[] xs, double[] ys, double[] neg, double[] pos, int count, long spec); /*MANUAL
+    private static native void nPlotErrorBarsV(String labelId, double[] xs, double[] ys, double[] neg, double[] pos, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
         auto neg = obj_neg == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_neg, JNI_FALSE);
         auto pos = obj_pos == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_pos, JNI_FALSE);
-        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+        if (neg != NULL) env->ReleasePrimitiveArrayCritical(obj_neg, neg, JNI_FALSE);
+        if (pos != NULL) env->ReleasePrimitiveArrayCritical(obj_pos, pos, JNI_FALSE);
+    */
+
+    private static native void nPlotErrorBarsV(String labelId, double[] xs, double[] ys, double[] neg, double[] pos, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        auto neg = obj_neg == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_neg, JNI_FALSE);
+        auto pos = obj_pos == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_pos, JNI_FALSE);
+        ImPlot::PlotErrorBars(labelId, &xs[0], &ys[0], &neg[0], &pos[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -8251,29 +10176,36 @@ public final class ImPlot {
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final short[] values, final double ref) {
-        nPlotStems(labelId, values, ref);
+    public static void plotStems(final String labelId, final short[] values, final double yRef) {
+        nPlotStems(labelId, values, yRef);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final short[] values, final double ref, final double scale) {
-        nPlotStems(labelId, values, ref, scale);
+    public static void plotStems(final String labelId, final short[] values, final double yRef, final double xscale) {
+        nPlotStems(labelId, values, yRef, xscale);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final short[] values, final double ref, final double scale, final double start) {
-        nPlotStems(labelId, values, ref, scale, start);
+    public static void plotStems(final String labelId, final short[] values, final double yRef, final double xscale, final double xstart) {
+        nPlotStems(labelId, values, yRef, xscale, xstart);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final short[] values, final double ref, final double scale, final double start, final ImPlotSpec spec) {
-        nPlotStems(labelId, values, ref, scale, start, spec.ptr);
+    public static void plotStems(final String labelId, final short[] values, final double yRef, final double xscale, final double xstart, final int flags) {
+        nPlotStems(labelId, values, yRef, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots vertical stems.
+     */
+    public static void plotStems(final String labelId, final short[] values, final double yRef, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotStems(labelId, values, yRef, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotStems(String labelId, short[] values); /*MANUAL
@@ -8284,34 +10216,42 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, short[] values, double ref); /*MANUAL
+    private static native void nPlotStems(String labelId, short[] values, double yRef); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], LEN(values), ref);
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, short[] values, double ref, double scale); /*MANUAL
+    private static native void nPlotStems(String labelId, short[] values, double yRef, double xscale); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], LEN(values), ref, scale);
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef, xscale);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, short[] values, double ref, double scale, double start); /*MANUAL
+    private static native void nPlotStems(String labelId, short[] values, double yRef, double xscale, double xstart); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], LEN(values), ref, scale, start);
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef, xscale, xstart);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, short[] values, double ref, double scale, double start, long spec); /*MANUAL
+    private static native void nPlotStems(String labelId, short[] values, double yRef, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], LEN(values), ref, scale, start, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotStems(String labelId, short[] values, double yRef, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -8326,29 +10266,36 @@ public final class ImPlot {
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final int[] values, final double ref) {
-        nPlotStems(labelId, values, ref);
+    public static void plotStems(final String labelId, final int[] values, final double yRef) {
+        nPlotStems(labelId, values, yRef);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final int[] values, final double ref, final double scale) {
-        nPlotStems(labelId, values, ref, scale);
+    public static void plotStems(final String labelId, final int[] values, final double yRef, final double xscale) {
+        nPlotStems(labelId, values, yRef, xscale);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final int[] values, final double ref, final double scale, final double start) {
-        nPlotStems(labelId, values, ref, scale, start);
+    public static void plotStems(final String labelId, final int[] values, final double yRef, final double xscale, final double xstart) {
+        nPlotStems(labelId, values, yRef, xscale, xstart);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final int[] values, final double ref, final double scale, final double start, final ImPlotSpec spec) {
-        nPlotStems(labelId, values, ref, scale, start, spec.ptr);
+    public static void plotStems(final String labelId, final int[] values, final double yRef, final double xscale, final double xstart, final int flags) {
+        nPlotStems(labelId, values, yRef, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots vertical stems.
+     */
+    public static void plotStems(final String labelId, final int[] values, final double yRef, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotStems(labelId, values, yRef, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotStems(String labelId, int[] values); /*MANUAL
@@ -8359,34 +10306,42 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, int[] values, double ref); /*MANUAL
+    private static native void nPlotStems(String labelId, int[] values, double yRef); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], LEN(values), ref);
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, int[] values, double ref, double scale); /*MANUAL
+    private static native void nPlotStems(String labelId, int[] values, double yRef, double xscale); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], LEN(values), ref, scale);
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef, xscale);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, int[] values, double ref, double scale, double start); /*MANUAL
+    private static native void nPlotStems(String labelId, int[] values, double yRef, double xscale, double xstart); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], LEN(values), ref, scale, start);
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef, xscale, xstart);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, int[] values, double ref, double scale, double start, long spec); /*MANUAL
+    private static native void nPlotStems(String labelId, int[] values, double yRef, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], LEN(values), ref, scale, start, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotStems(String labelId, int[] values, double yRef, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -8401,29 +10356,36 @@ public final class ImPlot {
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final long[] values, final double ref) {
-        nPlotStems(labelId, values, ref);
+    public static void plotStems(final String labelId, final long[] values, final double yRef) {
+        nPlotStems(labelId, values, yRef);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final long[] values, final double ref, final double scale) {
-        nPlotStems(labelId, values, ref, scale);
+    public static void plotStems(final String labelId, final long[] values, final double yRef, final double xscale) {
+        nPlotStems(labelId, values, yRef, xscale);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final long[] values, final double ref, final double scale, final double start) {
-        nPlotStems(labelId, values, ref, scale, start);
+    public static void plotStems(final String labelId, final long[] values, final double yRef, final double xscale, final double xstart) {
+        nPlotStems(labelId, values, yRef, xscale, xstart);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final long[] values, final double ref, final double scale, final double start, final ImPlotSpec spec) {
-        nPlotStems(labelId, values, ref, scale, start, spec.ptr);
+    public static void plotStems(final String labelId, final long[] values, final double yRef, final double xscale, final double xstart, final int flags) {
+        nPlotStems(labelId, values, yRef, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots vertical stems.
+     */
+    public static void plotStems(final String labelId, final long[] values, final double yRef, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotStems(labelId, values, yRef, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotStems(String labelId, long[] values); /*MANUAL
@@ -8434,34 +10396,42 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, long[] values, double ref); /*MANUAL
+    private static native void nPlotStems(String labelId, long[] values, double yRef); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], LEN(values), ref);
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, long[] values, double ref, double scale); /*MANUAL
+    private static native void nPlotStems(String labelId, long[] values, double yRef, double xscale); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], LEN(values), ref, scale);
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef, xscale);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, long[] values, double ref, double scale, double start); /*MANUAL
+    private static native void nPlotStems(String labelId, long[] values, double yRef, double xscale, double xstart); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], LEN(values), ref, scale, start);
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef, xscale, xstart);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, long[] values, double ref, double scale, double start, long spec); /*MANUAL
+    private static native void nPlotStems(String labelId, long[] values, double yRef, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], LEN(values), ref, scale, start, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotStems(String labelId, long[] values, double yRef, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -8476,29 +10446,36 @@ public final class ImPlot {
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final float[] values, final double ref) {
-        nPlotStems(labelId, values, ref);
+    public static void plotStems(final String labelId, final float[] values, final double yRef) {
+        nPlotStems(labelId, values, yRef);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final float[] values, final double ref, final double scale) {
-        nPlotStems(labelId, values, ref, scale);
+    public static void plotStems(final String labelId, final float[] values, final double yRef, final double xscale) {
+        nPlotStems(labelId, values, yRef, xscale);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final float[] values, final double ref, final double scale, final double start) {
-        nPlotStems(labelId, values, ref, scale, start);
+    public static void plotStems(final String labelId, final float[] values, final double yRef, final double xscale, final double xstart) {
+        nPlotStems(labelId, values, yRef, xscale, xstart);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final float[] values, final double ref, final double scale, final double start, final ImPlotSpec spec) {
-        nPlotStems(labelId, values, ref, scale, start, spec.ptr);
+    public static void plotStems(final String labelId, final float[] values, final double yRef, final double xscale, final double xstart, final int flags) {
+        nPlotStems(labelId, values, yRef, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots vertical stems.
+     */
+    public static void plotStems(final String labelId, final float[] values, final double yRef, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotStems(labelId, values, yRef, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotStems(String labelId, float[] values); /*MANUAL
@@ -8509,34 +10486,42 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, float[] values, double ref); /*MANUAL
+    private static native void nPlotStems(String labelId, float[] values, double yRef); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], LEN(values), ref);
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, float[] values, double ref, double scale); /*MANUAL
+    private static native void nPlotStems(String labelId, float[] values, double yRef, double xscale); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], LEN(values), ref, scale);
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef, xscale);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, float[] values, double ref, double scale, double start); /*MANUAL
+    private static native void nPlotStems(String labelId, float[] values, double yRef, double xscale, double xstart); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], LEN(values), ref, scale, start);
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef, xscale, xstart);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, float[] values, double ref, double scale, double start, long spec); /*MANUAL
+    private static native void nPlotStems(String labelId, float[] values, double yRef, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], LEN(values), ref, scale, start, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotStems(String labelId, float[] values, double yRef, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -8551,29 +10536,36 @@ public final class ImPlot {
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final double[] values, final double ref) {
-        nPlotStems(labelId, values, ref);
+    public static void plotStems(final String labelId, final double[] values, final double yRef) {
+        nPlotStems(labelId, values, yRef);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final double[] values, final double ref, final double scale) {
-        nPlotStems(labelId, values, ref, scale);
+    public static void plotStems(final String labelId, final double[] values, final double yRef, final double xscale) {
+        nPlotStems(labelId, values, yRef, xscale);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final double[] values, final double ref, final double scale, final double start) {
-        nPlotStems(labelId, values, ref, scale, start);
+    public static void plotStems(final String labelId, final double[] values, final double yRef, final double xscale, final double xstart) {
+        nPlotStems(labelId, values, yRef, xscale, xstart);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final double[] values, final double ref, final double scale, final double start, final ImPlotSpec spec) {
-        nPlotStems(labelId, values, ref, scale, start, spec.ptr);
+    public static void plotStems(final String labelId, final double[] values, final double yRef, final double xscale, final double xstart, final int flags) {
+        nPlotStems(labelId, values, yRef, xscale, xstart, flags);
+    }
+
+    /**
+     * Plots vertical stems.
+     */
+    public static void plotStems(final String labelId, final double[] values, final double yRef, final double xscale, final double xstart, final int flags, final int offset) {
+        nPlotStems(labelId, values, yRef, xscale, xstart, flags, offset);
     }
 
     private static native void nPlotStems(String labelId, double[] values); /*MANUAL
@@ -8584,34 +10576,42 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, double[] values, double ref); /*MANUAL
+    private static native void nPlotStems(String labelId, double[] values, double yRef); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], LEN(values), ref);
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, double[] values, double ref, double scale); /*MANUAL
+    private static native void nPlotStems(String labelId, double[] values, double yRef, double xscale); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], LEN(values), ref, scale);
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef, xscale);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, double[] values, double ref, double scale, double start); /*MANUAL
+    private static native void nPlotStems(String labelId, double[] values, double yRef, double xscale, double xstart); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], LEN(values), ref, scale, start);
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef, xscale, xstart);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, double[] values, double ref, double scale, double start, long spec); /*MANUAL
+    private static native void nPlotStems(String labelId, double[] values, double yRef, double xscale, double xstart, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], LEN(values), ref, scale, start, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef, xscale, xstart, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotStems(String labelId, double[] values, double yRef, double xscale, double xstart, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotStems(labelId, &values[0], LEN(values), yRef, xscale, xstart, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -8626,29 +10626,36 @@ public final class ImPlot {
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final short[] values, final int count, final double ref) {
-        nPlotStemsV(labelId, values, count, ref);
+    public static void plotStemsV(final String labelId, final short[] values, final int count, final double yRef) {
+        nPlotStemsV(labelId, values, count, yRef);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final short[] values, final int count, final double ref, final double scale) {
-        nPlotStemsV(labelId, values, count, ref, scale);
+    public static void plotStemsV(final String labelId, final short[] values, final int count, final double yRef, final double scale) {
+        nPlotStemsV(labelId, values, count, yRef, scale);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final short[] values, final int count, final double ref, final double scale, final double start) {
-        nPlotStemsV(labelId, values, count, ref, scale, start);
+    public static void plotStemsV(final String labelId, final short[] values, final int count, final double yRef, final double scale, final double start) {
+        nPlotStemsV(labelId, values, count, yRef, scale, start);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final short[] values, final int count, final double ref, final double scale, final double start, final ImPlotSpec spec) {
-        nPlotStemsV(labelId, values, count, ref, scale, start, spec.ptr);
+    public static void plotStemsV(final String labelId, final short[] values, final int count, final double yRef, final double scale, final double start, final int flags) {
+        nPlotStemsV(labelId, values, count, yRef, scale, start, flags);
+    }
+
+    /**
+     * Plots vertical stems.
+     */
+    public static void plotStemsV(final String labelId, final short[] values, final int count, final double yRef, final double scale, final double start, final int flags, final int offset) {
+        nPlotStemsV(labelId, values, count, yRef, scale, start, flags, offset);
     }
 
     private static native void nPlotStemsV(String labelId, short[] values, int count); /*MANUAL
@@ -8659,34 +10666,42 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, short[] values, int count, double ref); /*MANUAL
+    private static native void nPlotStemsV(String labelId, short[] values, int count, double yRef); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], count, ref);
+        ImPlot::PlotStems(labelId, &values[0], count, yRef);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, short[] values, int count, double ref, double scale); /*MANUAL
+    private static native void nPlotStemsV(String labelId, short[] values, int count, double yRef, double scale); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], count, ref, scale);
+        ImPlot::PlotStems(labelId, &values[0], count, yRef, scale);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, short[] values, int count, double ref, double scale, double start); /*MANUAL
+    private static native void nPlotStemsV(String labelId, short[] values, int count, double yRef, double scale, double start); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], count, ref, scale, start);
+        ImPlot::PlotStems(labelId, &values[0], count, yRef, scale, start);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, short[] values, int count, double ref, double scale, double start, long spec); /*MANUAL
+    private static native void nPlotStemsV(String labelId, short[] values, int count, double yRef, double scale, double start, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], count, ref, scale, start, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStems(labelId, &values[0], count, yRef, scale, start, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotStemsV(String labelId, short[] values, int count, double yRef, double scale, double start, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotStems(labelId, &values[0], count, yRef, scale, start, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -8701,29 +10716,36 @@ public final class ImPlot {
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final int[] values, final int count, final double ref) {
-        nPlotStemsV(labelId, values, count, ref);
+    public static void plotStemsV(final String labelId, final int[] values, final int count, final double yRef) {
+        nPlotStemsV(labelId, values, count, yRef);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final int[] values, final int count, final double ref, final double scale) {
-        nPlotStemsV(labelId, values, count, ref, scale);
+    public static void plotStemsV(final String labelId, final int[] values, final int count, final double yRef, final double scale) {
+        nPlotStemsV(labelId, values, count, yRef, scale);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final int[] values, final int count, final double ref, final double scale, final double start) {
-        nPlotStemsV(labelId, values, count, ref, scale, start);
+    public static void plotStemsV(final String labelId, final int[] values, final int count, final double yRef, final double scale, final double start) {
+        nPlotStemsV(labelId, values, count, yRef, scale, start);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final int[] values, final int count, final double ref, final double scale, final double start, final ImPlotSpec spec) {
-        nPlotStemsV(labelId, values, count, ref, scale, start, spec.ptr);
+    public static void plotStemsV(final String labelId, final int[] values, final int count, final double yRef, final double scale, final double start, final int flags) {
+        nPlotStemsV(labelId, values, count, yRef, scale, start, flags);
+    }
+
+    /**
+     * Plots vertical stems.
+     */
+    public static void plotStemsV(final String labelId, final int[] values, final int count, final double yRef, final double scale, final double start, final int flags, final int offset) {
+        nPlotStemsV(labelId, values, count, yRef, scale, start, flags, offset);
     }
 
     private static native void nPlotStemsV(String labelId, int[] values, int count); /*MANUAL
@@ -8734,34 +10756,42 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, int[] values, int count, double ref); /*MANUAL
+    private static native void nPlotStemsV(String labelId, int[] values, int count, double yRef); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], count, ref);
+        ImPlot::PlotStems(labelId, &values[0], count, yRef);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, int[] values, int count, double ref, double scale); /*MANUAL
+    private static native void nPlotStemsV(String labelId, int[] values, int count, double yRef, double scale); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], count, ref, scale);
+        ImPlot::PlotStems(labelId, &values[0], count, yRef, scale);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, int[] values, int count, double ref, double scale, double start); /*MANUAL
+    private static native void nPlotStemsV(String labelId, int[] values, int count, double yRef, double scale, double start); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], count, ref, scale, start);
+        ImPlot::PlotStems(labelId, &values[0], count, yRef, scale, start);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, int[] values, int count, double ref, double scale, double start, long spec); /*MANUAL
+    private static native void nPlotStemsV(String labelId, int[] values, int count, double yRef, double scale, double start, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], count, ref, scale, start, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStems(labelId, &values[0], count, yRef, scale, start, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotStemsV(String labelId, int[] values, int count, double yRef, double scale, double start, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotStems(labelId, &values[0], count, yRef, scale, start, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -8776,29 +10806,36 @@ public final class ImPlot {
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final long[] values, final int count, final double ref) {
-        nPlotStemsV(labelId, values, count, ref);
+    public static void plotStemsV(final String labelId, final long[] values, final int count, final double yRef) {
+        nPlotStemsV(labelId, values, count, yRef);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final long[] values, final int count, final double ref, final double scale) {
-        nPlotStemsV(labelId, values, count, ref, scale);
+    public static void plotStemsV(final String labelId, final long[] values, final int count, final double yRef, final double scale) {
+        nPlotStemsV(labelId, values, count, yRef, scale);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final long[] values, final int count, final double ref, final double scale, final double start) {
-        nPlotStemsV(labelId, values, count, ref, scale, start);
+    public static void plotStemsV(final String labelId, final long[] values, final int count, final double yRef, final double scale, final double start) {
+        nPlotStemsV(labelId, values, count, yRef, scale, start);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final long[] values, final int count, final double ref, final double scale, final double start, final ImPlotSpec spec) {
-        nPlotStemsV(labelId, values, count, ref, scale, start, spec.ptr);
+    public static void plotStemsV(final String labelId, final long[] values, final int count, final double yRef, final double scale, final double start, final int flags) {
+        nPlotStemsV(labelId, values, count, yRef, scale, start, flags);
+    }
+
+    /**
+     * Plots vertical stems.
+     */
+    public static void plotStemsV(final String labelId, final long[] values, final int count, final double yRef, final double scale, final double start, final int flags, final int offset) {
+        nPlotStemsV(labelId, values, count, yRef, scale, start, flags, offset);
     }
 
     private static native void nPlotStemsV(String labelId, long[] values, int count); /*MANUAL
@@ -8809,34 +10846,42 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, long[] values, int count, double ref); /*MANUAL
+    private static native void nPlotStemsV(String labelId, long[] values, int count, double yRef); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], count, ref);
+        ImPlot::PlotStems(labelId, &values[0], count, yRef);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, long[] values, int count, double ref, double scale); /*MANUAL
+    private static native void nPlotStemsV(String labelId, long[] values, int count, double yRef, double scale); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], count, ref, scale);
+        ImPlot::PlotStems(labelId, &values[0], count, yRef, scale);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, long[] values, int count, double ref, double scale, double start); /*MANUAL
+    private static native void nPlotStemsV(String labelId, long[] values, int count, double yRef, double scale, double start); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], count, ref, scale, start);
+        ImPlot::PlotStems(labelId, &values[0], count, yRef, scale, start);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, long[] values, int count, double ref, double scale, double start, long spec); /*MANUAL
+    private static native void nPlotStemsV(String labelId, long[] values, int count, double yRef, double scale, double start, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], count, ref, scale, start, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStems(labelId, &values[0], count, yRef, scale, start, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotStemsV(String labelId, long[] values, int count, double yRef, double scale, double start, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotStems(labelId, &values[0], count, yRef, scale, start, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -8851,29 +10896,36 @@ public final class ImPlot {
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final float[] values, final int count, final double ref) {
-        nPlotStemsV(labelId, values, count, ref);
+    public static void plotStemsV(final String labelId, final float[] values, final int count, final double yRef) {
+        nPlotStemsV(labelId, values, count, yRef);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final float[] values, final int count, final double ref, final double scale) {
-        nPlotStemsV(labelId, values, count, ref, scale);
+    public static void plotStemsV(final String labelId, final float[] values, final int count, final double yRef, final double scale) {
+        nPlotStemsV(labelId, values, count, yRef, scale);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final float[] values, final int count, final double ref, final double scale, final double start) {
-        nPlotStemsV(labelId, values, count, ref, scale, start);
+    public static void plotStemsV(final String labelId, final float[] values, final int count, final double yRef, final double scale, final double start) {
+        nPlotStemsV(labelId, values, count, yRef, scale, start);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final float[] values, final int count, final double ref, final double scale, final double start, final ImPlotSpec spec) {
-        nPlotStemsV(labelId, values, count, ref, scale, start, spec.ptr);
+    public static void plotStemsV(final String labelId, final float[] values, final int count, final double yRef, final double scale, final double start, final int flags) {
+        nPlotStemsV(labelId, values, count, yRef, scale, start, flags);
+    }
+
+    /**
+     * Plots vertical stems.
+     */
+    public static void plotStemsV(final String labelId, final float[] values, final int count, final double yRef, final double scale, final double start, final int flags, final int offset) {
+        nPlotStemsV(labelId, values, count, yRef, scale, start, flags, offset);
     }
 
     private static native void nPlotStemsV(String labelId, float[] values, int count); /*MANUAL
@@ -8884,34 +10936,42 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, float[] values, int count, double ref); /*MANUAL
+    private static native void nPlotStemsV(String labelId, float[] values, int count, double yRef); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], count, ref);
+        ImPlot::PlotStems(labelId, &values[0], count, yRef);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, float[] values, int count, double ref, double scale); /*MANUAL
+    private static native void nPlotStemsV(String labelId, float[] values, int count, double yRef, double scale); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], count, ref, scale);
+        ImPlot::PlotStems(labelId, &values[0], count, yRef, scale);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, float[] values, int count, double ref, double scale, double start); /*MANUAL
+    private static native void nPlotStemsV(String labelId, float[] values, int count, double yRef, double scale, double start); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], count, ref, scale, start);
+        ImPlot::PlotStems(labelId, &values[0], count, yRef, scale, start);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, float[] values, int count, double ref, double scale, double start, long spec); /*MANUAL
+    private static native void nPlotStemsV(String labelId, float[] values, int count, double yRef, double scale, double start, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], count, ref, scale, start, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStems(labelId, &values[0], count, yRef, scale, start, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotStemsV(String labelId, float[] values, int count, double yRef, double scale, double start, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotStems(labelId, &values[0], count, yRef, scale, start, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -8926,29 +10986,36 @@ public final class ImPlot {
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final double[] values, final int count, final double ref) {
-        nPlotStemsV(labelId, values, count, ref);
+    public static void plotStemsV(final String labelId, final double[] values, final int count, final double yRef) {
+        nPlotStemsV(labelId, values, count, yRef);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final double[] values, final int count, final double ref, final double scale) {
-        nPlotStemsV(labelId, values, count, ref, scale);
+    public static void plotStemsV(final String labelId, final double[] values, final int count, final double yRef, final double scale) {
+        nPlotStemsV(labelId, values, count, yRef, scale);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final double[] values, final int count, final double ref, final double scale, final double start) {
-        nPlotStemsV(labelId, values, count, ref, scale, start);
+    public static void plotStemsV(final String labelId, final double[] values, final int count, final double yRef, final double scale, final double start) {
+        nPlotStemsV(labelId, values, count, yRef, scale, start);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final double[] values, final int count, final double ref, final double scale, final double start, final ImPlotSpec spec) {
-        nPlotStemsV(labelId, values, count, ref, scale, start, spec.ptr);
+    public static void plotStemsV(final String labelId, final double[] values, final int count, final double yRef, final double scale, final double start, final int flags) {
+        nPlotStemsV(labelId, values, count, yRef, scale, start, flags);
+    }
+
+    /**
+     * Plots vertical stems.
+     */
+    public static void plotStemsV(final String labelId, final double[] values, final int count, final double yRef, final double scale, final double start, final int flags, final int offset) {
+        nPlotStemsV(labelId, values, count, yRef, scale, start, flags, offset);
     }
 
     private static native void nPlotStemsV(String labelId, double[] values, int count); /*MANUAL
@@ -8959,34 +11026,42 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, double[] values, int count, double ref); /*MANUAL
+    private static native void nPlotStemsV(String labelId, double[] values, int count, double yRef); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], count, ref);
+        ImPlot::PlotStems(labelId, &values[0], count, yRef);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, double[] values, int count, double ref, double scale); /*MANUAL
+    private static native void nPlotStemsV(String labelId, double[] values, int count, double yRef, double scale); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], count, ref, scale);
+        ImPlot::PlotStems(labelId, &values[0], count, yRef, scale);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, double[] values, int count, double ref, double scale, double start); /*MANUAL
+    private static native void nPlotStemsV(String labelId, double[] values, int count, double yRef, double scale, double start); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], count, ref, scale, start);
+        ImPlot::PlotStems(labelId, &values[0], count, yRef, scale, start);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, double[] values, int count, double ref, double scale, double start, long spec); /*MANUAL
+    private static native void nPlotStemsV(String labelId, double[] values, int count, double yRef, double scale, double start, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &values[0], count, ref, scale, start, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStems(labelId, &values[0], count, yRef, scale, start, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotStemsV(String labelId, double[] values, int count, double yRef, double scale, double start, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotStems(labelId, &values[0], count, yRef, scale, start, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -9010,8 +11085,15 @@ public final class ImPlot {
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final short[] xs, final short[] ys, final double ref, final ImPlotSpec spec) {
-        nPlotStems(labelId, xs, ys, ref, spec.ptr);
+    public static void plotStems(final String labelId, final short[] xs, final short[] ys, final double ref, final int flags) {
+        nPlotStems(labelId, xs, ys, ref, flags);
+    }
+
+    /**
+     * Plots vertical stems.
+     */
+    public static void plotStems(final String labelId, final short[] xs, final short[] ys, final double ref, final int flags, final int offset) {
+        nPlotStems(labelId, xs, ys, ref, flags, offset);
     }
 
     private static native void nPlotStems(String labelId, short[] xs, short[] ys); /*MANUAL
@@ -9034,11 +11116,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, short[] xs, short[] ys, double ref, long spec); /*MANUAL
+    private static native void nPlotStems(String labelId, short[] xs, short[] ys, double ref, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &xs[0], &ys[0], LEN(xs), ref, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], LEN(xs), ref, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotStems(String labelId, short[] xs, short[] ys, double ref, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], LEN(xs), ref, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -9061,8 +11153,15 @@ public final class ImPlot {
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final int[] xs, final int[] ys, final double ref, final ImPlotSpec spec) {
-        nPlotStems(labelId, xs, ys, ref, spec.ptr);
+    public static void plotStems(final String labelId, final int[] xs, final int[] ys, final double ref, final int flags) {
+        nPlotStems(labelId, xs, ys, ref, flags);
+    }
+
+    /**
+     * Plots vertical stems.
+     */
+    public static void plotStems(final String labelId, final int[] xs, final int[] ys, final double ref, final int flags, final int offset) {
+        nPlotStems(labelId, xs, ys, ref, flags, offset);
     }
 
     private static native void nPlotStems(String labelId, int[] xs, int[] ys); /*MANUAL
@@ -9085,11 +11184,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, int[] xs, int[] ys, double ref, long spec); /*MANUAL
+    private static native void nPlotStems(String labelId, int[] xs, int[] ys, double ref, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &xs[0], &ys[0], LEN(xs), ref, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], LEN(xs), ref, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotStems(String labelId, int[] xs, int[] ys, double ref, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], LEN(xs), ref, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -9112,8 +11221,15 @@ public final class ImPlot {
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final long[] xs, final long[] ys, final double ref, final ImPlotSpec spec) {
-        nPlotStems(labelId, xs, ys, ref, spec.ptr);
+    public static void plotStems(final String labelId, final long[] xs, final long[] ys, final double ref, final int flags) {
+        nPlotStems(labelId, xs, ys, ref, flags);
+    }
+
+    /**
+     * Plots vertical stems.
+     */
+    public static void plotStems(final String labelId, final long[] xs, final long[] ys, final double ref, final int flags, final int offset) {
+        nPlotStems(labelId, xs, ys, ref, flags, offset);
     }
 
     private static native void nPlotStems(String labelId, long[] xs, long[] ys); /*MANUAL
@@ -9136,11 +11252,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, long[] xs, long[] ys, double ref, long spec); /*MANUAL
+    private static native void nPlotStems(String labelId, long[] xs, long[] ys, double ref, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &xs[0], &ys[0], LEN(xs), ref, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], LEN(xs), ref, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotStems(String labelId, long[] xs, long[] ys, double ref, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], LEN(xs), ref, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -9163,8 +11289,15 @@ public final class ImPlot {
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final float[] xs, final float[] ys, final double ref, final ImPlotSpec spec) {
-        nPlotStems(labelId, xs, ys, ref, spec.ptr);
+    public static void plotStems(final String labelId, final float[] xs, final float[] ys, final double ref, final int flags) {
+        nPlotStems(labelId, xs, ys, ref, flags);
+    }
+
+    /**
+     * Plots vertical stems.
+     */
+    public static void plotStems(final String labelId, final float[] xs, final float[] ys, final double ref, final int flags, final int offset) {
+        nPlotStems(labelId, xs, ys, ref, flags, offset);
     }
 
     private static native void nPlotStems(String labelId, float[] xs, float[] ys); /*MANUAL
@@ -9187,11 +11320,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, float[] xs, float[] ys, double ref, long spec); /*MANUAL
+    private static native void nPlotStems(String labelId, float[] xs, float[] ys, double ref, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &xs[0], &ys[0], LEN(xs), ref, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], LEN(xs), ref, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotStems(String labelId, float[] xs, float[] ys, double ref, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], LEN(xs), ref, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -9214,8 +11357,15 @@ public final class ImPlot {
     /**
      * Plots vertical stems.
      */
-    public static void plotStems(final String labelId, final double[] xs, final double[] ys, final double ref, final ImPlotSpec spec) {
-        nPlotStems(labelId, xs, ys, ref, spec.ptr);
+    public static void plotStems(final String labelId, final double[] xs, final double[] ys, final double ref, final int flags) {
+        nPlotStems(labelId, xs, ys, ref, flags);
+    }
+
+    /**
+     * Plots vertical stems.
+     */
+    public static void plotStems(final String labelId, final double[] xs, final double[] ys, final double ref, final int flags, final int offset) {
+        nPlotStems(labelId, xs, ys, ref, flags, offset);
     }
 
     private static native void nPlotStems(String labelId, double[] xs, double[] ys); /*MANUAL
@@ -9238,11 +11388,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStems(String labelId, double[] xs, double[] ys, double ref, long spec); /*MANUAL
+    private static native void nPlotStems(String labelId, double[] xs, double[] ys, double ref, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &xs[0], &ys[0], LEN(xs), ref, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], LEN(xs), ref, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotStems(String labelId, double[] xs, double[] ys, double ref, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], LEN(xs), ref, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -9258,15 +11418,22 @@ public final class ImPlot {
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final short[] xs, final short[] ys, final int count, final double ref) {
-        nPlotStemsV(labelId, xs, ys, count, ref);
+    public static void plotStemsV(final String labelId, final short[] xs, final short[] ys, final int count, final double yRef) {
+        nPlotStemsV(labelId, xs, ys, count, yRef);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final short[] xs, final short[] ys, final int count, final double ref, final ImPlotSpec spec) {
-        nPlotStemsV(labelId, xs, ys, count, ref, spec.ptr);
+    public static void plotStemsV(final String labelId, final short[] xs, final short[] ys, final int count, final double yRef, final int flags) {
+        nPlotStemsV(labelId, xs, ys, count, yRef, flags);
+    }
+
+    /**
+     * Plots vertical stems.
+     */
+    public static void plotStemsV(final String labelId, final short[] xs, final short[] ys, final int count, final double yRef, final int flags, final int offset) {
+        nPlotStemsV(labelId, xs, ys, count, yRef, flags, offset);
     }
 
     private static native void nPlotStemsV(String labelId, short[] xs, short[] ys, int count); /*MANUAL
@@ -9279,21 +11446,31 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, short[] xs, short[] ys, int count, double ref); /*MANUAL
+    private static native void nPlotStemsV(String labelId, short[] xs, short[] ys, int count, double yRef); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, ref);
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, yRef);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, short[] xs, short[] ys, int count, double ref, long spec); /*MANUAL
+    private static native void nPlotStemsV(String labelId, short[] xs, short[] ys, int count, double yRef, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, ref, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, yRef, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotStemsV(String labelId, short[] xs, short[] ys, int count, double yRef, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, yRef, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -9309,15 +11486,22 @@ public final class ImPlot {
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final int[] xs, final int[] ys, final int count, final double ref) {
-        nPlotStemsV(labelId, xs, ys, count, ref);
+    public static void plotStemsV(final String labelId, final int[] xs, final int[] ys, final int count, final double yRef) {
+        nPlotStemsV(labelId, xs, ys, count, yRef);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final int[] xs, final int[] ys, final int count, final double ref, final ImPlotSpec spec) {
-        nPlotStemsV(labelId, xs, ys, count, ref, spec.ptr);
+    public static void plotStemsV(final String labelId, final int[] xs, final int[] ys, final int count, final double yRef, final int flags) {
+        nPlotStemsV(labelId, xs, ys, count, yRef, flags);
+    }
+
+    /**
+     * Plots vertical stems.
+     */
+    public static void plotStemsV(final String labelId, final int[] xs, final int[] ys, final int count, final double yRef, final int flags, final int offset) {
+        nPlotStemsV(labelId, xs, ys, count, yRef, flags, offset);
     }
 
     private static native void nPlotStemsV(String labelId, int[] xs, int[] ys, int count); /*MANUAL
@@ -9330,21 +11514,31 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, int[] xs, int[] ys, int count, double ref); /*MANUAL
+    private static native void nPlotStemsV(String labelId, int[] xs, int[] ys, int count, double yRef); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, ref);
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, yRef);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, int[] xs, int[] ys, int count, double ref, long spec); /*MANUAL
+    private static native void nPlotStemsV(String labelId, int[] xs, int[] ys, int count, double yRef, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, ref, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, yRef, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotStemsV(String labelId, int[] xs, int[] ys, int count, double yRef, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, yRef, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -9360,15 +11554,22 @@ public final class ImPlot {
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final long[] xs, final long[] ys, final int count, final double ref) {
-        nPlotStemsV(labelId, xs, ys, count, ref);
+    public static void plotStemsV(final String labelId, final long[] xs, final long[] ys, final int count, final double yRef) {
+        nPlotStemsV(labelId, xs, ys, count, yRef);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final long[] xs, final long[] ys, final int count, final double ref, final ImPlotSpec spec) {
-        nPlotStemsV(labelId, xs, ys, count, ref, spec.ptr);
+    public static void plotStemsV(final String labelId, final long[] xs, final long[] ys, final int count, final double yRef, final int flags) {
+        nPlotStemsV(labelId, xs, ys, count, yRef, flags);
+    }
+
+    /**
+     * Plots vertical stems.
+     */
+    public static void plotStemsV(final String labelId, final long[] xs, final long[] ys, final int count, final double yRef, final int flags, final int offset) {
+        nPlotStemsV(labelId, xs, ys, count, yRef, flags, offset);
     }
 
     private static native void nPlotStemsV(String labelId, long[] xs, long[] ys, int count); /*MANUAL
@@ -9381,21 +11582,31 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, long[] xs, long[] ys, int count, double ref); /*MANUAL
+    private static native void nPlotStemsV(String labelId, long[] xs, long[] ys, int count, double yRef); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, ref);
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, yRef);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, long[] xs, long[] ys, int count, double ref, long spec); /*MANUAL
+    private static native void nPlotStemsV(String labelId, long[] xs, long[] ys, int count, double yRef, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, ref, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, yRef, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotStemsV(String labelId, long[] xs, long[] ys, int count, double yRef, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, yRef, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -9411,15 +11622,22 @@ public final class ImPlot {
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final float[] xs, final float[] ys, final int count, final double ref) {
-        nPlotStemsV(labelId, xs, ys, count, ref);
+    public static void plotStemsV(final String labelId, final float[] xs, final float[] ys, final int count, final double yRef) {
+        nPlotStemsV(labelId, xs, ys, count, yRef);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final float[] xs, final float[] ys, final int count, final double ref, final ImPlotSpec spec) {
-        nPlotStemsV(labelId, xs, ys, count, ref, spec.ptr);
+    public static void plotStemsV(final String labelId, final float[] xs, final float[] ys, final int count, final double yRef, final int flags) {
+        nPlotStemsV(labelId, xs, ys, count, yRef, flags);
+    }
+
+    /**
+     * Plots vertical stems.
+     */
+    public static void plotStemsV(final String labelId, final float[] xs, final float[] ys, final int count, final double yRef, final int flags, final int offset) {
+        nPlotStemsV(labelId, xs, ys, count, yRef, flags, offset);
     }
 
     private static native void nPlotStemsV(String labelId, float[] xs, float[] ys, int count); /*MANUAL
@@ -9432,21 +11650,31 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, float[] xs, float[] ys, int count, double ref); /*MANUAL
+    private static native void nPlotStemsV(String labelId, float[] xs, float[] ys, int count, double yRef); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, ref);
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, yRef);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, float[] xs, float[] ys, int count, double ref, long spec); /*MANUAL
+    private static native void nPlotStemsV(String labelId, float[] xs, float[] ys, int count, double yRef, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, ref, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, yRef, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotStemsV(String labelId, float[] xs, float[] ys, int count, double yRef, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, yRef, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -9462,15 +11690,22 @@ public final class ImPlot {
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final double[] xs, final double[] ys, final int count, final double ref) {
-        nPlotStemsV(labelId, xs, ys, count, ref);
+    public static void plotStemsV(final String labelId, final double[] xs, final double[] ys, final int count, final double yRef) {
+        nPlotStemsV(labelId, xs, ys, count, yRef);
     }
 
     /**
      * Plots vertical stems.
      */
-    public static void plotStemsV(final String labelId, final double[] xs, final double[] ys, final int count, final double ref, final ImPlotSpec spec) {
-        nPlotStemsV(labelId, xs, ys, count, ref, spec.ptr);
+    public static void plotStemsV(final String labelId, final double[] xs, final double[] ys, final int count, final double yRef, final int flags) {
+        nPlotStemsV(labelId, xs, ys, count, yRef, flags);
+    }
+
+    /**
+     * Plots vertical stems.
+     */
+    public static void plotStemsV(final String labelId, final double[] xs, final double[] ys, final int count, final double yRef, final int flags, final int offset) {
+        nPlotStemsV(labelId, xs, ys, count, yRef, flags, offset);
     }
 
     private static native void nPlotStemsV(String labelId, double[] xs, double[] ys, int count); /*MANUAL
@@ -9483,21 +11718,31 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, double[] xs, double[] ys, int count, double ref); /*MANUAL
+    private static native void nPlotStemsV(String labelId, double[] xs, double[] ys, int count, double yRef); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, ref);
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, yRef);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotStemsV(String labelId, double[] xs, double[] ys, int count, double ref, long spec); /*MANUAL
+    private static native void nPlotStemsV(String labelId, double[] xs, double[] ys, int count, double yRef, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, ref, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, yRef, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotStemsV(String labelId, double[] xs, double[] ys, int count, double yRef, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotStems(labelId, &xs[0], &ys[0], count, yRef, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -9513,8 +11758,15 @@ public final class ImPlot {
     /**
      * Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).
      */
-    public static void plotInfLines(final String labelId, final short[] values, final ImPlotSpec spec) {
-        nPlotInfLines(labelId, values, spec.ptr);
+    public static void plotInfLines(final String labelId, final short[] values, final int flags) {
+        nPlotInfLines(labelId, values, flags);
+    }
+
+    /**
+     * Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).
+     */
+    public static void plotInfLines(final String labelId, final short[] values, final int flags, final int offset) {
+        nPlotInfLines(labelId, values, flags, offset);
     }
 
     private static native void nPlotInfLines(String labelId, short[] values); /*MANUAL
@@ -9525,10 +11777,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotInfLines(String labelId, short[] values, long spec); /*MANUAL
+    private static native void nPlotInfLines(String labelId, short[] values, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotInfLines(labelId, &values[0], LEN(values), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotInfLines(labelId, &values[0], LEN(values), flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotInfLines(String labelId, short[] values, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotInfLines(labelId, &values[0], LEN(values), flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -9543,8 +11803,15 @@ public final class ImPlot {
     /**
      * Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).
      */
-    public static void plotInfLines(final String labelId, final int[] values, final ImPlotSpec spec) {
-        nPlotInfLines(labelId, values, spec.ptr);
+    public static void plotInfLines(final String labelId, final int[] values, final int flags) {
+        nPlotInfLines(labelId, values, flags);
+    }
+
+    /**
+     * Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).
+     */
+    public static void plotInfLines(final String labelId, final int[] values, final int flags, final int offset) {
+        nPlotInfLines(labelId, values, flags, offset);
     }
 
     private static native void nPlotInfLines(String labelId, int[] values); /*MANUAL
@@ -9555,10 +11822,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotInfLines(String labelId, int[] values, long spec); /*MANUAL
+    private static native void nPlotInfLines(String labelId, int[] values, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotInfLines(labelId, &values[0], LEN(values), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotInfLines(labelId, &values[0], LEN(values), flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotInfLines(String labelId, int[] values, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotInfLines(labelId, &values[0], LEN(values), flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -9573,8 +11848,15 @@ public final class ImPlot {
     /**
      * Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).
      */
-    public static void plotInfLines(final String labelId, final long[] values, final ImPlotSpec spec) {
-        nPlotInfLines(labelId, values, spec.ptr);
+    public static void plotInfLines(final String labelId, final long[] values, final int flags) {
+        nPlotInfLines(labelId, values, flags);
+    }
+
+    /**
+     * Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).
+     */
+    public static void plotInfLines(final String labelId, final long[] values, final int flags, final int offset) {
+        nPlotInfLines(labelId, values, flags, offset);
     }
 
     private static native void nPlotInfLines(String labelId, long[] values); /*MANUAL
@@ -9585,10 +11867,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotInfLines(String labelId, long[] values, long spec); /*MANUAL
+    private static native void nPlotInfLines(String labelId, long[] values, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotInfLines(labelId, &values[0], LEN(values), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotInfLines(labelId, &values[0], LEN(values), flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotInfLines(String labelId, long[] values, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotInfLines(labelId, &values[0], LEN(values), flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -9603,8 +11893,15 @@ public final class ImPlot {
     /**
      * Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).
      */
-    public static void plotInfLines(final String labelId, final float[] values, final ImPlotSpec spec) {
-        nPlotInfLines(labelId, values, spec.ptr);
+    public static void plotInfLines(final String labelId, final float[] values, final int flags) {
+        nPlotInfLines(labelId, values, flags);
+    }
+
+    /**
+     * Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).
+     */
+    public static void plotInfLines(final String labelId, final float[] values, final int flags, final int offset) {
+        nPlotInfLines(labelId, values, flags, offset);
     }
 
     private static native void nPlotInfLines(String labelId, float[] values); /*MANUAL
@@ -9615,10 +11912,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotInfLines(String labelId, float[] values, long spec); /*MANUAL
+    private static native void nPlotInfLines(String labelId, float[] values, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotInfLines(labelId, &values[0], LEN(values), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotInfLines(labelId, &values[0], LEN(values), flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotInfLines(String labelId, float[] values, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotInfLines(labelId, &values[0], LEN(values), flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -9633,8 +11938,15 @@ public final class ImPlot {
     /**
      * Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).
      */
-    public static void plotInfLines(final String labelId, final double[] values, final ImPlotSpec spec) {
-        nPlotInfLines(labelId, values, spec.ptr);
+    public static void plotInfLines(final String labelId, final double[] values, final int flags) {
+        nPlotInfLines(labelId, values, flags);
+    }
+
+    /**
+     * Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).
+     */
+    public static void plotInfLines(final String labelId, final double[] values, final int flags, final int offset) {
+        nPlotInfLines(labelId, values, flags, offset);
     }
 
     private static native void nPlotInfLines(String labelId, double[] values); /*MANUAL
@@ -9645,10 +11957,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotInfLines(String labelId, double[] values, long spec); /*MANUAL
+    private static native void nPlotInfLines(String labelId, double[] values, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotInfLines(labelId, &values[0], LEN(values), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotInfLines(labelId, &values[0], LEN(values), flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotInfLines(String labelId, double[] values, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotInfLines(labelId, &values[0], LEN(values), flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -9663,8 +11983,15 @@ public final class ImPlot {
     /**
      * Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).
      */
-    public static void plotInfLinesV(final String labelId, final short[] values, final int count, final ImPlotSpec spec) {
-        nPlotInfLinesV(labelId, values, count, spec.ptr);
+    public static void plotInfLinesV(final String labelId, final short[] values, final int count, final int flags) {
+        nPlotInfLinesV(labelId, values, count, flags);
+    }
+
+    /**
+     * Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).
+     */
+    public static void plotInfLinesV(final String labelId, final short[] values, final int count, final int flags, final int offset) {
+        nPlotInfLinesV(labelId, values, count, flags, offset);
     }
 
     private static native void nPlotInfLinesV(String labelId, short[] values, int count); /*MANUAL
@@ -9675,10 +12002,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotInfLinesV(String labelId, short[] values, int count, long spec); /*MANUAL
+    private static native void nPlotInfLinesV(String labelId, short[] values, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotInfLines(labelId, &values[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotInfLines(labelId, &values[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotInfLinesV(String labelId, short[] values, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotInfLines(labelId, &values[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -9693,8 +12028,15 @@ public final class ImPlot {
     /**
      * Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).
      */
-    public static void plotInfLinesV(final String labelId, final int[] values, final int count, final ImPlotSpec spec) {
-        nPlotInfLinesV(labelId, values, count, spec.ptr);
+    public static void plotInfLinesV(final String labelId, final int[] values, final int count, final int flags) {
+        nPlotInfLinesV(labelId, values, count, flags);
+    }
+
+    /**
+     * Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).
+     */
+    public static void plotInfLinesV(final String labelId, final int[] values, final int count, final int flags, final int offset) {
+        nPlotInfLinesV(labelId, values, count, flags, offset);
     }
 
     private static native void nPlotInfLinesV(String labelId, int[] values, int count); /*MANUAL
@@ -9705,10 +12047,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotInfLinesV(String labelId, int[] values, int count, long spec); /*MANUAL
+    private static native void nPlotInfLinesV(String labelId, int[] values, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotInfLines(labelId, &values[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotInfLines(labelId, &values[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotInfLinesV(String labelId, int[] values, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotInfLines(labelId, &values[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -9723,8 +12073,15 @@ public final class ImPlot {
     /**
      * Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).
      */
-    public static void plotInfLinesV(final String labelId, final long[] values, final int count, final ImPlotSpec spec) {
-        nPlotInfLinesV(labelId, values, count, spec.ptr);
+    public static void plotInfLinesV(final String labelId, final long[] values, final int count, final int flags) {
+        nPlotInfLinesV(labelId, values, count, flags);
+    }
+
+    /**
+     * Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).
+     */
+    public static void plotInfLinesV(final String labelId, final long[] values, final int count, final int flags, final int offset) {
+        nPlotInfLinesV(labelId, values, count, flags, offset);
     }
 
     private static native void nPlotInfLinesV(String labelId, long[] values, int count); /*MANUAL
@@ -9735,10 +12092,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotInfLinesV(String labelId, long[] values, int count, long spec); /*MANUAL
+    private static native void nPlotInfLinesV(String labelId, long[] values, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotInfLines(labelId, &values[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotInfLines(labelId, &values[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotInfLinesV(String labelId, long[] values, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotInfLines(labelId, &values[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -9753,8 +12118,15 @@ public final class ImPlot {
     /**
      * Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).
      */
-    public static void plotInfLinesV(final String labelId, final float[] values, final int count, final ImPlotSpec spec) {
-        nPlotInfLinesV(labelId, values, count, spec.ptr);
+    public static void plotInfLinesV(final String labelId, final float[] values, final int count, final int flags) {
+        nPlotInfLinesV(labelId, values, count, flags);
+    }
+
+    /**
+     * Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).
+     */
+    public static void plotInfLinesV(final String labelId, final float[] values, final int count, final int flags, final int offset) {
+        nPlotInfLinesV(labelId, values, count, flags, offset);
     }
 
     private static native void nPlotInfLinesV(String labelId, float[] values, int count); /*MANUAL
@@ -9765,10 +12137,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotInfLinesV(String labelId, float[] values, int count, long spec); /*MANUAL
+    private static native void nPlotInfLinesV(String labelId, float[] values, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotInfLines(labelId, &values[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotInfLines(labelId, &values[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotInfLinesV(String labelId, float[] values, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotInfLines(labelId, &values[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -9783,8 +12163,15 @@ public final class ImPlot {
     /**
      * Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).
      */
-    public static void plotInfLinesV(final String labelId, final double[] values, final int count, final ImPlotSpec spec) {
-        nPlotInfLinesV(labelId, values, count, spec.ptr);
+    public static void plotInfLinesV(final String labelId, final double[] values, final int count, final int flags) {
+        nPlotInfLinesV(labelId, values, count, flags);
+    }
+
+    /**
+     * Plots infinite vertical or horizontal lines (e.g. for references or asymptotes).
+     */
+    public static void plotInfLinesV(final String labelId, final double[] values, final int count, final int flags, final int offset) {
+        nPlotInfLinesV(labelId, values, count, flags, offset);
     }
 
     private static native void nPlotInfLinesV(String labelId, double[] values, int count); /*MANUAL
@@ -9795,10 +12182,18 @@ public final class ImPlot {
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
 
-    private static native void nPlotInfLinesV(String labelId, double[] values, int count, long spec); /*MANUAL
+    private static native void nPlotInfLinesV(String labelId, double[] values, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotInfLines(labelId, &values[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotInfLines(labelId, &values[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
+    */
+
+    private static native void nPlotInfLinesV(String labelId, double[] values, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
+        ImPlot::PlotInfLines(labelId, &values[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -9827,15 +12222,15 @@ public final class ImPlot {
     /**
      * Plots a pie chart. If the sum of values{@code >}1 or normalize is true, each value will be normalized. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotPieChart(final String[] labelIds, final short[] values, final double x, final double y, final double radius, final String labelFmt, final double angle0, final ImPlotSpec spec) {
-        nPlotPieChart(labelIds, labelIds.length, values, x, y, radius, labelFmt, angle0, spec.ptr);
+    public static void plotPieChart(final String[] labelIds, final short[] values, final double x, final double y, final double radius, final String labelFmt, final double angle0, final int flags) {
+        nPlotPieChart(labelIds, labelIds.length, values, x, y, radius, labelFmt, angle0, flags);
     }
 
     /**
      * Plots a pie chart. If the sum of values{@code >}1 or normalize is true, each value will be normalized. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotPieChart(final String[] labelIds, final short[] values, final double x, final double y, final double radius, final double angle0, final ImPlotSpec spec) {
-        nPlotPieChart(labelIds, labelIds.length, values, x, y, radius, angle0, spec.ptr);
+    public static void plotPieChart(final String[] labelIds, final short[] values, final double x, final double y, final double radius, final double angle0, final int flags) {
+        nPlotPieChart(labelIds, labelIds.length, values, x, y, radius, angle0, flags);
     }
 
     private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, short[] values, double x, double y, double radius); /*MANUAL
@@ -9890,7 +12285,7 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, short[] values, double x, double y, double radius, String labelFmt, double angle0, long spec); /*MANUAL
+    private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, short[] values, double x, double y, double radius, String labelFmt, double angle0, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -9899,7 +12294,7 @@ public final class ImPlot {
         };
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
         auto labelFmt = obj_labelFmt == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelFmt, JNI_FALSE);
-        ImPlot::PlotPieChart(labelIds, &values[0], LEN(values), x, y, radius, labelFmt, angle0, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotPieChart(labelIds, &values[0], LEN(values), x, y, radius, labelFmt, angle0, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -9908,7 +12303,7 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, short[] values, double x, double y, double radius, double angle0, long spec); /*MANUAL
+    private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, short[] values, double x, double y, double radius, double angle0, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -9916,7 +12311,7 @@ public final class ImPlot {
             labelIds[i] = rawStr;
         };
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotPieChart(labelIds, &values[0], LEN(values), x, y, radius, "%.1f", angle0, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotPieChart(labelIds, &values[0], LEN(values), x, y, radius, "%.1f", angle0, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -9948,15 +12343,15 @@ public final class ImPlot {
     /**
      * Plots a pie chart. If the sum of values{@code >}1 or normalize is true, each value will be normalized. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotPieChart(final String[] labelIds, final int[] values, final double x, final double y, final double radius, final String labelFmt, final double angle0, final ImPlotSpec spec) {
-        nPlotPieChart(labelIds, labelIds.length, values, x, y, radius, labelFmt, angle0, spec.ptr);
+    public static void plotPieChart(final String[] labelIds, final int[] values, final double x, final double y, final double radius, final String labelFmt, final double angle0, final int flags) {
+        nPlotPieChart(labelIds, labelIds.length, values, x, y, radius, labelFmt, angle0, flags);
     }
 
     /**
      * Plots a pie chart. If the sum of values{@code >}1 or normalize is true, each value will be normalized. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotPieChart(final String[] labelIds, final int[] values, final double x, final double y, final double radius, final double angle0, final ImPlotSpec spec) {
-        nPlotPieChart(labelIds, labelIds.length, values, x, y, radius, angle0, spec.ptr);
+    public static void plotPieChart(final String[] labelIds, final int[] values, final double x, final double y, final double radius, final double angle0, final int flags) {
+        nPlotPieChart(labelIds, labelIds.length, values, x, y, radius, angle0, flags);
     }
 
     private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, int[] values, double x, double y, double radius); /*MANUAL
@@ -10011,7 +12406,7 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, int[] values, double x, double y, double radius, String labelFmt, double angle0, long spec); /*MANUAL
+    private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, int[] values, double x, double y, double radius, String labelFmt, double angle0, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -10020,7 +12415,7 @@ public final class ImPlot {
         };
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
         auto labelFmt = obj_labelFmt == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelFmt, JNI_FALSE);
-        ImPlot::PlotPieChart(labelIds, &values[0], LEN(values), x, y, radius, labelFmt, angle0, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotPieChart(labelIds, &values[0], LEN(values), x, y, radius, labelFmt, angle0, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -10029,7 +12424,7 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, int[] values, double x, double y, double radius, double angle0, long spec); /*MANUAL
+    private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, int[] values, double x, double y, double radius, double angle0, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -10037,7 +12432,7 @@ public final class ImPlot {
             labelIds[i] = rawStr;
         };
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotPieChart(labelIds, &values[0], LEN(values), x, y, radius, "%.1f", angle0, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotPieChart(labelIds, &values[0], LEN(values), x, y, radius, "%.1f", angle0, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -10069,15 +12464,15 @@ public final class ImPlot {
     /**
      * Plots a pie chart. If the sum of values{@code >}1 or normalize is true, each value will be normalized. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotPieChart(final String[] labelIds, final long[] values, final double x, final double y, final double radius, final String labelFmt, final double angle0, final ImPlotSpec spec) {
-        nPlotPieChart(labelIds, labelIds.length, values, x, y, radius, labelFmt, angle0, spec.ptr);
+    public static void plotPieChart(final String[] labelIds, final long[] values, final double x, final double y, final double radius, final String labelFmt, final double angle0, final int flags) {
+        nPlotPieChart(labelIds, labelIds.length, values, x, y, radius, labelFmt, angle0, flags);
     }
 
     /**
      * Plots a pie chart. If the sum of values{@code >}1 or normalize is true, each value will be normalized. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotPieChart(final String[] labelIds, final long[] values, final double x, final double y, final double radius, final double angle0, final ImPlotSpec spec) {
-        nPlotPieChart(labelIds, labelIds.length, values, x, y, radius, angle0, spec.ptr);
+    public static void plotPieChart(final String[] labelIds, final long[] values, final double x, final double y, final double radius, final double angle0, final int flags) {
+        nPlotPieChart(labelIds, labelIds.length, values, x, y, radius, angle0, flags);
     }
 
     private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, long[] values, double x, double y, double radius); /*MANUAL
@@ -10132,7 +12527,7 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, long[] values, double x, double y, double radius, String labelFmt, double angle0, long spec); /*MANUAL
+    private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, long[] values, double x, double y, double radius, String labelFmt, double angle0, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -10141,7 +12536,7 @@ public final class ImPlot {
         };
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
         auto labelFmt = obj_labelFmt == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelFmt, JNI_FALSE);
-        ImPlot::PlotPieChart(labelIds, &values[0], LEN(values), x, y, radius, labelFmt, angle0, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotPieChart(labelIds, &values[0], LEN(values), x, y, radius, labelFmt, angle0, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -10150,7 +12545,7 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, long[] values, double x, double y, double radius, double angle0, long spec); /*MANUAL
+    private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, long[] values, double x, double y, double radius, double angle0, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -10158,7 +12553,7 @@ public final class ImPlot {
             labelIds[i] = rawStr;
         };
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotPieChart(labelIds, &values[0], LEN(values), x, y, radius, "%.1f", angle0, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotPieChart(labelIds, &values[0], LEN(values), x, y, radius, "%.1f", angle0, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -10190,15 +12585,15 @@ public final class ImPlot {
     /**
      * Plots a pie chart. If the sum of values{@code >}1 or normalize is true, each value will be normalized. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotPieChart(final String[] labelIds, final float[] values, final double x, final double y, final double radius, final String labelFmt, final double angle0, final ImPlotSpec spec) {
-        nPlotPieChart(labelIds, labelIds.length, values, x, y, radius, labelFmt, angle0, spec.ptr);
+    public static void plotPieChart(final String[] labelIds, final float[] values, final double x, final double y, final double radius, final String labelFmt, final double angle0, final int flags) {
+        nPlotPieChart(labelIds, labelIds.length, values, x, y, radius, labelFmt, angle0, flags);
     }
 
     /**
      * Plots a pie chart. If the sum of values{@code >}1 or normalize is true, each value will be normalized. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotPieChart(final String[] labelIds, final float[] values, final double x, final double y, final double radius, final double angle0, final ImPlotSpec spec) {
-        nPlotPieChart(labelIds, labelIds.length, values, x, y, radius, angle0, spec.ptr);
+    public static void plotPieChart(final String[] labelIds, final float[] values, final double x, final double y, final double radius, final double angle0, final int flags) {
+        nPlotPieChart(labelIds, labelIds.length, values, x, y, radius, angle0, flags);
     }
 
     private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, float[] values, double x, double y, double radius); /*MANUAL
@@ -10253,7 +12648,7 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, float[] values, double x, double y, double radius, String labelFmt, double angle0, long spec); /*MANUAL
+    private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, float[] values, double x, double y, double radius, String labelFmt, double angle0, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -10262,7 +12657,7 @@ public final class ImPlot {
         };
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
         auto labelFmt = obj_labelFmt == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelFmt, JNI_FALSE);
-        ImPlot::PlotPieChart(labelIds, &values[0], LEN(values), x, y, radius, labelFmt, angle0, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotPieChart(labelIds, &values[0], LEN(values), x, y, radius, labelFmt, angle0, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -10271,7 +12666,7 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, float[] values, double x, double y, double radius, double angle0, long spec); /*MANUAL
+    private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, float[] values, double x, double y, double radius, double angle0, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -10279,7 +12674,7 @@ public final class ImPlot {
             labelIds[i] = rawStr;
         };
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotPieChart(labelIds, &values[0], LEN(values), x, y, radius, "%.1f", angle0, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotPieChart(labelIds, &values[0], LEN(values), x, y, radius, "%.1f", angle0, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -10311,15 +12706,15 @@ public final class ImPlot {
     /**
      * Plots a pie chart. If the sum of values{@code >}1 or normalize is true, each value will be normalized. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotPieChart(final String[] labelIds, final double[] values, final double x, final double y, final double radius, final String labelFmt, final double angle0, final ImPlotSpec spec) {
-        nPlotPieChart(labelIds, labelIds.length, values, x, y, radius, labelFmt, angle0, spec.ptr);
+    public static void plotPieChart(final String[] labelIds, final double[] values, final double x, final double y, final double radius, final String labelFmt, final double angle0, final int flags) {
+        nPlotPieChart(labelIds, labelIds.length, values, x, y, radius, labelFmt, angle0, flags);
     }
 
     /**
      * Plots a pie chart. If the sum of values{@code >}1 or normalize is true, each value will be normalized. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotPieChart(final String[] labelIds, final double[] values, final double x, final double y, final double radius, final double angle0, final ImPlotSpec spec) {
-        nPlotPieChart(labelIds, labelIds.length, values, x, y, radius, angle0, spec.ptr);
+    public static void plotPieChart(final String[] labelIds, final double[] values, final double x, final double y, final double radius, final double angle0, final int flags) {
+        nPlotPieChart(labelIds, labelIds.length, values, x, y, radius, angle0, flags);
     }
 
     private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, double[] values, double x, double y, double radius); /*MANUAL
@@ -10374,7 +12769,7 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, double[] values, double x, double y, double radius, String labelFmt, double angle0, long spec); /*MANUAL
+    private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, double[] values, double x, double y, double radius, String labelFmt, double angle0, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -10383,7 +12778,7 @@ public final class ImPlot {
         };
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
         auto labelFmt = obj_labelFmt == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelFmt, JNI_FALSE);
-        ImPlot::PlotPieChart(labelIds, &values[0], LEN(values), x, y, radius, labelFmt, angle0, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotPieChart(labelIds, &values[0], LEN(values), x, y, radius, labelFmt, angle0, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -10392,7 +12787,7 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, double[] values, double x, double y, double radius, double angle0, long spec); /*MANUAL
+    private static native void nPlotPieChart(String[] obj_labelIds, int labelIdsCount, double[] values, double x, double y, double radius, double angle0, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -10400,7 +12795,7 @@ public final class ImPlot {
             labelIds[i] = rawStr;
         };
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotPieChart(labelIds, &values[0], LEN(values), x, y, radius, "%.1f", angle0, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotPieChart(labelIds, &values[0], LEN(values), x, y, radius, "%.1f", angle0, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -10432,15 +12827,15 @@ public final class ImPlot {
     /**
      * Plots a pie chart. If the sum of values{@code >}1 or normalize is true, each value will be normalized. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotPieChartV(final String[] labelIds, final short[] values, final int count, final double x, final double y, final double radius, final String labelFmt, final double angle0, final ImPlotSpec spec) {
-        nPlotPieChartV(labelIds, labelIds.length, values, count, x, y, radius, labelFmt, angle0, spec.ptr);
+    public static void plotPieChartV(final String[] labelIds, final short[] values, final int count, final double x, final double y, final double radius, final String labelFmt, final double angle0, final int flags) {
+        nPlotPieChartV(labelIds, labelIds.length, values, count, x, y, radius, labelFmt, angle0, flags);
     }
 
     /**
      * Plots a pie chart. If the sum of values{@code >}1 or normalize is true, each value will be normalized. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotPieChartV(final String[] labelIds, final short[] values, final int count, final double x, final double y, final double radius, final double angle0, final ImPlotSpec spec) {
-        nPlotPieChartV(labelIds, labelIds.length, values, count, x, y, radius, angle0, spec.ptr);
+    public static void plotPieChartV(final String[] labelIds, final short[] values, final int count, final double x, final double y, final double radius, final double angle0, final int flags) {
+        nPlotPieChartV(labelIds, labelIds.length, values, count, x, y, radius, angle0, flags);
     }
 
     private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, short[] values, int count, double x, double y, double radius); /*MANUAL
@@ -10495,7 +12890,7 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, short[] values, int count, double x, double y, double radius, String labelFmt, double angle0, long spec); /*MANUAL
+    private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, short[] values, int count, double x, double y, double radius, String labelFmt, double angle0, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -10504,7 +12899,7 @@ public final class ImPlot {
         };
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
         auto labelFmt = obj_labelFmt == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelFmt, JNI_FALSE);
-        ImPlot::PlotPieChart(labelIds, &values[0], count, x, y, radius, labelFmt, angle0, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotPieChart(labelIds, &values[0], count, x, y, radius, labelFmt, angle0, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -10513,7 +12908,7 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, short[] values, int count, double x, double y, double radius, double angle0, long spec); /*MANUAL
+    private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, short[] values, int count, double x, double y, double radius, double angle0, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -10521,7 +12916,7 @@ public final class ImPlot {
             labelIds[i] = rawStr;
         };
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotPieChart(labelIds, &values[0], count, x, y, radius, "%.1f", angle0, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotPieChart(labelIds, &values[0], count, x, y, radius, "%.1f", angle0, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -10553,15 +12948,15 @@ public final class ImPlot {
     /**
      * Plots a pie chart. If the sum of values{@code >}1 or normalize is true, each value will be normalized. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotPieChartV(final String[] labelIds, final int[] values, final int count, final double x, final double y, final double radius, final String labelFmt, final double angle0, final ImPlotSpec spec) {
-        nPlotPieChartV(labelIds, labelIds.length, values, count, x, y, radius, labelFmt, angle0, spec.ptr);
+    public static void plotPieChartV(final String[] labelIds, final int[] values, final int count, final double x, final double y, final double radius, final String labelFmt, final double angle0, final int flags) {
+        nPlotPieChartV(labelIds, labelIds.length, values, count, x, y, radius, labelFmt, angle0, flags);
     }
 
     /**
      * Plots a pie chart. If the sum of values{@code >}1 or normalize is true, each value will be normalized. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotPieChartV(final String[] labelIds, final int[] values, final int count, final double x, final double y, final double radius, final double angle0, final ImPlotSpec spec) {
-        nPlotPieChartV(labelIds, labelIds.length, values, count, x, y, radius, angle0, spec.ptr);
+    public static void plotPieChartV(final String[] labelIds, final int[] values, final int count, final double x, final double y, final double radius, final double angle0, final int flags) {
+        nPlotPieChartV(labelIds, labelIds.length, values, count, x, y, radius, angle0, flags);
     }
 
     private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, int[] values, int count, double x, double y, double radius); /*MANUAL
@@ -10616,7 +13011,7 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, int[] values, int count, double x, double y, double radius, String labelFmt, double angle0, long spec); /*MANUAL
+    private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, int[] values, int count, double x, double y, double radius, String labelFmt, double angle0, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -10625,7 +13020,7 @@ public final class ImPlot {
         };
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
         auto labelFmt = obj_labelFmt == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelFmt, JNI_FALSE);
-        ImPlot::PlotPieChart(labelIds, &values[0], count, x, y, radius, labelFmt, angle0, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotPieChart(labelIds, &values[0], count, x, y, radius, labelFmt, angle0, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -10634,7 +13029,7 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, int[] values, int count, double x, double y, double radius, double angle0, long spec); /*MANUAL
+    private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, int[] values, int count, double x, double y, double radius, double angle0, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -10642,7 +13037,7 @@ public final class ImPlot {
             labelIds[i] = rawStr;
         };
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotPieChart(labelIds, &values[0], count, x, y, radius, "%.1f", angle0, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotPieChart(labelIds, &values[0], count, x, y, radius, "%.1f", angle0, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -10674,15 +13069,15 @@ public final class ImPlot {
     /**
      * Plots a pie chart. If the sum of values{@code >}1 or normalize is true, each value will be normalized. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotPieChartV(final String[] labelIds, final long[] values, final int count, final double x, final double y, final double radius, final String labelFmt, final double angle0, final ImPlotSpec spec) {
-        nPlotPieChartV(labelIds, labelIds.length, values, count, x, y, radius, labelFmt, angle0, spec.ptr);
+    public static void plotPieChartV(final String[] labelIds, final long[] values, final int count, final double x, final double y, final double radius, final String labelFmt, final double angle0, final int flags) {
+        nPlotPieChartV(labelIds, labelIds.length, values, count, x, y, radius, labelFmt, angle0, flags);
     }
 
     /**
      * Plots a pie chart. If the sum of values{@code >}1 or normalize is true, each value will be normalized. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotPieChartV(final String[] labelIds, final long[] values, final int count, final double x, final double y, final double radius, final double angle0, final ImPlotSpec spec) {
-        nPlotPieChartV(labelIds, labelIds.length, values, count, x, y, radius, angle0, spec.ptr);
+    public static void plotPieChartV(final String[] labelIds, final long[] values, final int count, final double x, final double y, final double radius, final double angle0, final int flags) {
+        nPlotPieChartV(labelIds, labelIds.length, values, count, x, y, radius, angle0, flags);
     }
 
     private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, long[] values, int count, double x, double y, double radius); /*MANUAL
@@ -10737,7 +13132,7 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, long[] values, int count, double x, double y, double radius, String labelFmt, double angle0, long spec); /*MANUAL
+    private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, long[] values, int count, double x, double y, double radius, String labelFmt, double angle0, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -10746,7 +13141,7 @@ public final class ImPlot {
         };
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
         auto labelFmt = obj_labelFmt == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelFmt, JNI_FALSE);
-        ImPlot::PlotPieChart(labelIds, &values[0], count, x, y, radius, labelFmt, angle0, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotPieChart(labelIds, &values[0], count, x, y, radius, labelFmt, angle0, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -10755,7 +13150,7 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, long[] values, int count, double x, double y, double radius, double angle0, long spec); /*MANUAL
+    private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, long[] values, int count, double x, double y, double radius, double angle0, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -10763,7 +13158,7 @@ public final class ImPlot {
             labelIds[i] = rawStr;
         };
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotPieChart(labelIds, &values[0], count, x, y, radius, "%.1f", angle0, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotPieChart(labelIds, &values[0], count, x, y, radius, "%.1f", angle0, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -10795,15 +13190,15 @@ public final class ImPlot {
     /**
      * Plots a pie chart. If the sum of values{@code >}1 or normalize is true, each value will be normalized. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotPieChartV(final String[] labelIds, final float[] values, final int count, final double x, final double y, final double radius, final String labelFmt, final double angle0, final ImPlotSpec spec) {
-        nPlotPieChartV(labelIds, labelIds.length, values, count, x, y, radius, labelFmt, angle0, spec.ptr);
+    public static void plotPieChartV(final String[] labelIds, final float[] values, final int count, final double x, final double y, final double radius, final String labelFmt, final double angle0, final int flags) {
+        nPlotPieChartV(labelIds, labelIds.length, values, count, x, y, radius, labelFmt, angle0, flags);
     }
 
     /**
      * Plots a pie chart. If the sum of values{@code >}1 or normalize is true, each value will be normalized. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotPieChartV(final String[] labelIds, final float[] values, final int count, final double x, final double y, final double radius, final double angle0, final ImPlotSpec spec) {
-        nPlotPieChartV(labelIds, labelIds.length, values, count, x, y, radius, angle0, spec.ptr);
+    public static void plotPieChartV(final String[] labelIds, final float[] values, final int count, final double x, final double y, final double radius, final double angle0, final int flags) {
+        nPlotPieChartV(labelIds, labelIds.length, values, count, x, y, radius, angle0, flags);
     }
 
     private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, float[] values, int count, double x, double y, double radius); /*MANUAL
@@ -10858,7 +13253,7 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, float[] values, int count, double x, double y, double radius, String labelFmt, double angle0, long spec); /*MANUAL
+    private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, float[] values, int count, double x, double y, double radius, String labelFmt, double angle0, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -10867,7 +13262,7 @@ public final class ImPlot {
         };
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
         auto labelFmt = obj_labelFmt == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelFmt, JNI_FALSE);
-        ImPlot::PlotPieChart(labelIds, &values[0], count, x, y, radius, labelFmt, angle0, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotPieChart(labelIds, &values[0], count, x, y, radius, labelFmt, angle0, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -10876,7 +13271,7 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, float[] values, int count, double x, double y, double radius, double angle0, long spec); /*MANUAL
+    private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, float[] values, int count, double x, double y, double radius, double angle0, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -10884,7 +13279,7 @@ public final class ImPlot {
             labelIds[i] = rawStr;
         };
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotPieChart(labelIds, &values[0], count, x, y, radius, "%.1f", angle0, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotPieChart(labelIds, &values[0], count, x, y, radius, "%.1f", angle0, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -10916,15 +13311,15 @@ public final class ImPlot {
     /**
      * Plots a pie chart. If the sum of values{@code >}1 or normalize is true, each value will be normalized. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotPieChartV(final String[] labelIds, final double[] values, final int count, final double x, final double y, final double radius, final String labelFmt, final double angle0, final ImPlotSpec spec) {
-        nPlotPieChartV(labelIds, labelIds.length, values, count, x, y, radius, labelFmt, angle0, spec.ptr);
+    public static void plotPieChartV(final String[] labelIds, final double[] values, final int count, final double x, final double y, final double radius, final String labelFmt, final double angle0, final int flags) {
+        nPlotPieChartV(labelIds, labelIds.length, values, count, x, y, radius, labelFmt, angle0, flags);
     }
 
     /**
      * Plots a pie chart. If the sum of values{@code >}1 or normalize is true, each value will be normalized. Center and radius are in plot units. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotPieChartV(final String[] labelIds, final double[] values, final int count, final double x, final double y, final double radius, final double angle0, final ImPlotSpec spec) {
-        nPlotPieChartV(labelIds, labelIds.length, values, count, x, y, radius, angle0, spec.ptr);
+    public static void plotPieChartV(final String[] labelIds, final double[] values, final int count, final double x, final double y, final double radius, final double angle0, final int flags) {
+        nPlotPieChartV(labelIds, labelIds.length, values, count, x, y, radius, angle0, flags);
     }
 
     private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, double[] values, int count, double x, double y, double radius); /*MANUAL
@@ -10979,7 +13374,7 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, double[] values, int count, double x, double y, double radius, String labelFmt, double angle0, long spec); /*MANUAL
+    private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, double[] values, int count, double x, double y, double radius, String labelFmt, double angle0, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -10988,7 +13383,7 @@ public final class ImPlot {
         };
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
         auto labelFmt = obj_labelFmt == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelFmt, JNI_FALSE);
-        ImPlot::PlotPieChart(labelIds, &values[0], count, x, y, radius, labelFmt, angle0, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotPieChart(labelIds, &values[0], count, x, y, radius, labelFmt, angle0, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -10997,7 +13392,7 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, double[] values, int count, double x, double y, double radius, double angle0, long spec); /*MANUAL
+    private static native void nPlotPieChartV(String[] obj_labelIds, int labelIdsCount, double[] values, int count, double x, double y, double radius, double angle0, int flags); /*MANUAL
         const char* labelIds[labelIdsCount];
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
@@ -11005,7 +13400,7 @@ public final class ImPlot {
             labelIds[i] = rawStr;
         };
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotPieChart(labelIds, &values[0], count, x, y, radius, "%.1f", angle0, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotPieChart(labelIds, &values[0], count, x, y, radius, "%.1f", angle0, flags);
         for (int i = 0; i < labelIdsCount; i++) {
             const jstring str = (jstring)env->GetObjectArrayElement(obj_labelIds, i);
             env->ReleaseStringUTFChars(str, labelIds[i]);
@@ -11072,29 +13467,29 @@ public final class ImPlot {
     /**
      * Plots a 2D heatmap chart. Values are expected to be in row-major order. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotHeatmap(final String labelId, final short[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final String labelFmt, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final ImPlotSpec spec) {
-        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, spec.ptr);
+    public static void plotHeatmap(final String labelId, final short[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final String labelFmt, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final int flags) {
+        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, flags);
     }
 
     /**
      * Plots a 2D heatmap chart. Values are expected to be in row-major order. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotHeatmap(final String labelId, final short[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final String labelFmt, final double boundsMinX, final double boundsMinY, final double boundsMaxX, final double boundsMaxY, final ImPlotSpec spec) {
-        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMinX, boundsMinY, boundsMaxX, boundsMaxY, spec.ptr);
+    public static void plotHeatmap(final String labelId, final short[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final String labelFmt, final double boundsMinX, final double boundsMinY, final double boundsMaxX, final double boundsMaxY, final int flags) {
+        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMinX, boundsMinY, boundsMaxX, boundsMaxY, flags);
     }
 
     /**
      * Plots a 2D heatmap chart. Values are expected to be in row-major order. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotHeatmap(final String labelId, final short[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final ImPlotSpec spec) {
-        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, spec.ptr);
+    public static void plotHeatmap(final String labelId, final short[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final int flags) {
+        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, flags);
     }
 
     /**
      * Plots a 2D heatmap chart. Values are expected to be in row-major order. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotHeatmap(final String labelId, final short[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final double boundsMinX, final double boundsMinY, final double boundsMaxX, final double boundsMaxY, final ImPlotSpec spec) {
-        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, boundsMinX, boundsMinY, boundsMaxX, boundsMaxY, spec.ptr);
+    public static void plotHeatmap(final String labelId, final short[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final double boundsMinX, final double boundsMinY, final double boundsMaxX, final double boundsMaxY, final int flags) {
+        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, boundsMinX, boundsMinY, boundsMaxX, boundsMaxY, flags);
     }
 
     private static native void nPlotHeatmap(String labelId, short[] values, int rows, int cols); /*MANUAL
@@ -11151,20 +13546,20 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotHeatmap(String labelId, short[] values, int rows, int cols, double scaleMin, double scaleMax, String labelFmt, double boundsMinX, double boundsMinY, double boundsMaxX, double boundsMaxY, long spec); /*MANUAL
+    private static native void nPlotHeatmap(String labelId, short[] values, int rows, int cols, double scaleMin, double scaleMax, String labelFmt, double boundsMinX, double boundsMinY, double boundsMaxX, double boundsMaxY, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
         auto labelFmt = obj_labelFmt == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelFmt, JNI_FALSE);
-        ImPlot::PlotHeatmap(labelId, &values[0], rows, cols, scaleMin, scaleMax, labelFmt, ImPlotPoint(boundsMinX, boundsMinY), ImPlotPoint(boundsMaxX, boundsMaxY), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotHeatmap(labelId, &values[0], rows, cols, scaleMin, scaleMax, labelFmt, ImPlotPoint(boundsMinX, boundsMinY), ImPlotPoint(boundsMaxX, boundsMaxY), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotHeatmap(String labelId, short[] values, int rows, int cols, double scaleMin, double scaleMax, double boundsMinX, double boundsMinY, double boundsMaxX, double boundsMaxY, long spec); /*MANUAL
+    private static native void nPlotHeatmap(String labelId, short[] values, int rows, int cols, double scaleMin, double scaleMax, double boundsMinX, double boundsMinY, double boundsMaxX, double boundsMaxY, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotHeatmap(labelId, &values[0], rows, cols, scaleMin, scaleMax, "%.1f", ImPlotPoint(boundsMinX, boundsMinY), ImPlotPoint(boundsMaxX, boundsMaxY), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotHeatmap(labelId, &values[0], rows, cols, scaleMin, scaleMax, "%.1f", ImPlotPoint(boundsMinX, boundsMinY), ImPlotPoint(boundsMaxX, boundsMaxY), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -11228,29 +13623,29 @@ public final class ImPlot {
     /**
      * Plots a 2D heatmap chart. Values are expected to be in row-major order. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotHeatmap(final String labelId, final int[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final String labelFmt, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final ImPlotSpec spec) {
-        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, spec.ptr);
+    public static void plotHeatmap(final String labelId, final int[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final String labelFmt, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final int flags) {
+        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, flags);
     }
 
     /**
      * Plots a 2D heatmap chart. Values are expected to be in row-major order. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotHeatmap(final String labelId, final int[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final String labelFmt, final double boundsMinX, final double boundsMinY, final double boundsMaxX, final double boundsMaxY, final ImPlotSpec spec) {
-        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMinX, boundsMinY, boundsMaxX, boundsMaxY, spec.ptr);
+    public static void plotHeatmap(final String labelId, final int[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final String labelFmt, final double boundsMinX, final double boundsMinY, final double boundsMaxX, final double boundsMaxY, final int flags) {
+        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMinX, boundsMinY, boundsMaxX, boundsMaxY, flags);
     }
 
     /**
      * Plots a 2D heatmap chart. Values are expected to be in row-major order. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotHeatmap(final String labelId, final int[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final ImPlotSpec spec) {
-        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, spec.ptr);
+    public static void plotHeatmap(final String labelId, final int[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final int flags) {
+        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, flags);
     }
 
     /**
      * Plots a 2D heatmap chart. Values are expected to be in row-major order. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotHeatmap(final String labelId, final int[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final double boundsMinX, final double boundsMinY, final double boundsMaxX, final double boundsMaxY, final ImPlotSpec spec) {
-        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, boundsMinX, boundsMinY, boundsMaxX, boundsMaxY, spec.ptr);
+    public static void plotHeatmap(final String labelId, final int[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final double boundsMinX, final double boundsMinY, final double boundsMaxX, final double boundsMaxY, final int flags) {
+        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, boundsMinX, boundsMinY, boundsMaxX, boundsMaxY, flags);
     }
 
     private static native void nPlotHeatmap(String labelId, int[] values, int rows, int cols); /*MANUAL
@@ -11307,20 +13702,20 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotHeatmap(String labelId, int[] values, int rows, int cols, double scaleMin, double scaleMax, String labelFmt, double boundsMinX, double boundsMinY, double boundsMaxX, double boundsMaxY, long spec); /*MANUAL
+    private static native void nPlotHeatmap(String labelId, int[] values, int rows, int cols, double scaleMin, double scaleMax, String labelFmt, double boundsMinX, double boundsMinY, double boundsMaxX, double boundsMaxY, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
         auto labelFmt = obj_labelFmt == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelFmt, JNI_FALSE);
-        ImPlot::PlotHeatmap(labelId, &values[0], rows, cols, scaleMin, scaleMax, labelFmt, ImPlotPoint(boundsMinX, boundsMinY), ImPlotPoint(boundsMaxX, boundsMaxY), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotHeatmap(labelId, &values[0], rows, cols, scaleMin, scaleMax, labelFmt, ImPlotPoint(boundsMinX, boundsMinY), ImPlotPoint(boundsMaxX, boundsMaxY), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotHeatmap(String labelId, int[] values, int rows, int cols, double scaleMin, double scaleMax, double boundsMinX, double boundsMinY, double boundsMaxX, double boundsMaxY, long spec); /*MANUAL
+    private static native void nPlotHeatmap(String labelId, int[] values, int rows, int cols, double scaleMin, double scaleMax, double boundsMinX, double boundsMinY, double boundsMaxX, double boundsMaxY, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotHeatmap(labelId, &values[0], rows, cols, scaleMin, scaleMax, "%.1f", ImPlotPoint(boundsMinX, boundsMinY), ImPlotPoint(boundsMaxX, boundsMaxY), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotHeatmap(labelId, &values[0], rows, cols, scaleMin, scaleMax, "%.1f", ImPlotPoint(boundsMinX, boundsMinY), ImPlotPoint(boundsMaxX, boundsMaxY), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -11384,29 +13779,29 @@ public final class ImPlot {
     /**
      * Plots a 2D heatmap chart. Values are expected to be in row-major order. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotHeatmap(final String labelId, final long[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final String labelFmt, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final ImPlotSpec spec) {
-        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, spec.ptr);
+    public static void plotHeatmap(final String labelId, final long[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final String labelFmt, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final int flags) {
+        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, flags);
     }
 
     /**
      * Plots a 2D heatmap chart. Values are expected to be in row-major order. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotHeatmap(final String labelId, final long[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final String labelFmt, final double boundsMinX, final double boundsMinY, final double boundsMaxX, final double boundsMaxY, final ImPlotSpec spec) {
-        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMinX, boundsMinY, boundsMaxX, boundsMaxY, spec.ptr);
+    public static void plotHeatmap(final String labelId, final long[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final String labelFmt, final double boundsMinX, final double boundsMinY, final double boundsMaxX, final double boundsMaxY, final int flags) {
+        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMinX, boundsMinY, boundsMaxX, boundsMaxY, flags);
     }
 
     /**
      * Plots a 2D heatmap chart. Values are expected to be in row-major order. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotHeatmap(final String labelId, final long[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final ImPlotSpec spec) {
-        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, spec.ptr);
+    public static void plotHeatmap(final String labelId, final long[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final int flags) {
+        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, flags);
     }
 
     /**
      * Plots a 2D heatmap chart. Values are expected to be in row-major order. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotHeatmap(final String labelId, final long[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final double boundsMinX, final double boundsMinY, final double boundsMaxX, final double boundsMaxY, final ImPlotSpec spec) {
-        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, boundsMinX, boundsMinY, boundsMaxX, boundsMaxY, spec.ptr);
+    public static void plotHeatmap(final String labelId, final long[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final double boundsMinX, final double boundsMinY, final double boundsMaxX, final double boundsMaxY, final int flags) {
+        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, boundsMinX, boundsMinY, boundsMaxX, boundsMaxY, flags);
     }
 
     private static native void nPlotHeatmap(String labelId, long[] values, int rows, int cols); /*MANUAL
@@ -11463,20 +13858,20 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotHeatmap(String labelId, long[] values, int rows, int cols, double scaleMin, double scaleMax, String labelFmt, double boundsMinX, double boundsMinY, double boundsMaxX, double boundsMaxY, long spec); /*MANUAL
+    private static native void nPlotHeatmap(String labelId, long[] values, int rows, int cols, double scaleMin, double scaleMax, String labelFmt, double boundsMinX, double boundsMinY, double boundsMaxX, double boundsMaxY, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
         auto labelFmt = obj_labelFmt == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelFmt, JNI_FALSE);
-        ImPlot::PlotHeatmap(labelId, &values[0], rows, cols, scaleMin, scaleMax, labelFmt, ImPlotPoint(boundsMinX, boundsMinY), ImPlotPoint(boundsMaxX, boundsMaxY), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotHeatmap(labelId, &values[0], rows, cols, scaleMin, scaleMax, labelFmt, ImPlotPoint(boundsMinX, boundsMinY), ImPlotPoint(boundsMaxX, boundsMaxY), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotHeatmap(String labelId, long[] values, int rows, int cols, double scaleMin, double scaleMax, double boundsMinX, double boundsMinY, double boundsMaxX, double boundsMaxY, long spec); /*MANUAL
+    private static native void nPlotHeatmap(String labelId, long[] values, int rows, int cols, double scaleMin, double scaleMax, double boundsMinX, double boundsMinY, double boundsMaxX, double boundsMaxY, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotHeatmap(labelId, &values[0], rows, cols, scaleMin, scaleMax, "%.1f", ImPlotPoint(boundsMinX, boundsMinY), ImPlotPoint(boundsMaxX, boundsMaxY), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotHeatmap(labelId, &values[0], rows, cols, scaleMin, scaleMax, "%.1f", ImPlotPoint(boundsMinX, boundsMinY), ImPlotPoint(boundsMaxX, boundsMaxY), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -11540,29 +13935,29 @@ public final class ImPlot {
     /**
      * Plots a 2D heatmap chart. Values are expected to be in row-major order. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotHeatmap(final String labelId, final float[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final String labelFmt, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final ImPlotSpec spec) {
-        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, spec.ptr);
+    public static void plotHeatmap(final String labelId, final float[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final String labelFmt, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final int flags) {
+        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, flags);
     }
 
     /**
      * Plots a 2D heatmap chart. Values are expected to be in row-major order. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotHeatmap(final String labelId, final float[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final String labelFmt, final double boundsMinX, final double boundsMinY, final double boundsMaxX, final double boundsMaxY, final ImPlotSpec spec) {
-        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMinX, boundsMinY, boundsMaxX, boundsMaxY, spec.ptr);
+    public static void plotHeatmap(final String labelId, final float[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final String labelFmt, final double boundsMinX, final double boundsMinY, final double boundsMaxX, final double boundsMaxY, final int flags) {
+        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMinX, boundsMinY, boundsMaxX, boundsMaxY, flags);
     }
 
     /**
      * Plots a 2D heatmap chart. Values are expected to be in row-major order. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotHeatmap(final String labelId, final float[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final ImPlotSpec spec) {
-        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, spec.ptr);
+    public static void plotHeatmap(final String labelId, final float[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final int flags) {
+        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, flags);
     }
 
     /**
      * Plots a 2D heatmap chart. Values are expected to be in row-major order. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotHeatmap(final String labelId, final float[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final double boundsMinX, final double boundsMinY, final double boundsMaxX, final double boundsMaxY, final ImPlotSpec spec) {
-        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, boundsMinX, boundsMinY, boundsMaxX, boundsMaxY, spec.ptr);
+    public static void plotHeatmap(final String labelId, final float[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final double boundsMinX, final double boundsMinY, final double boundsMaxX, final double boundsMaxY, final int flags) {
+        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, boundsMinX, boundsMinY, boundsMaxX, boundsMaxY, flags);
     }
 
     private static native void nPlotHeatmap(String labelId, float[] values, int rows, int cols); /*MANUAL
@@ -11619,20 +14014,20 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotHeatmap(String labelId, float[] values, int rows, int cols, double scaleMin, double scaleMax, String labelFmt, double boundsMinX, double boundsMinY, double boundsMaxX, double boundsMaxY, long spec); /*MANUAL
+    private static native void nPlotHeatmap(String labelId, float[] values, int rows, int cols, double scaleMin, double scaleMax, String labelFmt, double boundsMinX, double boundsMinY, double boundsMaxX, double boundsMaxY, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
         auto labelFmt = obj_labelFmt == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelFmt, JNI_FALSE);
-        ImPlot::PlotHeatmap(labelId, &values[0], rows, cols, scaleMin, scaleMax, labelFmt, ImPlotPoint(boundsMinX, boundsMinY), ImPlotPoint(boundsMaxX, boundsMaxY), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotHeatmap(labelId, &values[0], rows, cols, scaleMin, scaleMax, labelFmt, ImPlotPoint(boundsMinX, boundsMinY), ImPlotPoint(boundsMaxX, boundsMaxY), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotHeatmap(String labelId, float[] values, int rows, int cols, double scaleMin, double scaleMax, double boundsMinX, double boundsMinY, double boundsMaxX, double boundsMaxY, long spec); /*MANUAL
+    private static native void nPlotHeatmap(String labelId, float[] values, int rows, int cols, double scaleMin, double scaleMax, double boundsMinX, double boundsMinY, double boundsMaxX, double boundsMaxY, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotHeatmap(labelId, &values[0], rows, cols, scaleMin, scaleMax, "%.1f", ImPlotPoint(boundsMinX, boundsMinY), ImPlotPoint(boundsMaxX, boundsMaxY), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotHeatmap(labelId, &values[0], rows, cols, scaleMin, scaleMax, "%.1f", ImPlotPoint(boundsMinX, boundsMinY), ImPlotPoint(boundsMaxX, boundsMaxY), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -11696,29 +14091,29 @@ public final class ImPlot {
     /**
      * Plots a 2D heatmap chart. Values are expected to be in row-major order. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotHeatmap(final String labelId, final double[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final String labelFmt, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final ImPlotSpec spec) {
-        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, spec.ptr);
+    public static void plotHeatmap(final String labelId, final double[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final String labelFmt, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final int flags) {
+        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, flags);
     }
 
     /**
      * Plots a 2D heatmap chart. Values are expected to be in row-major order. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotHeatmap(final String labelId, final double[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final String labelFmt, final double boundsMinX, final double boundsMinY, final double boundsMaxX, final double boundsMaxY, final ImPlotSpec spec) {
-        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMinX, boundsMinY, boundsMaxX, boundsMaxY, spec.ptr);
+    public static void plotHeatmap(final String labelId, final double[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final String labelFmt, final double boundsMinX, final double boundsMinY, final double boundsMaxX, final double boundsMaxY, final int flags) {
+        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, labelFmt, boundsMinX, boundsMinY, boundsMaxX, boundsMaxY, flags);
     }
 
     /**
      * Plots a 2D heatmap chart. Values are expected to be in row-major order. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotHeatmap(final String labelId, final double[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final ImPlotSpec spec) {
-        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, spec.ptr);
+    public static void plotHeatmap(final String labelId, final double[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final int flags) {
+        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, flags);
     }
 
     /**
      * Plots a 2D heatmap chart. Values are expected to be in row-major order. Leave #scale_min and scale_max both at 0 for automatic color scaling, or set them to a predefined range. #label_fmt can be set to NULL for no labels.
      */
-    public static void plotHeatmap(final String labelId, final double[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final double boundsMinX, final double boundsMinY, final double boundsMaxX, final double boundsMaxY, final ImPlotSpec spec) {
-        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, boundsMinX, boundsMinY, boundsMaxX, boundsMaxY, spec.ptr);
+    public static void plotHeatmap(final String labelId, final double[] values, final int rows, final int cols, final double scaleMin, final double scaleMax, final double boundsMinX, final double boundsMinY, final double boundsMaxX, final double boundsMaxY, final int flags) {
+        nPlotHeatmap(labelId, values, rows, cols, scaleMin, scaleMax, boundsMinX, boundsMinY, boundsMaxX, boundsMaxY, flags);
     }
 
     private static native void nPlotHeatmap(String labelId, double[] values, int rows, int cols); /*MANUAL
@@ -11775,20 +14170,20 @@ public final class ImPlot {
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotHeatmap(String labelId, double[] values, int rows, int cols, double scaleMin, double scaleMax, String labelFmt, double boundsMinX, double boundsMinY, double boundsMaxX, double boundsMaxY, long spec); /*MANUAL
+    private static native void nPlotHeatmap(String labelId, double[] values, int rows, int cols, double scaleMin, double scaleMax, String labelFmt, double boundsMinX, double boundsMinY, double boundsMaxX, double boundsMaxY, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
         auto labelFmt = obj_labelFmt == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelFmt, JNI_FALSE);
-        ImPlot::PlotHeatmap(labelId, &values[0], rows, cols, scaleMin, scaleMax, labelFmt, ImPlotPoint(boundsMinX, boundsMinY), ImPlotPoint(boundsMaxX, boundsMaxY), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotHeatmap(labelId, &values[0], rows, cols, scaleMin, scaleMax, labelFmt, ImPlotPoint(boundsMinX, boundsMinY), ImPlotPoint(boundsMaxX, boundsMaxY), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         if (labelFmt != NULL) env->ReleaseStringUTFChars(obj_labelFmt, labelFmt);
     */
 
-    private static native void nPlotHeatmap(String labelId, double[] values, int rows, int cols, double scaleMin, double scaleMax, double boundsMinX, double boundsMinY, double boundsMaxX, double boundsMaxY, long spec); /*MANUAL
+    private static native void nPlotHeatmap(String labelId, double[] values, int rows, int cols, double scaleMin, double scaleMax, double boundsMinX, double boundsMinY, double boundsMaxX, double boundsMaxY, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        ImPlot::PlotHeatmap(labelId, &values[0], rows, cols, scaleMin, scaleMax, "%.1f", ImPlotPoint(boundsMinX, boundsMinY), ImPlotPoint(boundsMaxX, boundsMaxY), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotHeatmap(labelId, &values[0], rows, cols, scaleMin, scaleMax, "%.1f", ImPlotPoint(boundsMinX, boundsMinY), ImPlotPoint(boundsMaxX, boundsMaxY), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
     */
@@ -11843,8 +14238,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final short[] values, final int bins, final double barScale, final ImPlotRange range, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, bins, barScale, range.min, range.max, spec.ptr);
+    public static double plotHistogram(final String labelId, final short[] values, final int bins, final double barScale, final ImPlotRange range, final int flags) {
+        return nPlotHistogram(labelId, values, bins, barScale, range.min, range.max, flags);
     }
 
     /**
@@ -11852,8 +14247,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final short[] values, final int bins, final double barScale, final double rangeMin, final double rangeMax, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, bins, barScale, rangeMin, rangeMax, spec.ptr);
+    public static double plotHistogram(final String labelId, final short[] values, final int bins, final double barScale, final double rangeMin, final double rangeMax, final int flags) {
+        return nPlotHistogram(labelId, values, bins, barScale, rangeMin, rangeMax, flags);
     }
 
     /**
@@ -11861,8 +14256,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final short[] values, final double barScale, final ImPlotRange range, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, barScale, range.min, range.max, spec.ptr);
+    public static double plotHistogram(final String labelId, final short[] values, final double barScale, final ImPlotRange range, final int flags) {
+        return nPlotHistogram(labelId, values, barScale, range.min, range.max, flags);
     }
 
     /**
@@ -11870,8 +14265,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final short[] values, final double barScale, final double rangeMin, final double rangeMax, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, barScale, rangeMin, rangeMax, spec.ptr);
+    public static double plotHistogram(final String labelId, final short[] values, final double barScale, final double rangeMin, final double rangeMax, final int flags) {
+        return nPlotHistogram(labelId, values, barScale, rangeMin, rangeMax, flags);
     }
 
     /**
@@ -11879,8 +14274,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final short[] values, final int bins, final double barScale, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, bins, barScale, spec.ptr);
+    public static double plotHistogram(final String labelId, final short[] values, final int bins, final double barScale, final int flags) {
+        return nPlotHistogram(labelId, values, bins, barScale, flags);
     }
 
     private static native double nPlotHistogram(String obj_labelId, short[] obj_values); /*MANUAL
@@ -11919,28 +14314,28 @@ public final class ImPlot {
         return _result;
     */
 
-    private static native double nPlotHistogram(String obj_labelId, short[] obj_values, int bins, double barScale, double rangeMin, double rangeMax, long spec); /*MANUAL
+    private static native double nPlotHistogram(String obj_labelId, short[] obj_values, int bins, double barScale, double rangeMin, double rangeMax, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), bins, barScale, ImPlotRange(rangeMin, rangeMax), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), bins, barScale, ImPlotRange(rangeMin, rangeMax), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogram(String obj_labelId, short[] obj_values, double barScale, double rangeMin, double rangeMax, long spec); /*MANUAL
+    private static native double nPlotHistogram(String obj_labelId, short[] obj_values, double barScale, double rangeMin, double rangeMax, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), ImPlotBin_Sturges, barScale, ImPlotRange(rangeMin, rangeMax), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), ImPlotBin_Sturges, barScale, ImPlotRange(rangeMin, rangeMax), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogram(String obj_labelId, short[] obj_values, int bins, double barScale, long spec); /*MANUAL
+    private static native double nPlotHistogram(String obj_labelId, short[] obj_values, int bins, double barScale, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), bins, barScale, ImPlotRange(), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), bins, barScale, ImPlotRange(), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
@@ -11996,8 +14391,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final int[] values, final int bins, final double barScale, final ImPlotRange range, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, bins, barScale, range.min, range.max, spec.ptr);
+    public static double plotHistogram(final String labelId, final int[] values, final int bins, final double barScale, final ImPlotRange range, final int flags) {
+        return nPlotHistogram(labelId, values, bins, barScale, range.min, range.max, flags);
     }
 
     /**
@@ -12005,8 +14400,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final int[] values, final int bins, final double barScale, final double rangeMin, final double rangeMax, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, bins, barScale, rangeMin, rangeMax, spec.ptr);
+    public static double plotHistogram(final String labelId, final int[] values, final int bins, final double barScale, final double rangeMin, final double rangeMax, final int flags) {
+        return nPlotHistogram(labelId, values, bins, barScale, rangeMin, rangeMax, flags);
     }
 
     /**
@@ -12014,8 +14409,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final int[] values, final double barScale, final ImPlotRange range, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, barScale, range.min, range.max, spec.ptr);
+    public static double plotHistogram(final String labelId, final int[] values, final double barScale, final ImPlotRange range, final int flags) {
+        return nPlotHistogram(labelId, values, barScale, range.min, range.max, flags);
     }
 
     /**
@@ -12023,8 +14418,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final int[] values, final double barScale, final double rangeMin, final double rangeMax, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, barScale, rangeMin, rangeMax, spec.ptr);
+    public static double plotHistogram(final String labelId, final int[] values, final double barScale, final double rangeMin, final double rangeMax, final int flags) {
+        return nPlotHistogram(labelId, values, barScale, rangeMin, rangeMax, flags);
     }
 
     /**
@@ -12032,8 +14427,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final int[] values, final int bins, final double barScale, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, bins, barScale, spec.ptr);
+    public static double plotHistogram(final String labelId, final int[] values, final int bins, final double barScale, final int flags) {
+        return nPlotHistogram(labelId, values, bins, barScale, flags);
     }
 
     private static native double nPlotHistogram(String obj_labelId, int[] obj_values); /*MANUAL
@@ -12072,28 +14467,28 @@ public final class ImPlot {
         return _result;
     */
 
-    private static native double nPlotHistogram(String obj_labelId, int[] obj_values, int bins, double barScale, double rangeMin, double rangeMax, long spec); /*MANUAL
+    private static native double nPlotHistogram(String obj_labelId, int[] obj_values, int bins, double barScale, double rangeMin, double rangeMax, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), bins, barScale, ImPlotRange(rangeMin, rangeMax), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), bins, barScale, ImPlotRange(rangeMin, rangeMax), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogram(String obj_labelId, int[] obj_values, double barScale, double rangeMin, double rangeMax, long spec); /*MANUAL
+    private static native double nPlotHistogram(String obj_labelId, int[] obj_values, double barScale, double rangeMin, double rangeMax, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), ImPlotBin_Sturges, barScale, ImPlotRange(rangeMin, rangeMax), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), ImPlotBin_Sturges, barScale, ImPlotRange(rangeMin, rangeMax), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogram(String obj_labelId, int[] obj_values, int bins, double barScale, long spec); /*MANUAL
+    private static native double nPlotHistogram(String obj_labelId, int[] obj_values, int bins, double barScale, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), bins, barScale, ImPlotRange(), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), bins, barScale, ImPlotRange(), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
@@ -12149,8 +14544,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final long[] values, final int bins, final double barScale, final ImPlotRange range, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, bins, barScale, range.min, range.max, spec.ptr);
+    public static double plotHistogram(final String labelId, final long[] values, final int bins, final double barScale, final ImPlotRange range, final int flags) {
+        return nPlotHistogram(labelId, values, bins, barScale, range.min, range.max, flags);
     }
 
     /**
@@ -12158,8 +14553,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final long[] values, final int bins, final double barScale, final double rangeMin, final double rangeMax, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, bins, barScale, rangeMin, rangeMax, spec.ptr);
+    public static double plotHistogram(final String labelId, final long[] values, final int bins, final double barScale, final double rangeMin, final double rangeMax, final int flags) {
+        return nPlotHistogram(labelId, values, bins, barScale, rangeMin, rangeMax, flags);
     }
 
     /**
@@ -12167,8 +14562,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final long[] values, final double barScale, final ImPlotRange range, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, barScale, range.min, range.max, spec.ptr);
+    public static double plotHistogram(final String labelId, final long[] values, final double barScale, final ImPlotRange range, final int flags) {
+        return nPlotHistogram(labelId, values, barScale, range.min, range.max, flags);
     }
 
     /**
@@ -12176,8 +14571,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final long[] values, final double barScale, final double rangeMin, final double rangeMax, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, barScale, rangeMin, rangeMax, spec.ptr);
+    public static double plotHistogram(final String labelId, final long[] values, final double barScale, final double rangeMin, final double rangeMax, final int flags) {
+        return nPlotHistogram(labelId, values, barScale, rangeMin, rangeMax, flags);
     }
 
     /**
@@ -12185,8 +14580,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final long[] values, final int bins, final double barScale, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, bins, barScale, spec.ptr);
+    public static double plotHistogram(final String labelId, final long[] values, final int bins, final double barScale, final int flags) {
+        return nPlotHistogram(labelId, values, bins, barScale, flags);
     }
 
     private static native double nPlotHistogram(String obj_labelId, long[] obj_values); /*MANUAL
@@ -12225,28 +14620,28 @@ public final class ImPlot {
         return _result;
     */
 
-    private static native double nPlotHistogram(String obj_labelId, long[] obj_values, int bins, double barScale, double rangeMin, double rangeMax, long spec); /*MANUAL
+    private static native double nPlotHistogram(String obj_labelId, long[] obj_values, int bins, double barScale, double rangeMin, double rangeMax, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), bins, barScale, ImPlotRange(rangeMin, rangeMax), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), bins, barScale, ImPlotRange(rangeMin, rangeMax), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogram(String obj_labelId, long[] obj_values, double barScale, double rangeMin, double rangeMax, long spec); /*MANUAL
+    private static native double nPlotHistogram(String obj_labelId, long[] obj_values, double barScale, double rangeMin, double rangeMax, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), ImPlotBin_Sturges, barScale, ImPlotRange(rangeMin, rangeMax), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), ImPlotBin_Sturges, barScale, ImPlotRange(rangeMin, rangeMax), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogram(String obj_labelId, long[] obj_values, int bins, double barScale, long spec); /*MANUAL
+    private static native double nPlotHistogram(String obj_labelId, long[] obj_values, int bins, double barScale, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), bins, barScale, ImPlotRange(), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), bins, barScale, ImPlotRange(), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
@@ -12302,8 +14697,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final float[] values, final int bins, final double barScale, final ImPlotRange range, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, bins, barScale, range.min, range.max, spec.ptr);
+    public static double plotHistogram(final String labelId, final float[] values, final int bins, final double barScale, final ImPlotRange range, final int flags) {
+        return nPlotHistogram(labelId, values, bins, barScale, range.min, range.max, flags);
     }
 
     /**
@@ -12311,8 +14706,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final float[] values, final int bins, final double barScale, final double rangeMin, final double rangeMax, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, bins, barScale, rangeMin, rangeMax, spec.ptr);
+    public static double plotHistogram(final String labelId, final float[] values, final int bins, final double barScale, final double rangeMin, final double rangeMax, final int flags) {
+        return nPlotHistogram(labelId, values, bins, barScale, rangeMin, rangeMax, flags);
     }
 
     /**
@@ -12320,8 +14715,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final float[] values, final double barScale, final ImPlotRange range, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, barScale, range.min, range.max, spec.ptr);
+    public static double plotHistogram(final String labelId, final float[] values, final double barScale, final ImPlotRange range, final int flags) {
+        return nPlotHistogram(labelId, values, barScale, range.min, range.max, flags);
     }
 
     /**
@@ -12329,8 +14724,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final float[] values, final double barScale, final double rangeMin, final double rangeMax, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, barScale, rangeMin, rangeMax, spec.ptr);
+    public static double plotHistogram(final String labelId, final float[] values, final double barScale, final double rangeMin, final double rangeMax, final int flags) {
+        return nPlotHistogram(labelId, values, barScale, rangeMin, rangeMax, flags);
     }
 
     /**
@@ -12338,8 +14733,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final float[] values, final int bins, final double barScale, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, bins, barScale, spec.ptr);
+    public static double plotHistogram(final String labelId, final float[] values, final int bins, final double barScale, final int flags) {
+        return nPlotHistogram(labelId, values, bins, barScale, flags);
     }
 
     private static native double nPlotHistogram(String obj_labelId, float[] obj_values); /*MANUAL
@@ -12378,28 +14773,28 @@ public final class ImPlot {
         return _result;
     */
 
-    private static native double nPlotHistogram(String obj_labelId, float[] obj_values, int bins, double barScale, double rangeMin, double rangeMax, long spec); /*MANUAL
+    private static native double nPlotHistogram(String obj_labelId, float[] obj_values, int bins, double barScale, double rangeMin, double rangeMax, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), bins, barScale, ImPlotRange(rangeMin, rangeMax), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), bins, barScale, ImPlotRange(rangeMin, rangeMax), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogram(String obj_labelId, float[] obj_values, double barScale, double rangeMin, double rangeMax, long spec); /*MANUAL
+    private static native double nPlotHistogram(String obj_labelId, float[] obj_values, double barScale, double rangeMin, double rangeMax, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), ImPlotBin_Sturges, barScale, ImPlotRange(rangeMin, rangeMax), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), ImPlotBin_Sturges, barScale, ImPlotRange(rangeMin, rangeMax), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogram(String obj_labelId, float[] obj_values, int bins, double barScale, long spec); /*MANUAL
+    private static native double nPlotHistogram(String obj_labelId, float[] obj_values, int bins, double barScale, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), bins, barScale, ImPlotRange(), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), bins, barScale, ImPlotRange(), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
@@ -12455,8 +14850,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final double[] values, final int bins, final double barScale, final ImPlotRange range, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, bins, barScale, range.min, range.max, spec.ptr);
+    public static double plotHistogram(final String labelId, final double[] values, final int bins, final double barScale, final ImPlotRange range, final int flags) {
+        return nPlotHistogram(labelId, values, bins, barScale, range.min, range.max, flags);
     }
 
     /**
@@ -12464,8 +14859,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final double[] values, final int bins, final double barScale, final double rangeMin, final double rangeMax, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, bins, barScale, rangeMin, rangeMax, spec.ptr);
+    public static double plotHistogram(final String labelId, final double[] values, final int bins, final double barScale, final double rangeMin, final double rangeMax, final int flags) {
+        return nPlotHistogram(labelId, values, bins, barScale, rangeMin, rangeMax, flags);
     }
 
     /**
@@ -12473,8 +14868,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final double[] values, final double barScale, final ImPlotRange range, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, barScale, range.min, range.max, spec.ptr);
+    public static double plotHistogram(final String labelId, final double[] values, final double barScale, final ImPlotRange range, final int flags) {
+        return nPlotHistogram(labelId, values, barScale, range.min, range.max, flags);
     }
 
     /**
@@ -12482,8 +14877,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final double[] values, final double barScale, final double rangeMin, final double rangeMax, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, barScale, rangeMin, rangeMax, spec.ptr);
+    public static double plotHistogram(final String labelId, final double[] values, final double barScale, final double rangeMin, final double rangeMax, final int flags) {
+        return nPlotHistogram(labelId, values, barScale, rangeMin, rangeMax, flags);
     }
 
     /**
@@ -12491,8 +14886,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram(final String labelId, final double[] values, final int bins, final double barScale, final ImPlotSpec spec) {
-        return nPlotHistogram(labelId, values, bins, barScale, spec.ptr);
+    public static double plotHistogram(final String labelId, final double[] values, final int bins, final double barScale, final int flags) {
+        return nPlotHistogram(labelId, values, bins, barScale, flags);
     }
 
     private static native double nPlotHistogram(String obj_labelId, double[] obj_values); /*MANUAL
@@ -12531,28 +14926,28 @@ public final class ImPlot {
         return _result;
     */
 
-    private static native double nPlotHistogram(String obj_labelId, double[] obj_values, int bins, double barScale, double rangeMin, double rangeMax, long spec); /*MANUAL
+    private static native double nPlotHistogram(String obj_labelId, double[] obj_values, int bins, double barScale, double rangeMin, double rangeMax, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), bins, barScale, ImPlotRange(rangeMin, rangeMax), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), bins, barScale, ImPlotRange(rangeMin, rangeMax), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogram(String obj_labelId, double[] obj_values, double barScale, double rangeMin, double rangeMax, long spec); /*MANUAL
+    private static native double nPlotHistogram(String obj_labelId, double[] obj_values, double barScale, double rangeMin, double rangeMax, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), ImPlotBin_Sturges, barScale, ImPlotRange(rangeMin, rangeMax), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), ImPlotBin_Sturges, barScale, ImPlotRange(rangeMin, rangeMax), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogram(String obj_labelId, double[] obj_values, int bins, double barScale, long spec); /*MANUAL
+    private static native double nPlotHistogram(String obj_labelId, double[] obj_values, int bins, double barScale, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), bins, barScale, ImPlotRange(), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], LEN(values), bins, barScale, ImPlotRange(), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
@@ -12608,8 +15003,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogramV(final String labelId, final short[] values, final int count, final int bins, final double barScale, final ImPlotRange range, final ImPlotSpec spec) {
-        return nPlotHistogramV(labelId, values, count, bins, barScale, range.min, range.max, spec.ptr);
+    public static double plotHistogramV(final String labelId, final short[] values, final int count, final int bins, final double barScale, final ImPlotRange range, final int flags) {
+        return nPlotHistogramV(labelId, values, count, bins, barScale, range.min, range.max, flags);
     }
 
     /**
@@ -12617,8 +15012,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogramV(final String labelId, final short[] values, final int count, final int bins, final double barScale, final double rangeMin, final double rangeMax, final ImPlotSpec spec) {
-        return nPlotHistogramV(labelId, values, count, bins, barScale, rangeMin, rangeMax, spec.ptr);
+    public static double plotHistogramV(final String labelId, final short[] values, final int count, final int bins, final double barScale, final double rangeMin, final double rangeMax, final int flags) {
+        return nPlotHistogramV(labelId, values, count, bins, barScale, rangeMin, rangeMax, flags);
     }
 
     /**
@@ -12626,8 +15021,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogramV(final String labelId, final short[] values, final int count, final int bins, final double barScale, final ImPlotSpec spec) {
-        return nPlotHistogramV(labelId, values, count, bins, barScale, spec.ptr);
+    public static double plotHistogramV(final String labelId, final short[] values, final int count, final int bins, final double barScale, final int flags) {
+        return nPlotHistogramV(labelId, values, count, bins, barScale, flags);
     }
 
     private static native double nPlotHistogramV(String obj_labelId, short[] obj_values, int count); /*MANUAL
@@ -12666,19 +15061,19 @@ public final class ImPlot {
         return _result;
     */
 
-    private static native double nPlotHistogramV(String obj_labelId, short[] obj_values, int count, int bins, double barScale, double rangeMin, double rangeMax, long spec); /*MANUAL
+    private static native double nPlotHistogramV(String obj_labelId, short[] obj_values, int count, int bins, double barScale, double rangeMin, double rangeMax, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], count, bins, barScale, ImPlotRange(rangeMin, rangeMax), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], count, bins, barScale, ImPlotRange(rangeMin, rangeMax), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogramV(String obj_labelId, short[] obj_values, int count, int bins, double barScale, long spec); /*MANUAL
+    private static native double nPlotHistogramV(String obj_labelId, short[] obj_values, int count, int bins, double barScale, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], count, bins, barScale, ImPlotRange(), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], count, bins, barScale, ImPlotRange(), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
@@ -12734,8 +15129,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogramV(final String labelId, final int[] values, final int count, final int bins, final double barScale, final ImPlotRange range, final ImPlotSpec spec) {
-        return nPlotHistogramV(labelId, values, count, bins, barScale, range.min, range.max, spec.ptr);
+    public static double plotHistogramV(final String labelId, final int[] values, final int count, final int bins, final double barScale, final ImPlotRange range, final int flags) {
+        return nPlotHistogramV(labelId, values, count, bins, barScale, range.min, range.max, flags);
     }
 
     /**
@@ -12743,8 +15138,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogramV(final String labelId, final int[] values, final int count, final int bins, final double barScale, final double rangeMin, final double rangeMax, final ImPlotSpec spec) {
-        return nPlotHistogramV(labelId, values, count, bins, barScale, rangeMin, rangeMax, spec.ptr);
+    public static double plotHistogramV(final String labelId, final int[] values, final int count, final int bins, final double barScale, final double rangeMin, final double rangeMax, final int flags) {
+        return nPlotHistogramV(labelId, values, count, bins, barScale, rangeMin, rangeMax, flags);
     }
 
     /**
@@ -12752,8 +15147,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogramV(final String labelId, final int[] values, final int count, final int bins, final double barScale, final ImPlotSpec spec) {
-        return nPlotHistogramV(labelId, values, count, bins, barScale, spec.ptr);
+    public static double plotHistogramV(final String labelId, final int[] values, final int count, final int bins, final double barScale, final int flags) {
+        return nPlotHistogramV(labelId, values, count, bins, barScale, flags);
     }
 
     private static native double nPlotHistogramV(String obj_labelId, int[] obj_values, int count); /*MANUAL
@@ -12792,19 +15187,19 @@ public final class ImPlot {
         return _result;
     */
 
-    private static native double nPlotHistogramV(String obj_labelId, int[] obj_values, int count, int bins, double barScale, double rangeMin, double rangeMax, long spec); /*MANUAL
+    private static native double nPlotHistogramV(String obj_labelId, int[] obj_values, int count, int bins, double barScale, double rangeMin, double rangeMax, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], count, bins, barScale, ImPlotRange(rangeMin, rangeMax), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], count, bins, barScale, ImPlotRange(rangeMin, rangeMax), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogramV(String obj_labelId, int[] obj_values, int count, int bins, double barScale, long spec); /*MANUAL
+    private static native double nPlotHistogramV(String obj_labelId, int[] obj_values, int count, int bins, double barScale, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], count, bins, barScale, ImPlotRange(), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], count, bins, barScale, ImPlotRange(), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
@@ -12860,8 +15255,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogramV(final String labelId, final long[] values, final int count, final int bins, final double barScale, final ImPlotRange range, final ImPlotSpec spec) {
-        return nPlotHistogramV(labelId, values, count, bins, barScale, range.min, range.max, spec.ptr);
+    public static double plotHistogramV(final String labelId, final long[] values, final int count, final int bins, final double barScale, final ImPlotRange range, final int flags) {
+        return nPlotHistogramV(labelId, values, count, bins, barScale, range.min, range.max, flags);
     }
 
     /**
@@ -12869,8 +15264,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogramV(final String labelId, final long[] values, final int count, final int bins, final double barScale, final double rangeMin, final double rangeMax, final ImPlotSpec spec) {
-        return nPlotHistogramV(labelId, values, count, bins, barScale, rangeMin, rangeMax, spec.ptr);
+    public static double plotHistogramV(final String labelId, final long[] values, final int count, final int bins, final double barScale, final double rangeMin, final double rangeMax, final int flags) {
+        return nPlotHistogramV(labelId, values, count, bins, barScale, rangeMin, rangeMax, flags);
     }
 
     /**
@@ -12878,8 +15273,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogramV(final String labelId, final long[] values, final int count, final int bins, final double barScale, final ImPlotSpec spec) {
-        return nPlotHistogramV(labelId, values, count, bins, barScale, spec.ptr);
+    public static double plotHistogramV(final String labelId, final long[] values, final int count, final int bins, final double barScale, final int flags) {
+        return nPlotHistogramV(labelId, values, count, bins, barScale, flags);
     }
 
     private static native double nPlotHistogramV(String obj_labelId, long[] obj_values, int count); /*MANUAL
@@ -12918,19 +15313,19 @@ public final class ImPlot {
         return _result;
     */
 
-    private static native double nPlotHistogramV(String obj_labelId, long[] obj_values, int count, int bins, double barScale, double rangeMin, double rangeMax, long spec); /*MANUAL
+    private static native double nPlotHistogramV(String obj_labelId, long[] obj_values, int count, int bins, double barScale, double rangeMin, double rangeMax, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], count, bins, barScale, ImPlotRange(rangeMin, rangeMax), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], count, bins, barScale, ImPlotRange(rangeMin, rangeMax), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogramV(String obj_labelId, long[] obj_values, int count, int bins, double barScale, long spec); /*MANUAL
+    private static native double nPlotHistogramV(String obj_labelId, long[] obj_values, int count, int bins, double barScale, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], count, bins, barScale, ImPlotRange(), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], count, bins, barScale, ImPlotRange(), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
@@ -12986,8 +15381,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogramV(final String labelId, final float[] values, final int count, final int bins, final double barScale, final ImPlotRange range, final ImPlotSpec spec) {
-        return nPlotHistogramV(labelId, values, count, bins, barScale, range.min, range.max, spec.ptr);
+    public static double plotHistogramV(final String labelId, final float[] values, final int count, final int bins, final double barScale, final ImPlotRange range, final int flags) {
+        return nPlotHistogramV(labelId, values, count, bins, barScale, range.min, range.max, flags);
     }
 
     /**
@@ -12995,8 +15390,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogramV(final String labelId, final float[] values, final int count, final int bins, final double barScale, final double rangeMin, final double rangeMax, final ImPlotSpec spec) {
-        return nPlotHistogramV(labelId, values, count, bins, barScale, rangeMin, rangeMax, spec.ptr);
+    public static double plotHistogramV(final String labelId, final float[] values, final int count, final int bins, final double barScale, final double rangeMin, final double rangeMax, final int flags) {
+        return nPlotHistogramV(labelId, values, count, bins, barScale, rangeMin, rangeMax, flags);
     }
 
     /**
@@ -13004,8 +15399,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogramV(final String labelId, final float[] values, final int count, final int bins, final double barScale, final ImPlotSpec spec) {
-        return nPlotHistogramV(labelId, values, count, bins, barScale, spec.ptr);
+    public static double plotHistogramV(final String labelId, final float[] values, final int count, final int bins, final double barScale, final int flags) {
+        return nPlotHistogramV(labelId, values, count, bins, barScale, flags);
     }
 
     private static native double nPlotHistogramV(String obj_labelId, float[] obj_values, int count); /*MANUAL
@@ -13044,19 +15439,19 @@ public final class ImPlot {
         return _result;
     */
 
-    private static native double nPlotHistogramV(String obj_labelId, float[] obj_values, int count, int bins, double barScale, double rangeMin, double rangeMax, long spec); /*MANUAL
+    private static native double nPlotHistogramV(String obj_labelId, float[] obj_values, int count, int bins, double barScale, double rangeMin, double rangeMax, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], count, bins, barScale, ImPlotRange(rangeMin, rangeMax), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], count, bins, barScale, ImPlotRange(rangeMin, rangeMax), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogramV(String obj_labelId, float[] obj_values, int count, int bins, double barScale, long spec); /*MANUAL
+    private static native double nPlotHistogramV(String obj_labelId, float[] obj_values, int count, int bins, double barScale, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], count, bins, barScale, ImPlotRange(), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], count, bins, barScale, ImPlotRange(), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
@@ -13112,8 +15507,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogramV(final String labelId, final double[] values, final int count, final int bins, final double barScale, final ImPlotRange range, final ImPlotSpec spec) {
-        return nPlotHistogramV(labelId, values, count, bins, barScale, range.min, range.max, spec.ptr);
+    public static double plotHistogramV(final String labelId, final double[] values, final int count, final int bins, final double barScale, final ImPlotRange range, final int flags) {
+        return nPlotHistogramV(labelId, values, count, bins, barScale, range.min, range.max, flags);
     }
 
     /**
@@ -13121,8 +15516,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogramV(final String labelId, final double[] values, final int count, final int bins, final double barScale, final double rangeMin, final double rangeMax, final ImPlotSpec spec) {
-        return nPlotHistogramV(labelId, values, count, bins, barScale, rangeMin, rangeMax, spec.ptr);
+    public static double plotHistogramV(final String labelId, final double[] values, final int count, final int bins, final double barScale, final double rangeMin, final double rangeMax, final int flags) {
+        return nPlotHistogramV(labelId, values, count, bins, barScale, rangeMin, rangeMax, flags);
     }
 
     /**
@@ -13130,8 +15525,8 @@ public final class ImPlot {
      * If #density is true, the PDF is visualized. If both are true, the CDF is visualized. If #range is left unspecified, the min/max of #values will be used as the range.
      * If #range is specified, outlier values outside of the range are not binned. However, outliers still count toward normalizing and cumulative counts unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogramV(final String labelId, final double[] values, final int count, final int bins, final double barScale, final ImPlotSpec spec) {
-        return nPlotHistogramV(labelId, values, count, bins, barScale, spec.ptr);
+    public static double plotHistogramV(final String labelId, final double[] values, final int count, final int bins, final double barScale, final int flags) {
+        return nPlotHistogramV(labelId, values, count, bins, barScale, flags);
     }
 
     private static native double nPlotHistogramV(String obj_labelId, double[] obj_values, int count); /*MANUAL
@@ -13170,19 +15565,19 @@ public final class ImPlot {
         return _result;
     */
 
-    private static native double nPlotHistogramV(String obj_labelId, double[] obj_values, int count, int bins, double barScale, double rangeMin, double rangeMax, long spec); /*MANUAL
+    private static native double nPlotHistogramV(String obj_labelId, double[] obj_values, int count, int bins, double barScale, double rangeMin, double rangeMax, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], count, bins, barScale, ImPlotRange(rangeMin, rangeMax), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], count, bins, barScale, ImPlotRange(rangeMin, rangeMax), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogramV(String obj_labelId, double[] obj_values, int count, int bins, double barScale, long spec); /*MANUAL
+    private static native double nPlotHistogramV(String obj_labelId, double[] obj_values, int count, int bins, double barScale, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram(labelId, &values[0], count, bins, barScale, ImPlotRange(), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram(labelId, &values[0], count, bins, barScale, ImPlotRange(), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
         return _result;
@@ -13238,8 +15633,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2D(final String labelId, final short[] xs, final short[] ys, final int xBins, final int yBins, final ImPlotRect range, final ImPlotSpec spec) {
-        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, range.x.min, range.y.min, range.x.max, range.y.max, spec.ptr);
+    public static double plotHistogram2D(final String labelId, final short[] xs, final short[] ys, final int xBins, final int yBins, final ImPlotRect range, final int flags) {
+        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, range.x.min, range.y.min, range.x.max, range.y.max, flags);
     }
 
     /**
@@ -13247,8 +15642,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2D(final String labelId, final short[] xs, final short[] ys, final int xBins, final int yBins, final double rangeMinX, final double rangeMinY, final double rangeMaxX, final double rangeMaxY, final ImPlotSpec spec) {
-        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, rangeMinX, rangeMinY, rangeMaxX, rangeMaxY, spec.ptr);
+    public static double plotHistogram2D(final String labelId, final short[] xs, final short[] ys, final int xBins, final int yBins, final double rangeMinX, final double rangeMinY, final double rangeMaxX, final double rangeMaxY, final int flags) {
+        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, rangeMinX, rangeMinY, rangeMaxX, rangeMaxY, flags);
     }
 
     /**
@@ -13256,8 +15651,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2D(final String labelId, final short[] xs, final short[] ys, final int xBins, final int yBins, final ImPlotSpec spec) {
-        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, spec.ptr);
+    public static double plotHistogram2D(final String labelId, final short[] xs, final short[] ys, final int xBins, final int yBins, final int flags) {
+        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, flags);
     }
 
     private static native double nPlotHistogram2D(String obj_labelId, short[] obj_xs, short[] obj_ys); /*MANUAL
@@ -13304,22 +15699,22 @@ public final class ImPlot {
         return _result;
     */
 
-    private static native double nPlotHistogram2D(String obj_labelId, short[] obj_xs, short[] obj_ys, int xBins, int yBins, double rangeMinX, double rangeMinY, double rangeMaxX, double rangeMaxY, long spec); /*MANUAL
+    private static native double nPlotHistogram2D(String obj_labelId, short[] obj_xs, short[] obj_ys, int xBins, int yBins, double rangeMinX, double rangeMinY, double rangeMaxX, double rangeMaxY, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], LEN(xs), xBins, yBins, ImPlotRect(rangeMinX, rangeMinY, rangeMaxX, rangeMaxY), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], LEN(xs), xBins, yBins, ImPlotRect(rangeMinX, rangeMinY, rangeMaxX, rangeMaxY), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogram2D(String obj_labelId, short[] obj_xs, short[] obj_ys, int xBins, int yBins, long spec); /*MANUAL
+    private static native double nPlotHistogram2D(String obj_labelId, short[] obj_xs, short[] obj_ys, int xBins, int yBins, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], LEN(xs), xBins, yBins, ImPlotRect(), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], LEN(xs), xBins, yBins, ImPlotRect(), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -13376,8 +15771,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2D(final String labelId, final int[] xs, final int[] ys, final int xBins, final int yBins, final ImPlotRect range, final ImPlotSpec spec) {
-        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, range.x.min, range.y.min, range.x.max, range.y.max, spec.ptr);
+    public static double plotHistogram2D(final String labelId, final int[] xs, final int[] ys, final int xBins, final int yBins, final ImPlotRect range, final int flags) {
+        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, range.x.min, range.y.min, range.x.max, range.y.max, flags);
     }
 
     /**
@@ -13385,8 +15780,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2D(final String labelId, final int[] xs, final int[] ys, final int xBins, final int yBins, final double rangeMinX, final double rangeMinY, final double rangeMaxX, final double rangeMaxY, final ImPlotSpec spec) {
-        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, rangeMinX, rangeMinY, rangeMaxX, rangeMaxY, spec.ptr);
+    public static double plotHistogram2D(final String labelId, final int[] xs, final int[] ys, final int xBins, final int yBins, final double rangeMinX, final double rangeMinY, final double rangeMaxX, final double rangeMaxY, final int flags) {
+        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, rangeMinX, rangeMinY, rangeMaxX, rangeMaxY, flags);
     }
 
     /**
@@ -13394,8 +15789,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2D(final String labelId, final int[] xs, final int[] ys, final int xBins, final int yBins, final ImPlotSpec spec) {
-        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, spec.ptr);
+    public static double plotHistogram2D(final String labelId, final int[] xs, final int[] ys, final int xBins, final int yBins, final int flags) {
+        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, flags);
     }
 
     private static native double nPlotHistogram2D(String obj_labelId, int[] obj_xs, int[] obj_ys); /*MANUAL
@@ -13442,22 +15837,22 @@ public final class ImPlot {
         return _result;
     */
 
-    private static native double nPlotHistogram2D(String obj_labelId, int[] obj_xs, int[] obj_ys, int xBins, int yBins, double rangeMinX, double rangeMinY, double rangeMaxX, double rangeMaxY, long spec); /*MANUAL
+    private static native double nPlotHistogram2D(String obj_labelId, int[] obj_xs, int[] obj_ys, int xBins, int yBins, double rangeMinX, double rangeMinY, double rangeMaxX, double rangeMaxY, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], LEN(xs), xBins, yBins, ImPlotRect(rangeMinX, rangeMinY, rangeMaxX, rangeMaxY), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], LEN(xs), xBins, yBins, ImPlotRect(rangeMinX, rangeMinY, rangeMaxX, rangeMaxY), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogram2D(String obj_labelId, int[] obj_xs, int[] obj_ys, int xBins, int yBins, long spec); /*MANUAL
+    private static native double nPlotHistogram2D(String obj_labelId, int[] obj_xs, int[] obj_ys, int xBins, int yBins, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], LEN(xs), xBins, yBins, ImPlotRect(), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], LEN(xs), xBins, yBins, ImPlotRect(), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -13514,8 +15909,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2D(final String labelId, final long[] xs, final long[] ys, final int xBins, final int yBins, final ImPlotRect range, final ImPlotSpec spec) {
-        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, range.x.min, range.y.min, range.x.max, range.y.max, spec.ptr);
+    public static double plotHistogram2D(final String labelId, final long[] xs, final long[] ys, final int xBins, final int yBins, final ImPlotRect range, final int flags) {
+        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, range.x.min, range.y.min, range.x.max, range.y.max, flags);
     }
 
     /**
@@ -13523,8 +15918,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2D(final String labelId, final long[] xs, final long[] ys, final int xBins, final int yBins, final double rangeMinX, final double rangeMinY, final double rangeMaxX, final double rangeMaxY, final ImPlotSpec spec) {
-        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, rangeMinX, rangeMinY, rangeMaxX, rangeMaxY, spec.ptr);
+    public static double plotHistogram2D(final String labelId, final long[] xs, final long[] ys, final int xBins, final int yBins, final double rangeMinX, final double rangeMinY, final double rangeMaxX, final double rangeMaxY, final int flags) {
+        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, rangeMinX, rangeMinY, rangeMaxX, rangeMaxY, flags);
     }
 
     /**
@@ -13532,8 +15927,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2D(final String labelId, final long[] xs, final long[] ys, final int xBins, final int yBins, final ImPlotSpec spec) {
-        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, spec.ptr);
+    public static double plotHistogram2D(final String labelId, final long[] xs, final long[] ys, final int xBins, final int yBins, final int flags) {
+        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, flags);
     }
 
     private static native double nPlotHistogram2D(String obj_labelId, long[] obj_xs, long[] obj_ys); /*MANUAL
@@ -13580,22 +15975,22 @@ public final class ImPlot {
         return _result;
     */
 
-    private static native double nPlotHistogram2D(String obj_labelId, long[] obj_xs, long[] obj_ys, int xBins, int yBins, double rangeMinX, double rangeMinY, double rangeMaxX, double rangeMaxY, long spec); /*MANUAL
+    private static native double nPlotHistogram2D(String obj_labelId, long[] obj_xs, long[] obj_ys, int xBins, int yBins, double rangeMinX, double rangeMinY, double rangeMaxX, double rangeMaxY, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], LEN(xs), xBins, yBins, ImPlotRect(rangeMinX, rangeMinY, rangeMaxX, rangeMaxY), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], LEN(xs), xBins, yBins, ImPlotRect(rangeMinX, rangeMinY, rangeMaxX, rangeMaxY), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogram2D(String obj_labelId, long[] obj_xs, long[] obj_ys, int xBins, int yBins, long spec); /*MANUAL
+    private static native double nPlotHistogram2D(String obj_labelId, long[] obj_xs, long[] obj_ys, int xBins, int yBins, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], LEN(xs), xBins, yBins, ImPlotRect(), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], LEN(xs), xBins, yBins, ImPlotRect(), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -13652,8 +16047,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2D(final String labelId, final float[] xs, final float[] ys, final int xBins, final int yBins, final ImPlotRect range, final ImPlotSpec spec) {
-        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, range.x.min, range.y.min, range.x.max, range.y.max, spec.ptr);
+    public static double plotHistogram2D(final String labelId, final float[] xs, final float[] ys, final int xBins, final int yBins, final ImPlotRect range, final int flags) {
+        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, range.x.min, range.y.min, range.x.max, range.y.max, flags);
     }
 
     /**
@@ -13661,8 +16056,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2D(final String labelId, final float[] xs, final float[] ys, final int xBins, final int yBins, final double rangeMinX, final double rangeMinY, final double rangeMaxX, final double rangeMaxY, final ImPlotSpec spec) {
-        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, rangeMinX, rangeMinY, rangeMaxX, rangeMaxY, spec.ptr);
+    public static double plotHistogram2D(final String labelId, final float[] xs, final float[] ys, final int xBins, final int yBins, final double rangeMinX, final double rangeMinY, final double rangeMaxX, final double rangeMaxY, final int flags) {
+        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, rangeMinX, rangeMinY, rangeMaxX, rangeMaxY, flags);
     }
 
     /**
@@ -13670,8 +16065,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2D(final String labelId, final float[] xs, final float[] ys, final int xBins, final int yBins, final ImPlotSpec spec) {
-        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, spec.ptr);
+    public static double plotHistogram2D(final String labelId, final float[] xs, final float[] ys, final int xBins, final int yBins, final int flags) {
+        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, flags);
     }
 
     private static native double nPlotHistogram2D(String obj_labelId, float[] obj_xs, float[] obj_ys); /*MANUAL
@@ -13718,22 +16113,22 @@ public final class ImPlot {
         return _result;
     */
 
-    private static native double nPlotHistogram2D(String obj_labelId, float[] obj_xs, float[] obj_ys, int xBins, int yBins, double rangeMinX, double rangeMinY, double rangeMaxX, double rangeMaxY, long spec); /*MANUAL
+    private static native double nPlotHistogram2D(String obj_labelId, float[] obj_xs, float[] obj_ys, int xBins, int yBins, double rangeMinX, double rangeMinY, double rangeMaxX, double rangeMaxY, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], LEN(xs), xBins, yBins, ImPlotRect(rangeMinX, rangeMinY, rangeMaxX, rangeMaxY), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], LEN(xs), xBins, yBins, ImPlotRect(rangeMinX, rangeMinY, rangeMaxX, rangeMaxY), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogram2D(String obj_labelId, float[] obj_xs, float[] obj_ys, int xBins, int yBins, long spec); /*MANUAL
+    private static native double nPlotHistogram2D(String obj_labelId, float[] obj_xs, float[] obj_ys, int xBins, int yBins, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], LEN(xs), xBins, yBins, ImPlotRect(), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], LEN(xs), xBins, yBins, ImPlotRect(), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -13790,8 +16185,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2D(final String labelId, final double[] xs, final double[] ys, final int xBins, final int yBins, final ImPlotRect range, final ImPlotSpec spec) {
-        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, range.x.min, range.y.min, range.x.max, range.y.max, spec.ptr);
+    public static double plotHistogram2D(final String labelId, final double[] xs, final double[] ys, final int xBins, final int yBins, final ImPlotRect range, final int flags) {
+        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, range.x.min, range.y.min, range.x.max, range.y.max, flags);
     }
 
     /**
@@ -13799,8 +16194,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2D(final String labelId, final double[] xs, final double[] ys, final int xBins, final int yBins, final double rangeMinX, final double rangeMinY, final double rangeMaxX, final double rangeMaxY, final ImPlotSpec spec) {
-        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, rangeMinX, rangeMinY, rangeMaxX, rangeMaxY, spec.ptr);
+    public static double plotHistogram2D(final String labelId, final double[] xs, final double[] ys, final int xBins, final int yBins, final double rangeMinX, final double rangeMinY, final double rangeMaxX, final double rangeMaxY, final int flags) {
+        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, rangeMinX, rangeMinY, rangeMaxX, rangeMaxY, flags);
     }
 
     /**
@@ -13808,8 +16203,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2D(final String labelId, final double[] xs, final double[] ys, final int xBins, final int yBins, final ImPlotSpec spec) {
-        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, spec.ptr);
+    public static double plotHistogram2D(final String labelId, final double[] xs, final double[] ys, final int xBins, final int yBins, final int flags) {
+        return nPlotHistogram2D(labelId, xs, ys, xBins, yBins, flags);
     }
 
     private static native double nPlotHistogram2D(String obj_labelId, double[] obj_xs, double[] obj_ys); /*MANUAL
@@ -13856,22 +16251,22 @@ public final class ImPlot {
         return _result;
     */
 
-    private static native double nPlotHistogram2D(String obj_labelId, double[] obj_xs, double[] obj_ys, int xBins, int yBins, double rangeMinX, double rangeMinY, double rangeMaxX, double rangeMaxY, long spec); /*MANUAL
+    private static native double nPlotHistogram2D(String obj_labelId, double[] obj_xs, double[] obj_ys, int xBins, int yBins, double rangeMinX, double rangeMinY, double rangeMaxX, double rangeMaxY, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], LEN(xs), xBins, yBins, ImPlotRect(rangeMinX, rangeMinY, rangeMaxX, rangeMaxY), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], LEN(xs), xBins, yBins, ImPlotRect(rangeMinX, rangeMinY, rangeMaxX, rangeMaxY), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogram2D(String obj_labelId, double[] obj_xs, double[] obj_ys, int xBins, int yBins, long spec); /*MANUAL
+    private static native double nPlotHistogram2D(String obj_labelId, double[] obj_xs, double[] obj_ys, int xBins, int yBins, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], LEN(xs), xBins, yBins, ImPlotRect(), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], LEN(xs), xBins, yBins, ImPlotRect(), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -13928,8 +16323,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2DV(final String labelId, final short[] xs, final short[] ys, final int count, final int xBins, final int yBins, final ImPlotRect range, final ImPlotSpec spec) {
-        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, range.x.min, range.y.min, range.x.max, range.y.max, spec.ptr);
+    public static double plotHistogram2DV(final String labelId, final short[] xs, final short[] ys, final int count, final int xBins, final int yBins, final ImPlotRect range, final int flags) {
+        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, range.x.min, range.y.min, range.x.max, range.y.max, flags);
     }
 
     /**
@@ -13937,8 +16332,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2DV(final String labelId, final short[] xs, final short[] ys, final int count, final int xBins, final int yBins, final double rangeMinX, final double rangeMinY, final double rangeMaxX, final double rangeMaxY, final ImPlotSpec spec) {
-        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, rangeMinX, rangeMinY, rangeMaxX, rangeMaxY, spec.ptr);
+    public static double plotHistogram2DV(final String labelId, final short[] xs, final short[] ys, final int count, final int xBins, final int yBins, final double rangeMinX, final double rangeMinY, final double rangeMaxX, final double rangeMaxY, final int flags) {
+        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, rangeMinX, rangeMinY, rangeMaxX, rangeMaxY, flags);
     }
 
     /**
@@ -13946,8 +16341,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2DV(final String labelId, final short[] xs, final short[] ys, final int count, final int xBins, final int yBins, final ImPlotSpec spec) {
-        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, spec.ptr);
+    public static double plotHistogram2DV(final String labelId, final short[] xs, final short[] ys, final int count, final int xBins, final int yBins, final int flags) {
+        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, flags);
     }
 
     private static native double nPlotHistogram2DV(String obj_labelId, short[] obj_xs, short[] obj_ys, int count); /*MANUAL
@@ -13994,22 +16389,22 @@ public final class ImPlot {
         return _result;
     */
 
-    private static native double nPlotHistogram2DV(String obj_labelId, short[] obj_xs, short[] obj_ys, int count, int xBins, int yBins, double rangeMinX, double rangeMinY, double rangeMaxX, double rangeMaxY, long spec); /*MANUAL
+    private static native double nPlotHistogram2DV(String obj_labelId, short[] obj_xs, short[] obj_ys, int count, int xBins, int yBins, double rangeMinX, double rangeMinY, double rangeMaxX, double rangeMaxY, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], count, xBins, yBins, ImPlotRect(rangeMinX, rangeMinY, rangeMaxX, rangeMaxY), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], count, xBins, yBins, ImPlotRect(rangeMinX, rangeMinY, rangeMaxX, rangeMaxY), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogram2DV(String obj_labelId, short[] obj_xs, short[] obj_ys, int count, int xBins, int yBins, long spec); /*MANUAL
+    private static native double nPlotHistogram2DV(String obj_labelId, short[] obj_xs, short[] obj_ys, int count, int xBins, int yBins, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], count, xBins, yBins, ImPlotRect(), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], count, xBins, yBins, ImPlotRect(), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -14066,8 +16461,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2DV(final String labelId, final int[] xs, final int[] ys, final int count, final int xBins, final int yBins, final ImPlotRect range, final ImPlotSpec spec) {
-        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, range.x.min, range.y.min, range.x.max, range.y.max, spec.ptr);
+    public static double plotHistogram2DV(final String labelId, final int[] xs, final int[] ys, final int count, final int xBins, final int yBins, final ImPlotRect range, final int flags) {
+        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, range.x.min, range.y.min, range.x.max, range.y.max, flags);
     }
 
     /**
@@ -14075,8 +16470,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2DV(final String labelId, final int[] xs, final int[] ys, final int count, final int xBins, final int yBins, final double rangeMinX, final double rangeMinY, final double rangeMaxX, final double rangeMaxY, final ImPlotSpec spec) {
-        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, rangeMinX, rangeMinY, rangeMaxX, rangeMaxY, spec.ptr);
+    public static double plotHistogram2DV(final String labelId, final int[] xs, final int[] ys, final int count, final int xBins, final int yBins, final double rangeMinX, final double rangeMinY, final double rangeMaxX, final double rangeMaxY, final int flags) {
+        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, rangeMinX, rangeMinY, rangeMaxX, rangeMaxY, flags);
     }
 
     /**
@@ -14084,8 +16479,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2DV(final String labelId, final int[] xs, final int[] ys, final int count, final int xBins, final int yBins, final ImPlotSpec spec) {
-        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, spec.ptr);
+    public static double plotHistogram2DV(final String labelId, final int[] xs, final int[] ys, final int count, final int xBins, final int yBins, final int flags) {
+        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, flags);
     }
 
     private static native double nPlotHistogram2DV(String obj_labelId, int[] obj_xs, int[] obj_ys, int count); /*MANUAL
@@ -14132,22 +16527,22 @@ public final class ImPlot {
         return _result;
     */
 
-    private static native double nPlotHistogram2DV(String obj_labelId, int[] obj_xs, int[] obj_ys, int count, int xBins, int yBins, double rangeMinX, double rangeMinY, double rangeMaxX, double rangeMaxY, long spec); /*MANUAL
+    private static native double nPlotHistogram2DV(String obj_labelId, int[] obj_xs, int[] obj_ys, int count, int xBins, int yBins, double rangeMinX, double rangeMinY, double rangeMaxX, double rangeMaxY, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], count, xBins, yBins, ImPlotRect(rangeMinX, rangeMinY, rangeMaxX, rangeMaxY), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], count, xBins, yBins, ImPlotRect(rangeMinX, rangeMinY, rangeMaxX, rangeMaxY), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogram2DV(String obj_labelId, int[] obj_xs, int[] obj_ys, int count, int xBins, int yBins, long spec); /*MANUAL
+    private static native double nPlotHistogram2DV(String obj_labelId, int[] obj_xs, int[] obj_ys, int count, int xBins, int yBins, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], count, xBins, yBins, ImPlotRect(), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], count, xBins, yBins, ImPlotRect(), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -14204,8 +16599,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2DV(final String labelId, final long[] xs, final long[] ys, final int count, final int xBins, final int yBins, final ImPlotRect range, final ImPlotSpec spec) {
-        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, range.x.min, range.y.min, range.x.max, range.y.max, spec.ptr);
+    public static double plotHistogram2DV(final String labelId, final long[] xs, final long[] ys, final int count, final int xBins, final int yBins, final ImPlotRect range, final int flags) {
+        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, range.x.min, range.y.min, range.x.max, range.y.max, flags);
     }
 
     /**
@@ -14213,8 +16608,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2DV(final String labelId, final long[] xs, final long[] ys, final int count, final int xBins, final int yBins, final double rangeMinX, final double rangeMinY, final double rangeMaxX, final double rangeMaxY, final ImPlotSpec spec) {
-        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, rangeMinX, rangeMinY, rangeMaxX, rangeMaxY, spec.ptr);
+    public static double plotHistogram2DV(final String labelId, final long[] xs, final long[] ys, final int count, final int xBins, final int yBins, final double rangeMinX, final double rangeMinY, final double rangeMaxX, final double rangeMaxY, final int flags) {
+        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, rangeMinX, rangeMinY, rangeMaxX, rangeMaxY, flags);
     }
 
     /**
@@ -14222,8 +16617,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2DV(final String labelId, final long[] xs, final long[] ys, final int count, final int xBins, final int yBins, final ImPlotSpec spec) {
-        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, spec.ptr);
+    public static double plotHistogram2DV(final String labelId, final long[] xs, final long[] ys, final int count, final int xBins, final int yBins, final int flags) {
+        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, flags);
     }
 
     private static native double nPlotHistogram2DV(String obj_labelId, long[] obj_xs, long[] obj_ys, int count); /*MANUAL
@@ -14270,22 +16665,22 @@ public final class ImPlot {
         return _result;
     */
 
-    private static native double nPlotHistogram2DV(String obj_labelId, long[] obj_xs, long[] obj_ys, int count, int xBins, int yBins, double rangeMinX, double rangeMinY, double rangeMaxX, double rangeMaxY, long spec); /*MANUAL
+    private static native double nPlotHistogram2DV(String obj_labelId, long[] obj_xs, long[] obj_ys, int count, int xBins, int yBins, double rangeMinX, double rangeMinY, double rangeMaxX, double rangeMaxY, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], count, xBins, yBins, ImPlotRect(rangeMinX, rangeMinY, rangeMaxX, rangeMaxY), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], count, xBins, yBins, ImPlotRect(rangeMinX, rangeMinY, rangeMaxX, rangeMaxY), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogram2DV(String obj_labelId, long[] obj_xs, long[] obj_ys, int count, int xBins, int yBins, long spec); /*MANUAL
+    private static native double nPlotHistogram2DV(String obj_labelId, long[] obj_xs, long[] obj_ys, int count, int xBins, int yBins, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], count, xBins, yBins, ImPlotRect(), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], count, xBins, yBins, ImPlotRect(), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -14342,8 +16737,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2DV(final String labelId, final float[] xs, final float[] ys, final int count, final int xBins, final int yBins, final ImPlotRect range, final ImPlotSpec spec) {
-        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, range.x.min, range.y.min, range.x.max, range.y.max, spec.ptr);
+    public static double plotHistogram2DV(final String labelId, final float[] xs, final float[] ys, final int count, final int xBins, final int yBins, final ImPlotRect range, final int flags) {
+        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, range.x.min, range.y.min, range.x.max, range.y.max, flags);
     }
 
     /**
@@ -14351,8 +16746,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2DV(final String labelId, final float[] xs, final float[] ys, final int count, final int xBins, final int yBins, final double rangeMinX, final double rangeMinY, final double rangeMaxX, final double rangeMaxY, final ImPlotSpec spec) {
-        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, rangeMinX, rangeMinY, rangeMaxX, rangeMaxY, spec.ptr);
+    public static double plotHistogram2DV(final String labelId, final float[] xs, final float[] ys, final int count, final int xBins, final int yBins, final double rangeMinX, final double rangeMinY, final double rangeMaxX, final double rangeMaxY, final int flags) {
+        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, rangeMinX, rangeMinY, rangeMaxX, rangeMaxY, flags);
     }
 
     /**
@@ -14360,8 +16755,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2DV(final String labelId, final float[] xs, final float[] ys, final int count, final int xBins, final int yBins, final ImPlotSpec spec) {
-        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, spec.ptr);
+    public static double plotHistogram2DV(final String labelId, final float[] xs, final float[] ys, final int count, final int xBins, final int yBins, final int flags) {
+        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, flags);
     }
 
     private static native double nPlotHistogram2DV(String obj_labelId, float[] obj_xs, float[] obj_ys, int count); /*MANUAL
@@ -14408,22 +16803,22 @@ public final class ImPlot {
         return _result;
     */
 
-    private static native double nPlotHistogram2DV(String obj_labelId, float[] obj_xs, float[] obj_ys, int count, int xBins, int yBins, double rangeMinX, double rangeMinY, double rangeMaxX, double rangeMaxY, long spec); /*MANUAL
+    private static native double nPlotHistogram2DV(String obj_labelId, float[] obj_xs, float[] obj_ys, int count, int xBins, int yBins, double rangeMinX, double rangeMinY, double rangeMaxX, double rangeMaxY, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], count, xBins, yBins, ImPlotRect(rangeMinX, rangeMinY, rangeMaxX, rangeMaxY), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], count, xBins, yBins, ImPlotRect(rangeMinX, rangeMinY, rangeMaxX, rangeMaxY), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogram2DV(String obj_labelId, float[] obj_xs, float[] obj_ys, int count, int xBins, int yBins, long spec); /*MANUAL
+    private static native double nPlotHistogram2DV(String obj_labelId, float[] obj_xs, float[] obj_ys, int count, int xBins, int yBins, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], count, xBins, yBins, ImPlotRect(), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], count, xBins, yBins, ImPlotRect(), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -14480,8 +16875,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2DV(final String labelId, final double[] xs, final double[] ys, final int count, final int xBins, final int yBins, final ImPlotRect range, final ImPlotSpec spec) {
-        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, range.x.min, range.y.min, range.x.max, range.y.max, spec.ptr);
+    public static double plotHistogram2DV(final String labelId, final double[] xs, final double[] ys, final int count, final int xBins, final int yBins, final ImPlotRect range, final int flags) {
+        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, range.x.min, range.y.min, range.x.max, range.y.max, flags);
     }
 
     /**
@@ -14489,8 +16884,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2DV(final String labelId, final double[] xs, final double[] ys, final int count, final int xBins, final int yBins, final double rangeMinX, final double rangeMinY, final double rangeMaxX, final double rangeMaxY, final ImPlotSpec spec) {
-        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, rangeMinX, rangeMinY, rangeMaxX, rangeMaxY, spec.ptr);
+    public static double plotHistogram2DV(final String labelId, final double[] xs, final double[] ys, final int count, final int xBins, final int yBins, final double rangeMinX, final double rangeMinY, final double rangeMaxX, final double rangeMaxY, final int flags) {
+        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, rangeMinX, rangeMinY, rangeMaxX, rangeMaxY, flags);
     }
 
     /**
@@ -14498,8 +16893,8 @@ public final class ImPlot {
      * If #range is left unspecified, the min/max of #xs an #ys will be used as the ranges. If #range is specified, outlier values outside of range are not binned.
      * However, outliers still count toward the normalizing count for density plots unless #outliers is false. The largest bin count or density is returned.
      */
-    public static double plotHistogram2DV(final String labelId, final double[] xs, final double[] ys, final int count, final int xBins, final int yBins, final ImPlotSpec spec) {
-        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, spec.ptr);
+    public static double plotHistogram2DV(final String labelId, final double[] xs, final double[] ys, final int count, final int xBins, final int yBins, final int flags) {
+        return nPlotHistogram2DV(labelId, xs, ys, count, xBins, yBins, flags);
     }
 
     private static native double nPlotHistogram2DV(String obj_labelId, double[] obj_xs, double[] obj_ys, int count); /*MANUAL
@@ -14546,22 +16941,22 @@ public final class ImPlot {
         return _result;
     */
 
-    private static native double nPlotHistogram2DV(String obj_labelId, double[] obj_xs, double[] obj_ys, int count, int xBins, int yBins, double rangeMinX, double rangeMinY, double rangeMaxX, double rangeMaxY, long spec); /*MANUAL
+    private static native double nPlotHistogram2DV(String obj_labelId, double[] obj_xs, double[] obj_ys, int count, int xBins, int yBins, double rangeMinX, double rangeMinY, double rangeMaxX, double rangeMaxY, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], count, xBins, yBins, ImPlotRect(rangeMinX, rangeMinY, rangeMaxX, rangeMaxY), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], count, xBins, yBins, ImPlotRect(rangeMinX, rangeMinY, rangeMaxX, rangeMaxY), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
         return _result;
     */
 
-    private static native double nPlotHistogram2DV(String obj_labelId, double[] obj_xs, double[] obj_ys, int count, int xBins, int yBins, long spec); /*MANUAL
+    private static native double nPlotHistogram2DV(String obj_labelId, double[] obj_xs, double[] obj_ys, int count, int xBins, int yBins, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], count, xBins, yBins, ImPlotRect(), *reinterpret_cast<ImPlotSpec*>(spec));
+        auto _result = ImPlot::PlotHistogram2D(labelId, &xs[0], &ys[0], count, xBins, yBins, ImPlotRect(), flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -14578,8 +16973,15 @@ public final class ImPlot {
     /**
      * Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.
      */
-    public static void plotDigital(final String labelId, final short[] xs, final short[] ys, final ImPlotSpec spec) {
-        nPlotDigital(labelId, xs, ys, spec.ptr);
+    public static void plotDigital(final String labelId, final short[] xs, final short[] ys, final int flags) {
+        nPlotDigital(labelId, xs, ys, flags);
+    }
+
+    /**
+     * Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.
+     */
+    public static void plotDigital(final String labelId, final short[] xs, final short[] ys, final int flags, final int offset) {
+        nPlotDigital(labelId, xs, ys, flags, offset);
     }
 
     private static native void nPlotDigital(String labelId, short[] xs, short[] ys); /*MANUAL
@@ -14592,11 +16994,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotDigital(String labelId, short[] xs, short[] ys, long spec); /*MANUAL
+    private static native void nPlotDigital(String labelId, short[] xs, short[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], LEN(xs), flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotDigital(String labelId, short[] xs, short[] ys, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], LEN(xs), flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -14612,8 +17024,15 @@ public final class ImPlot {
     /**
      * Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.
      */
-    public static void plotDigital(final String labelId, final int[] xs, final int[] ys, final ImPlotSpec spec) {
-        nPlotDigital(labelId, xs, ys, spec.ptr);
+    public static void plotDigital(final String labelId, final int[] xs, final int[] ys, final int flags) {
+        nPlotDigital(labelId, xs, ys, flags);
+    }
+
+    /**
+     * Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.
+     */
+    public static void plotDigital(final String labelId, final int[] xs, final int[] ys, final int flags, final int offset) {
+        nPlotDigital(labelId, xs, ys, flags, offset);
     }
 
     private static native void nPlotDigital(String labelId, int[] xs, int[] ys); /*MANUAL
@@ -14626,11 +17045,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotDigital(String labelId, int[] xs, int[] ys, long spec); /*MANUAL
+    private static native void nPlotDigital(String labelId, int[] xs, int[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], LEN(xs), flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotDigital(String labelId, int[] xs, int[] ys, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], LEN(xs), flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -14646,8 +17075,15 @@ public final class ImPlot {
     /**
      * Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.
      */
-    public static void plotDigital(final String labelId, final long[] xs, final long[] ys, final ImPlotSpec spec) {
-        nPlotDigital(labelId, xs, ys, spec.ptr);
+    public static void plotDigital(final String labelId, final long[] xs, final long[] ys, final int flags) {
+        nPlotDigital(labelId, xs, ys, flags);
+    }
+
+    /**
+     * Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.
+     */
+    public static void plotDigital(final String labelId, final long[] xs, final long[] ys, final int flags, final int offset) {
+        nPlotDigital(labelId, xs, ys, flags, offset);
     }
 
     private static native void nPlotDigital(String labelId, long[] xs, long[] ys); /*MANUAL
@@ -14660,11 +17096,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotDigital(String labelId, long[] xs, long[] ys, long spec); /*MANUAL
+    private static native void nPlotDigital(String labelId, long[] xs, long[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], LEN(xs), flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotDigital(String labelId, long[] xs, long[] ys, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], LEN(xs), flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -14680,8 +17126,15 @@ public final class ImPlot {
     /**
      * Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.
      */
-    public static void plotDigital(final String labelId, final float[] xs, final float[] ys, final ImPlotSpec spec) {
-        nPlotDigital(labelId, xs, ys, spec.ptr);
+    public static void plotDigital(final String labelId, final float[] xs, final float[] ys, final int flags) {
+        nPlotDigital(labelId, xs, ys, flags);
+    }
+
+    /**
+     * Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.
+     */
+    public static void plotDigital(final String labelId, final float[] xs, final float[] ys, final int flags, final int offset) {
+        nPlotDigital(labelId, xs, ys, flags, offset);
     }
 
     private static native void nPlotDigital(String labelId, float[] xs, float[] ys); /*MANUAL
@@ -14694,11 +17147,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotDigital(String labelId, float[] xs, float[] ys, long spec); /*MANUAL
+    private static native void nPlotDigital(String labelId, float[] xs, float[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], LEN(xs), flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotDigital(String labelId, float[] xs, float[] ys, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], LEN(xs), flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -14714,8 +17177,15 @@ public final class ImPlot {
     /**
      * Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.
      */
-    public static void plotDigital(final String labelId, final double[] xs, final double[] ys, final ImPlotSpec spec) {
-        nPlotDigital(labelId, xs, ys, spec.ptr);
+    public static void plotDigital(final String labelId, final double[] xs, final double[] ys, final int flags) {
+        nPlotDigital(labelId, xs, ys, flags);
+    }
+
+    /**
+     * Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.
+     */
+    public static void plotDigital(final String labelId, final double[] xs, final double[] ys, final int flags, final int offset) {
+        nPlotDigital(labelId, xs, ys, flags, offset);
     }
 
     private static native void nPlotDigital(String labelId, double[] xs, double[] ys); /*MANUAL
@@ -14728,11 +17198,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotDigital(String labelId, double[] xs, double[] ys, long spec); /*MANUAL
+    private static native void nPlotDigital(String labelId, double[] xs, double[] ys, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], LEN(xs), flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotDigital(String labelId, double[] xs, double[] ys, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], LEN(xs), flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -14748,8 +17228,15 @@ public final class ImPlot {
     /**
      * Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.
      */
-    public static void plotDigitalV(final String labelId, final short[] xs, final short[] ys, final int count, final ImPlotSpec spec) {
-        nPlotDigitalV(labelId, xs, ys, count, spec.ptr);
+    public static void plotDigitalV(final String labelId, final short[] xs, final short[] ys, final int count, final int flags) {
+        nPlotDigitalV(labelId, xs, ys, count, flags);
+    }
+
+    /**
+     * Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.
+     */
+    public static void plotDigitalV(final String labelId, final short[] xs, final short[] ys, final int count, final int flags, final int offset) {
+        nPlotDigitalV(labelId, xs, ys, count, flags, offset);
     }
 
     private static native void nPlotDigitalV(String labelId, short[] xs, short[] ys, int count); /*MANUAL
@@ -14762,11 +17249,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotDigitalV(String labelId, short[] xs, short[] ys, int count, long spec); /*MANUAL
+    private static native void nPlotDigitalV(String labelId, short[] xs, short[] ys, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotDigitalV(String labelId, short[] xs, short[] ys, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -14782,8 +17279,15 @@ public final class ImPlot {
     /**
      * Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.
      */
-    public static void plotDigitalV(final String labelId, final int[] xs, final int[] ys, final int count, final ImPlotSpec spec) {
-        nPlotDigitalV(labelId, xs, ys, count, spec.ptr);
+    public static void plotDigitalV(final String labelId, final int[] xs, final int[] ys, final int count, final int flags) {
+        nPlotDigitalV(labelId, xs, ys, count, flags);
+    }
+
+    /**
+     * Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.
+     */
+    public static void plotDigitalV(final String labelId, final int[] xs, final int[] ys, final int count, final int flags, final int offset) {
+        nPlotDigitalV(labelId, xs, ys, count, flags, offset);
     }
 
     private static native void nPlotDigitalV(String labelId, int[] xs, int[] ys, int count); /*MANUAL
@@ -14796,11 +17300,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotDigitalV(String labelId, int[] xs, int[] ys, int count, long spec); /*MANUAL
+    private static native void nPlotDigitalV(String labelId, int[] xs, int[] ys, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotDigitalV(String labelId, int[] xs, int[] ys, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -14816,8 +17330,15 @@ public final class ImPlot {
     /**
      * Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.
      */
-    public static void plotDigitalV(final String labelId, final long[] xs, final long[] ys, final int count, final ImPlotSpec spec) {
-        nPlotDigitalV(labelId, xs, ys, count, spec.ptr);
+    public static void plotDigitalV(final String labelId, final long[] xs, final long[] ys, final int count, final int flags) {
+        nPlotDigitalV(labelId, xs, ys, count, flags);
+    }
+
+    /**
+     * Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.
+     */
+    public static void plotDigitalV(final String labelId, final long[] xs, final long[] ys, final int count, final int flags, final int offset) {
+        nPlotDigitalV(labelId, xs, ys, count, flags, offset);
     }
 
     private static native void nPlotDigitalV(String labelId, long[] xs, long[] ys, int count); /*MANUAL
@@ -14830,11 +17351,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotDigitalV(String labelId, long[] xs, long[] ys, int count, long spec); /*MANUAL
+    private static native void nPlotDigitalV(String labelId, long[] xs, long[] ys, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotDigitalV(String labelId, long[] xs, long[] ys, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -14850,8 +17381,15 @@ public final class ImPlot {
     /**
      * Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.
      */
-    public static void plotDigitalV(final String labelId, final float[] xs, final float[] ys, final int count, final ImPlotSpec spec) {
-        nPlotDigitalV(labelId, xs, ys, count, spec.ptr);
+    public static void plotDigitalV(final String labelId, final float[] xs, final float[] ys, final int count, final int flags) {
+        nPlotDigitalV(labelId, xs, ys, count, flags);
+    }
+
+    /**
+     * Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.
+     */
+    public static void plotDigitalV(final String labelId, final float[] xs, final float[] ys, final int count, final int flags, final int offset) {
+        nPlotDigitalV(labelId, xs, ys, count, flags, offset);
     }
 
     private static native void nPlotDigitalV(String labelId, float[] xs, float[] ys, int count); /*MANUAL
@@ -14864,11 +17402,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotDigitalV(String labelId, float[] xs, float[] ys, int count, long spec); /*MANUAL
+    private static native void nPlotDigitalV(String labelId, float[] xs, float[] ys, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotDigitalV(String labelId, float[] xs, float[] ys, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -14884,8 +17432,15 @@ public final class ImPlot {
     /**
      * Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.
      */
-    public static void plotDigitalV(final String labelId, final double[] xs, final double[] ys, final int count, final ImPlotSpec spec) {
-        nPlotDigitalV(labelId, xs, ys, count, spec.ptr);
+    public static void plotDigitalV(final String labelId, final double[] xs, final double[] ys, final int count, final int flags) {
+        nPlotDigitalV(labelId, xs, ys, count, flags);
+    }
+
+    /**
+     * Plots digital data. Digital plots do not respond to y drag or zoom, and are always referenced to the bottom of the plot.
+     */
+    public static void plotDigitalV(final String labelId, final double[] xs, final double[] ys, final int count, final int flags, final int offset) {
+        nPlotDigitalV(labelId, xs, ys, count, flags, offset);
     }
 
     private static native void nPlotDigitalV(String labelId, double[] xs, double[] ys, int count); /*MANUAL
@@ -14898,11 +17453,21 @@ public final class ImPlot {
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
-    private static native void nPlotDigitalV(String labelId, double[] xs, double[] ys, int count, long spec); /*MANUAL
+    private static native void nPlotDigitalV(String labelId, double[] xs, double[] ys, int count, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
         auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], count, flags);
+        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
+        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
+        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
+    */
+
+    private static native void nPlotDigitalV(String labelId, double[] xs, double[] ys, int count, int flags, int offset); /*MANUAL
+        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
+        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
+        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
+        ImPlot::PlotDigital(labelId, &xs[0], &ys[0], count, flags, offset);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
         if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
         if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
@@ -14988,22 +17553,22 @@ public final class ImPlot {
     /**
      * Plots an axis-aligned image. #bounds_min/bounds_max are in plot coordinates (y-up) and #uv0/uv1 are in texture coordinates (y-down).
      */
-    public static void plotImage(final String labelId, final long userTextureId, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final ImVec2 uv0, final ImVec2 uv1, final ImVec4 tintCol, final ImPlotSpec spec) {
-        nPlotImage(labelId, userTextureId, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, uv0.x, uv0.y, uv1.x, uv1.y, tintCol.x, tintCol.y, tintCol.z, tintCol.w, spec.ptr);
+    public static void plotImage(final String labelId, final long userTextureId, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final ImVec2 uv0, final ImVec2 uv1, final ImVec4 tintCol, final int flags) {
+        nPlotImage(labelId, userTextureId, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, uv0.x, uv0.y, uv1.x, uv1.y, tintCol.x, tintCol.y, tintCol.z, tintCol.w, flags);
     }
 
     /**
      * Plots an axis-aligned image. #bounds_min/bounds_max are in plot coordinates (y-up) and #uv0/uv1 are in texture coordinates (y-down).
      */
-    public static void plotImage(final String labelId, final long userTextureId, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final float uv0X, final float uv0Y, final float uv1X, final float uv1Y, final float tintColX, final float tintColY, final float tintColZ, final float tintColW, final ImPlotSpec spec) {
-        nPlotImage(labelId, userTextureId, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, uv0X, uv0Y, uv1X, uv1Y, tintColX, tintColY, tintColZ, tintColW, spec.ptr);
+    public static void plotImage(final String labelId, final long userTextureId, final ImPlotPoint boundsMin, final ImPlotPoint boundsMax, final float uv0X, final float uv0Y, final float uv1X, final float uv1Y, final float tintColX, final float tintColY, final float tintColZ, final float tintColW, final int flags) {
+        nPlotImage(labelId, userTextureId, boundsMin.x, boundsMin.y, boundsMax.x, boundsMax.y, uv0X, uv0Y, uv1X, uv1Y, tintColX, tintColY, tintColZ, tintColW, flags);
     }
 
     /**
      * Plots an axis-aligned image. #bounds_min/bounds_max are in plot coordinates (y-up) and #uv0/uv1 are in texture coordinates (y-down).
      */
-    public static void plotImage(final String labelId, final long userTextureId, final double boundsMinX, final double boundsMinY, final double boundsMaxX, final double boundsMaxY, final ImVec2 uv0, final ImVec2 uv1, final ImVec4 tintCol, final ImPlotSpec spec) {
-        nPlotImage(labelId, userTextureId, boundsMinX, boundsMinY, boundsMaxX, boundsMaxY, uv0.x, uv0.y, uv1.x, uv1.y, tintCol.x, tintCol.y, tintCol.z, tintCol.w, spec.ptr);
+    public static void plotImage(final String labelId, final long userTextureId, final double boundsMinX, final double boundsMinY, final double boundsMaxX, final double boundsMaxY, final ImVec2 uv0, final ImVec2 uv1, final ImVec4 tintCol, final int flags) {
+        nPlotImage(labelId, userTextureId, boundsMinX, boundsMinY, boundsMaxX, boundsMaxY, uv0.x, uv0.y, uv1.x, uv1.y, tintCol.x, tintCol.y, tintCol.z, tintCol.w, flags);
     }
 
     private static native void nPlotImage(String labelId, long userTextureId, double boundsMinX, double boundsMinY, double boundsMaxX, double boundsMaxY); /*MANUAL
@@ -15036,12 +17601,12 @@ public final class ImPlot {
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
     */
 
-    private static native void nPlotImage(String labelId, long userTextureId, double boundsMinX, double boundsMinY, double boundsMaxX, double boundsMaxY, float uv0X, float uv0Y, float uv1X, float uv1Y, float tintColX, float tintColY, float tintColZ, float tintColW, long spec); /*MANUAL
+    private static native void nPlotImage(String labelId, long userTextureId, double boundsMinX, double boundsMinY, double boundsMaxX, double boundsMaxY, float uv0X, float uv0Y, float uv1X, float uv1Y, float tintColX, float tintColY, float tintColZ, float tintColW, int flags); /*MANUAL
         auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
         ImVec2 uv0 = ImVec2(uv0X, uv0Y);
         ImVec2 uv1 = ImVec2(uv1X, uv1Y);
         ImVec4 tintCol = ImVec4(tintColX, tintColY, tintColZ, tintColW);
-        ImPlot::PlotImage(labelId, (ImTextureID)(uintptr_t)userTextureId, ImPlotPoint(boundsMinX, boundsMinY), ImPlotPoint(boundsMaxX, boundsMaxY), uv0, uv1, tintCol, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotImage(labelId, (ImTextureID)(uintptr_t)userTextureId, ImPlotPoint(boundsMinX, boundsMinY), ImPlotPoint(boundsMaxX, boundsMaxY), uv0, uv1, tintCol, flags);
         if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
     */
 
@@ -15069,22 +17634,22 @@ public final class ImPlot {
     /**
      * Plots a centered text label at point x,y with an optional pixel offset. Text color can be changed with ImPlot::PushStyleColor(ImPlotCol_InlayText, ...).
      */
-    public static void plotText(final String text, final double x, final double y, final ImVec2 pixOffset, final ImPlotSpec spec) {
-        nPlotText(text, x, y, pixOffset.x, pixOffset.y, spec.ptr);
+    public static void plotText(final String text, final double x, final double y, final ImVec2 pixOffset, final int flags) {
+        nPlotText(text, x, y, pixOffset.x, pixOffset.y, flags);
     }
 
     /**
      * Plots a centered text label at point x,y with an optional pixel offset. Text color can be changed with ImPlot::PushStyleColor(ImPlotCol_InlayText, ...).
      */
-    public static void plotText(final String text, final double x, final double y, final float pixOffsetX, final float pixOffsetY, final ImPlotSpec spec) {
-        nPlotText(text, x, y, pixOffsetX, pixOffsetY, spec.ptr);
+    public static void plotText(final String text, final double x, final double y, final float pixOffsetX, final float pixOffsetY, final int flags) {
+        nPlotText(text, x, y, pixOffsetX, pixOffsetY, flags);
     }
 
     /**
      * Plots a centered text label at point x,y with an optional pixel offset. Text color can be changed with ImPlot::PushStyleColor(ImPlotCol_InlayText, ...).
      */
-    public static void plotText(final String text, final double x, final double y, final ImPlotSpec spec) {
-        nPlotText(text, x, y, spec.ptr);
+    public static void plotText(final String text, final double x, final double y, final int flags) {
+        nPlotText(text, x, y, flags);
     }
 
     private static native void nPlotText(String text, double x, double y); /*MANUAL
@@ -15100,16 +17665,16 @@ public final class ImPlot {
         if (text != NULL) env->ReleaseStringUTFChars(obj_text, text);
     */
 
-    private static native void nPlotText(String text, double x, double y, float pixOffsetX, float pixOffsetY, long spec); /*MANUAL
+    private static native void nPlotText(String text, double x, double y, float pixOffsetX, float pixOffsetY, int flags); /*MANUAL
         auto text = obj_text == NULL ? NULL : (char*)env->GetStringUTFChars(obj_text, JNI_FALSE);
         ImVec2 pixOffset = ImVec2(pixOffsetX, pixOffsetY);
-        ImPlot::PlotText(text, x, y, pixOffset, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotText(text, x, y, pixOffset, flags);
         if (text != NULL) env->ReleaseStringUTFChars(obj_text, text);
     */
 
-    private static native void nPlotText(String text, double x, double y, long spec); /*MANUAL
+    private static native void nPlotText(String text, double x, double y, int flags); /*MANUAL
         auto text = obj_text == NULL ? NULL : (char*)env->GetStringUTFChars(obj_text, JNI_FALSE);
-        ImPlot::PlotText(text, x, y, ImVec2(0,0), *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotText(text, x, y, ImVec2(0,0), flags);
         if (text != NULL) env->ReleaseStringUTFChars(obj_text, text);
     */
 
@@ -15123,8 +17688,8 @@ public final class ImPlot {
     /**
      * Plots a dummy item (i.e. adds a legend entry colored by ImPlotCol_Line)
      */
-    public static void plotDummy(final String labelID, final ImPlotSpec spec) {
-        nPlotDummy(labelID, spec.ptr);
+    public static void plotDummy(final String labelID, final int flags) {
+        nPlotDummy(labelID, flags);
     }
 
     private static native void nPlotDummy(String labelID); /*MANUAL
@@ -15133,1414 +17698,10 @@ public final class ImPlot {
         if (labelID != NULL) env->ReleaseStringUTFChars(obj_labelID, labelID);
     */
 
-    private static native void nPlotDummy(String labelID, long spec); /*MANUAL
+    private static native void nPlotDummy(String labelID, int flags); /*MANUAL
         auto labelID = obj_labelID == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelID, JNI_FALSE);
-        ImPlot::PlotDummy(labelID, *reinterpret_cast<ImPlotSpec*>(spec));
+        ImPlot::PlotDummy(labelID, flags);
         if (labelID != NULL) env->ReleaseStringUTFChars(obj_labelID, labelID);
-    */
-
-    // values
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final short[] values, final short[] szs) {
-        nPlotBubbles(labelId, values, szs);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final short[] values, final short[] szs, final double xscale) {
-        nPlotBubbles(labelId, values, szs, xscale);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final short[] values, final short[] szs, final double xscale, final double xstart) {
-        nPlotBubbles(labelId, values, szs, xscale, xstart);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final short[] values, final short[] szs, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotBubbles(labelId, values, szs, xscale, xstart, spec.ptr);
-    }
-
-    private static native void nPlotBubbles(String labelId, short[] values, short[] szs); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], LEN(values));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubbles(String labelId, short[] values, short[] szs, double xscale); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], LEN(values), xscale);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubbles(String labelId, short[] values, short[] szs, double xscale, double xstart); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], LEN(values), xscale, xstart);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubbles(String labelId, short[] values, short[] szs, double xscale, double xstart, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], LEN(values), xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final int[] values, final int[] szs) {
-        nPlotBubbles(labelId, values, szs);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final int[] values, final int[] szs, final double xscale) {
-        nPlotBubbles(labelId, values, szs, xscale);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final int[] values, final int[] szs, final double xscale, final double xstart) {
-        nPlotBubbles(labelId, values, szs, xscale, xstart);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final int[] values, final int[] szs, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotBubbles(labelId, values, szs, xscale, xstart, spec.ptr);
-    }
-
-    private static native void nPlotBubbles(String labelId, int[] values, int[] szs); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], LEN(values));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubbles(String labelId, int[] values, int[] szs, double xscale); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], LEN(values), xscale);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubbles(String labelId, int[] values, int[] szs, double xscale, double xstart); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], LEN(values), xscale, xstart);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubbles(String labelId, int[] values, int[] szs, double xscale, double xstart, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], LEN(values), xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final long[] values, final long[] szs) {
-        nPlotBubbles(labelId, values, szs);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final long[] values, final long[] szs, final double xscale) {
-        nPlotBubbles(labelId, values, szs, xscale);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final long[] values, final long[] szs, final double xscale, final double xstart) {
-        nPlotBubbles(labelId, values, szs, xscale, xstart);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final long[] values, final long[] szs, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotBubbles(labelId, values, szs, xscale, xstart, spec.ptr);
-    }
-
-    private static native void nPlotBubbles(String labelId, long[] values, long[] szs); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], LEN(values));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubbles(String labelId, long[] values, long[] szs, double xscale); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], LEN(values), xscale);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubbles(String labelId, long[] values, long[] szs, double xscale, double xstart); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], LEN(values), xscale, xstart);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubbles(String labelId, long[] values, long[] szs, double xscale, double xstart, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], LEN(values), xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final float[] values, final float[] szs) {
-        nPlotBubbles(labelId, values, szs);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final float[] values, final float[] szs, final double xscale) {
-        nPlotBubbles(labelId, values, szs, xscale);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final float[] values, final float[] szs, final double xscale, final double xstart) {
-        nPlotBubbles(labelId, values, szs, xscale, xstart);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final float[] values, final float[] szs, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotBubbles(labelId, values, szs, xscale, xstart, spec.ptr);
-    }
-
-    private static native void nPlotBubbles(String labelId, float[] values, float[] szs); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], LEN(values));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubbles(String labelId, float[] values, float[] szs, double xscale); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], LEN(values), xscale);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubbles(String labelId, float[] values, float[] szs, double xscale, double xstart); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], LEN(values), xscale, xstart);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubbles(String labelId, float[] values, float[] szs, double xscale, double xstart, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], LEN(values), xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final double[] values, final double[] szs) {
-        nPlotBubbles(labelId, values, szs);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final double[] values, final double[] szs, final double xscale) {
-        nPlotBubbles(labelId, values, szs, xscale);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final double[] values, final double[] szs, final double xscale, final double xstart) {
-        nPlotBubbles(labelId, values, szs, xscale, xstart);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final double[] values, final double[] szs, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotBubbles(labelId, values, szs, xscale, xstart, spec.ptr);
-    }
-
-    private static native void nPlotBubbles(String labelId, double[] values, double[] szs); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], LEN(values));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubbles(String labelId, double[] values, double[] szs, double xscale); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], LEN(values), xscale);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubbles(String labelId, double[] values, double[] szs, double xscale, double xstart); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], LEN(values), xscale, xstart);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubbles(String labelId, double[] values, double[] szs, double xscale, double xstart, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], LEN(values), xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final short[] values, final short[] szs, final int count) {
-        nPlotBubblesV(labelId, values, szs, count);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final short[] values, final short[] szs, final int count, final double xscale) {
-        nPlotBubblesV(labelId, values, szs, count, xscale);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final short[] values, final short[] szs, final int count, final double xscale, final double xstart) {
-        nPlotBubblesV(labelId, values, szs, count, xscale, xstart);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final short[] values, final short[] szs, final int count, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotBubblesV(labelId, values, szs, count, xscale, xstart, spec.ptr);
-    }
-
-    private static native void nPlotBubblesV(String labelId, short[] values, short[] szs, int count); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], count);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubblesV(String labelId, short[] values, short[] szs, int count, double xscale); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], count, xscale);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubblesV(String labelId, short[] values, short[] szs, int count, double xscale, double xstart); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], count, xscale, xstart);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubblesV(String labelId, short[] values, short[] szs, int count, double xscale, double xstart, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], count, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final int[] values, final int[] szs, final int count) {
-        nPlotBubblesV(labelId, values, szs, count);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final int[] values, final int[] szs, final int count, final double xscale) {
-        nPlotBubblesV(labelId, values, szs, count, xscale);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final int[] values, final int[] szs, final int count, final double xscale, final double xstart) {
-        nPlotBubblesV(labelId, values, szs, count, xscale, xstart);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final int[] values, final int[] szs, final int count, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotBubblesV(labelId, values, szs, count, xscale, xstart, spec.ptr);
-    }
-
-    private static native void nPlotBubblesV(String labelId, int[] values, int[] szs, int count); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], count);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubblesV(String labelId, int[] values, int[] szs, int count, double xscale); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], count, xscale);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubblesV(String labelId, int[] values, int[] szs, int count, double xscale, double xstart); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], count, xscale, xstart);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubblesV(String labelId, int[] values, int[] szs, int count, double xscale, double xstart, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], count, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final long[] values, final long[] szs, final int count) {
-        nPlotBubblesV(labelId, values, szs, count);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final long[] values, final long[] szs, final int count, final double xscale) {
-        nPlotBubblesV(labelId, values, szs, count, xscale);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final long[] values, final long[] szs, final int count, final double xscale, final double xstart) {
-        nPlotBubblesV(labelId, values, szs, count, xscale, xstart);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final long[] values, final long[] szs, final int count, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotBubblesV(labelId, values, szs, count, xscale, xstart, spec.ptr);
-    }
-
-    private static native void nPlotBubblesV(String labelId, long[] values, long[] szs, int count); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], count);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubblesV(String labelId, long[] values, long[] szs, int count, double xscale); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], count, xscale);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubblesV(String labelId, long[] values, long[] szs, int count, double xscale, double xstart); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], count, xscale, xstart);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubblesV(String labelId, long[] values, long[] szs, int count, double xscale, double xstart, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], count, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final float[] values, final float[] szs, final int count) {
-        nPlotBubblesV(labelId, values, szs, count);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final float[] values, final float[] szs, final int count, final double xscale) {
-        nPlotBubblesV(labelId, values, szs, count, xscale);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final float[] values, final float[] szs, final int count, final double xscale, final double xstart) {
-        nPlotBubblesV(labelId, values, szs, count, xscale, xstart);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final float[] values, final float[] szs, final int count, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotBubblesV(labelId, values, szs, count, xscale, xstart, spec.ptr);
-    }
-
-    private static native void nPlotBubblesV(String labelId, float[] values, float[] szs, int count); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], count);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubblesV(String labelId, float[] values, float[] szs, int count, double xscale); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], count, xscale);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubblesV(String labelId, float[] values, float[] szs, int count, double xscale, double xstart); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], count, xscale, xstart);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubblesV(String labelId, float[] values, float[] szs, int count, double xscale, double xstart, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], count, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final double[] values, final double[] szs, final int count) {
-        nPlotBubblesV(labelId, values, szs, count);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final double[] values, final double[] szs, final int count, final double xscale) {
-        nPlotBubblesV(labelId, values, szs, count, xscale);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final double[] values, final double[] szs, final int count, final double xscale, final double xstart) {
-        nPlotBubblesV(labelId, values, szs, count, xscale, xstart);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final double[] values, final double[] szs, final int count, final double xscale, final double xstart, final ImPlotSpec spec) {
-        nPlotBubblesV(labelId, values, szs, count, xscale, xstart, spec.ptr);
-    }
-
-    private static native void nPlotBubblesV(String labelId, double[] values, double[] szs, int count); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], count);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubblesV(String labelId, double[] values, double[] szs, int count, double xscale); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], count, xscale);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubblesV(String labelId, double[] values, double[] szs, int count, double xscale, double xstart); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], count, xscale, xstart);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubblesV(String labelId, double[] values, double[] szs, int count, double xscale, double xstart, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto values = obj_values == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_values, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &values[0], &szs[0], count, xscale, xstart, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (values != NULL) env->ReleasePrimitiveArrayCritical(obj_values, values, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    // xs,ys,szs
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final short[] xs, final short[] ys, final short[] szs) {
-        nPlotBubbles(labelId, xs, ys, szs);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final short[] xs, final short[] ys, final short[] szs, final ImPlotSpec spec) {
-        nPlotBubbles(labelId, xs, ys, szs, spec.ptr);
-    }
-
-    private static native void nPlotBubbles(String labelId, short[] xs, short[] ys, short[] szs); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &xs[0], &ys[0], &szs[0], LEN(xs));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubbles(String labelId, short[] xs, short[] ys, short[] szs, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &xs[0], &ys[0], &szs[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final int[] xs, final int[] ys, final int[] szs) {
-        nPlotBubbles(labelId, xs, ys, szs);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final int[] xs, final int[] ys, final int[] szs, final ImPlotSpec spec) {
-        nPlotBubbles(labelId, xs, ys, szs, spec.ptr);
-    }
-
-    private static native void nPlotBubbles(String labelId, int[] xs, int[] ys, int[] szs); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &xs[0], &ys[0], &szs[0], LEN(xs));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubbles(String labelId, int[] xs, int[] ys, int[] szs, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &xs[0], &ys[0], &szs[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final long[] xs, final long[] ys, final long[] szs) {
-        nPlotBubbles(labelId, xs, ys, szs);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final long[] xs, final long[] ys, final long[] szs, final ImPlotSpec spec) {
-        nPlotBubbles(labelId, xs, ys, szs, spec.ptr);
-    }
-
-    private static native void nPlotBubbles(String labelId, long[] xs, long[] ys, long[] szs); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &xs[0], &ys[0], &szs[0], LEN(xs));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubbles(String labelId, long[] xs, long[] ys, long[] szs, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &xs[0], &ys[0], &szs[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final float[] xs, final float[] ys, final float[] szs) {
-        nPlotBubbles(labelId, xs, ys, szs);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final float[] xs, final float[] ys, final float[] szs, final ImPlotSpec spec) {
-        nPlotBubbles(labelId, xs, ys, szs, spec.ptr);
-    }
-
-    private static native void nPlotBubbles(String labelId, float[] xs, float[] ys, float[] szs); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &xs[0], &ys[0], &szs[0], LEN(xs));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubbles(String labelId, float[] xs, float[] ys, float[] szs, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &xs[0], &ys[0], &szs[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final double[] xs, final double[] ys, final double[] szs) {
-        nPlotBubbles(labelId, xs, ys, szs);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubbles(final String labelId, final double[] xs, final double[] ys, final double[] szs, final ImPlotSpec spec) {
-        nPlotBubbles(labelId, xs, ys, szs, spec.ptr);
-    }
-
-    private static native void nPlotBubbles(String labelId, double[] xs, double[] ys, double[] szs); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &xs[0], &ys[0], &szs[0], LEN(xs));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubbles(String labelId, double[] xs, double[] ys, double[] szs, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &xs[0], &ys[0], &szs[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final short[] xs, final short[] ys, final short[] szs, final int count) {
-        nPlotBubblesV(labelId, xs, ys, szs, count);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final short[] xs, final short[] ys, final short[] szs, final int count, final ImPlotSpec spec) {
-        nPlotBubblesV(labelId, xs, ys, szs, count, spec.ptr);
-    }
-
-    private static native void nPlotBubblesV(String labelId, short[] xs, short[] ys, short[] szs, int count); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &xs[0], &ys[0], &szs[0], count);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubblesV(String labelId, short[] xs, short[] ys, short[] szs, int count, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &xs[0], &ys[0], &szs[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final int[] xs, final int[] ys, final int[] szs, final int count) {
-        nPlotBubblesV(labelId, xs, ys, szs, count);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final int[] xs, final int[] ys, final int[] szs, final int count, final ImPlotSpec spec) {
-        nPlotBubblesV(labelId, xs, ys, szs, count, spec.ptr);
-    }
-
-    private static native void nPlotBubblesV(String labelId, int[] xs, int[] ys, int[] szs, int count); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &xs[0], &ys[0], &szs[0], count);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubblesV(String labelId, int[] xs, int[] ys, int[] szs, int count, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &xs[0], &ys[0], &szs[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final long[] xs, final long[] ys, final long[] szs, final int count) {
-        nPlotBubblesV(labelId, xs, ys, szs, count);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final long[] xs, final long[] ys, final long[] szs, final int count, final ImPlotSpec spec) {
-        nPlotBubblesV(labelId, xs, ys, szs, count, spec.ptr);
-    }
-
-    private static native void nPlotBubblesV(String labelId, long[] xs, long[] ys, long[] szs, int count); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &xs[0], &ys[0], &szs[0], count);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubblesV(String labelId, long[] xs, long[] ys, long[] szs, int count, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &xs[0], &ys[0], &szs[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final float[] xs, final float[] ys, final float[] szs, final int count) {
-        nPlotBubblesV(labelId, xs, ys, szs, count);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final float[] xs, final float[] ys, final float[] szs, final int count, final ImPlotSpec spec) {
-        nPlotBubblesV(labelId, xs, ys, szs, count, spec.ptr);
-    }
-
-    private static native void nPlotBubblesV(String labelId, float[] xs, float[] ys, float[] szs, int count); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &xs[0], &ys[0], &szs[0], count);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubblesV(String labelId, float[] xs, float[] ys, float[] szs, int count, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &xs[0], &ys[0], &szs[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final double[] xs, final double[] ys, final double[] szs, final int count) {
-        nPlotBubblesV(labelId, xs, ys, szs, count);
-    }
-
-    /**
-     * Plots bubble markers with per-index sizes. #szs provides a size for each marker.
-     */
-    public static void plotBubblesV(final String labelId, final double[] xs, final double[] ys, final double[] szs, final int count, final ImPlotSpec spec) {
-        nPlotBubblesV(labelId, xs, ys, szs, count, spec.ptr);
-    }
-
-    private static native void nPlotBubblesV(String labelId, double[] xs, double[] ys, double[] szs, int count); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &xs[0], &ys[0], &szs[0], count);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    private static native void nPlotBubblesV(String labelId, double[] xs, double[] ys, double[] szs, int count, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        auto szs = obj_szs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_szs, JNI_FALSE);
-        ImPlot::PlotBubbles(labelId, &xs[0], &ys[0], &szs[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-        if (szs != NULL) env->ReleasePrimitiveArrayCritical(obj_szs, szs, JNI_FALSE);
-    */
-
-    /**
-     * Plots a polygon (open, closed or loop) using the spec Flags (e.g. ImPlotPolygonFlags_Concave for concave shapes).
-     */
-    public static void plotPolygon(final String labelId, final short[] xs, final short[] ys) {
-        nPlotPolygon(labelId, xs, ys);
-    }
-
-    /**
-     * Plots a polygon (open, closed or loop) using the spec Flags (e.g. ImPlotPolygonFlags_Concave for concave shapes).
-     */
-    public static void plotPolygon(final String labelId, final short[] xs, final short[] ys, final ImPlotSpec spec) {
-        nPlotPolygon(labelId, xs, ys, spec.ptr);
-    }
-
-    private static native void nPlotPolygon(String labelId, short[] xs, short[] ys); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotPolygon(labelId, &xs[0], &ys[0], LEN(xs));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    private static native void nPlotPolygon(String labelId, short[] xs, short[] ys, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotPolygon(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    /**
-     * Plots a polygon (open, closed or loop) using the spec Flags (e.g. ImPlotPolygonFlags_Concave for concave shapes).
-     */
-    public static void plotPolygon(final String labelId, final int[] xs, final int[] ys) {
-        nPlotPolygon(labelId, xs, ys);
-    }
-
-    /**
-     * Plots a polygon (open, closed or loop) using the spec Flags (e.g. ImPlotPolygonFlags_Concave for concave shapes).
-     */
-    public static void plotPolygon(final String labelId, final int[] xs, final int[] ys, final ImPlotSpec spec) {
-        nPlotPolygon(labelId, xs, ys, spec.ptr);
-    }
-
-    private static native void nPlotPolygon(String labelId, int[] xs, int[] ys); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotPolygon(labelId, &xs[0], &ys[0], LEN(xs));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    private static native void nPlotPolygon(String labelId, int[] xs, int[] ys, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotPolygon(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    /**
-     * Plots a polygon (open, closed or loop) using the spec Flags (e.g. ImPlotPolygonFlags_Concave for concave shapes).
-     */
-    public static void plotPolygon(final String labelId, final long[] xs, final long[] ys) {
-        nPlotPolygon(labelId, xs, ys);
-    }
-
-    /**
-     * Plots a polygon (open, closed or loop) using the spec Flags (e.g. ImPlotPolygonFlags_Concave for concave shapes).
-     */
-    public static void plotPolygon(final String labelId, final long[] xs, final long[] ys, final ImPlotSpec spec) {
-        nPlotPolygon(labelId, xs, ys, spec.ptr);
-    }
-
-    private static native void nPlotPolygon(String labelId, long[] xs, long[] ys); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotPolygon(labelId, &xs[0], &ys[0], LEN(xs));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    private static native void nPlotPolygon(String labelId, long[] xs, long[] ys, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotPolygon(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    /**
-     * Plots a polygon (open, closed or loop) using the spec Flags (e.g. ImPlotPolygonFlags_Concave for concave shapes).
-     */
-    public static void plotPolygon(final String labelId, final float[] xs, final float[] ys) {
-        nPlotPolygon(labelId, xs, ys);
-    }
-
-    /**
-     * Plots a polygon (open, closed or loop) using the spec Flags (e.g. ImPlotPolygonFlags_Concave for concave shapes).
-     */
-    public static void plotPolygon(final String labelId, final float[] xs, final float[] ys, final ImPlotSpec spec) {
-        nPlotPolygon(labelId, xs, ys, spec.ptr);
-    }
-
-    private static native void nPlotPolygon(String labelId, float[] xs, float[] ys); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotPolygon(labelId, &xs[0], &ys[0], LEN(xs));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    private static native void nPlotPolygon(String labelId, float[] xs, float[] ys, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotPolygon(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    /**
-     * Plots a polygon (open, closed or loop) using the spec Flags (e.g. ImPlotPolygonFlags_Concave for concave shapes).
-     */
-    public static void plotPolygon(final String labelId, final double[] xs, final double[] ys) {
-        nPlotPolygon(labelId, xs, ys);
-    }
-
-    /**
-     * Plots a polygon (open, closed or loop) using the spec Flags (e.g. ImPlotPolygonFlags_Concave for concave shapes).
-     */
-    public static void plotPolygon(final String labelId, final double[] xs, final double[] ys, final ImPlotSpec spec) {
-        nPlotPolygon(labelId, xs, ys, spec.ptr);
-    }
-
-    private static native void nPlotPolygon(String labelId, double[] xs, double[] ys); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotPolygon(labelId, &xs[0], &ys[0], LEN(xs));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    private static native void nPlotPolygon(String labelId, double[] xs, double[] ys, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotPolygon(labelId, &xs[0], &ys[0], LEN(xs), *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    /**
-     * Plots a polygon (open, closed or loop) using the spec Flags (e.g. ImPlotPolygonFlags_Concave for concave shapes).
-     */
-    public static void plotPolygonV(final String labelId, final short[] xs, final short[] ys, final int count) {
-        nPlotPolygonV(labelId, xs, ys, count);
-    }
-
-    /**
-     * Plots a polygon (open, closed or loop) using the spec Flags (e.g. ImPlotPolygonFlags_Concave for concave shapes).
-     */
-    public static void plotPolygonV(final String labelId, final short[] xs, final short[] ys, final int count, final ImPlotSpec spec) {
-        nPlotPolygonV(labelId, xs, ys, count, spec.ptr);
-    }
-
-    private static native void nPlotPolygonV(String labelId, short[] xs, short[] ys, int count); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotPolygon(labelId, &xs[0], &ys[0], count);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    private static native void nPlotPolygonV(String labelId, short[] xs, short[] ys, int count, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (short*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotPolygon(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    /**
-     * Plots a polygon (open, closed or loop) using the spec Flags (e.g. ImPlotPolygonFlags_Concave for concave shapes).
-     */
-    public static void plotPolygonV(final String labelId, final int[] xs, final int[] ys, final int count) {
-        nPlotPolygonV(labelId, xs, ys, count);
-    }
-
-    /**
-     * Plots a polygon (open, closed or loop) using the spec Flags (e.g. ImPlotPolygonFlags_Concave for concave shapes).
-     */
-    public static void plotPolygonV(final String labelId, final int[] xs, final int[] ys, final int count, final ImPlotSpec spec) {
-        nPlotPolygonV(labelId, xs, ys, count, spec.ptr);
-    }
-
-    private static native void nPlotPolygonV(String labelId, int[] xs, int[] ys, int count); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotPolygon(labelId, &xs[0], &ys[0], count);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    private static native void nPlotPolygonV(String labelId, int[] xs, int[] ys, int count, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (int*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotPolygon(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    /**
-     * Plots a polygon (open, closed or loop) using the spec Flags (e.g. ImPlotPolygonFlags_Concave for concave shapes).
-     */
-    public static void plotPolygonV(final String labelId, final long[] xs, final long[] ys, final int count) {
-        nPlotPolygonV(labelId, xs, ys, count);
-    }
-
-    /**
-     * Plots a polygon (open, closed or loop) using the spec Flags (e.g. ImPlotPolygonFlags_Concave for concave shapes).
-     */
-    public static void plotPolygonV(final String labelId, final long[] xs, final long[] ys, final int count, final ImPlotSpec spec) {
-        nPlotPolygonV(labelId, xs, ys, count, spec.ptr);
-    }
-
-    private static native void nPlotPolygonV(String labelId, long[] xs, long[] ys, int count); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotPolygon(labelId, &xs[0], &ys[0], count);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    private static native void nPlotPolygonV(String labelId, long[] xs, long[] ys, int count, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (long*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotPolygon(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    /**
-     * Plots a polygon (open, closed or loop) using the spec Flags (e.g. ImPlotPolygonFlags_Concave for concave shapes).
-     */
-    public static void plotPolygonV(final String labelId, final float[] xs, final float[] ys, final int count) {
-        nPlotPolygonV(labelId, xs, ys, count);
-    }
-
-    /**
-     * Plots a polygon (open, closed or loop) using the spec Flags (e.g. ImPlotPolygonFlags_Concave for concave shapes).
-     */
-    public static void plotPolygonV(final String labelId, final float[] xs, final float[] ys, final int count, final ImPlotSpec spec) {
-        nPlotPolygonV(labelId, xs, ys, count, spec.ptr);
-    }
-
-    private static native void nPlotPolygonV(String labelId, float[] xs, float[] ys, int count); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotPolygon(labelId, &xs[0], &ys[0], count);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    private static native void nPlotPolygonV(String labelId, float[] xs, float[] ys, int count, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (float*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotPolygon(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    /**
-     * Plots a polygon (open, closed or loop) using the spec Flags (e.g. ImPlotPolygonFlags_Concave for concave shapes).
-     */
-    public static void plotPolygonV(final String labelId, final double[] xs, final double[] ys, final int count) {
-        nPlotPolygonV(labelId, xs, ys, count);
-    }
-
-    /**
-     * Plots a polygon (open, closed or loop) using the spec Flags (e.g. ImPlotPolygonFlags_Concave for concave shapes).
-     */
-    public static void plotPolygonV(final String labelId, final double[] xs, final double[] ys, final int count, final ImPlotSpec spec) {
-        nPlotPolygonV(labelId, xs, ys, count, spec.ptr);
-    }
-
-    private static native void nPlotPolygonV(String labelId, double[] xs, double[] ys, int count); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotPolygon(labelId, &xs[0], &ys[0], count);
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
-    */
-
-    private static native void nPlotPolygonV(String labelId, double[] xs, double[] ys, int count, long spec); /*MANUAL
-        auto labelId = obj_labelId == NULL ? NULL : (char*)env->GetStringUTFChars(obj_labelId, JNI_FALSE);
-        auto xs = obj_xs == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_xs, JNI_FALSE);
-        auto ys = obj_ys == NULL ? NULL : (double*)env->GetPrimitiveArrayCritical(obj_ys, JNI_FALSE);
-        ImPlot::PlotPolygon(labelId, &xs[0], &ys[0], count, *reinterpret_cast<ImPlotSpec*>(spec));
-        if (labelId != NULL) env->ReleaseStringUTFChars(obj_labelId, labelId);
-        if (xs != NULL) env->ReleasePrimitiveArrayCritical(obj_xs, xs, JNI_FALSE);
-        if (ys != NULL) env->ReleasePrimitiveArrayCritical(obj_ys, ys, JNI_FALSE);
     */
 
     /*JNI
@@ -18292,15 +19453,313 @@ public final class ImPlot {
     */
 
     /**
-     * Returns the next automatic marker (in the order ImPlot cycles markers for auto-style items).
-     * Replaces SetNextMarkerStyle in v1.0; to style the next item, populate an ImPlotSpec instead (LineColor, FillColor, Marker, MarkerSize, LineWeight, MarkerLineColor, Size, ErrorBar style, etc.) and pass it to the Plot* call. The SetNextLineStyle/SetNextFillStyle/SetNextErrorBarStyle helpers were removed for the same reason.
+     * Set the line color and weight for the next item only.
      */
-    public static int nextMarker() {
-        return nNextMarker();
+    public static void setNextLineStyle() {
+        nSetNextLineStyle();
     }
 
-    private static native int nNextMarker(); /*
-        return ImPlot::NextMarker();
+    /**
+     * Set the line color and weight for the next item only.
+     */
+    public static void setNextLineStyle(final ImVec4 col) {
+        nSetNextLineStyle(col.x, col.y, col.z, col.w);
+    }
+
+    /**
+     * Set the line color and weight for the next item only.
+     */
+    public static void setNextLineStyle(final float colX, final float colY, final float colZ, final float colW) {
+        nSetNextLineStyle(colX, colY, colZ, colW);
+    }
+
+    /**
+     * Set the line color and weight for the next item only.
+     */
+    public static void setNextLineStyle(final ImVec4 col, final float weight) {
+        nSetNextLineStyle(col.x, col.y, col.z, col.w, weight);
+    }
+
+    /**
+     * Set the line color and weight for the next item only.
+     */
+    public static void setNextLineStyle(final float colX, final float colY, final float colZ, final float colW, final float weight) {
+        nSetNextLineStyle(colX, colY, colZ, colW, weight);
+    }
+
+    /**
+     * Set the line color and weight for the next item only.
+     */
+    public static void setNextLineStyle(final float weight) {
+        nSetNextLineStyle(weight);
+    }
+
+    private static native void nSetNextLineStyle(); /*
+        ImPlot::SetNextLineStyle();
+    */
+
+    private static native void nSetNextLineStyle(float colX, float colY, float colZ, float colW); /*MANUAL
+        ImVec4 col = ImVec4(colX, colY, colZ, colW);
+        ImPlot::SetNextLineStyle(col);
+    */
+
+    private static native void nSetNextLineStyle(float colX, float colY, float colZ, float colW, float weight); /*MANUAL
+        ImVec4 col = ImVec4(colX, colY, colZ, colW);
+        ImPlot::SetNextLineStyle(col, weight);
+    */
+
+    private static native void nSetNextLineStyle(float weight); /*
+        ImPlot::SetNextLineStyle(IMPLOT_AUTO_COL, weight);
+    */
+
+    /**
+     * Set the fill color for the next item only.
+     */
+    public static void setNextFillStyle() {
+        nSetNextFillStyle();
+    }
+
+    /**
+     * Set the fill color for the next item only.
+     */
+    public static void setNextFillStyle(final ImVec4 col) {
+        nSetNextFillStyle(col.x, col.y, col.z, col.w);
+    }
+
+    /**
+     * Set the fill color for the next item only.
+     */
+    public static void setNextFillStyle(final float colX, final float colY, final float colZ, final float colW) {
+        nSetNextFillStyle(colX, colY, colZ, colW);
+    }
+
+    /**
+     * Set the fill color for the next item only.
+     */
+    public static void setNextFillStyle(final ImVec4 col, final float alphaMod) {
+        nSetNextFillStyle(col.x, col.y, col.z, col.w, alphaMod);
+    }
+
+    /**
+     * Set the fill color for the next item only.
+     */
+    public static void setNextFillStyle(final float colX, final float colY, final float colZ, final float colW, final float alphaMod) {
+        nSetNextFillStyle(colX, colY, colZ, colW, alphaMod);
+    }
+
+    /**
+     * Set the fill color for the next item only.
+     */
+    public static void setNextFillStyle(final float alphaMod) {
+        nSetNextFillStyle(alphaMod);
+    }
+
+    private static native void nSetNextFillStyle(); /*
+        ImPlot::SetNextFillStyle();
+    */
+
+    private static native void nSetNextFillStyle(float colX, float colY, float colZ, float colW); /*MANUAL
+        ImVec4 col = ImVec4(colX, colY, colZ, colW);
+        ImPlot::SetNextFillStyle(col);
+    */
+
+    private static native void nSetNextFillStyle(float colX, float colY, float colZ, float colW, float alphaMod); /*MANUAL
+        ImVec4 col = ImVec4(colX, colY, colZ, colW);
+        ImPlot::SetNextFillStyle(col, alphaMod);
+    */
+
+    private static native void nSetNextFillStyle(float alphaMod); /*
+        ImPlot::SetNextFillStyle(IMPLOT_AUTO_COL, alphaMod);
+    */
+
+    /**
+     * Set the marker style for the next item only.
+     */
+    public static void setNextMarkerStyle() {
+        nSetNextMarkerStyle();
+    }
+
+    /**
+     * Set the marker style for the next item only.
+     */
+    public static void setNextMarkerStyle(final int marker) {
+        nSetNextMarkerStyle(marker);
+    }
+
+    /**
+     * Set the marker style for the next item only.
+     */
+    public static void setNextMarkerStyle(final int marker, final float size) {
+        nSetNextMarkerStyle(marker, size);
+    }
+
+    /**
+     * Set the marker style for the next item only.
+     */
+    public static void setNextMarkerStyle(final int marker, final float size, final ImVec4 fill) {
+        nSetNextMarkerStyle(marker, size, fill.x, fill.y, fill.z, fill.w);
+    }
+
+    /**
+     * Set the marker style for the next item only.
+     */
+    public static void setNextMarkerStyle(final int marker, final float size, final float fillX, final float fillY, final float fillZ, final float fillW) {
+        nSetNextMarkerStyle(marker, size, fillX, fillY, fillZ, fillW);
+    }
+
+    /**
+     * Set the marker style for the next item only.
+     */
+    public static void setNextMarkerStyle(final int marker, final float size, final ImVec4 fill, final float weight) {
+        nSetNextMarkerStyle(marker, size, fill.x, fill.y, fill.z, fill.w, weight);
+    }
+
+    /**
+     * Set the marker style for the next item only.
+     */
+    public static void setNextMarkerStyle(final int marker, final float size, final float fillX, final float fillY, final float fillZ, final float fillW, final float weight) {
+        nSetNextMarkerStyle(marker, size, fillX, fillY, fillZ, fillW, weight);
+    }
+
+    /**
+     * Set the marker style for the next item only.
+     */
+    public static void setNextMarkerStyle(final int marker, final float size, final ImVec4 fill, final float weight, final ImVec4 outline) {
+        nSetNextMarkerStyle(marker, size, fill.x, fill.y, fill.z, fill.w, weight, outline.x, outline.y, outline.z, outline.w);
+    }
+
+    /**
+     * Set the marker style for the next item only.
+     */
+    public static void setNextMarkerStyle(final int marker, final float size, final float fillX, final float fillY, final float fillZ, final float fillW, final float weight, final float outlineX, final float outlineY, final float outlineZ, final float outlineW) {
+        nSetNextMarkerStyle(marker, size, fillX, fillY, fillZ, fillW, weight, outlineX, outlineY, outlineZ, outlineW);
+    }
+
+    /**
+     * Set the marker style for the next item only.
+     */
+    public static void setNextMarkerStyle(final int marker, final float size, final ImVec4 fill, final ImVec4 outline) {
+        nSetNextMarkerStyle(marker, size, fill.x, fill.y, fill.z, fill.w, outline.x, outline.y, outline.z, outline.w);
+    }
+
+    /**
+     * Set the marker style for the next item only.
+     */
+    public static void setNextMarkerStyle(final int marker, final float size, final float fillX, final float fillY, final float fillZ, final float fillW, final float outlineX, final float outlineY, final float outlineZ, final float outlineW) {
+        nSetNextMarkerStyle(marker, size, fillX, fillY, fillZ, fillW, outlineX, outlineY, outlineZ, outlineW);
+    }
+
+    private static native void nSetNextMarkerStyle(); /*
+        ImPlot::SetNextMarkerStyle();
+    */
+
+    private static native void nSetNextMarkerStyle(int marker); /*
+        ImPlot::SetNextMarkerStyle(marker);
+    */
+
+    private static native void nSetNextMarkerStyle(int marker, float size); /*
+        ImPlot::SetNextMarkerStyle(marker, size);
+    */
+
+    private static native void nSetNextMarkerStyle(int marker, float size, float fillX, float fillY, float fillZ, float fillW); /*MANUAL
+        ImVec4 fill = ImVec4(fillX, fillY, fillZ, fillW);
+        ImPlot::SetNextMarkerStyle(marker, size, fill);
+    */
+
+    private static native void nSetNextMarkerStyle(int marker, float size, float fillX, float fillY, float fillZ, float fillW, float weight); /*MANUAL
+        ImVec4 fill = ImVec4(fillX, fillY, fillZ, fillW);
+        ImPlot::SetNextMarkerStyle(marker, size, fill, weight);
+    */
+
+    private static native void nSetNextMarkerStyle(int marker, float size, float fillX, float fillY, float fillZ, float fillW, float weight, float outlineX, float outlineY, float outlineZ, float outlineW); /*MANUAL
+        ImVec4 fill = ImVec4(fillX, fillY, fillZ, fillW);
+        ImVec4 outline = ImVec4(outlineX, outlineY, outlineZ, outlineW);
+        ImPlot::SetNextMarkerStyle(marker, size, fill, weight, outline);
+    */
+
+    private static native void nSetNextMarkerStyle(int marker, float size, float fillX, float fillY, float fillZ, float fillW, float outlineX, float outlineY, float outlineZ, float outlineW); /*MANUAL
+        ImVec4 fill = ImVec4(fillX, fillY, fillZ, fillW);
+        ImVec4 outline = ImVec4(outlineX, outlineY, outlineZ, outlineW);
+        ImPlot::SetNextMarkerStyle(marker, size, fill, IMPLOT_AUTO, outline);
+    */
+
+    /**
+     * Set the error bar style for the next item only.
+     */
+    public static void setNextErrorBarStyle() {
+        nSetNextErrorBarStyle();
+    }
+
+    /**
+     * Set the error bar style for the next item only.
+     */
+    public static void setNextErrorBarStyle(final ImVec4 col) {
+        nSetNextErrorBarStyle(col.x, col.y, col.z, col.w);
+    }
+
+    /**
+     * Set the error bar style for the next item only.
+     */
+    public static void setNextErrorBarStyle(final float colX, final float colY, final float colZ, final float colW) {
+        nSetNextErrorBarStyle(colX, colY, colZ, colW);
+    }
+
+    /**
+     * Set the error bar style for the next item only.
+     */
+    public static void setNextErrorBarStyle(final ImVec4 col, final float size) {
+        nSetNextErrorBarStyle(col.x, col.y, col.z, col.w, size);
+    }
+
+    /**
+     * Set the error bar style for the next item only.
+     */
+    public static void setNextErrorBarStyle(final float colX, final float colY, final float colZ, final float colW, final float size) {
+        nSetNextErrorBarStyle(colX, colY, colZ, colW, size);
+    }
+
+    /**
+     * Set the error bar style for the next item only.
+     */
+    public static void setNextErrorBarStyle(final ImVec4 col, final float size, final float weight) {
+        nSetNextErrorBarStyle(col.x, col.y, col.z, col.w, size, weight);
+    }
+
+    /**
+     * Set the error bar style for the next item only.
+     */
+    public static void setNextErrorBarStyle(final float colX, final float colY, final float colZ, final float colW, final float size, final float weight) {
+        nSetNextErrorBarStyle(colX, colY, colZ, colW, size, weight);
+    }
+
+    /**
+     * Set the error bar style for the next item only.
+     */
+    public static void setNextErrorBarStyle(final float size, final float weight) {
+        nSetNextErrorBarStyle(size, weight);
+    }
+
+    private static native void nSetNextErrorBarStyle(); /*
+        ImPlot::SetNextErrorBarStyle();
+    */
+
+    private static native void nSetNextErrorBarStyle(float colX, float colY, float colZ, float colW); /*MANUAL
+        ImVec4 col = ImVec4(colX, colY, colZ, colW);
+        ImPlot::SetNextErrorBarStyle(col);
+    */
+
+    private static native void nSetNextErrorBarStyle(float colX, float colY, float colZ, float colW, float size); /*MANUAL
+        ImVec4 col = ImVec4(colX, colY, colZ, colW);
+        ImPlot::SetNextErrorBarStyle(col, size);
+    */
+
+    private static native void nSetNextErrorBarStyle(float colX, float colY, float colZ, float colW, float size, float weight); /*MANUAL
+        ImVec4 col = ImVec4(colX, colY, colZ, colW);
+        ImPlot::SetNextErrorBarStyle(col, size, weight);
+    */
+
+    private static native void nSetNextErrorBarStyle(float size, float weight); /*
+        ImPlot::SetNextErrorBarStyle(IMPLOT_AUTO_COL, size, weight);
     */
 
     /**

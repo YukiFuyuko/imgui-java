@@ -6,7 +6,6 @@ import spoon.reflect.code.CtFieldRead
 import spoon.reflect.code.CtNewArray
 import spoon.reflect.declaration.*
 import spoon.reflect.factory.Factory
-import spoon.reflect.reference.CtReference
 import spoon.reflect.reference.CtTypeParameterReference
 import tool.generator.ast.Decl
 import tool.generator.ast.DeclContainer
@@ -81,8 +80,7 @@ val DST_RETURN_TYPE_SET = setOf(
     "ImPlotPoint",
     "ImPlotRange",
     "ImPlotRect",
-    "TextEditorCursorPosition",
-    "TextEditorCursorSelection",
+    "TextEditorCoordinates",
 )
 
 fun CtElement.hasAnnotation(annotationName: String): Boolean {
@@ -105,11 +103,11 @@ fun CtAnnotation<*>.containsValue(annotationField: String, value: String): Boole
 }
 
 fun Factory.createTypeParam(name: String): CtTypeParameterReference = createTypeParameterReference().apply {
-    setSimpleName<CtReference>(name)
+    setSimpleName<Nothing>(name)
 }
 
 fun Factory.createCodeSnippet(code: String): CtCodeSnippetStatement = createCodeSnippetStatement().apply {
-    setValue<CtCodeSnippet>(code)
+    setValue<Nothing>(code)
 }
 
 fun CtTypedElement<*>.isType(type: String): Boolean = this.type.simpleName == type

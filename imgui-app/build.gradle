@@ -1,6 +1,6 @@
 plugins {
     id 'java-library'
-    id 'com.gradleup.shadow' version '9.4.1'
+    id 'com.gradleup.shadow' version '8.3.3'
     id 'checkstyle'
     id 'maven-publish'
     id 'signing'
@@ -8,12 +8,8 @@ plugins {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion.set(JavaLanguageVersion.of(8))
     }
-}
-
-tasks.withType(JavaCompile).configureEach {
-    options.release.set(8)
 }
 
 dependencies {
@@ -22,13 +18,11 @@ dependencies {
     api 'org.lwjgl:lwjgl'
     api 'org.lwjgl:lwjgl-glfw'
     api 'org.lwjgl:lwjgl-opengl'
-    api 'org.lwjgl:lwjgl-sdl'
 
     ['natives-linux', 'natives-windows', 'natives-macos', 'natives-macos-arm64'].each {
         api "org.lwjgl:lwjgl::$it"
         api "org.lwjgl:lwjgl-glfw::$it"
         api "org.lwjgl:lwjgl-opengl::$it"
-        api "org.lwjgl:lwjgl-sdl::$it"
     }
 
     api project(':imgui-binding')

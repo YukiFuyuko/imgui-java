@@ -126,14 +126,14 @@ public final class ImGuiWindowFlags {
     public static final int AlwaysHorizontalScrollbar = 32768;
 
     /**
-     * No keyboard/gamepad navigation within the window
+     * No gamepad/keyboard navigation within the window
      *
      * <p>Definition: {@code 1 << 16}
      */
     public static final int NoNavInputs = 65536;
 
     /**
-     * No focusing toward this window with keyboard/gamepad navigation (e.g. skipped by Ctrl+Tab)
+     * No focusing toward this window with gamepad/keyboard navigation (e.g. skipped by CTRL+TAB)
      *
      * <p>Definition: {@code 1 << 17}
      */
@@ -169,13 +169,6 @@ public final class ImGuiWindowFlags {
     public static final int NoInputs = 197120;
 
     /**
-     * Don't use! For internal use by Begin()/NewFrame()
-     *
-     * <p>Definition: {@code 1 << 23}
-     */
-    public static final int DockNodeHost = 8388608;
-
-    /**
      * Don't use! For internal use by BeginChild()
      *
      * <p>Definition: {@code 1 << 24}
@@ -209,4 +202,25 @@ public final class ImGuiWindowFlags {
      * <p>Definition: {@code 1 << 28}
      */
     public static final int ChildMenu = 268435456;
+
+    /**
+     * Don't use! For internal use by Begin()/NewFrame()
+     *
+     * <p>Definition: {@code 1 << 29}
+     */
+    public static final int DockNodeHost = 536870912;
+
+    /**
+     * Obsoleted in 1.90: Use ImGuiChildFlags_AlwaysUseWindowPadding in BeginChild() call.
+     *
+     * <p>Definition: {@code 1 << 30}
+     */
+    public static final int AlwaysUseWindowPadding = 1073741824;
+
+    /**
+     * Obsoleted in 1.90.9: Use ImGuiChildFlags_NavFlattened in BeginChild() call.
+     *
+     * <p>Definition: {@code 1 << 31}
+     */
+    public static final int NavFlattened = -2147483648;
 }

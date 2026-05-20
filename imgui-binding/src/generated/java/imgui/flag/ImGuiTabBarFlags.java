@@ -63,40 +63,26 @@ public final class ImGuiTabBarFlags {
     public static final int DrawSelectedOverline = 64;
 
     /**
-     * Shrink down tabs when they don't fit, until width is style.TabMinWidthShrink, then enable scrolling buttons.
+     * Resize tabs when they don't fit
      *
      * <p>Definition: {@code 1 << 7}
      */
-    public static final int FittingPolicyMixed = 128;
+    public static final int FittingPolicyResizeDown = 128;
 
     /**
-     * Shrink down tabs when they don't fit
+     * Add scroll buttons when tabs don't fit
      *
      * <p>Definition: {@code 1 << 8}
      */
-    public static final int FittingPolicyShrink = 256;
+    public static final int FittingPolicyScroll = 256;
 
     /**
-     * Enable scrolling buttons when tabs don't fit
-     *
-     * <p>Definition: {@code 1 << 9}
+     * Definition: {@code ImGuiTabBarFlags_FittingPolicyResizeDown | ImGuiTabBarFlags_FittingPolicyScroll}
      */
-    public static final int FittingPolicyScroll = 512;
+    public static final int FittingPolicyMask_ = 384;
 
     /**
-     * Definition: {@code ImGuiTabBarFlags_FittingPolicyMixed | ImGuiTabBarFlags_FittingPolicyShrink | ImGuiTabBarFlags_FittingPolicyScroll}
-     */
-    public static final int FittingPolicyMask_ = 896;
-
-    /**
-     * Definition: {@code ImGuiTabBarFlags_FittingPolicyMixed}
+     * Definition: {@code ImGuiTabBarFlags_FittingPolicyResizeDown}
      */
     public static final int FittingPolicyDefault_ = 128;
-
-    /**
-     * Renamed in 1.92.2
-     *
-     * <p>Definition: {@code ImGuiTabBarFlags_FittingPolicyShrink}
-     */
-    public static final int FittingPolicyResizeDown = 256;
 }

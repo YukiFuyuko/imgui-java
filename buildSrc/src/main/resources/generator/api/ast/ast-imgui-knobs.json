@@ -1,9 +1,9 @@
 {
   "info" : {
     "source" : "include/imgui-knobs/imgui-knobs.h",
-    "hash" : "c27d15f1e6a3d155f490dd963d2ff856",
+    "hash" : "1f637f21a158aff7116bdb283dc83d46",
     "url" : "https://github.com/altschuler/imgui-knobs",
-    "revision" : "8a43bf7b31c4166ec50f3a52c382c2cc66a91516"
+    "revision" : "4f207526f9ef036a0aff7edfaad92cfbe12d987a"
   },
   "decls" : [ {
     "@type" : "AstEnumDecl",
@@ -36,27 +36,6 @@
       "order" : 3,
       "value" : "1 << 3",
       "evaluatedValue" : 8
-    }, {
-      "@type" : "AstEnumConstantDecl",
-      "name" : "ImGuiKnobFlags_DragVertical",
-      "qualType" : "ImGuiKnobFlags_",
-      "order" : 4,
-      "value" : "1 << 4",
-      "evaluatedValue" : 16
-    }, {
-      "@type" : "AstEnumConstantDecl",
-      "name" : "ImGuiKnobFlags_Logarithmic",
-      "qualType" : "ImGuiKnobFlags_",
-      "order" : 5,
-      "value" : "1 << 5",
-      "evaluatedValue" : 32
-    }, {
-      "@type" : "AstEnumConstantDecl",
-      "name" : "ImGuiKnobFlags_AlwaysClamp",
-      "qualType" : "ImGuiKnobFlags_",
-      "order" : 6,
-      "value" : "1 << 6",
-      "evaluatedValue" : 64
     } ]
   }, {
     "@type" : "AstEnumDecl",
@@ -168,7 +147,7 @@
         "name" : "format",
         "qualType" : "const char *",
         "desugaredQualType" : "const char *",
-        "defaultValue" : "\"%.3f\""
+        "defaultValue" : "NULL"
       }, {
         "@type" : "AstParmVarDecl",
         "name" : "variant",
@@ -193,18 +172,6 @@
         "qualType" : "int",
         "desugaredQualType" : "int",
         "defaultValue" : "10"
-      }, {
-        "@type" : "AstParmVarDecl",
-        "name" : "angle_min",
-        "qualType" : "float",
-        "desugaredQualType" : "float",
-        "defaultValue" : "-1"
-      }, {
-        "@type" : "AstParmVarDecl",
-        "name" : "angle_max",
-        "qualType" : "float",
-        "desugaredQualType" : "float",
-        "defaultValue" : "-1"
       } ]
     }, {
       "@type" : "AstFunctionDecl",
@@ -241,7 +208,7 @@
         "name" : "format",
         "qualType" : "const char *",
         "desugaredQualType" : "const char *",
-        "defaultValue" : "\"%i\""
+        "defaultValue" : "NULL"
       }, {
         "@type" : "AstParmVarDecl",
         "name" : "variant",
@@ -266,18 +233,6 @@
         "qualType" : "int",
         "desugaredQualType" : "int",
         "defaultValue" : "10"
-      }, {
-        "@type" : "AstParmVarDecl",
-        "name" : "angle_min",
-        "qualType" : "float",
-        "desugaredQualType" : "float",
-        "defaultValue" : "-1"
-      }, {
-        "@type" : "AstParmVarDecl",
-        "name" : "angle_max",
-        "qualType" : "float",
-        "desugaredQualType" : "float",
-        "defaultValue" : "-1"
       } ]
     } ]
   } ]

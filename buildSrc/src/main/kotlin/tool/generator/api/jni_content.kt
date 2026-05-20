@@ -1,20 +1,11 @@
 package tool.generator.api
 
-import spoon.reflect.code.CtBodyHolder
 import spoon.reflect.code.CtStatement
-import spoon.reflect.code.CtStatementList
-import spoon.reflect.declaration.CtAnnotation
-import spoon.reflect.declaration.CtElement
-import spoon.reflect.declaration.CtExecutable
 import spoon.reflect.declaration.CtField
 import spoon.reflect.declaration.CtMethod
-import spoon.reflect.declaration.CtModifiable
-import spoon.reflect.declaration.CtNamedElement
 import spoon.reflect.declaration.CtParameter
-import spoon.reflect.declaration.CtTypedElement
 import spoon.reflect.declaration.ModifierKind
 import spoon.reflect.factory.Factory
-import spoon.reflect.reference.CtReference
 import spoon.reflect.reference.CtTypeReference
 
 private fun convertParams2jni(f: Factory, params: List<CtParameter<*>>, defaults: IntArray): List<CtParameter<*>> {
@@ -27,96 +18,96 @@ private fun convertParams2jni(f: Factory, params: List<CtParameter<*>>, defaults
             continue
         }
         if (p.isType("ImVec2") || p.isType("ImVec4")) { // vec param always accepted as primitive values
-            result += f.createParameter<Any>().apply {
-                setType<CtTypedElement<Any>>(f.createTypeParam("float"))
-                setSimpleName<CtNamedElement>("${p.simpleName}X")
+            result += f.createParameter<Nothing>().apply {
+                setType<Nothing>(f.createTypeParam("float"))
+                setSimpleName<Nothing>("${p.simpleName}X")
             }
-            result += f.createParameter<Any>().apply {
-                setType<CtTypedElement<Any>>(f.createTypeParam("float"))
-                setSimpleName<CtNamedElement>("${p.simpleName}Y")
+            result += f.createParameter<Nothing>().apply {
+                setType<Nothing>(f.createTypeParam("float"))
+                setSimpleName<Nothing>("${p.simpleName}Y")
             }
             if (p.isType("ImVec4")) {
-                result += f.createParameter<Any>().apply {
-                    setType<CtTypedElement<Any>>(f.createTypeParam("float"))
-                    setSimpleName<CtNamedElement>("${p.simpleName}Z")
+                result += f.createParameter<Nothing>().apply {
+                    setType<Nothing>(f.createTypeParam("float"))
+                    setSimpleName<Nothing>("${p.simpleName}Z")
                 }
-                result += f.createParameter<Any>().apply {
-                    setType<CtTypedElement<Any>>(f.createTypeParam("float"))
-                    setSimpleName<CtNamedElement>("${p.simpleName}W")
+                result += f.createParameter<Nothing>().apply {
+                    setType<Nothing>(f.createTypeParam("float"))
+                    setSimpleName<Nothing>("${p.simpleName}W")
                 }
             }
         } else if (p.isType("ImRect")) {
-            result += f.createParameter<Any>().apply {
-                setType<CtTypedElement<Any>>(f.createTypeParam("float"))
-                setSimpleName<CtNamedElement>("${p.simpleName}MinX")
+            result += f.createParameter<Nothing>().apply {
+                setType<Nothing>(f.createTypeParam("float"))
+                setSimpleName<Nothing>("${p.simpleName}MinX")
             }
-            result += f.createParameter<Any>().apply {
-                setType<CtTypedElement<Any>>(f.createTypeParam("float"))
-                setSimpleName<CtNamedElement>("${p.simpleName}MinY")
+            result += f.createParameter<Nothing>().apply {
+                setType<Nothing>(f.createTypeParam("float"))
+                setSimpleName<Nothing>("${p.simpleName}MinY")
             }
-            result += f.createParameter<Any>().apply {
-                setType<CtTypedElement<Any>>(f.createTypeParam("float"))
-                setSimpleName<CtNamedElement>("${p.simpleName}MaxX")
+            result += f.createParameter<Nothing>().apply {
+                setType<Nothing>(f.createTypeParam("float"))
+                setSimpleName<Nothing>("${p.simpleName}MaxX")
             }
-            result += f.createParameter<Any>().apply {
-                setType<CtTypedElement<Any>>(f.createTypeParam("float"))
-                setSimpleName<CtNamedElement>("${p.simpleName}MaxY")
+            result += f.createParameter<Nothing>().apply {
+                setType<Nothing>(f.createTypeParam("float"))
+                setSimpleName<Nothing>("${p.simpleName}MaxY")
             }
         } else if (p.isType("ImPlotPoint")) {
-            result += f.createParameter<Any>().apply {
-                setType<CtTypedElement<Any>>(f.createTypeParam("double"))
-                setSimpleName<CtNamedElement>("${p.simpleName}X")
+            result += f.createParameter<Nothing>().apply {
+                setType<Nothing>(f.createTypeParam("double"))
+                setSimpleName<Nothing>("${p.simpleName}X")
             }
-            result += f.createParameter<Any>().apply {
-                setType<CtTypedElement<Any>>(f.createTypeParam("double"))
-                setSimpleName<CtNamedElement>("${p.simpleName}Y")
+            result += f.createParameter<Nothing>().apply {
+                setType<Nothing>(f.createTypeParam("double"))
+                setSimpleName<Nothing>("${p.simpleName}Y")
             }
         } else if (p.isType("ImPlotRange")) {
-            result += f.createParameter<Any>().apply {
-                setType<CtTypedElement<Any>>(f.createTypeParam("double"))
-                setSimpleName<CtNamedElement>("${p.simpleName}Min")
+            result += f.createParameter<Nothing>().apply {
+                setType<Nothing>(f.createTypeParam("double"))
+                setSimpleName<Nothing>("${p.simpleName}Min")
             }
-            result += f.createParameter<Any>().apply {
-                setType<CtTypedElement<Any>>(f.createTypeParam("double"))
-                setSimpleName<CtNamedElement>("${p.simpleName}Max")
+            result += f.createParameter<Nothing>().apply {
+                setType<Nothing>(f.createTypeParam("double"))
+                setSimpleName<Nothing>("${p.simpleName}Max")
             }
         } else if (p.isType("ImPlotRect")) {
-            result += f.createParameter<Any>().apply {
-                setType<CtTypedElement<Any>>(f.createTypeParam("double"))
-                setSimpleName<CtNamedElement>("${p.simpleName}MinX")
+            result += f.createParameter<Nothing>().apply {
+                setType<Nothing>(f.createTypeParam("double"))
+                setSimpleName<Nothing>("${p.simpleName}MinX")
             }
-            result += f.createParameter<Any>().apply {
-                setType<CtTypedElement<Any>>(f.createTypeParam("double"))
-                setSimpleName<CtNamedElement>("${p.simpleName}MinY")
+            result += f.createParameter<Nothing>().apply {
+                setType<Nothing>(f.createTypeParam("double"))
+                setSimpleName<Nothing>("${p.simpleName}MinY")
             }
-            result += f.createParameter<Any>().apply {
-                setType<CtTypedElement<Any>>(f.createTypeParam("double"))
-                setSimpleName<CtNamedElement>("${p.simpleName}MaxX")
+            result += f.createParameter<Nothing>().apply {
+                setType<Nothing>(f.createTypeParam("double"))
+                setSimpleName<Nothing>("${p.simpleName}MaxX")
             }
-            result += f.createParameter<Any>().apply {
-                setType<CtTypedElement<Any>>(f.createTypeParam("double"))
-                setSimpleName<CtNamedElement>("${p.simpleName}MaxY")
+            result += f.createParameter<Nothing>().apply {
+                setType<Nothing>(f.createTypeParam("double"))
+                setSimpleName<Nothing>("${p.simpleName}MaxY")
             }
-        } else if (p.isType("TextEditorCursorPosition")) {
-            result += f.createParameter<Any>().apply {
-                setType<CtTypedElement<Any>>(f.createTypeParam("int"))
-                setSimpleName<CtNamedElement>("${p.simpleName}Line")
+        } else if (p.isType("TextEditorCoordinates")) {
+            result += f.createParameter<Nothing>().apply {
+                setType<Nothing>(f.createTypeParam("int"))
+                setSimpleName<Nothing>("${p.simpleName}Line")
             }
-            result += f.createParameter<Any>().apply {
-                setType<CtTypedElement<Any>>(f.createTypeParam("int"))
-                setSimpleName<CtNamedElement>("${p.simpleName}Column")
+            result += f.createParameter<Nothing>().apply {
+                setType<Nothing>(f.createTypeParam("int"))
+                setSimpleName<Nothing>("${p.simpleName}Column")
             }
         } else if (p.isType("String[]")) {
-            result += f.createParameter<Any>().apply {
-                setType<CtTypedElement<Any>>(f.createTypeParam("String[]"))
-                setSimpleName<CtNamedElement>(p.simpleName)
+            result += f.createParameter<Nothing>().apply {
+                setType<Nothing>(f.createTypeParam("String[]"))
+                setSimpleName<Nothing>(p.simpleName)
             }
-            result += f.createParameter<Any>().apply {
-                setType<CtTypedElement<Any>>(f.createTypeParam("int"))
-                setSimpleName<CtNamedElement>("${p.simpleName}$PARAM_ARR_LEN_POSTFIX")
+            result += f.createParameter<Nothing>().apply {
+                setType<Nothing>(f.createTypeParam("int"))
+                setSimpleName<Nothing>("${p.simpleName}$PARAM_ARR_LEN_POSTFIX")
             }
         } else {
-            result += f.createParameter<Any>().apply {
+            result += f.createParameter<Nothing>().apply {
                 val type = if (p.type.isPtrClass()) {
                     f.createTypeParam("long")
                 } else {
@@ -131,8 +122,8 @@ private fun convertParams2jni(f: Factory, params: List<CtParameter<*>>, defaults
                     }
                 }
 
-                setType<CtTypedElement<Any>>(type)
-                setSimpleName<CtNamedElement>(p.simpleName)
+                setType<Nothing>(type)
+                setSimpleName<Nothing>(p.simpleName)
             }
         }
     }
@@ -167,8 +158,8 @@ private fun joinInBodyParams(params: List<CtParameter<*>>, defaults: IntArray): 
                     "ImPlotRect(${p.simpleName}MinX, ${p.simpleName}MinY, ${p.simpleName}MaxX, ${p.simpleName}MaxY)"
                 }
 
-                "TextEditorCursorPosition" -> {
-                    "TextEditor::CursorPosition(${p.simpleName}Line, ${p.simpleName}Column)"
+                "TextEditorCoordinates" -> {
+                    "TextEditor::Coordinates(${p.simpleName}Line, ${p.simpleName}Column)"
                 }
 
                 else -> p.simpleName
@@ -211,38 +202,38 @@ private fun joinInBodyParams(params: List<CtParameter<*>>, defaults: IntArray): 
 
 private fun createMethod(mOrig: CtMethod<*>, params: List<CtParameter<*>>, defaults: IntArray): CtMethod<*> {
     val f = mOrig.factory
-    val newM = f.createMethod<Any>()
+    val newM = f.createMethod<Nothing>()
 
-    newM.setParent<CtElement>(mOrig.parent)
+    newM.setParent<Nothing>(mOrig.parent)
 
-    newM.addModifier<CtModifiable>(ModifierKind.PRIVATE)
-    newM.addModifier<CtModifiable>(ModifierKind.NATIVE)
+    newM.addModifier<Nothing>(ModifierKind.PRIVATE)
+    newM.addModifier<Nothing>(ModifierKind.NATIVE)
     if (mOrig.isStatic) {
-        newM.addModifier<CtModifiable>(ModifierKind.STATIC)
+        newM.addModifier<Nothing>(ModifierKind.STATIC)
     }
 
     if (DST_RETURN_TYPE_SET.contains(mOrig.type.simpleName)) {
-        newM.setType<CtTypedElement<Any>>(f.createTypeParam("void"))
+        newM.setType<Nothing>(f.createTypeParam("void"))
     } else if (mOrig.type.isPtrClass()) { // classes returned as a pointer
-        newM.setType<CtTypedElement<Any>>(f.createTypeParam("long"))
+        newM.setType<Nothing>(f.createTypeParam("long"))
     } else {
-        newM.setType<CtTypedElement<Any>>(mOrig.type)
+        newM.setType<Nothing>(mOrig.type)
     }
 
-    newM.setSimpleName<CtNamedElement>(mOrig.getJniName())
+    newM.setSimpleName<Nothing>(mOrig.getJniName())
 
     convertParams2jni(f, params, defaults).forEach {
-        newM.addParameter<CtMethod<Any>>(it)
+        newM.addParameter<Nothing>(it)
     }
 
     if (DST_RETURN_TYPE_SET.contains(mOrig.type.simpleName)) {
-        newM.addParameterAt<CtMethod<Any>>(0, f.createParameter<Any>().apply {
-            setType<CtTypedElement<Any>>(mOrig.type)
-            setSimpleName<CtNamedElement>("dst")
+        newM.addParameterAt<Nothing>(0, f.createParameter<Nothing>().apply {
+            setType<Nothing>(mOrig.type)
+            setSimpleName<Nothing>("dst")
         })
     }
 
-    newM.setBody<CtBodyHolder>(f.createCodeSnippet(
+    newM.setBody<Nothing>(f.createCodeSnippet(
         buildString {
             val jniCpyReturn = DST_RETURN_TYPE_SET.contains(mOrig.type.simpleName)
             val isStrReturn = mOrig.isType("String")
@@ -327,11 +318,11 @@ private fun createMethodVecValueReturn(
         }
     }
 
-    @Suppress("UNCHECKED_CAST") val mNew = mOrig.clone() as CtMethod<Any>
-    mNew.setSimpleName<CtNamedElement>(mOrig.simpleName + vecVal.capitalize())
+    val mNew = mOrig.clone()
+    mNew.setSimpleName<Nothing>(mOrig.simpleName + vecVal.capitalize())
     mNew.removeParameter(mNew.parameters[0]) // dst param which was added during orig method creation
-    mNew.type.setSimpleName<CtReference>("float")
-    mNew.setBody<CtBodyHolder>(mOrig.factory.createCodeSnippet(
+    mNew.type.setSimpleName<Nothing>("float")
+    mNew.setBody<Nothing>(mOrig.factory.createCodeSnippet(
         buildString {
             append("return ")
             append("$callPtr$callOperator$nameOrig(")
@@ -422,7 +413,7 @@ private fun convertManualJni(mOrig: CtMethod<*>, method: CtMethod<*>): CtMethod<
         }
 
         if (isConverted && (!mNew.isType("void") || isAddPrefixType(p.type))) {
-            p.setSimpleName<CtNamedElement>("obj_" + p.simpleName)
+            p.setSimpleName<Nothing>("obj_" + p.simpleName)
         }
     }
 
@@ -448,17 +439,17 @@ private fun convertManualJni(mOrig: CtMethod<*>, method: CtMethod<*>): CtMethod<
         mNew.body.statements.clear()
 
         getLines.forEach {
-            mNew.body.addStatement<CtStatementList>(mNew.factory.createCodeSnippet(it))
+            mNew.body.addStatement<Nothing>(mNew.factory.createCodeSnippet(it))
         }
 
-        mNew.body.addStatement<CtStatementList>(mNew.factory.createCodeSnippet(bOrigCode.replace("return ", "auto _result = ")))
+        mNew.body.addStatement<Nothing>(mNew.factory.createCodeSnippet(bOrigCode.replace("return ", "auto _result = ")))
 
         releaseLines.forEach {
-            mNew.body.addStatement<CtStatementList>(mNew.factory.createCodeSnippet(it))
+            mNew.body.addStatement<Nothing>(mNew.factory.createCodeSnippet(it))
         }
 
         if (!mNew.isType("void")) {
-            mNew.body.addStatement<CtStatementList>(mNew.factory.createCodeSnippet("return _result"))
+            mNew.body.addStatement<Nothing>(mNew.factory.createCodeSnippet("return _result"))
         }
 
         return mNew
@@ -527,12 +518,12 @@ fun jniMethodContent(method: CtMethod<*>): List<String> {
 private fun createFieldGetContent(field: CtField<*>): List<String> {
     val f = field.factory
 
-    val getAccessor = f.createMethod<Any>()
-    getAccessor.setParent<CtElement>(field.parent)
-    getAccessor.setSimpleName<CtNamedElement>("get${field.simpleName}")
-    getAccessor.setType<CtTypedElement<Any>>(field.type)
-    getAccessor.addModifier<CtModifiable>(ModifierKind.PRIVATE)
-    getAccessor.setAnnotations<CtElement>(field.annotations)
+    val getAccessor = f.createMethod<Nothing>()
+    getAccessor.setParent<Nothing>(field.parent)
+    getAccessor.setSimpleName<Nothing>("get${field.simpleName}")
+    getAccessor.setType<Nothing>(field.type)
+    getAccessor.addModifier<Nothing>(ModifierKind.PRIVATE)
+    getAccessor.setAnnotations<Nothing>(field.annotations)
 
     val result = mutableListOf<String>()
 
@@ -541,13 +532,13 @@ private fun createFieldGetContent(field: CtField<*>): List<String> {
         val arraySize = field.getAnnotation(A_NAME_TYPE_ARRAY)!!.getValueAsString(A_VALUE_SIZE)
 
         val getArray = getAccessor.clone()
-        getArray.addModifier<CtModifiable>(ModifierKind.NATIVE)
-        getArray.setSimpleName<CtNamedElement>("nGet${field.simpleName}")
-        getArray.setType<CtTypedElement<Any>>(f.createTypeParam("$arrayType[]"))
+        getArray.addModifier<Nothing>(ModifierKind.NATIVE)
+        getArray.setSimpleName<Nothing>("nGet${field.simpleName}")
+        getArray.setType<Nothing>(f.createTypeParam("$arrayType[]"))
 
         when (arrayType) {
             "boolean", "byte", "short", "int", "float", "double", "long" -> {
-                getArray.setBody<CtBodyHolder>(
+                getArray.setBody<Nothing>(
                     f.createCodeSnippet(
                         """
                     j$arrayType jBuf[$arraySize];
@@ -562,7 +553,7 @@ private fun createFieldGetContent(field: CtField<*>): List<String> {
             }
 
             else -> {
-                getArray.setBody<CtBodyHolder>(
+                getArray.setBody<Nothing>(
                     f.createCodeSnippet(
                         """
                     return Jni::New${arrayType}Array(env, $PTR_JNI_THIS->${field.getCallName()}, $arraySize)
@@ -577,21 +568,21 @@ private fun createFieldGetContent(field: CtField<*>): List<String> {
         when (arrayType) {
             "boolean", "byte", "short", "int", "float", "double", "long" -> {
                 val getArrayIdx = getArray.clone()
-                getArrayIdx.addParameter<CtMethod<Any>>(f.createParameter<Any>().apply {
-                    setType<CtTypedElement<Any>>(f.createTypeParam("int"))
-                    setSimpleName<CtNamedElement>("idx")
+                getArrayIdx.addParameter<Nothing>(f.createParameter<Nothing>().apply {
+                    setType<Nothing>(f.createTypeParam("int"))
+                    setSimpleName<Nothing>("idx")
                 })
-                getArrayIdx.setType<CtTypedElement<Any>>(f.createTypeParam(arrayType))
-                getArrayIdx.setBody<CtBodyHolder>(f.createCodeSnippet("return $PTR_JNI_THIS->${field.getCallName()}[idx]"))
+                getArrayIdx.setType<Nothing>(f.createTypeParam(arrayType))
+                getArrayIdx.setBody<Nothing>(f.createCodeSnippet("return $PTR_JNI_THIS->${field.getCallName()}[idx]"))
 
                 result += getArrayIdx.prettyprint(false)
             }
         }
     } else {
-        getAccessor.addAnnotation<CtElement>(f.createAnnotation<Annotation>(f.createTypeReference<Annotation>().apply {
-            setSimpleName<CtReference>("imgui.binding.annotation.BindingMethod")
+        getAccessor.addAnnotation<Nothing>(f.createAnnotation(f.createTypeReference<Nothing?>().apply {
+            setSimpleName<Nothing>("imgui.binding.annotation.BindingMethod")
         }).apply {
-            addValue<CtAnnotation<Annotation>>(A_VALUE_CALL_NAME, field.getCallName())
+            addValue<Nothing>(A_VALUE_CALL_NAME, field.getCallName())
         })
 
         result += transformMethodToContent(getAccessor).map {
@@ -605,20 +596,20 @@ private fun createFieldGetContent(field: CtField<*>): List<String> {
 private fun createFieldSetContent(field: CtField<*>): List<String> {
     val f = field.factory
 
-    val setAccessor = f.createMethod<Any>()
-    setAccessor.setType<CtTypedElement<Any>>(f.createTypeParam("void"))
-    setAccessor.setParent<CtElement>(field.parent)
-    setAccessor.setSimpleName<CtNamedElement>("set${field.simpleName}")
-    setAccessor.addModifier<CtModifiable>(ModifierKind.PRIVATE)
-    setAccessor.setAnnotations<CtElement>(field.annotations)
+    val setAccessor = f.createMethod<Nothing>()
+    setAccessor.setType<Nothing>(f.createTypeParam("void"))
+    setAccessor.setParent<Nothing>(field.parent)
+    setAccessor.setSimpleName<Nothing>("set${field.simpleName}")
+    setAccessor.addModifier<Nothing>(ModifierKind.PRIVATE)
+    setAccessor.setAnnotations<Nothing>(field.annotations)
 
-    val valueParam = f.createParameter<Any>().apply {
-        setType<CtTypedElement<Any>>(field.type)
-        setSimpleName<CtNamedElement>("value")
+    val valueParam = f.createParameter<Nothing>().apply {
+        setType<Nothing>(field.type)
+        setSimpleName<Nothing>("value")
     }
 
     // Add this param to the method placeholder, since some transformations can check it.
-    setAccessor.addParameter<CtMethod<Any>>(valueParam)
+    setAccessor.addParameter<Nothing>(valueParam)
 
     val result = mutableListOf<String>()
 
@@ -627,12 +618,12 @@ private fun createFieldSetContent(field: CtField<*>): List<String> {
         val arraySize = field.getAnnotation(A_NAME_TYPE_ARRAY)!!.getValueAsString(A_VALUE_SIZE)
 
         val setArray = setAccessor.clone()
-        setArray.addModifier<CtModifiable>(ModifierKind.NATIVE)
-        setArray.setSimpleName<CtNamedElement>("nSet${field.simpleName}")
+        setArray.addModifier<Nothing>(ModifierKind.NATIVE)
+        setArray.setSimpleName<Nothing>("nSet${field.simpleName}")
 
         when (arrayType) {
             "boolean", "byte", "short", "int", "float", "double", "long" -> {
-                setArray.setBody<CtBodyHolder>(
+                setArray.setBody<Nothing>(
                     f.createCodeSnippet(
                         """
                     for (int i = 0; i < $arraySize; i++)
@@ -643,7 +634,7 @@ private fun createFieldSetContent(field: CtField<*>): List<String> {
             }
 
             else -> {
-                setArray.setBody<CtBodyHolder>(
+                setArray.setBody<Nothing>(
                     f.createCodeSnippet("""
                         Jni::${arrayType}ArrayCpy(env, value, $PTR_JNI_THIS->${field.getCallName()}, $arraySize)
                     """.trimIndent()
@@ -658,15 +649,15 @@ private fun createFieldSetContent(field: CtField<*>): List<String> {
             "boolean", "byte", "short", "int", "float", "double", "long" -> {
                 val setArrayIdx = setArray.clone()
                 setArrayIdx.parameters.clear()
-                setArrayIdx.addParameter<CtMethod<Any>>(f.createParameter<Any>().apply {
-                    setType<CtTypedElement<Any>>(f.createTypeParam("int"))
-                    setSimpleName<CtNamedElement>("idx")
+                setArrayIdx.addParameter<Nothing>(f.createParameter<Nothing>().apply {
+                    setType<Nothing>(f.createTypeParam("int"))
+                    setSimpleName<Nothing>("idx")
                 })
-                setArrayIdx.addParameter<CtMethod<Any>>(f.createParameter<Any>().apply {
-                    setType<CtTypedElement<Any>>(f.createTypeParam(arrayType))
-                    setSimpleName<CtNamedElement>("value")
+                setArrayIdx.addParameter<Nothing>(f.createParameter<Nothing>().apply {
+                    setType<Nothing>(f.createTypeParam(arrayType))
+                    setSimpleName<Nothing>("value")
                 })
-                setArrayIdx.setBody<CtBodyHolder>(f.createCodeSnippet("$PTR_JNI_THIS->${field.getCallName()}[idx] = value"))
+                setArrayIdx.setBody<Nothing>(f.createCodeSnippet("$PTR_JNI_THIS->${field.getCallName()}[idx] = value"))
 
                 result += setArrayIdx.prettyprint(false)
             }

@@ -33,6 +33,3 @@ logs/
 build/
 out/
 !gradle/wrapper/*.jar
-
-# Dear ImGui runtime layout file (written by ImGui on exit)
-imgui.ini

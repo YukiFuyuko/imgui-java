@@ -20,10 +20,6 @@ public class Configuration {
      * When true, application will be maximized by default.
      */
     private boolean fullScreen = false;
-    /**
-     * Backend to use for window/platform and rendering.
-     */
-    private Backend backend = Backend.GLFW;
 
     public String getTitle() {
         return title;
@@ -55,13 +51,5 @@ public class Configuration {
 
     public void setFullScreen(final boolean fullScreen) {
         this.fullScreen = fullScreen;
-    }
-
-    public Backend getBackend() {
-        return backend;
-    }
-
-    public void setBackend(final Backend backend) {
-        this.backend = backend;
     }
 }

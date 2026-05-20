@@ -72,19 +72,6 @@ public final class ImFontAtlas extends ImGuiStructDestroyable {
     @BindingMethod
     public native ImFont AddFontDefault(@OptArg ImFontConfig imFontConfig);
 
-    /**
-     * Embedded scalable (vector) default font — recommended at any higher size. (since imgui 1.92)
-     */
-    @BindingMethod
-    public native ImFont AddFontDefaultVector(@OptArg ImFontConfig imFontConfig);
-
-    /**
-     * Embedded classic pixel-clean bitmap default font — recommended at size 13px with no scaling.
-     * (since imgui 1.92)
-     */
-    @BindingMethod
-    public native ImFont AddFontDefaultBitmap(@OptArg ImFontConfig imFontConfig);
-
     @BindingMethod
     public native ImFont AddFontFromFileTTF(String filename, float sizePixels, @OptArg(callValue = "NULL") ImFontConfig fontConfig, @OptArg @ArgValue(callPrefix = "(ImWchar*)") short[] glyphRanges);
 
@@ -168,11 +155,10 @@ public final class ImFontAtlas extends ImGuiStructDestroyable {
      */
     public native void setFreeTypeRenderer(boolean enabled); /*
         #ifdef IMGUI_ENABLE_FREETYPE
-        extern const ImFontLoader* ImFontAtlasGetFontLoaderForStbTruetype();
         if (enabled) {
-            THIS->SetFontLoader(ImGuiFreeType::GetFontLoader());
+            THIS->FontBuilderIO = ImGuiFreeType::GetBuilderForFreeType();
         } else {
-            THIS->SetFontLoader(ImFontAtlasGetFontLoaderForStbTruetype());
+            THIS->FontBuilderIO = NULL;
         }
         #endif
     */
@@ -381,31 +367,11 @@ public final class ImFontAtlas extends ImGuiStructDestroyable {
     // TexID implemented as SetTexID function
 
     /**
-     * Minimum desired atlas texture width (must be power of two). Default 512. (since imgui 1.92 —
-     * replaces the old TexDesiredWidth; set TexMinWidth = TexMaxWidth to pin a specific width.)
+     * Texture width desired by user before Build(). Must be a power-of-two.
+     * If have many glyphs your graphics API have texture size restrictions you may want to increase texture width to decrease height.
      */
     @BindingField
-    public int TexMinWidth;
-
-    /**
-     * Minimum desired atlas texture height (must be power of two). Default 128. (since imgui 1.92)
-     */
-    @BindingField
-    public int TexMinHeight;
-
-    /**
-     * Maximum desired atlas texture width (must be power of two). Default 8192. (since imgui 1.92)
-     * Increase when loading large glyph sets (e.g. full CJK) on legacy backends without
-     * {@code ImGuiBackendFlags_RendererHasTextures} support.
-     */
-    @BindingField
-    public int TexMaxWidth;
-
-    /**
-     * Maximum desired atlas texture height (must be power of two). Default 8192. (since imgui 1.92)
-     */
-    @BindingField
-    public int TexMaxHeight;
+    public int TexDesiredWidth;
 
     /**
      * Padding between glyphs within texture in pixels. Defaults to 1.

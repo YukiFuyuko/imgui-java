@@ -4,7 +4,6 @@ import imgui.extension.imguizmo.flag.Mode;
 import imgui.extension.imguizmo.flag.Operation;
 import imgui.flag.ImGuiCond;
 import imgui.flag.ImGuiInputTextFlags;
-import imgui.flag.ImGuiKey;
 import imgui.flag.ImGuiWindowFlags;
 import imgui.type.ImBoolean;
 import imgui.type.ImFloat;
@@ -12,6 +11,11 @@ import imgui.type.ImFloat;
 import java.awt.Desktop;
 import java.net.URI;
 import java.util.Arrays;
+
+import static org.lwjgl.glfw.GLFW.GLFW_KEY_LEFT_SHIFT;
+import static org.lwjgl.glfw.GLFW.GLFW_KEY_R;
+import static org.lwjgl.glfw.GLFW.GLFW_KEY_S;
+import static org.lwjgl.glfw.GLFW.GLFW_KEY_T;
 
 public class ExampleImGuizmo {
     private static final String URL = "https://github.com/CedricGuillemet/ImGuizmo/tree/f7bbbe";
@@ -141,13 +145,13 @@ public class ExampleImGuizmo {
     }
 
     private static void editTransform(final ImBoolean showImGuizmoWindow) {
-        if (ImGui.isKeyPressed(ImGuiKey.T)) {
+        if (ImGui.isKeyPressed(GLFW_KEY_T)) {
             currentGizmoOperation = Operation.TRANSLATE;
-        } else if (ImGui.isKeyPressed(ImGuiKey.R)) {
+        } else if (ImGui.isKeyPressed(GLFW_KEY_R)) {
             currentGizmoOperation = Operation.ROTATE;
-        } else if (ImGui.isKeyPressed(ImGuiKey.S)) {
+        } else if (ImGui.isKeyPressed(GLFW_KEY_S)) {
             currentGizmoOperation = Operation.SCALE;
-        } else if (ImGui.isKeyPressed(ImGuiKey.LeftShift)) {
+        } else if (ImGui.isKeyPressed(GLFW_KEY_LEFT_SHIFT)) {
             USE_SNAP.set(!USE_SNAP.get());
         }
 
