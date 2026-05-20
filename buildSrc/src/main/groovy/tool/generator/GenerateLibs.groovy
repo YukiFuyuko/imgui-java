@@ -9,6 +9,7 @@ import org.gradle.api.file.CopySpec
 import org.gradle.api.file.DuplicatesStrategy
 import org.gradle.api.tasks.Internal
 import org.gradle.api.tasks.TaskAction
+import org.gradle.process.ExecSpec
 
 @CompileStatic
 class GenerateLibs extends DefaultTask {
@@ -34,9 +35,11 @@ class GenerateLibs extends DefaultTask {
     private final boolean forLinux = buildEnvs?.contains('linux')
     private final boolean forMac = buildEnvs?.contains('macos')
     private final boolean forMacArm64 = buildEnvs?.contains('macosarm64')
+    private final boolean forAndroid = buildEnvs?.contains('android')
 
     private final boolean isLocal = System.properties.containsKey('local')
     private final boolean withFreeType = Boolean.valueOf(System.properties.getProperty('freetype', 'false'))
+    private final boolean enableFreeType = withFreeType
 
     private final String sourceDir = project.file('src/generated/java')
     private final String classpath = project.file('build/classes/java/main')
@@ -44,6 +47,7 @@ class GenerateLibs extends DefaultTask {
     private final String jniDir = "$rootDir/jni"
     private final String tmpDir = "$rootDir/tmp"
     private final String libsDirName = 'libsNative'
+    private boolean freeTypeVendorEnsured = false
 
     @TaskAction
     void generate() {
@@ -80,7 +84,7 @@ class GenerateLibs extends DefaultTask {
             spec.into(jniDir)
         }
 
-        if (withFreeType) {
+        if (enableFreeType) {
             project.copy { CopySpec spec ->
                 spec.from(project.rootProject.file('include/imgui/misc/freetype')) { CopySpec it -> it.include('*.h', '*.cpp') }
                 spec.into("$jniDir/misc/freetype")
@@ -126,6 +130,24 @@ class GenerateLibs extends DefaultTask {
             buildTargets += createMacTarget(Architecture.ARM)
         }
 
+        if (forAndroid) {
+            def androidArm64 = BuildTarget.newDefaultTarget(Os.Android, Architecture.Bitness._64, Architecture.ARM)
+            androidArm64.cppFlags += " -std=c++17"
+            // Force libc++ usage/linking for Android NDK builds (imgui-node-editor/crude_json use std::string/iostream symbols).
+            // Some NDK/Ant combinations ignore BuildTarget.libraries for STL selection, so set both stdlib flags and explicit lib.
+            if (!androidArm64.cppFlags.contains('-stdlib=libc++')) {
+                androidArm64.cppFlags += ' -stdlib=libc++'
+            }
+            if (!androidArm64.linkerFlags.contains('-stdlib=libc++')) {
+                androidArm64.linkerFlags += ' -stdlib=libc++'
+            }
+            if (!androidArm64.libraries.contains('-lc++_shared')) {
+                androidArm64.libraries += ' -lc++_shared'
+            }
+            addFreeTypeIfEnabled(androidArm64)
+            buildTargets += androidArm64
+        }
+        
         new AntScriptGenerator().generate(buildConfig, buildTargets)
 
         // Generate native libraries
@@ -141,6 +163,16 @@ class GenerateLibs extends DefaultTask {
             BuildExecutor.executeAnt(jniDir + '/build-macosx64.xml', commonParams)
         if (forMacArm64)
             BuildExecutor.executeAnt(jniDir + '/build-macosxarm64.xml', commonParams)
+        if (forAndroid) {
+            def androidBuildScripts = project.fileTree(jniDir).matching { include('build-android*.xml') }.files.sort()
+            if (androidBuildScripts.isEmpty()) {
+                throw new IllegalStateException("Unable to find generated Android build script in $jniDir")
+            }
+
+            androidBuildScripts.each { File androidBuildScript ->
+                BuildExecutor.executeAnt(androidBuildScript.absolutePath, commonParams)
+            }
+        }
 
         BuildExecutor.executeAnt(jniDir + '/build.xml', '-v', 'pack-natives')
 
@@ -152,6 +184,13 @@ class GenerateLibs extends DefaultTask {
             checkLibExist("macosx64/libimgui-java64.dylib")
         if (forMacArm64)
             checkLibExist("macosxarm64/libimgui-java64.dylib")
+        if (forAndroid) {
+            normalizeAndroidLibOutput()
+            if (!hasAndroidLibOutput()) {
+                logger.error('Failed to build Android shared library!')
+                throw new IllegalStateException("$rootDir/$libsDirName does not contain Android .so output")
+            }
+        }
     }
 
     void checkLibExist(String libName) {
@@ -162,6 +201,43 @@ class GenerateLibs extends DefaultTask {
         }
     }
 
+    boolean hasAndroidLibOutput() {
+        return project.fileTree("$rootDir/$libsDirName").matching {
+            include('android*/libimgui-java.so')
+            include('android*/libimgui-java64.so')
+        }.files.any()
+    }
+    
+    void normalizeAndroidLibOutput() {
+        def libsNativeDir = new File("$rootDir/$libsDirName")
+        def androidLibs = project.fileTree(libsNativeDir).matching {
+            include('android*/libimgui-java.so')
+            include('android*/libimgui-java64.so')
+        }.files
+
+        if (!androidLibs.isEmpty()) {
+            return
+        }
+
+        def legacyAndroidLibs = project.fileTree("$rootDir/libs").matching {
+            include('**/libimgui-java.so')
+            include('**/libimgui-java64.so')
+        }.files
+
+        legacyAndroidLibs.each { File legacyLib ->
+            def abiDirName = legacyLib.parentFile?.name ?: 'aarch64'
+            def targetDir = new File(libsNativeDir, "android-$abiDirName")
+            if (!targetDir.exists() && !targetDir.mkdirs()) {
+                throw new IllegalStateException("Unable to create directory $targetDir")
+            }
+
+            project.copy { CopySpec spec ->
+                spec.from(legacyLib)
+                spec.into(targetDir)
+            }
+        }
+    }
+    
     BuildTarget createMacTarget(Architecture arch) {
         def minMacOsVersion = '10.15'
         def macTarget = BuildTarget.newDefaultTarget(Os.MacOsX, Architecture.Bitness._64, arch)
@@ -174,19 +250,46 @@ class GenerateLibs extends DefaultTask {
     }
 
     void addFreeTypeIfEnabled(BuildTarget target) {
-        if (!withFreeType) {
+        if (!enableFreeType) {
             return
         }
 
         def freetypeVendorDir = project.rootProject.file('build/vendor/freetype')
+        ensureFreeTypeVendor(freetypeVendorDir)
+
+        target.cppFlags += " -I$freetypeVendorDir/include"
+        target.linkerFlags += " -L${project.rootProject.file("$freetypeVendorDir/lib")}" 
+        target.libraries += ' -lfreetype'
+    }
+
+    void ensureFreeTypeVendor(File freetypeVendorDir) {
+        if (freeTypeVendorEnsured || freetypeVendorDir.exists()) {
+            freeTypeVendorEnsured = true
+            return
+        }
+
+        def vendorTarget = detectVendorTarget()
+        logger.lifecycle("$freetypeVendorDir doesn't exist. Running buildSrc/scripts/vendor_freetype.sh $vendorTarget")
+
+        project.providers.exec { ExecSpec execSpec ->
+            execSpec.workingDir = project.rootProject.projectDir
+            execSpec.commandLine('bash', 'buildSrc/scripts/vendor_freetype.sh', vendorTarget)
+        }.result.get()
+        
         if (!freetypeVendorDir.exists()) {
-            logger.error("$freetypeVendorDir doesn't exist! Run 'buildSrc/scripts/vendor_freetype.sh' for your platform beforehand!")
+            logger.error("$freetypeVendorDir doesn't exist after auto-vendoring. Run 'buildSrc/scripts/vendor_freetype.sh $vendorTarget' manually and check the build logs above.")
             throw new IllegalStateException("Unable to build library for FreeType")
         }
 
-        target.cppFlags += " -I$freetypeVendorDir/include"
-        target.linkerFlags += " -L${project.rootProject.file("$freetypeVendorDir/lib")}"
-        target.libraries += ' -lfreetype'
+        freeTypeVendorEnsured = true
+    }
+
+    String detectVendorTarget() {
+        if (forWindows) return 'windows'
+        if (forMac || forMacArm64) return 'macos'
+        if (forLinux) return 'linux'
+        if (forAndroid) return 'android'
+        throw new IllegalStateException("Unable to determine FreeType vendor target for envs=$buildEnvs")
     }
 
     void replaceSourceFileContent(String fileName, String replaceWhat, String replaceWith) {

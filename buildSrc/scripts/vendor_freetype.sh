@@ -98,6 +98,28 @@ case "$VTYPE" in
         fi
         echo "Universal library created at lib/libfreetype.a"
         ;;
+    android)
+        ANDROID_NDK="${ANDROID_NDK_HOME:-$ANDROID_NDK_ROOT}"
+        if [ -z "$ANDROID_NDK" ]; then
+            echo "ANDROID_NDK_HOME or ANDROID_NDK_ROOT must be set for android"
+            exit 1
+        fi
+
+        TOOLCHAIN="$ANDROID_NDK/toolchains/llvm/prebuilt/linux-x86_64"
+        if [ ! -d "$TOOLCHAIN" ]; then
+            echo "Android NDK toolchain not found at $TOOLCHAIN"
+            exit 1
+        fi
+
+        export AR="$TOOLCHAIN/bin/llvm-ar"
+        export RANLIB="$TOOLCHAIN/bin/llvm-ranlib"
+        export CC="$TOOLCHAIN/bin/aarch64-linux-android21-clang"
+        export CXX="$TOOLCHAIN/bin/aarch64-linux-android21-clang++"
+        export CFLAGS="-fPIC"
+        export LDFLAGS=""
+
+        build_freetype "$CFLAGS" "--host=aarch64-linux-android" "lib/libfreetype.a"
+        ;;
     *)
         echo "Unknown vendor type: $VTYPE"
         exit 1
